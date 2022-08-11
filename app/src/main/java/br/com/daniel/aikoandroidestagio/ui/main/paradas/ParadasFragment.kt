@@ -1,4 +1,4 @@
-package br.com.daniel.aikoandroidestagio.ui.notifications
+package br.com.daniel.aikoandroidestagio.ui.main.paradas
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import br.com.daniel.aikoandroidestagio.databinding.FragmentNotificationsBinding
+import br.com.daniel.aikoandroidestagio.databinding.FragmentParadasBinding
 
-class NotificationsFragment : Fragment() {
+class ParadasFragment : Fragment() {
 
-    private var _binding: FragmentNotificationsBinding? = null
+    private var _binding: FragmentParadasBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -22,14 +22,14 @@ class NotificationsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val notificationsViewModel =
-            ViewModelProvider(this).get(NotificationsViewModel::class.java)
+        val paradasViewModel =
+            ViewModelProvider(this).get(ParadasViewModel::class.java)
 
-        _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
+        _binding = FragmentParadasBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val textView: TextView = binding.textNotifications
-        notificationsViewModel.text.observe(viewLifecycleOwner) {
+        paradasViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
         return root

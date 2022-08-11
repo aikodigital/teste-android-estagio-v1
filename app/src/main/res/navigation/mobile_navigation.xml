@@ -3,23 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_posicao">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="br.com.daniel.aikoandroidestagio.ui.home.HomeFragment"
+        android:id="@+id/navigation_posicao"
+        android:name="br.com.daniel.aikoandroidestagio.ui.main.linhas.LinhasFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_linhas" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="br.com.daniel.aikoandroidestagio.ui.dashboard.DashboardFragment"
+        android:id="@+id/navigation_linhas"
+        android:name="br.com.daniel.aikoandroidestagio.ui.main.posicao.posicaoFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_posicao" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="br.com.daniel.aikoandroidestagio.ui.notifications.NotificationsFragment"
+        android:id="@+id/navigation_paradas"
+        android:name="br.com.daniel.aikoandroidestagio.ui.main.paradas.ParadasFragment"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_paradas" />
 </navigation>

@@ -1,7 +1,8 @@
-package br.com.daniel.aikoandroidestagio
+package br.com.daniel.aikoandroidestagio.ui.maps
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import br.com.daniel.aikoandroidestagio.R
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -27,6 +28,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
     }
+
+
 
     /**
      * Manipulates the map once available.

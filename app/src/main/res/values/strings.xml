@@ -2,7 +2,10 @@
     <string name="app_name">AIKO Android Estagio</string>
     <string name="title_activity_maps">MapsActivity</string>
     <string name="title_activity_main">MainActivity</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_home">Line</string>
+    <string name="title_dashboard">Position</string>
+    <string name="title_notifications">Bus stop</string>
+    <string name="content_description_end_icon">icone de onibus</string>
+    <string name="linha">Linha do ônibus</string>
+    <string name="button_text">Buscar</string>
 </resources>

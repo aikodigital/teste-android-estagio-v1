@@ -1,10 +1,10 @@
-package br.com.daniel.aikoandroidestagio.ui.notifications
+package br.com.daniel.aikoandroidestagio.ui.main.paradas
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class NotificationsViewModel : ViewModel() {
+class ParadasViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = "This is notifications Fragment"
