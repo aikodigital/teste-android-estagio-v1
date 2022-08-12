@@ -1,33 +1,37 @@
 package br.com.daniel.aikoandroidestagio.ui.main
 
-import android.content.pm.ApplicationInfo
-import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import br.com.daniel.aikoandroidestagio.R
 import br.com.daniel.aikoandroidestagio.databinding.ActivityMainBinding
+import br.com.daniel.aikoandroidestagio.network.ApiModule
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
     private val binding: ActivityMainBinding by lazy { ActivityMainBinding.inflate(layoutInflater) }
-    private val ai: ApplicationInfo by lazy { applicationContext.packageManager
-        .getApplicationInfo(applicationContext.packageName, PackageManager.GET_META_DATA) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        confNavView()
+        lifecycleScope.launch(IO) {
+            try {
+                ApiModule.autenticar()
+            } catch (e: Exception) {
+                Log.i("Retrofit", "API fora do ar: " + e.message)
+            }
+        }
 
-        //TODO: mover para classe correta
-        //Chave da API olho sp
-        val value = ai.metaData["OLHO_API_KEY"]
-        val key = value.toString()
+        confNavView()
     }
 
     private fun confNavView() {
