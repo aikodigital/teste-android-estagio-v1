@@ -8,21 +8,24 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.util.Log
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import br.com.daniel.aikoandroidestagio.R
+import br.com.daniel.aikoandroidestagio.adapter.MarkerInfoAdapter
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
 import br.com.daniel.aikoandroidestagio.databinding.ActivityMapsBinding
 import br.com.daniel.aikoandroidestagio.model.Linha
+import br.com.daniel.aikoandroidestagio.model.LocalizacaoVeiculos
+import br.com.daniel.aikoandroidestagio.util.Constants
+import br.com.daniel.aikoandroidestagio.util.Utils
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
-import com.google.android.gms.maps.model.CameraPosition
+import com.google.android.gms.maps.model.*
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -32,18 +35,15 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private var lastKnownLocation: Location? = null
     private var cameraPosition: CameraPosition? = null
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
+    private var frag = 0
     private val defaultLocation = LatLng(-23.5454758, -46.6455341)
     private val TAG = "DEBUG"
+    private var onibusVermelhoBitmap: BitmapDescriptor? = null
+
+    var linhasEonibus: LocalizacaoVeiculos? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        val frag = intent.getIntExtra("fragment", 0)
-        Log.i(TAG, "Recebeu fragment: $frag")
-        if (frag == 1) {
-            val linhas = intent.getSerializableExtra("linhas") as List<Linha>?
-            Log.i(TAG, "Recebeu pelo extra: $linhas")
-        }
 
         binding = ActivityMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -53,8 +53,29 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
-        //INICIO TESTE PONTO
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
+
+        frag = intent.getIntExtra(Constants.from, 0)
+        Log.i(TAG, "Recebeu fragment: $frag")
+        when (frag) {
+            1 -> {
+                val linhas = intent.getSerializableExtra("linhas") as List<Linha>?
+                Log.i(TAG, "Recebeu pelo extra: $linhas")
+            }
+            2 -> {
+
+            }
+            3 -> {
+
+            }
+            4 -> {
+                linhasEonibus = intent.getSerializableExtra(Constants.veic) as LocalizacaoVeiculos?
+            }
+            else -> {
+                Toast.makeText(this, getString(R.string.algo_errado), Toast.LENGTH_LONG).show()
+                finish()
+            }
+        }
 
         getLocationPermission()
 
@@ -71,26 +92,34 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
          * device. The result of the permission request is handled by a callback,
          * onRequestPermissionsResult.
          */
-        if (ContextCompat.checkSelfPermission(this.applicationContext,
-                Manifest.permission.ACCESS_FINE_LOCATION)
-            == PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(
+                this.applicationContext,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            )
+            == PackageManager.PERMISSION_GRANTED
+        ) {
             locationPermissionGranted = true
         } else {
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
-                PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION)
+            ActivityCompat.requestPermissions(
+                this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION
+            )
         }
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int,
-                                            permissions: Array<String>,
-                                            grantResults: IntArray) {
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>,
+        grantResults: IntArray
+    ) {
         locationPermissionGranted = false
         when (requestCode) {
             PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION -> {
 
                 // If request is cancelled, the result arrays are empty.
                 if (grantResults.isNotEmpty() &&
-                    grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    grantResults[0] == PackageManager.PERMISSION_GRANTED
+                ) {
                     locationPermissionGranted = true
                 }
             }
@@ -102,15 +131,45 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     //Adicionar marcadores, linhas, listeners ou mover a camera aqui
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
+        mMap.setInfoWindowAdapter(MarkerInfoAdapter(this))
+        onibusVermelhoBitmap = Utils.bitmapDescriptorFromVector(this, R.drawable.ic_onibus_vermelho)
 
+        when (frag) {
+            1 -> {
 
-//        mMap.addMarker(MarkerOptions().position(defaultLocation).title("Marker in Sydney"))
-//        mMap.moveCamera(CameraUpdateFactory.newLatLng(defaultLocation))
+            }
+            2 -> {
 
-        //INICIO TESTE PONTO
+            }
+            3 -> {
+
+            }
+            4 -> {
+                colocaMarcadores()
+            }
+            else -> {
+                Toast.makeText(this, getString(R.string.algo_errado), Toast.LENGTH_LONG).show()
+                finish()
+            }
+        }
         updateLocationUI()
-
         getDeviceLocation()
+    }
+
+    private fun colocaMarcadores() {
+        linhasEonibus?.l?.forEach { linha ->
+            linha.vs.forEach { veiculo ->
+                val pos = LatLng(veiculo.py, veiculo.px)
+                val titulo = veiculo.p.toString()
+                val marker = mMap.addMarker(
+                    MarkerOptions()
+                        .position(pos)
+                        .icon(onibusVermelhoBitmap)
+                        .title(titulo)
+                )
+                marker?.tag = veiculo
+            }
+        }
     }
 
     @SuppressLint("MissingPermission")
@@ -147,16 +206,23 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                         // Set the map's camera position to the current location of the device.
                         lastKnownLocation = task.result
                         if (lastKnownLocation != null) {
-                            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
-                                LatLng(lastKnownLocation!!.latitude,
-                                    lastKnownLocation!!.longitude), DEFAULT_ZOOM.toFloat()))
+                            mMap.moveCamera(
+                                CameraUpdateFactory.newLatLngZoom(
+                                    LatLng(
+                                        lastKnownLocation!!.latitude,
+                                        lastKnownLocation!!.longitude
+                                    ), DEFAULT_ZOOM.toFloat()
+                                )
+                            )
                         }
                     } else {
                         Log.i(TAG, "localizacao: $lastKnownLocation")
                         Log.d(TAG, "Current location is null. Using defaults.")
                         Log.e(TAG, "Exception: %s", task.exception)
-                        mMap.moveCamera(CameraUpdateFactory
-                            .newLatLngZoom(defaultLocation, DEFAULT_ZOOM.toFloat()))
+                        mMap.moveCamera(
+                            CameraUpdateFactory
+                                .newLatLngZoom(defaultLocation, DEFAULT_ZOOM.toFloat())
+                        )
                         mMap.uiSettings.isMyLocationButtonEnabled = false
                     }
                 }

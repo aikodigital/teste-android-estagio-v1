@@ -11,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import br.com.daniel.aikoandroidestagio.databinding.FragmentLinhasBinding
 import br.com.daniel.aikoandroidestagio.services.ApiModule
 import br.com.daniel.aikoandroidestagio.ui.maps.MapsActivity
+import br.com.daniel.aikoandroidestagio.util.Constants
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
@@ -50,8 +51,8 @@ class LinhasFragment : Fragment() {
         //TODO: temporario ate resolver API
         val linhas = ApiModule.criaLinhasFake()
         val intent = Intent(activity, MapsActivity::class.java).apply {
-            putExtra("fragment", 1)
-            putExtra("linhas", linhas as Serializable)
+            putExtra(Constants.from, 1)
+            putExtra(Constants.veic, linhas as Serializable)
         }
 
         withContext(Main) {
@@ -68,7 +69,7 @@ class LinhasFragment : Fragment() {
 //
 //            val intent = Intent(activity, MapsActivity::class.java).apply {
 //                //todo: verificar
-//                putExtra("linhas", resposta as Serializable)
+//                putExtra(Constants.veic, resposta as Serializable)
 //            }
 //
 //            withContext(Main) {

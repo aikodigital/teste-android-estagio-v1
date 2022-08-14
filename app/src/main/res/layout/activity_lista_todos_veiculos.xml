@@ -5,24 +5,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.ListaTodosVeiculos">
+
     <Button
-        android:layout_margin="8dp"
         android:id="@+id/button_onibus_mapa"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Ver ônibus no mapa"
-        />
+        android:layout_margin="8dp"
+        android:text="Ver todos no mapa"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_linhas_onibus"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-       app:layout_constraintTop_toBottomOf="@+id/button_onibus_mapa"
+        app:layout_constraintTop_toBottomOf="@+id/button_onibus_mapa"
         tools:listitem="@layout/item_linhas_onibus" />
 </androidx.constraintlayout.widget.ConstraintLayout>

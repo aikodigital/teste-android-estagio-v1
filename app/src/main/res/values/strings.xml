@@ -8,4 +8,5 @@
     <string name="content_description_end_icon">icone de onibus</string>
     <string name="linha">Linha do ônibus</string>
     <string name="button_text">Buscar</string>
+    <string name="algo_errado">Algo deu errado. Tente novamente em instantes.</string>
 </resources>

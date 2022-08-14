@@ -13,8 +13,11 @@ import br.com.daniel.aikoandroidestagio.databinding.FragmentPosicaoBinding
 import br.com.daniel.aikoandroidestagio.model.LocalizacaoVeiculos
 import br.com.daniel.aikoandroidestagio.services.ApiModule
 import br.com.daniel.aikoandroidestagio.ui.ListaTodosVeiculos
+import br.com.daniel.aikoandroidestagio.util.Constants
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import retrofit2.Response
 
 class posicaoFragment : Fragment() {
@@ -31,7 +34,7 @@ class posicaoFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val posicaoViewModel =  ViewModelProvider(this).get(PosicaoViewModel::class.java)
+        val posicaoViewModel = ViewModelProvider(this).get(PosicaoViewModel::class.java)
         _binding = FragmentPosicaoBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
@@ -42,22 +45,26 @@ class posicaoFragment : Fragment() {
             lifecycleScope.launch {
                 resposta = ApiModule.getPosicoes()
 
-                delay(1000)
                 var intent: Intent?
                 if (resposta.isSuccessful) {
+
+                    //Aqui vou guardar a posicao nos carros e o tamanho na classe
+                    val localizacaoVeiculos = resposta.body()
+                    localizacaoVeiculos?.carregarDados()
+
                     intent = Intent(activity, ListaTodosVeiculos::class.java).apply {
-                        putExtra("veiculos", resposta.body())
+                        putExtra(Constants.veic, localizacaoVeiculos)
                     }
                 } else {
                     intent = null
                     Log.d(TAG, "Erro resposta " + resposta.message())
                 }
-
-                delay(1000)
                 Log.d(TAG, "Chegou no startactivity da lista, null? " + (intent == null).toString())
 
-                intent?.let {
-                    startActivity(intent)
+                withContext(Dispatchers.Main) {
+                    intent?.let {
+                        startActivity(intent)
+                    }
                 }
             }
         }

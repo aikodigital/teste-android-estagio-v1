@@ -3,9 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Daniel/Android/AIKO/teste-android-estagio-v1/app/src/main/res/drawable/ic_onibus_vermelho.xml" value="0.272" />
         <entry key="..\:/Daniel/Android/AIKO/teste-android-estagio-v1/app/src/main/res/layout/activity_lista_todos_veiculos.xml" value="0.307518115942029" />
         <entry key="..\:/Daniel/Android/AIKO/teste-android-estagio-v1/app/src/main/res/layout/activity_main.xml" value="0.307518115942029" />
         <entry key="..\:/Daniel/Android/AIKO/teste-android-estagio-v1/app/src/main/res/layout/activity_maps.xml" value="0.307518115942029" />
+        <entry key="..\:/Daniel/Android/AIKO/teste-android-estagio-v1/app/src/main/res/layout/custom_marker_info.xml" value="0.307518115942029" />
         <entry key="..\:/Daniel/Android/AIKO/teste-android-estagio-v1/app/src/main/res/layout/fragment_dashboard.xml" value="0.307518115942029" />
         <entry key="..\:/Daniel/Android/AIKO/teste-android-estagio-v1/app/src/main/res/layout/fragment_home.xml" value="0.307518115942029" />
         <entry key="..\:/Daniel/Android/AIKO/teste-android-estagio-v1/app/src/main/res/layout/fragment_linhas.xml" value="0.307518115942029" />

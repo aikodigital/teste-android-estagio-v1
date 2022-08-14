@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import br.com.daniel.aikoandroidestagio.databinding.FragmentParadasBinding
 import br.com.daniel.aikoandroidestagio.ui.maps.MapsActivity
+import br.com.daniel.aikoandroidestagio.util.Constants
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -38,7 +39,7 @@ class ParadasFragment : Fragment() {
 
         _binding?.buttonPonto!!.setOnClickListener {
             val intent = Intent(activity, MapsActivity::class.java).apply {
-                putExtra("fragment", 3)
+                putExtra(Constants.from, 3)
             }
             startActivity(intent)
 

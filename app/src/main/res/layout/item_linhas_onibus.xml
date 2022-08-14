@@ -22,16 +22,49 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="20dp"
+                app:layout_constraintBottom_toBottomOf="@id/titulo_destino"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/titulo_origem"
+                app:srcCompat="@drawable/ic_posicao" />
+
             <TextView
-                android:id="@+id/titulo_onibus"
+                android:id="@+id/quantidade_onibus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:text="qtOnibus"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                app:layout_constraintStart_toEndOf="@+id/imageView"
+                app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+            <TextView
+                android:id="@+id/titulo_origem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:text="Titulo do onibus"
+                android:text="Titulo do origem"
                 android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/titulo_destino"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Titulo do destino"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/titulo_origem" />
 
             <TextView
                 android:id="@+id/titulo_secundario"
@@ -44,8 +77,9 @@
                 android:textAppearance="?attr/textAppearanceBody2"
                 android:textColor="?android:attr/textColorSecondary"
                 app:layout_constraintBottom_toBottomOf="@+id/cl_material_card"
+                app:layout_constraintEnd_toStartOf="@id/titulo_suporte"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/titulo_onibus" />
+                app:layout_constraintTop_toBottomOf="@+id/titulo_destino" />
 
             <TextView
                 android:id="@+id/titulo_suporte"
@@ -56,9 +90,9 @@
                 android:text="Texto de suporte"
                 android:textAppearance="?attr/textAppearanceBody2"
                 android:textColor="?android:attr/textColorSecondary"
-                app:layout_constraintBottom_toBottomOf="@+id/cl_material_card"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/titulo_secundario" />
+                app:layout_constraintStart_toEndOf="@+id/titulo_secundario"
+                app:layout_constraintTop_toTopOf="@+id/titulo_secundario" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
