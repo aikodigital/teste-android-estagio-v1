@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Daniel/Android/AIKO/teste-android-estagio-v1/app/src/main/res/layout/activity_lista_todos_veiculos.xml" value="0.307518115942029" />
         <entry key="..\:/Daniel/Android/AIKO/teste-android-estagio-v1/app/src/main/res/layout/activity_main.xml" value="0.307518115942029" />
         <entry key="..\:/Daniel/Android/AIKO/teste-android-estagio-v1/app/src/main/res/layout/activity_maps.xml" value="0.307518115942029" />
         <entry key="..\:/Daniel/Android/AIKO/teste-android-estagio-v1/app/src/main/res/layout/fragment_dashboard.xml" value="0.307518115942029" />
@@ -10,6 +11,7 @@
         <entry key="..\:/Daniel/Android/AIKO/teste-android-estagio-v1/app/src/main/res/layout/fragment_linhas.xml" value="0.307518115942029" />
         <entry key="..\:/Daniel/Android/AIKO/teste-android-estagio-v1/app/src/main/res/layout/fragment_paradas.xml" value="0.307518115942029" />
         <entry key="..\:/Daniel/Android/AIKO/teste-android-estagio-v1/app/src/main/res/layout/fragment_posicao.xml" value="0.307518115942029" />
+        <entry key="..\:/Daniel/Android/AIKO/teste-android-estagio-v1/app/src/main/res/layout/item_linhas_onibus.xml" value="0.307518115942029" />
         <entry key="..\:/Daniel/Android/AIKO/teste-android-estagio-v1/app/src/main/res/menu/bottom_nav_menu.xml" value="0.36666666666666664" />
       </map>
     </option>

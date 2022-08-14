@@ -1,9 +1,7 @@
 package br.com.daniel.aikoandroidestagio.model
 
-import android.os.Parcelable
-import kotlinx.parcelize.Parcelize
+import java.io.Serializable
 
-@Parcelize
 data class Linha(
     val identificador: Int,
     val circular: Boolean,
@@ -12,4 +10,4 @@ data class Linha(
     val sentido: Int,
     val letreiroDescritivo1: String,
     val letreiroDescritivo2: String
-) : Parcelable
+) : Serializable

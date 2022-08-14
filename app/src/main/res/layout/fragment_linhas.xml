@@ -18,7 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:startIconContentDescription="@string/content_description_end_icon"
-        app:startIconDrawable="@drawable/ic_posicao">
+        app:startIconDrawable="@drawable/ic_linhas">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"

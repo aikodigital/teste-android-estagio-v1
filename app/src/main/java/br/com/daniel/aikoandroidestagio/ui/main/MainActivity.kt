@@ -10,7 +10,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import br.com.daniel.aikoandroidestagio.R
 import br.com.daniel.aikoandroidestagio.databinding.ActivityMainBinding
-import br.com.daniel.aikoandroidestagio.network.ApiModule
+import br.com.daniel.aikoandroidestagio.services.ApiModule
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
@@ -18,6 +18,7 @@ import kotlinx.coroutines.launch
 class MainActivity : AppCompatActivity() {
 
     private val binding: ActivityMainBinding by lazy { ActivityMainBinding.inflate(layoutInflater) }
+    private val TAG = "DEBUG"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,9 +26,16 @@ class MainActivity : AppCompatActivity() {
 
         lifecycleScope.launch(IO) {
             try {
-                ApiModule.autenticar()
+                val resposta = ApiModule.autenticar()
+                val biscoitinho = resposta.headers().get("Set-Cookie")
+                biscoitinho?.let {
+                    ApiModule.setCookie(biscoitinho)
+                } ?: Log.d(TAG, "Veio sem cookie")
+
+                Log.d(TAG, "headers-debug: $biscoitinho")
+                Log.d(TAG, "API autenticada")
             } catch (e: Exception) {
-                Log.i("Retrofit", "API fora do ar: " + e.message)
+                Log.d(TAG, "API fora do ar: " + e.message)
             }
         }
 
