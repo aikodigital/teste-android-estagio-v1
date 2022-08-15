@@ -1,10 +1,7 @@
 <h1><b>Aiko Transporte</b></h1>
 
 
-<img src="fotos/2022_08_15_10.14.41.jpg" width="200">
-<img src="fotos/2022_08_15_10.14.55.jpg" width="200">
-<img src="fotos/2022_08_15_10.15.09.jpg" width="200">
-<img src="fotos/2022_08_15_10.16.22.jpg" width="200">
+<img src="fotos/2022_08_15_10.14.41.jpg" width="200">   <img src="fotos/2022_08_15_10.14.55.jpg" width="200">   <img src="fotos/2022_08_15_10.15.09.jpg" width="200">   <img src="fotos/2022_08_15_10.16.22.jpg" width="200">
 
 app de visualização de paradas, linhas e onibus em tempo real 
 
