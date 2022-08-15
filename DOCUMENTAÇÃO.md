@@ -12,19 +12,19 @@ o que esta app é capaz de fazer:
 
 - :heavy_check_mark: <b>exibir todos os ônibus pela a cidade em tempo real num intervalo de um minuto</b>
 
-<b>exibir todas as paradas de ônibus</b>
+- :heavy_check_mark: <b>exibir todas as paradas de ônibus</b>
 
-<b>exibir informações sobre linhas , paradas e ônibus<b/>
+- :heavy_check_mark: <b>exibir informações sobre linhas , paradas e ônibus<b/>
 
-<b>exibir informações sobre corredores</b>
+- :heavy_check_mark: <b>exibir informações sobre corredores</b>
 
-<b>previsão de chegada de ônibus em sua respectiva parada</b>
+- :heavy_check_mark:  <b>previsão de chegada de ônibus em sua respectiva parada</b>
 
-<b>calcula uma rota para uma parada mais próxima</b>
+- :heavy_check_mark: <b>calcula uma rota para uma parada mais próxima</b>
 
-<b>sua localização no mapa</b>
+- :heavy_check_mark:  <b>sua localização no mapa</b>
 
-<b>pesquisa de parada , linhas , ônibus</b> 
+- :heavy_check_mark:  <b>pesquisa de parada , linhas , ônibus</b> 
 
 
 ## Recursos
