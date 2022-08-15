@@ -1,63 +1,94 @@
-# Teste Android
 
-![Aiko](imagens/aiko.png)
+# SP no Ponto  
 
-Neste teste serão avaliados seus conhecimentos e a metodologia aplicada no desenvolvimento de aplicações mobile Android.
+Aplicativo que combina a API do Google Maps e do Olho Vivo  
+escrito em Kotlin.  
 
-## O Desafio
+## Build
 
-Seu objetivo é criar um aplicativo que exiba dados sobre o transporte público da cidade de São Paulo, consultando a [API **Olho Vivo**](api.md) que provê informações em tempo real do monitoramento da frota de ônibus da cidade de São Paulo.
+Para rodar o app é preciso configurar duas chaves:  
+#### 1) Chave da API OlhoVivo
+Pode ser obtida por esse [link](http://www.sptrans.com.br/desenvolvedores/api-do-olho-vivo-guia-de-referencia/)  
+Em seguida, deve-se adicionar ao arquivo **local.properties** a  
+propriedade **O_KEY=<Sua chave>**. É importante destacar que  
+o nome não pode ser alterado.
 
-## Requisitos
+#### 2) API do Google Maps
+Pode ser obtida seguindo as intruções do [GCP](https://developers.google.com/maps/documentation/android-sdk/get-api-key).
+Em seguida, deve-se adicionar ao arquivo **local.properties** a propriedade **MAPS_API_KEY=<Sua chave>**. É  
+importante destacar que o nome não pode ser alterado.  
+Além disso, são necessárias duas chaves SHA-1 para a API  
+do Google Maps: uma para debug, outra para release.
 
-Esses requisitos são obrigatórios e devem ser desenvolvidos para a entrega do teste
+#### 3) Arquivo key.properties
+É necessário criar um arquivo chamado **key.properties** na raíz  
+do projeto e inserir as seguintes informações:  
+keyAlias=<Valor>  
+keyPassword=<Sua senha>  
+storeFile=<Local da chave>  
+storePassword=<Sua senha>  
+  
+A chave pode ser obtida de acordo com a [documentação do Android](https://developer.android.com/studio/publish/app-signing)  
 
-* **Posições dos veículos**: Exibir no mapa onde os veículos estavam na sua última atualização.
+  
+Com essas duas API e os arquivos **local.properties** e **key.properties**  corretamente configurados, o app está pronto para rodar.  
+A build final de release tem por volta de 1.7MB
 
-* **Linhas**: Exibir informações sobre as linhas de ônibus.
 
-* **Paradas**: Exibir os pontos de parada da cidade no mapa.
+## Testes
 
-* **Previsão de chegada**: Dado uma parada informar a previsão de chegada de cada veículo que passe pela parada selecionada.
+Foram adicionados alguns testes ao app, a maioria deles sendo de **usecases**.
 
-* **Pesquisa e Filtros**: Permitir que o usuário pesquise e filtre esses dados, interagindo com a interface.
 
-## O que é permitido
+## Tecnologias e bibliotecas
 
-* Android Nativo (Java/Kotlin)
+#### Coroutines e Flows
 
-* React Native
+O app usa fortemente as [Coroutines](https://developer.android.com/kotlin/coroutines) em conjunto com [Flows](https://developer.android.com/kotlin/flow) para estruturar os usecases, juntos aos view models. As coroutines permitem executar trabalho em outra thread,  
+que não a Main Thread. Dessa forma, o app permanece responsivo durante as calls das APIs.
+Além disso, as coroutines foram fundamentais para desenvolver  
+a feature de atualizar automaticamente as informações do mapa.
+#### Injenção de dependência com Hilt
 
-* Native Script (Vue, Angular, etc)
+As dependências das diversas classes são injetadas usando a biblioteca [Hilt](https://developer.android.com/training/dependency-injection/hilt-android)
 
-* Flutter
+#### Jetpack Compose
+O app foi construído com [Jetpack Compose](https://developer.android.com/jetpack/compose). Dessa forma, há apenas uma **Activity**  
+e nenhum fragmento, uma vez que a UI foi escrita em Kotlin. Vale mencionar  
+que o **composable** **ListItem** ainda está em modo experimental e, por isso,  
+algumas funções têm a anotação **@ExperimentalMaterialApi**.
 
-* Xamarin
+#### Plugin Kotlin data class file from JSON
+Esse plugin do Android Studio permite converter a resposta em JSON das APIs  
+em data classes, que podem ser encontradas em **data/models** 
+## Estrutura
+O app é estrurado em 3 diferentes camadas principais:  
+data, domain e presentation.
 
-* Kivy
+#### Data
+Responsável pela fonte das informações, seja por meio de APIs ou banco de  
+dados locais. Além disso, é responsável também pelos **models** obtidos das  
+APIs com ajuda do Plugin.
 
-* Qualquer tecnologia complementar as citadas anteriormente são permitidas desde que seu uso seja justificável
+#### Domain
+Responsável pelas entidades, abstrações e usecases.
 
-## O que não é permitido
+#### Presentation
+Responsável pela UI.
 
-* Utilizar bibliotecas ou códigos de terceiros que implementem algum dos requisitos.
+#### di
+Arquivo contendo o container para gerar as dependências do **Hilt**.
 
-## Recomendações
+#### common
+Arquivos comuns, no caso **Exceptions** customizadas.
 
-* **Linter**: Desenvolva o projeto utilizando algum padrão de formatação de código.
+#### Constants
+Responsável pelas constantes do projeto.
 
-## Extras
 
-Aqui são listados algumas sugestões para você que quer ir além do desafio inicial. Lembrando que você não precisa se limitar a essas sugestões, se tiver pensado em outra funcionalidade que considera relevante ao escopo da aplicação fique à vontade para implementá-la.
+## Demonstração em vídeo
 
-* **Refresh automático**: Que as informações exibidas no aplicativo sejam atualizadas de tempo em tempo de forma transparente ao usuário
+<a href="https://firebasestorage.googleapis.com/v0/b/dartplayer-94fe5.appspot.com/o/Aiko%2Faiko1.mp4?alt=media" target="_blank">
+<img src="https://firebasestorage.googleapis.com/v0/b/dartplayer-94fe5.appspot.com/o/Aiko%2Faiko.webp?alt=media" alt="Demonstração em vídeo" width="250" height="auto" />
+</a>
 
-* **Cálculo de rotas**: Exibir a possível rota de um ou mais ônibus em relação a uma parada, ou do usuário em relação a uma parada (Utilizando API do Google Maps ou equivalentes)
-
-* **Corredores**: Mostrar informações sobre os corredores de ônibus de SP.
-
-* **Velocidade das vias**: Mostrar informações sobre as velocidades das vias.
-
-* **Testes**: Desenvolva testes que achar necessário para a aplicação.
-
-* **Documentação**: Gerar uma documentação da aplicação. A documentação pode incluir detalhes sobre as decisões tomadas, especificação das funcionalidades desenvolvidas, instruções de uso dentre outras informações que achar relevantes.
