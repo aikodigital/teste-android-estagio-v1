@@ -24,7 +24,6 @@
 
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/fab"
-
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Opçôes"
@@ -41,7 +40,6 @@
             android:layout_marginBottom="8dp"
             android:src="@drawable/ic_search_fill0_wght400_grad0_opsz48"
             app:backgroundTint="@color/endColor"
-            android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@+id/fab"
             app:layout_constraintEnd_toEndOf="parent"
             app:tint="@color/white" />
@@ -52,8 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:visibility="gone"
-            android:src="@drawable/ic_search_fill0_wght400_grad0_opsz48"
+            android:src="@drawable/ic_account_circle_fill0_wght400_grad0_opsz48"
             app:backgroundTint="@color/endColor"
             app:layout_constraintBottom_toTopOf="@+id/fab1"
             app:layout_constraintEnd_toEndOf="parent"
@@ -138,10 +135,9 @@
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab3"
-            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_search_fill0_wght400_grad0_opsz48"
+            android:src="@drawable/ic_route_fill0_wght400_grad0_opsz48"
             app:backgroundTint="@color/endColor"
             app:layout_constraintBottom_toTopOf="@+id/fab2"
             app:layout_constraintEnd_toEndOf="parent"

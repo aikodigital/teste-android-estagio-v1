@@ -28,29 +28,45 @@ o que esta app é capaz de fazer:
 
 o intervalo de tempo de atualização é de um minuto,mostrando a movimentação dos ônibus de cidade  são paulo com símbolo de ônibus verde
 
+<img src="fotos/Screenshot_20220815_142411.png" width="200">
+
 todas as paradas terão um simbolo vermelho
+
+<img src="fotos/screen3.jpg" >
 
 a duas abas na app , uma para o mapa e outras para informações em geral
 
 a previsão de chegada dos ônibus é obtida clicando na parada de ônibus
 
+<img src="fotos/screen4.jpg" >
+
 o calculo de rota pode ser feitas de duas maneiras , clicando  no botão  flutuante e depois no botão “calcular parada próxima"
 
 minhas localização pode ser obtida por meio do segundo botão flutuante
 
+<img src="fotos/screen2.jpg" >
 
  ## Desenvolvimento
 
 app foi feito  com os recursos atualizados são eles
 
 conceito de MVVM 
-bibliotecas lifecycle(ViewModel , Live Data , Flow)
+
+bibliotecas [lifecycle](https://developer.android.com/guide/components/activities/activity-lifecycle)(ViewModel , Live Data , Flow)
+
 Coroutines (threads leves)
+
 google maps sdk android
-conceito de  injeção de dependência (DI) com lib Koin
+
+conceito de  injeção de dependência (DI) com lib 
+ [Koin DI](https://insert-koin.io/)
+
 retrofit client http
+
 Room database
+
 Material UI 3
+
 Navigation Lib  
 
 ## Pastas do projeto
@@ -63,7 +79,9 @@ Navigation Lib
 
 ### <b>util</b> = classes de utilidades (conectividades, projeção e etc)
 
- #### <b>viewmodel</b> = classe de viewmodels (livecycle)
+ #### <b>Viewmodel</b> = classe de viewmodels (livecycle)
+
+ [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel?hl=pt-br)
 
  #### <b>App.kt</b> = classe de inicialização da app , aqui é inicialização is injeções
 
