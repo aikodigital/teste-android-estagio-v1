@@ -1,63 +1,40 @@
 # Teste Android
 
-![Aiko](imagens/aiko.png)
 
-Neste teste serão avaliados seus conhecimentos e a metodologia aplicada no desenvolvimento de aplicações mobile Android.
 
-## O Desafio
+Please check   <  https://github.com/wagarcdev/De_Olho_no_Busao  >
 
-Seu objetivo é criar um aplicativo que exiba dados sobre o transporte público da cidade de São Paulo, consultando a [API **Olho Vivo**](api.md) que provê informações em tempo real do monitoramento da frota de ônibus da cidade de São Paulo.
+Projeto Android Nativo, realizado em Kotlin com Jetpack Compose
+
+como este repositório não foi criado como um projeto Android, não consegui definir todas as dependências e
+wrappers para tornar este repositório um projeto Android e, consequentemente, não foi possível criar um P.R. para isso
+repositório com minha solução, faça o check-out do meu aplicativo em meus repositórios
+
+
+
 
 ## Requisitos
 
-Esses requisitos são obrigatórios e devem ser desenvolvidos para a entrega do teste
+UI não foi otimizada, projeto apenas desenvolvido a parte estrutural
 
 * **Posições dos veículos**: Exibir no mapa onde os veículos estavam na sua última atualização.
+* Feito, talvez não esteja configurado para serem exibidos todos os veiculos pois
+* eu estava testando os outros EndPoints então eu omiti mostrar todos os Onibus durante esses testes
+* por questões de performance
 
 * **Linhas**: Exibir informações sobre as linhas de ônibus.
+* Exibidas numa lista em Menu na tela principal
 
 * **Paradas**: Exibir os pontos de parada da cidade no mapa.
+* Feito, talvez não esteja configurado para serem exibidos todos os veiculos pois
+* eu estava testando os outros EndPoints então eu omiti mostrar todas as Paradas durante esses testes
+* por questões de performance
 
-* **Previsão de chegada**: Dado uma parada informar a previsão de chegada de cada veículo que passe pela parada selecionada.
+    * **Previsão de chegada**: Dado uma parada informar a previsão de chegada de cada veículo que passe pela parada selecionada.
+    * NÃO DESENVOLVIDO
+    * tempo não foi suficiente
 
 * **Pesquisa e Filtros**: Permitir que o usuário pesquise e filtre esses dados, interagindo com a interface.
-
-## O que é permitido
-
-* Android Nativo (Java/Kotlin)
-
-* React Native
-
-* Native Script (Vue, Angular, etc)
-
-* Flutter
-
-* Xamarin
-
-* Kivy
-
-* Qualquer tecnologia complementar as citadas anteriormente são permitidas desde que seu uso seja justificável
-
-## O que não é permitido
-
-* Utilizar bibliotecas ou códigos de terceiros que implementem algum dos requisitos.
-
-## Recomendações
-
-* **Linter**: Desenvolva o projeto utilizando algum padrão de formatação de código.
-
-## Extras
-
-Aqui são listados algumas sugestões para você que quer ir além do desafio inicial. Lembrando que você não precisa se limitar a essas sugestões, se tiver pensado em outra funcionalidade que considera relevante ao escopo da aplicação fique à vontade para implementá-la.
-
-* **Refresh automático**: Que as informações exibidas no aplicativo sejam atualizadas de tempo em tempo de forma transparente ao usuário
-
-* **Cálculo de rotas**: Exibir a possível rota de um ou mais ônibus em relação a uma parada, ou do usuário em relação a uma parada (Utilizando API do Google Maps ou equivalentes)
-
-* **Corredores**: Mostrar informações sobre os corredores de ônibus de SP.
-
-* **Velocidade das vias**: Mostrar informações sobre as velocidades das vias.
-
-* **Testes**: Desenvolva testes que achar necessário para a aplicação.
-
-* **Documentação**: Gerar uma documentação da aplicação. A documentação pode incluir detalhes sobre as decisões tomadas, especificação das funcionalidades desenvolvidas, instruções de uso dentre outras informações que achar relevantes.
+* NÃO DESENVOLVIDO
+* tempo não foi suficiente
+* 
