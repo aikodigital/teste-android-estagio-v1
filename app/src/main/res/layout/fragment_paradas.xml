@@ -27,7 +27,7 @@
         android:id="@+id/dicas_paradas2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Afonso, arminda ou maria augusta" />
+        android:text="Afonso, arminda, maria augusta ou lapa" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/texto_endereco_ponto"

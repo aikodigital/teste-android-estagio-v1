@@ -30,6 +30,7 @@ import br.com.daniel.aikoandroidestagio.util.Utils
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.model.*
+import java.io.Serializable
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -72,10 +73,12 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
             }
             3 -> {
+                title = getString(R.string.title_maps_paradas)
                 paradas = intent.getSerializableExtra(Constants.parada) as List<Parada>
                 Log.i(TAG, "Recebeu pelo extra: $paradas")
             }
             4 -> {
+                title = getString(R.string.title_maps_onibus)
                 linhasEonibus = intent.getSerializableExtra(Constants.veic) as LocalizacaoVeiculos?
             }
             else -> {
@@ -182,7 +185,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             bounds.include(pos)
             mMap.setOnInfoWindowClickListener {
                 val intent = Intent(this, PrevisaoChegada::class.java).apply {
-                    putExtra(Constants.parada, parada)
+                    putExtra(Constants.parada, it.tag as Serializable)
                 }
                 startActivity(intent)
             }

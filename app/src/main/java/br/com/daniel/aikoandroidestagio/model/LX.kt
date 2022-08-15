@@ -1,5 +1,7 @@
 package br.com.daniel.aikoandroidestagio.model
 
+import java.io.Serializable
+
 data class LX(
     val c: String,
     val cl: Int,
@@ -8,4 +10,4 @@ data class LX(
     val lt1: String,
     val qv: Int,
     val vs: List<VX>
-)
+) : Serializable

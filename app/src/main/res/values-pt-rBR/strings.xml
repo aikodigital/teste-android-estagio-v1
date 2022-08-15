@@ -11,4 +11,13 @@
     <string name="algo_errado">Algo deu errado. Tente novamente em instantes.</string>
     <string name="nome_rua">Nome da rua</string>
     <string name="find">Encontrar</string>
+    <string name="nao_encontrei_pontos">Não encontrei pontos nessa rua.</string>
+    <string name="prev_chegada">Clique aqui para ver a previsão de chegada dos onibus.</string>
+    <string name="sentido_principal">Sentido principal</string>
+    <string name="sentido_secundario">Sentido secundário</string>
+    <string name="nao_tem_onibus">A API não está respondendo corretamente. Tente novamenten em instantes.</string>
+    <string name="title_previsao_linhas">Selecione a linha</string>
+    <string name="title_previsao_onibus">Previsão de chegada</string>
+    <string name="title_maps_paradas">Paradas de onibus</string>
+    <string name="title_maps_onibus">Todos os ônibus</string>
 </resources>

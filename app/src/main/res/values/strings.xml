@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name" translatable="false">AIKO Android Estagio</string>
-    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_maps">Maps</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_home">Line</string>
     <string name="title_dashboard">Position</string>
@@ -11,6 +11,13 @@
     <string name="algo_errado">Something went wrong. Please try again in a moment.</string>
     <string name="nome_rua">Street Name</string>
     <string name="find">Find</string>
-    <string name="nao_encontrei_pontos">Não encontrei pontos nessa rua.</string>
-    <string name="prev_chegada">Clique aqui para ver a previsão de chegada dos onibus.</string>
+    <string name="nao_encontrei_pontos">I didn not find any bus stops on this street.</string>
+    <string name="prev_chegada">Click here to see the bus arrival time.</string>
+    <string name="sentido_principal">Main direction</string>
+    <string name="sentido_secundario">Secondary direction</string>
+    <string name="nao_tem_onibus">The API is not responding correctly. Please try again in a moment.</string>
+    <string name="title_previsao_linhas">Select the line</string>
+    <string name="title_previsao_onibus">Arrival forecast</string>
+    <string name="title_maps_paradas">Bus stops</string>
+    <string name="title_maps_onibus">All buses</string>
 </resources>

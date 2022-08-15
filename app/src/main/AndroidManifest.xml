@@ -21,6 +21,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".ui.PrevisaoChegadaOnibus"
+            android:exported="false" />
+        <activity
             android:name=".ui.PrevisaoChegada"
             android:exported="false" />
         <activity
