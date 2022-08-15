@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp">
+
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/fab"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Opçôes"
+            android:textColor="@color/white"
+            app:backgroundTint="@color/endColor"
+            app:iconTint="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:src="@drawable/ic_search_fill0_wght400_grad0_opsz48"
+            app:backgroundTint="@color/endColor"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/fab"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:tint="@color/white" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:visibility="gone"
+            android:src="@drawable/ic_search_fill0_wght400_grad0_opsz48"
+            app:backgroundTint="@color/endColor"
+            app:layout_constraintBottom_toTopOf="@+id/fab1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fab3"
+            app:tint="@color/white" />
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/root_container_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/fab"
+            app:layout_constraintEnd_toStartOf="@+id/fab1"
+            app:layout_constraintHorizontal_bias="1.0"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/root_container_2">
+
+            <TextView
+                android:id="@+id/text_fab_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="5dp"
+                android:paddingTop="2dp"
+                android:paddingEnd="5dp"
+                android:paddingBottom="2dp"
+                android:text="Presquisa paradas/ônibus" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/root_container_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="32dp"
+            app:layout_constraintBottom_toTopOf="@+id/root_container_1"
+            app:layout_constraintEnd_toStartOf="@+id/fab2"
+            app:layout_constraintHorizontal_bias="1.0"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/root_container_3">
+
+            <TextView
+                android:id="@+id/text_fab_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="5dp"
+                android:paddingTop="2dp"
+                android:paddingEnd="5dp"
+                android:paddingBottom="2dp"
+                android:text="Minha Localização" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/root_container_3"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="32dp"
+            app:layout_constraintBottom_toTopOf="@+id/root_container_2"
+            app:layout_constraintEnd_toStartOf="@+id/fab3"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/text_fab_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="5dp"
+                android:paddingTop="2dp"
+                android:paddingEnd="5dp"
+                android:paddingBottom="2dp"
+                android:text="Calcular parada mais proxima" />
+        </androidx.cardview.widget.CardView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab3"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_search_fill0_wght400_grad0_opsz48"
+            app:backgroundTint="@color/endColor"
+            app:layout_constraintBottom_toTopOf="@+id/fab2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/white" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <include layout="@layout/popup_objects"
+        android:id="@+id/popup"/>
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|top"
+        android:id="@+id/progress"
+        android:indeterminate="true"
+        android:layout_margin="8dp"/>
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

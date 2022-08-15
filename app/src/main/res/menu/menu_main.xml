@@ -1,0 +1,13 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="br.com.aj.message.appaiko.MainActivity">
+
+
+    <item
+        android:id="@+id/app_bar_switch"
+        android:orderInCategory="102"
+        android:title="Modo Escuso"
+        app:showAsAction="always"
+        app:actionLayout="@layout/switch_item" />
+</menu>

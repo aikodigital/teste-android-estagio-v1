@@ -1,0 +1,20 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.AppAiko" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
+        <item name="colorPrimary">#673AB7</item>
+        <item name="colorPrimaryVariant">@color/endColor</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/purple_500</item>
+        <item name="colorSecondaryVariant">@color/purple_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+    </style>
+
+    <style name="Theme.AppAiko" parent="Base.Theme.AppAiko" />
+    <style name="Theme.AppAiko.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+</resources>

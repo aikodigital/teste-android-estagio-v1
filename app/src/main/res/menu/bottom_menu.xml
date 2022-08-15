@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:title="@string/title_activity_mapa"
+        android:enabled="true"
+        android:icon="@drawable/ic_map_fill0_wght400_grad0_opsz48"
+        app:showAsAction="always" />
+    <item
+        android:title="@string/linhas"
+        android:enabled="true"
+        android:icon="@drawable/ic_route_fill0_wght400_grad0_opsz48"
+        app:showAsAction="always" />
+</menu>
