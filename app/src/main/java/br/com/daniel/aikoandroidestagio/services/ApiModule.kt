@@ -49,7 +49,7 @@ class ApiModule() {
             keyApiOlho = value.toString()
         }
 
-        suspend fun autenticar(): Response<Boolean?> {
+        suspend fun autenticar(): Response<Boolean> {
             return olhoAutentica.autenticar(keyApiOlho)
         }
 
@@ -92,6 +92,14 @@ class ApiModule() {
 
         suspend fun getPosicoes(): Response<LocalizacaoVeiculos> {
             return olhoVivoServices.getPosicoes(certificacao)
+        }
+
+        suspend fun getParadas(nomeRua: String): Response<List<Parada>> {
+            return olhoVivoServices.getParada(certificacao, nomeRua)
+        }
+
+        suspend fun getPrevisao(id: Int): Response<PrevisaoChegada> {
+            return olhoVivoServices.getPrevisao(certificacao, id)
         }
 
         fun setCookie(cookie: String) {

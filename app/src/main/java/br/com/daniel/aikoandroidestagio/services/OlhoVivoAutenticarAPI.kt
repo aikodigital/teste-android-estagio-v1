@@ -7,5 +7,5 @@ import retrofit2.http.Query
 interface OlhoVivoAutenticarAPI {
     //Pegar o cookie e usar como certficado nos gets
     @POST("Login/Autenticar")
-    suspend fun autenticar(@Query("token") apiKey: String): Response<Boolean?>
+    suspend fun autenticar(@Query("token") apiKey: String): Response<Boolean>
 }

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_activity_maps">Mapa</string>
+    <string name="title_activity_main">Menu</string>
+    <string name="title_home">Linha</string>
+    <string name="title_dashboard">Posição</string>
+    <string name="title_notifications">Ponto de ônibus</string>
+    <string name="content_description_end_icon">icone de onibus</string>
+    <string name="linha">Linha do ônibus</string>
+    <string name="button_text">Buscar</string>
+    <string name="algo_errado">Algo deu errado. Tente novamente em instantes.</string>
+    <string name="nome_rua">Nome da rua</string>
+    <string name="find">Encontrar</string>
+</resources>

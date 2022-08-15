@@ -2,6 +2,7 @@ package br.com.daniel.aikoandroidestagio.ui.maps
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
@@ -13,6 +14,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import br.com.daniel.aikoandroidestagio.R
 import br.com.daniel.aikoandroidestagio.adapter.MarkerInfoAdapter
+import br.com.daniel.aikoandroidestagio.adapter.MarkerInfoParadaAdapter
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -21,6 +23,8 @@ import com.google.android.gms.maps.SupportMapFragment
 import br.com.daniel.aikoandroidestagio.databinding.ActivityMapsBinding
 import br.com.daniel.aikoandroidestagio.model.Linha
 import br.com.daniel.aikoandroidestagio.model.LocalizacaoVeiculos
+import br.com.daniel.aikoandroidestagio.model.Parada
+import br.com.daniel.aikoandroidestagio.ui.PrevisaoChegada
 import br.com.daniel.aikoandroidestagio.util.Constants
 import br.com.daniel.aikoandroidestagio.util.Utils
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -39,6 +43,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private val defaultLocation = LatLng(-23.5454758, -46.6455341)
     private val TAG = "DEBUG"
     private var onibusVermelhoBitmap: BitmapDescriptor? = null
+    private var paradaVermelhaBitmap: BitmapDescriptor? = null
+    private var paradas: List<Parada> = listOf()
 
     var linhasEonibus: LocalizacaoVeiculos? = null
 
@@ -66,7 +72,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
             }
             3 -> {
-
+                paradas = intent.getSerializableExtra(Constants.parada) as List<Parada>
+                Log.i(TAG, "Recebeu pelo extra: $paradas")
             }
             4 -> {
                 linhasEonibus = intent.getSerializableExtra(Constants.veic) as LocalizacaoVeiculos?
@@ -131,8 +138,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     //Adicionar marcadores, linhas, listeners ou mover a camera aqui
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-        mMap.setInfoWindowAdapter(MarkerInfoAdapter(this))
-        onibusVermelhoBitmap = Utils.bitmapDescriptorFromVector(this, R.drawable.ic_onibus_vermelho)
+
+        updateLocationUI()
+        getDeviceLocation()
 
         when (frag) {
             1 -> {
@@ -142,21 +150,49 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
             }
             3 -> {
-
+                mMap.setInfoWindowAdapter(MarkerInfoParadaAdapter(this))
+                paradaVermelhaBitmap = Utils.bitmapDescriptorFromVector(this, R.drawable.ic_parada_vermelha)
+                colocaMarcadorParadasAtualizaCamera()
             }
             4 -> {
-                colocaMarcadores()
+                mMap.setInfoWindowAdapter(MarkerInfoAdapter(this))
+                onibusVermelhoBitmap = Utils.bitmapDescriptorFromVector(this, R.drawable.ic_onibus_vermelho)
+                colocaMarcadoresOnibus()
             }
             else -> {
                 Toast.makeText(this, getString(R.string.algo_errado), Toast.LENGTH_LONG).show()
                 finish()
             }
         }
-        updateLocationUI()
-        getDeviceLocation()
     }
 
-    private fun colocaMarcadores() {
+    private fun colocaMarcadorParadasAtualizaCamera() {
+        val bounds = LatLngBounds.builder()
+
+        paradas.forEach { parada ->
+            val pos = LatLng(parada.latitude, parada.longitude)
+            val titulo = parada.nome
+            val marker = mMap.addMarker(
+                MarkerOptions()
+                    .position(pos)
+                    .icon(paradaVermelhaBitmap)
+                    .title(titulo)
+            )
+            marker?.tag = parada
+            bounds.include(pos)
+            mMap.setOnInfoWindowClickListener {
+                val intent = Intent(this, PrevisaoChegada::class.java).apply {
+                    putExtra(Constants.parada, parada)
+                }
+                startActivity(intent)
+            }
+        }
+        mMap.setOnMapLoadedCallback {
+            mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds.build(), 250))
+        }
+    }
+
+    private fun colocaMarcadoresOnibus() {
         linhasEonibus?.l?.forEach { linha ->
             linha.vs.forEach { veiculo ->
                 val pos = LatLng(veiculo.py, veiculo.px)

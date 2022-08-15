@@ -1,12 +1,16 @@
 <resources>
-    <string name="app_name">AIKO Android Estagio</string>
-    <string name="title_activity_maps">MapsActivity</string>
+    <string name="app_name" translatable="false">AIKO Android Estagio</string>
+    <string name="title_activity_maps">Map</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_home">Line</string>
     <string name="title_dashboard">Position</string>
     <string name="title_notifications">Bus stop</string>
-    <string name="content_description_end_icon">icone de onibus</string>
-    <string name="linha">Linha do ônibus</string>
-    <string name="button_text">Buscar</string>
-    <string name="algo_errado">Algo deu errado. Tente novamente em instantes.</string>
+    <string name="content_description_end_icon">Bus icon</string>
+    <string name="linha">Bus line</string>
+    <string name="button_text">Search</string>
+    <string name="algo_errado">Something went wrong. Please try again in a moment.</string>
+    <string name="nome_rua">Street Name</string>
+    <string name="find">Find</string>
+    <string name="nao_encontrei_pontos">Não encontrei pontos nessa rua.</string>
+    <string name="prev_chegada">Clique aqui para ver a previsão de chegada dos onibus.</string>
 </resources>

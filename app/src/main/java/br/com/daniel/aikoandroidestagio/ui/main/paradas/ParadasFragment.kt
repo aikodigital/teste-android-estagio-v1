@@ -8,15 +8,17 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import br.com.daniel.aikoandroidestagio.R
 import br.com.daniel.aikoandroidestagio.databinding.FragmentParadasBinding
+import br.com.daniel.aikoandroidestagio.services.ApiModule
 import br.com.daniel.aikoandroidestagio.ui.maps.MapsActivity
 import br.com.daniel.aikoandroidestagio.util.Constants
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
+import java.io.Serializable
 
 class ParadasFragment : Fragment() {
 
@@ -37,12 +39,28 @@ class ParadasFragment : Fragment() {
         _binding = FragmentParadasBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        _binding?.buttonPonto!!.setOnClickListener {
-            val intent = Intent(activity, MapsActivity::class.java).apply {
-                putExtra(Constants.from, 3)
-            }
-            startActivity(intent)
+        binding.buttonEncontrar.setOnClickListener {
+            val nomeRua = binding.textoEnderecoPonto.editText?.text.toString()
 
+            lifecycleScope.launch {
+                val resposta = ApiModule.getParadas(nomeRua)
+                if (resposta.isSuccessful) {
+                    val paradas = resposta.body()
+                    if (paradas.isNullOrEmpty()) {
+                        Toast.makeText(activity?.applicationContext, getString(R.string.nao_encontrei_pontos), Toast.LENGTH_LONG).show()
+                    } else {
+                        withContext(Dispatchers.Main) {
+                            val intent = Intent(activity, MapsActivity::class.java).apply {
+                                putExtra(Constants.from, 3)
+                                putExtra(Constants.parada, paradas as Serializable)
+                            }
+                            startActivity(intent)
+                        }
+                    }
+                } else {
+                    Toast.makeText(activity?.applicationContext, getString(R.string.algo_errado), Toast.LENGTH_LONG).show()
+                }
+            }
             //todo: Consegui pegar o nome da rua assim, mover para onde permite pegar a localização
 //            context?.let {
 //                CoroutineScope(Dispatchers.IO).launch {
