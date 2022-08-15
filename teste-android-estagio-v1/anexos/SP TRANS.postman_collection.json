@@ -1,0 +1,703 @@
+{
+	"info": {
+		"_postman_id": "ca65e3c4-610d-4b3a-b27a-93f24a40bf65",
+		"name": "SP TRANS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Linhas",
+			"item": [
+				{
+					"name": "Buscar",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Linha/Buscar?termosBusca=Lapa",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Linha",
+								"Buscar"
+							],
+							"query": [
+								{
+									"key": "termosBusca",
+									"value": "Lapa",
+									"description": "Aceita denominação ou número da linha (total ou parcial).\nExemplo: 8000, Lapa ou Ramos"
+								}
+							]
+						},
+						"description": "Realiza uma busca das linhas do sistema com base no parâmetro informado. Se a linha não é encontrada então é realizada uma busca fonetizada na denominação das linhas."
+					},
+					"response": []
+				},
+				{
+					"name": "BuscarLinhaSentido",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Linha/BuscarLinhaSentido?termosBusca=800&sentido=2",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Linha",
+								"BuscarLinhaSentido"
+							],
+							"query": [
+								{
+									"key": "termosBusca",
+									"value": "800",
+									"description": "Aceita denominação ou número da linha (total ou parcial).\nExemplo: 8000, Lapa ou Ramos"
+								},
+								{
+									"key": "sentido",
+									"value": "2",
+									"description": "Código identificador do sentido de operação da linha, onde:\n1: Terminal Principal para Terminal Secundário\n2: para Terminal Secundário para Terminal Principal"
+								}
+							]
+						},
+						"description": "Realiza uma busca das linhas do sistema com base no parâmetro informado. Se a linha não é encontrada então é realizada uma busca fonetizada na denominação das linhas. A linha retornada será unicamente aquela cujo sentido de operação seja o informado no parâmetro sentido."
+					},
+					"response": []
+				}
+			],
+			"description": "A categoria Linhas possibilita a consulta pelas linhas de ônibus da cidade de São Paulo, bem como suas informações cadastrais como por exemplo: horário de operação da linha, dias de operação (dia útil, sábado ou domingo) e extensão da linha (em metros).",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "8623a135-eaa1-47f8-a073-a3735777ae6c",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "9a2f2944-8f8a-4ac3-a5d8-e28800efc004",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Paradas",
+			"item": [
+				{
+					"name": "Buscar",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Parada/Buscar?termosBusca=Afonso",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Parada",
+								"Buscar"
+							],
+							"query": [
+								{
+									"key": "termosBusca",
+									"value": "Afonso",
+									"description": "Aceita nome da parada ou endereço de localização (total ou parcial).\nExemplo: Afonso, ou Balthazar da Veiga"
+								}
+							]
+						},
+						"description": "Realiza uma busca fonética das paradas de ônibus do sistema com base no parâmetro informado. A consulta é realizada no nome da parada e também no seu endereço de localização."
+					},
+					"response": []
+				},
+				{
+					"name": "BuscarParadasPorLinha",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Parada/BuscarParadasPorLinha?codigoLinha=1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Parada",
+								"BuscarParadasPorLinha"
+							],
+							"query": [
+								{
+									"key": "codigoLinha",
+									"value": "1",
+									"description": "Código identificador da linha. Este é um código identificador único de cada linha do sistema (por sentido) e pode ser obtido através do método BUSCAR da categoria Linhas"
+								}
+							]
+						},
+						"description": "Realiza uma busca por todos os pontos de parada atendidos por uma determinada linha."
+					},
+					"response": []
+				},
+				{
+					"name": "BuscarParadasPorCorredor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Parada/BuscarParadasPorCorredor?codigoCorredor=1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Parada",
+								"BuscarParadasPorCorredor"
+							],
+							"query": [
+								{
+									"key": "codigoCorredor",
+									"value": "1",
+									"description": "Código identificador do corredor. Este é um código identificador único de cada corredor do sistema e pode ser obtido através do método GET da categoria Corredores"
+								}
+							]
+						},
+						"description": "Retorna a lista detalhada de todas as paradas que compõem um determinado corredor."
+					},
+					"response": []
+				}
+			],
+			"description": "A categoria Paradas possibilita a consulta pelos pontos de parada da cidade de São Paulo. Atualmente esta categoria contempla apenas as paradas de corredores.",
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Corredores",
+			"item": [
+				{
+					"name": "Corredor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Corredor",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Corredor"
+							]
+						},
+						"description": "Retorna uma lista com todos os corredores inteligentes"
+					},
+					"response": []
+				}
+			],
+			"description": "A categoria Corredores possibilita uma consulta que retorna todos os corredores inteligentes da cidade de São Paulo.",
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Empresas",
+			"item": [
+				{
+					"name": "Empresa",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Empresa",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Empresa"
+							]
+						},
+						"description": "Retorna uma lista com todos as empresas operadoras relacionadas por área de operação"
+					},
+					"response": []
+				}
+			],
+			"description": "A categoria Empresas possibilita uma consulta que retorna a relação das empresas operadoras do transporte público na cidade de São Paulo.",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "083f78f0-50b3-4b87-9829-c38c0e652535",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "c12be54d-ca13-4b84-83f9-f3d47b353e9b",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Posição Dos Veículos",
+			"item": [
+				{
+					"name": "Posicao",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Posicao",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Posicao"
+							]
+						},
+						"description": "Retorna uma lista completa com a última localização de todos os veículos mapeados com suas devidas posições `lat / long`"
+					},
+					"response": []
+				},
+				{
+					"name": "Linha",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Posicao/Linha?codigoLinha=2506",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Posicao",
+								"Linha"
+							],
+							"query": [
+								{
+									"key": "codigoLinha",
+									"value": "2506",
+									"description": "Código identificador da linha. Este é um código identificador único de cada linha do sistema (por sentido) e pode ser obtido através do método BUSCAR da categoria Linhas"
+								}
+							]
+						},
+						"description": "Retorna uma lista com todos os veículos de uma determinada linha com suas devidas posições `lat / long`"
+					},
+					"response": []
+				},
+				{
+					"name": "Garagem",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Posicao/Garagem?codigoEmpresa=235",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Posicao",
+								"Garagem"
+							],
+							"query": [
+								{
+									"key": "codigoEmpresa",
+									"value": "235",
+									"description": "Código identificador da empresa. Este é um código identificador único que pode ser obtido através do método GET da categoria Empresas"
+								},
+								{
+									"key": "codigoLinha",
+									"value": "2506",
+									"description": "OPCIONAL - Código identificador da linha. Este é um código identificador único de cada linha do sistema (por sentido) e pode ser obtido através do método BUSCAR da categoria Linhas",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Retorna uma lista completa todos os veículos mapeados que estejam transmitindo em uma garagem da empresa informada."
+					},
+					"response": []
+				}
+			],
+			"description": "A categoria Posição Dos Veículos é a responsável por retornar a posição exata de cada veículo de qualquer linha de ônibus da SPTrans",
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Previsão De Chegada",
+			"item": [
+				{
+					"name": "Previsao",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Previsao?codigoParada=340015333&codigoLinha=2506",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Previsao"
+							],
+							"query": [
+								{
+									"key": "codigoParada",
+									"value": "340015333",
+									"description": "Código identificador da parada. Este é um código identificador único de cada ponto de parada do sistema (por sentido) e pode ser obtido através do método BUSCAR da categoria Paradas"
+								},
+								{
+									"key": "codigoLinha",
+									"value": "2506",
+									"description": "Código identificador da linha. Este é um código identificador único de cada linha do sistema (por sentido) e pode ser obtido através do método BUSCAR da categoria Linhas"
+								}
+							]
+						},
+						"description": "Retorna uma lista com a previsão de chegada dos veículos da linha informada que atende ao ponto de parada informado."
+					},
+					"response": []
+				},
+				{
+					"name": "Linha",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Previsao/Linha?codigoLinha=34105",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Previsao",
+								"Linha"
+							],
+							"query": [
+								{
+									"key": "codigoLinha",
+									"value": "34105",
+									"description": "Código identificador da linha. Este é um código identificador único de cada linha do sistema (por sentido) e pode ser obtido através do método BUSCAR da categoria Linhas"
+								}
+							]
+						},
+						"description": "Retorna uma lista com a previsão de chegada de cada um dos veículos da linha informada em todos os pontos de parada aos quais que ela atende."
+					},
+					"response": []
+				},
+				{
+					"name": "Parada",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/Previsao/Parada?codigoParada",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"Previsao",
+								"Parada"
+							],
+							"query": [
+								{
+									"key": "codigoParada",
+									"value": null,
+									"description": "Código identificador da parada. Este é um código identificador único de cada ponto de parada do sistema (por sentido) e pode ser obtido através do método BUSCAR da categoria Paradas"
+								}
+							]
+						},
+						"description": "Retorna uma lista com a previsão de chegada dos veículos de cada uma das linhas que atendem ao ponto de parada informado."
+					},
+					"response": []
+				}
+			],
+			"description": "A categoria Previsão de chegada é a responsável por retornar a previsão de chegada de cada veículo de uma determinada linha e de um determinado ponto de parada, além da localização exata de cada veículo que constar na cadeia de previsões.\n## Obs\nAs previsões são baseadas no horário também informado no retorno dos métodos.",
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Velocidade Nas Vias",
+			"item": [
+				{
+					"name": "KMZ",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/KMZ",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"KMZ"
+							]
+						},
+						"description": "Retorna o mapa completo da cidade"
+					},
+					"response": []
+				},
+				{
+					"name": "KMZ - BC",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/KMZ/BC",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"KMZ",
+								"BC"
+							]
+						},
+						"description": "Retorna o mapa completo da cidade. BC = Veículos saindo do bairro em direção ao centro"
+					},
+					"response": []
+				},
+				{
+					"name": "KMZ - CB",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/KMZ/CB",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"KMZ",
+								"CB"
+							]
+						},
+						"description": "Retorna o mapa completo da cidade. CB = Veículos saindo do centro em direção ao bairro"
+					},
+					"response": []
+				},
+				{
+					"name": "Corredor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/KMZ/Corredor",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"KMZ",
+								"Corredor"
+							]
+						},
+						"description": "Retorna o mapa completo de todos os corredores da cidade"
+					},
+					"response": []
+				},
+				{
+					"name": "Corredor - BC",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/KMZ/Corredor/BC",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"KMZ",
+								"Corredor",
+								"BC"
+							]
+						},
+						"description": "Retorna o mapa completo de todos os corredores da cidade. BC = Veículos saindo do bairro em direção ao centro"
+					},
+					"response": []
+				},
+				{
+					"name": "Corredor - CB",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/KMZ/Corredor/CB",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"KMZ",
+								"Corredor",
+								"CB"
+							]
+						},
+						"description": "Retorna o mapa completo de todos os corredores da cidade. BC = Veículos saindo do centro em direção ao bairro"
+					},
+					"response": []
+				},
+				{
+					"name": "OutrasVias",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/KMZ/OutrasVias",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"KMZ",
+								"OutrasVias"
+							]
+						},
+						"description": "Retorna o mapa completo com as vias importantes da cidade (exceto corredores)"
+					},
+					"response": []
+				},
+				{
+					"name": "OutrasVias - BC",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/KMZ/OutrasVias/BC",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"KMZ",
+								"OutrasVias",
+								"BC"
+							]
+						},
+						"description": "Retorna o mapa completo com as vias importantes da cidade (exceto corredores). BC = veículos saindo do bairro em direção ao centro"
+					},
+					"response": []
+				},
+				{
+					"name": "OutrasVias - CB",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/KMZ/OutrasVias/CB",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"KMZ",
+								"OutrasVias",
+								"CB"
+							]
+						},
+						"description": "Retorna o mapa completo com as vias importantes da cidade (exceto corredores). CB - veículos saindo do centro em direção ao bairro\n"
+					},
+					"response": []
+				}
+			],
+			"description": "A categoria Velocidade nas Vias é a responsável por retornar um arquivo KMZ contendo um mapa de fluidez da cidade com a velocidade média e tempo de percurso de cada trecho envolvido.",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "5f47469e-a0ab-4358-81f2-e78796b7c898",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "16994180-d7f7-4a3a-8bc5-94ce02906519",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Autenticação",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/Login/Autenticar",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"Login",
+						"Autenticar"
+					]
+				},
+				"description": "Utilizada para autenticar na API SP TRANS, essa deve ser a primeira API requisitada"
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "{{token}}",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "token",
+				"type": "string"
+			},
+			{
+				"key": "in",
+				"value": "query",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "7dd45673-4bee-4a31-8899-d0bf56566771",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "87cb2f7d-1241-45e2-ad86-06d8d69aa17d",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "85aec82b-7b61-4711-8826-adc350b079d1",
+			"key": "baseUrl",
+			"value": "http://api.olhovivo.sptrans.com.br/v2.1",
+			"type": "string"
+		},
+		{
+			"id": "6a653d5c-4eab-4ab2-b965-a0b577eaf580",
+			"key": "token",
+			"value": "[SUA CHAVE AQUI]",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
