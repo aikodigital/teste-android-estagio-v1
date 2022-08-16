@@ -7,9 +7,8 @@ data class V(
     val a: Boolean,
     val ta: String,
     val py: Double,
-    val px: Double,
+    val px: Double
 ) : Serializable {
-    var position = 0
     var origem = ""
     var destino = ""
 }

@@ -13,7 +13,7 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import br.com.daniel.aikoandroidestagio.R
-import br.com.daniel.aikoandroidestagio.adapter.MarkerInfoAdapter
+import br.com.daniel.aikoandroidestagio.adapter.MarkerOnibusInfoAdapter
 import br.com.daniel.aikoandroidestagio.adapter.MarkerInfoParadaAdapter
 
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -24,6 +24,7 @@ import br.com.daniel.aikoandroidestagio.databinding.ActivityMapsBinding
 import br.com.daniel.aikoandroidestagio.enums.From
 import br.com.daniel.aikoandroidestagio.model.LocalizacaoVeiculos
 import br.com.daniel.aikoandroidestagio.model.Parada
+import br.com.daniel.aikoandroidestagio.model.VeiculoTag
 import br.com.daniel.aikoandroidestagio.ui.PrevisaoChegada
 import br.com.daniel.aikoandroidestagio.util.Constants
 import br.com.daniel.aikoandroidestagio.util.Utils
@@ -83,7 +84,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 colocaMarcadorParadasAtualizaCamera()
             }
             From.ONIBUS -> {
-                mMap.setInfoWindowAdapter(MarkerInfoAdapter(this))
+                mMap.setInfoWindowAdapter(MarkerOnibusInfoAdapter(this))
                 onibusVermelhoBitmap =
                     Utils.bitmapDescriptorFromVector(this, R.drawable.ic_onibus_vermelho)
                 colocaMarcadoresOnibus()
@@ -205,7 +206,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                         .icon(onibusVermelhoBitmap)
                         .title(titulo)
                 )
-                marker?.tag = veiculo
+                marker?.tag = VeiculoTag(veiculo, linha)
             }
         }
     }

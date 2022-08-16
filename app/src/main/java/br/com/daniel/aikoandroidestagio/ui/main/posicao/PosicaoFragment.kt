@@ -2,6 +2,7 @@ package br.com.daniel.aikoandroidestagio.ui.main.posicao
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,7 +34,7 @@ class PosicaoFragment : Fragment() {
         _binding = FragmentPosicaoBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        _binding?.buttonPosicao?.setOnClickListener {
+        binding.buttonPosicao.setOnClickListener {
             pegaRespostaApi()
         }
 
