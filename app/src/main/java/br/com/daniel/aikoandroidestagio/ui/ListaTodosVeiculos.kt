@@ -12,6 +12,7 @@ import br.com.daniel.aikoandroidestagio.databinding.ActivityListaTodosVeiculosBi
 import br.com.daniel.aikoandroidestagio.model.LocalizacaoVeiculos
 import br.com.daniel.aikoandroidestagio.ui.maps.MapsActivity
 import br.com.daniel.aikoandroidestagio.util.Constants
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class ListaTodosVeiculos : AppCompatActivity() {
 
@@ -22,9 +23,6 @@ class ListaTodosVeiculos : AppCompatActivity() {
         setContentView(binding.root)
 
         val linhasEonibus = intent.getSerializableExtra(Constants.veic) as LocalizacaoVeiculos?
-
-        val nulle = (linhasEonibus == null)
-        Log.d("debug", "onCreate: $nulle")
 
         linhasEonibus?.let {
             binding.rvLinhasOnibus.adapter = ListaVeiculosAdapter(linhasEonibus)
@@ -37,8 +35,35 @@ class ListaTodosVeiculos : AppCompatActivity() {
                 startActivity(intent)
             }
 
+            binding.buttonFilter.setOnClickListener {
+                //Dialogo de linhas para filtrar
+                dialogoFiltro()
+            }
+
         } ?: ListaNullErro()
 
+    }
+
+    private fun dialogoFiltro() {
+        val multiItems = arrayOf("Item 1", "Item 2", "Item 3")
+        val checkedItems = booleanArrayOf(true, false, false, false)
+
+        MaterialAlertDialogBuilder(this)
+            .setTitle(resources.getString(R.string.title_filter))
+            .setMessage(resources.getString(R.string.supporting_text_filter))
+            .setMultiChoiceItems(multiItems, checkedItems) { _, which, checked ->
+                // Respond to item chosen
+                multiItems[which]
+                checkedItems[which] = checked
+            }
+            .setNegativeButton(resources.getString(R.string.decline)) { dialog, _ ->
+                dialog.cancel()
+            }
+            .setPositiveButton(resources.getString(R.string.accept_filter)) { dialog, which ->
+                // Respond to positive button press
+            }
+            .create()
+            .show()
     }
 
     private fun ListaNullErro() {

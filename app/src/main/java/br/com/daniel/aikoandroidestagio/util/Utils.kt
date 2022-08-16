@@ -3,9 +3,16 @@ package br.com.daniel.aikoandroidestagio.util
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import android.location.Address
+import android.location.Geocoder
+import android.util.Log
 import androidx.core.content.ContextCompat
 import com.google.android.gms.maps.model.BitmapDescriptor
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 
 object Utils {
@@ -17,21 +24,18 @@ object Utils {
             BitmapDescriptorFactory.fromBitmap(bitmap)
         }
     }
-//    fun bitmapDescriptorFromVector(context: Context, vectorResId: Int): BitmapDescriptor {
-//        val vectorDrawable = ContextCompat.getDrawable(context, vectorResId)
-//        vectorDrawable!!.setBounds(
-//            0,
-//            0,
-//            vectorDrawable.intrinsicWidth,
-//            vectorDrawable.intrinsicHeight
-//        )
-//        val bitmap = Bitmap.createBitmap(
-//            vectorDrawable.intrinsicWidth,
-//            vectorDrawable.intrinsicHeight,
-//            Bitmap.Config.ARGB_8888
-//        )
-//        val canvas = Canvas(bitmap)
-//        vectorDrawable.draw(canvas)
-//        return BitmapDescriptorFactory.fromBitmap(bitmap)
-//    }
+
+    suspend fun pegarRuaMaisProxima(context: Context): String {
+
+        var addressLine = ""
+                        CoroutineScope(Dispatchers.IO).launch {
+                    val enderecos = Geocoder(context).getFromLocation(-23.5454758, -46.6455341,1)
+                    delay(500)
+                    if (enderecos != null && enderecos.size > 0) {
+                        val endereco: Address = enderecos[0]
+                        addressLine = endereco.getAddressLine(0)
+                    }
+                }
+        return addressLine
+    }
 }

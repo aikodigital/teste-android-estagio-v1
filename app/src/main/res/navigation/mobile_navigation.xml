@@ -7,12 +7,6 @@
 
     <fragment
         android:id="@+id/navigation_posicao"
-        android:name="br.com.daniel.aikoandroidestagio.ui.main.linhas.LinhasFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_linhas" />
-
-    <fragment
-        android:id="@+id/navigation_linhas"
         android:name="br.com.daniel.aikoandroidestagio.ui.main.posicao.PosicaoFragment"
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_posicao" />

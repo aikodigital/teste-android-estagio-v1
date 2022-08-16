@@ -28,7 +28,6 @@ import java.io.Serializable
 class PosicaoFragment : Fragment() {
 
     private var _binding: FragmentPosicaoBinding? = null
-    private val TAG = "DEBUG"
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -44,28 +43,32 @@ class PosicaoFragment : Fragment() {
         val root: View = binding.root
 
         _binding?.buttonPosicao?.setOnClickListener {
-            //Tentando pegar a resposta da API
-            var resposta: Response<LocalizacaoVeiculos>
-            lifecycleScope.launch {
-                resposta = ApiModule.getPosicoes()
-
-                var localizacaoVeiculos: LocalizacaoVeiculos? = null
-                if (resposta.isSuccessful) {
-                    //Aqui vou guardar a posicao nos carros e o tamanho na classe
-                    localizacaoVeiculos = resposta.body()
-                }
-
-                localizacaoVeiculos?.let {
-                    val intent = Intent(context, ListaTodosVeiculos::class.java).apply {
-                        putExtra(Constants.veic, it)
-                    }
-                    startActivity(intent)
-                } ?: listaNull()
-            }
+            pegaRespostaApi()
         }
 
-
         return root
+    }
+
+    private fun pegaRespostaApi() {
+        lifecycleScope.launch {
+            val resposta = ApiModule.getPosicoes()
+
+            var localizacaoVeiculos: LocalizacaoVeiculos? = null
+            if (resposta.isSuccessful) {
+                localizacaoVeiculos = resposta.body()
+            }
+
+            localizacaoVeiculos?.let {
+                abreActivityLista(it)
+            } ?: listaNull()
+        }
+    }
+
+    private fun abreActivityLista(it: LocalizacaoVeiculos) {
+        val intent = Intent(context, ListaTodosVeiculos::class.java).apply {
+            putExtra(Constants.veic, it)
+        }
+        startActivity(intent)
     }
 
     private fun listaNull() {

@@ -43,32 +43,13 @@ class PrevisaoChegada : AppCompatActivity() {
 
                 if (previsaoChegada?.p == null) {
 
-                    //todo: deletar esse teste
-                    binding.rvLinhasParada.adapter = PrevisaoChegadaLinhasAdapter(
-                        P(
-                            2, "s", 12.0, 25.3, listOf(
-                                LX(
-                                    "123", 12, 25, "aaaa", "bbbb", 1, listOf(
-                                        VX("wewer", "fddfdg", true, "sdgerg", 58.1, 47.5),
-                                        VX("we342wer", "fddf243dg", true, "sdge234rg", 58.1, 47.5)
-                                    )
-                                ),
-                                LX(
-                                    "123434233", 12, 25, "aasdfaa", "bbbsfdb", 1, listOf(
-                                        VX("wesdfwer", "fddfsdffdg", true, "sdgesdfdrg", 58.1, 47.5),
-                                        VX("we342sdfsdfwer", "fsdfddf243dg", true, "sdgsdffe234rg", 58.1, 47.5)
-                                    )
-                                )
-                            )
-                        )
-                    )
 
                     Toast.makeText(
                         this@PrevisaoChegada,
                         getString(R.string.nao_tem_onibus),
                         Toast.LENGTH_LONG
                     ).show()
-//                    finish()
+                    finish()
                 }
 
             } else {

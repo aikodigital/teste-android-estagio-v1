@@ -7,7 +7,7 @@
     <string name="title_notifications">Ponto de ônibus</string>
     <string name="content_description_end_icon">icone de onibus</string>
     <string name="linha">Linha do ônibus</string>
-    <string name="button_text">Buscar</string>
+    <string name="button_search">Encontrar todas as linhas e onibus de São Paulo</string>
     <string name="algo_errado">Algo deu errado. Tente novamente em instantes.</string>
     <string name="nome_rua">Nome da rua</string>
     <string name="find">Encontrar</string>
@@ -20,4 +20,11 @@
     <string name="title_previsao_onibus">Previsão de chegada</string>
     <string name="title_maps_paradas">Paradas de onibus</string>
     <string name="title_maps_onibus">Todos os ônibus</string>
+    <string name="algo_errado_veiculos">Verifique se a API está funcionando corretamente.</string>
+    <string name="title_filter">Filtro</string>
+    <string name="supporting_text_filter">Selecione as linhas que quer filtrar. Não aparecem as opções >:C</string>
+    <string name="decline">Cancelar</string>
+    <string name="accept_filter">Filtrar</string>
+    <string name="tente_usar">Tente usar:</string>
+    <string name="afonso_arminda_maria_augusta_ou_lapa">Afonso, arminda, maria augusta ou lapa</string>
 </resources>

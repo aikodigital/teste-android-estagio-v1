@@ -3,11 +3,6 @@
 
     <item
         android:id="@+id/navigation_posicao"
-        android:icon="@drawable/ic_linhas"
-        android:title="@string/title_home" />
-
-    <item
-        android:id="@+id/navigation_linhas"
         android:icon="@drawable/ic_posicao"
         android:title="@string/title_dashboard" />
 

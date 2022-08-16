@@ -7,7 +7,7 @@
     <string name="title_notifications">Bus stop</string>
     <string name="content_description_end_icon">Bus icon</string>
     <string name="linha">Bus line</string>
-    <string name="button_text">Search</string>
+    <string name="button_search">Find all lines and buses in São Paulo</string>
     <string name="algo_errado">Something went wrong. Please try again in a moment.</string>
     <string name="nome_rua">Street Name</string>
     <string name="find">Find</string>
@@ -20,5 +20,11 @@
     <string name="title_previsao_onibus">Arrival forecast</string>
     <string name="title_maps_paradas">Bus stops</string>
     <string name="title_maps_onibus">All buses</string>
-    <string name="algo_errado_veiculos">Verifique se a API está funcionando corretamente.</string>
+    <string name="algo_errado_veiculos">Check that the API is working properly.</string>
+    <string name="title_filter">Filter</string>
+    <string name="supporting_text_filter">Select the rows you want to filter. No options appear >:C</string>
+    <string name="decline">Cancel</string>
+    <string name="accept_filter">Filter</string>
+    <string name="tente_usar">Try:</string>
+    <string name="afonso_arminda_maria_augusta_ou_lapa">Afonso, arminda, maria augusta or lapa</string>
 </resources>

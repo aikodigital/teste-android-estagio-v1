@@ -61,18 +61,6 @@ class ParadasFragment : Fragment() {
                     Toast.makeText(activity?.applicationContext, getString(R.string.algo_errado), Toast.LENGTH_LONG).show()
                 }
             }
-            //todo: Consegui pegar o nome da rua assim, mover para onde permite pegar a localização
-//            context?.let {
-//                CoroutineScope(Dispatchers.IO).launch {
-//                    val enderecos = Geocoder(it).getFromLocation(-23.5454758, -46.6455341,1)
-//                    delay(500)
-//                    if (enderecos != null && enderecos.size > 0) {
-//                        val endereco: Address = enderecos.get(0)
-//                        val addressLine = endereco.getAddressLine(0)
-//                        Log.d(TAG, "addressLine: $addressLine")
-//                    }
-//                }
-//            }
         }
         return root
     }
