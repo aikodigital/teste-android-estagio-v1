@@ -70,10 +70,12 @@ class MapViewModel(private val repo: HttpRepository, private val repoDatabase: D
                 array.addAll(c)
             }
         } catch (e: Exception) {
-            repoDatabase.getAllParada()?.value?.let { array.addAll(it) }
-            error.value = "${e.message}"
+            val v = repoDatabase.getAllParada()
+           v?.let { array.addAll(it) }
+            error.value = "Erro de Conexão"
         }
-        buscarParadasPorCorredor.value = array
+
+        buscarParadasPorCorredor.postValue( array)
 
         array.forEach {lv ->
             lv.apply {
@@ -83,6 +85,7 @@ class MapViewModel(private val repo: HttpRepository, private val repoDatabase: D
 
 
     }
+
 
     fun createRouteMap(dest: LatLng){
         CoroutineScope(Dispatchers.Main).launch {
@@ -121,13 +124,32 @@ class MapViewModel(private val repo: HttpRepository, private val repoDatabase: D
         return fist
     }
 
+     fun saveBus(){
+           CoroutineScope(Dispatchers.IO).launch{
+               _items.value?.l?.forEach {
+                   it.fid = 1
+                   repoDatabase.createL(it)
+                   it.vs?.forEach { lv ->
+                       lv.fid = it.cl
+                       repoDatabase.createV(lv)
+
+                   }
+               }
+           }
+    }
+
     suspend fun getBus() {
 
         withContext(Dispatchers.IO) {
             try {
                 val value = repo.getAllPositionVehicles()
                 _items.postValue( value )
+
+
+
                 searchAdapterItemBus.clear()
+
+                value.id = 1
                 updateWindow.postValue( 1)
                 value.l?.forEach {
                     it.vs?.forEach { lv ->

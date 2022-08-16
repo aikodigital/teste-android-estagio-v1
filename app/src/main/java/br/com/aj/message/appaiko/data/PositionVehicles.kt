@@ -5,7 +5,7 @@ import com.google.gson.Gson
 
 @Entity(tableName = "position_vehicles")
 data class PositionVehicles(
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = false)
     var id: Long?,
     val hr: String,
     @Ignore var l: MutableList<L>?
@@ -20,40 +20,40 @@ data class PositionVehicles(
 
 @Entity(
     tableName = "position_vehicles_l",
-    foreignKeys = [
+    indices = [Index(value = ["cl"], unique = true)],
+    primaryKeys = [ "cl"],
+         /*   foreignKeys = [
         ForeignKey(
             entity = PositionVehicles::class,
             parentColumns = ["id"],
             childColumns = ["fid"],
-            onDelete = ForeignKey.CASCADE,
-            onUpdate = ForeignKey.CASCADE,
+            onDelete = ForeignKey.NO_ACTION,
+            onUpdate = ForeignKey.NO_ACTION,
             false
         )
-    ]
+    ] */
 )
 data class L(
-    @PrimaryKey(autoGenerate = true)
-    var id: Long?,
+
     val c: String,
-    val cl: Int,
+  //  @PrimaryKey(autoGenerate = false)
+ val cl: Long,
     val lt0: String,
     val lt1: String,
     val qv: Int,
     val sl: Int,
     @Ignore var vs: MutableList<V>?,
-    val fid: Long?
+    var fid: Long?
 ) {
     constructor(
-        id: Long?,
         c: String,
-        cl: Int,
+        cl: Long,
         lt0: String,
         lt1: String,
         qv: Int,
         sl: Int,
         fid: Long?
     ) : this(
-        id,
         c,
         cl,
         lt0,
@@ -68,29 +68,20 @@ data class L(
 
 @Entity(
     tableName = "position_vehicles_v",
-    foreignKeys = [
-        ForeignKey(
-            entity = L::class,
-            parentColumns = ["id"],
-            childColumns = ["fid"],
-            onDelete = ForeignKey.CASCADE,
-            onUpdate = ForeignKey.CASCADE,
-            false
-        )
-    ]
+    indices = [Index(value = ["p"], unique = true)],
+    primaryKeys = [ "p"]
 )
 data class V(
-    @PrimaryKey(
-        autoGenerate = true,
-    )
-    var id: Long?,
+
+
     val a: Boolean,
     val t: String?,
-    val p: Int,
+   // @PrimaryKey(autoGenerate = false)
+     val p: Long,
     val px: Double,
     val py: Double,
     val ta: String,
-    val fid: Long?
+    var fid: Long?
 )
 
 

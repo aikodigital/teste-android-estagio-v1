@@ -18,7 +18,6 @@ class PrevAdapterItem : ListAdapter<PrevAdapterItem.ViewsV,RecyclerView.ViewHold
        return when(viewType){
            1-> MyView(PrevBusItemBinding.inflate(LayoutInflater.from(parent.context)))
            2-> MyView2(PrevTermiItemBinding.inflate(LayoutInflater.from(parent.context)))
-
            else -> {
                MyView(PrevBusItemBinding.inflate(LayoutInflater.from(parent.context)))
            }

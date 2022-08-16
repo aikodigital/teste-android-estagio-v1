@@ -1,14 +1,11 @@
 package br.com.aj.message.appaiko.repository.db
 
 import androidx.lifecycle.LiveData
-import br.com.aj.message.appaiko.data.CorredorItem
-import br.com.aj.message.appaiko.data.Parada
-import br.com.aj.message.appaiko.data.PositionVehicles
+import br.com.aj.message.appaiko.data.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class DatabaseRepository(private val dao: MyDatabase?) {
-
 
     suspend fun createCorredor(item: CorredorItem) {
         withContext(Dispatchers.IO) { dao?.daoCorredor?.create(item) }
@@ -18,12 +15,20 @@ class DatabaseRepository(private val dao: MyDatabase?) {
         withContext(Dispatchers.IO) { dao?.daoParada?.create(item) }
     }
 
+    suspend fun createV(item: V) {
+        withContext(Dispatchers.IO) { dao?.daoBus?.create(item) }
+    }
+
+    suspend fun createL(item: L)  {
+        withContext(Dispatchers.IO) { dao?.daoBus?.create(item) }
+    }
+
     fun getAllCorredor(): LiveData<List<CorredorItem>>? {
         return dao?.daoCorredor?.getAll()
     }
 
-    fun getAllParada(): LiveData<List<Parada>>? {
-        return dao?.daoParada?.getAll()
+   suspend fun getAllParada(): List<Parada>? {
+        return withContext(Dispatchers.IO) {  dao?.daoParada?.getAll() }
     }
 
     suspend fun getAllBus(): List<PositionVehicles>? {
@@ -31,12 +36,10 @@ class DatabaseRepository(private val dao: MyDatabase?) {
             val position = dao?.daoBus?.getAll()
             val p = position?.value
             val positionVehicles = p?.map { itp ->
-                val tmpl = dao?.daoBus?.getAllL(itp.id?.toInt()!!)?.value?.map { itl ->
-                    val tmpv = dao.daoBus.getAllV(itl.id?.toInt()!!).value
+                val tmpl = dao?.daoBus?.getAllL(1)?.map { itl ->
+                    val tmpv = dao.daoBus.getAllV(itl.cl)
 
-                    if (tmpv != null) {
-                        itl.vs?.addAll(tmpv)
-                    }
+                    itl.vs?.addAll(tmpv)
                     itl
                 }
                 if (tmpl != null) {

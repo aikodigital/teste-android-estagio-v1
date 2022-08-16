@@ -61,14 +61,14 @@ class PrevFragment : DialogFragment() {
                     array.add(
                         PrevAdapterItem.ViewsV(
                             2, null, L(
-                                id, c, cl, lt0, lt1, qv, sl, fid
+                                 c, cl, lt0, lt1, qv, sl, fid
                             )
                         )
                     )
                 }
                 l.vs?.forEach { v ->
                     v.apply {
-                        array.add(PrevAdapterItem.ViewsV(1, V(id, a, t, p, px, py, ta, fid), null))
+                        array.add(PrevAdapterItem.ViewsV(1, V( a, t, p, px, py, ta, fid), null))
                     }
 
                 }

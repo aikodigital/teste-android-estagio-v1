@@ -9,7 +9,7 @@ import br.com.aj.message.appaiko.data.*
 interface DaoCorredor {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun   create(code: CorredorItem)
+    suspend fun   create(code: CorredorItem):Long
 
     @Update
     suspend fun  update(code: CorredorItem)
@@ -20,8 +20,8 @@ interface DaoCorredor {
     @Query( "SELECT * FROM corredor_item")
     fun  getAll() : LiveData<List<CorredorItem>>
 
-    @Query( "SELECT * FROM corredor_item WHERE id = :key")
-    fun  get(key:Int) : LiveData<CorredorItem>
+    @Query( "SELECT * FROM corredor_item WHERE cc = :key")
+    fun  get(key:Long) : LiveData<CorredorItem>
 
 
 }
@@ -29,7 +29,7 @@ interface DaoCorredor {
 interface DaoParada  {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun   create(code: Parada)
+    suspend fun   create(code: Parada) :Long
 
     @Update
     suspend fun  update(code: Parada)
@@ -37,27 +37,30 @@ interface DaoParada  {
     @Delete
     suspend fun  delete(code: Parada)
 
-    @Query( "SELECT * FROM parada_item")
-    fun  getAll() : LiveData<List<Parada>>
+    @Query( "SELECT * from parada_item")
+    fun  getAll() : List<Parada>
 
-    @Query( "SELECT * FROM parada_item WHERE id = :key")
-    fun  get(key:Int) : LiveData<Parada>
+    @Query( "SELECT * FROM parada_item WHERE cp = :key")
+    fun  get(key:Long) : Parada
 }
 
 
 @Dao
 interface DaoBus  {
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun   create(code: PositionVehicles)
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun   create(code: L)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun   create(code: PositionVehicles) :Long
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun   create(code: L) :Long
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun   create(code: V)
 
     @Update
     suspend fun  update(code: PositionVehicles)
-
+    @Update
+    suspend fun  update(code: L)
+    @Update
+    suspend fun  update(code: V)
     @Delete
     suspend fun  delete(code: PositionVehicles)
 
@@ -65,9 +68,9 @@ interface DaoBus  {
     fun  getAll() : LiveData<List<PositionVehicles>>
 
     @Query( "SELECT * FROM position_vehicles_l WHERE fid = :key")
-   fun  getAllL(key:Int) : LiveData<List<L>>
+   fun  getAllL(key:Int) : List<L>
 
     @Query( "SELECT * FROM position_vehicles_v WHERE fid = :key")
-    fun  getAllV(key:Int) : LiveData<List<V>>
+    fun  getAllV(key: Long) : List<V>
 
 }

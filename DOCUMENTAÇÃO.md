@@ -23,7 +23,6 @@ o que esta app é capaz de fazer:
 
 - :heavy_check_mark:  <b>pesquisa de parada , linhas , ônibus</b> 
 
-
 ## Recursos
 
 o intervalo de tempo de atualização é de um minuto,mostrando a movimentação dos ônibus de cidade  são paulo com símbolo de ônibus verde

@@ -83,6 +83,11 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         return binding.root
     }
 
+    override fun onPause() {
+        super.onPause()
+        model.saveBus()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
