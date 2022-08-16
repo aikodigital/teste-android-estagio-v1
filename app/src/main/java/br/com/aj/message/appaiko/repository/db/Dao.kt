@@ -65,7 +65,7 @@ interface DaoBus  {
     suspend fun  delete(code: PositionVehicles)
 
     @Query( "SELECT * FROM position_vehicles")
-    fun  getAll() : LiveData<List<PositionVehicles>>
+    fun  getAll() : List<PositionVehicles>
 
     @Query( "SELECT * FROM position_vehicles_l WHERE fid = :key")
    fun  getAllL(key:Int) : List<L>

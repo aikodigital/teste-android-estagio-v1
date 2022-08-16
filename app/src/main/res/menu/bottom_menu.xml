@@ -7,9 +7,9 @@
         android:enabled="true"
         android:icon="@drawable/ic_map_fill0_wght400_grad0_opsz48"
         app:showAsAction="always" />
-    <item
+  <!--  <item
         android:title="@string/linhas"
         android:enabled="true"
         android:icon="@drawable/ic_route_fill0_wght400_grad0_opsz48"
-        app:showAsAction="always" />
+        app:showAsAction="always" />  -->
 </menu>

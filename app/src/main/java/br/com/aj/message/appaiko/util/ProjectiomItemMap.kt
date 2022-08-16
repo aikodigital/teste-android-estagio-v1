@@ -2,9 +2,7 @@ package br.com.aj.message.appaiko.util
 
 import br.com.aj.message.appaiko.data.MapData
 import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.Marker
-import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.*
 
 
 /**
@@ -20,6 +18,25 @@ class ProjectiomItemMap(val map: GoogleMap) :
 
     //ONIBUS
     val items2 = HashMap<String, MarkerOptions>()
+
+
+    var poly:Polyline? = null
+
+
+    fun updateItems(tag: String,latLng: LatLng){
+        mapMarkers[tag]?.position = latLng
+    }
+
+
+    fun setPolyline(p: PolylineOptions){
+        if(poly == null){
+            poly = map.addPolyline(p)
+        }else{
+            poly?.points = p.points
+        }
+
+
+    }
 
     fun show(){
         val bounds = map.projection.visibleRegion.latLngBounds;
@@ -87,6 +104,17 @@ class ProjectiomItemMap(val map: GoogleMap) :
     override fun onCameraMove() {
         show()
     }
+
+    fun put(s: String, mark: MarkerOptions) {
+        if(items.contains(s)){
+            items[s]?.position(mark.position)
+        }else{
+            items[s] = mark
+        }
+
+    }
+
+
 
 
 }

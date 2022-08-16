@@ -3,6 +3,8 @@ package br.com.aj.message.appaiko.ui.fragments
 
 import android.app.Dialog
 import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AlertDialog
@@ -32,6 +34,7 @@ class PrevFragment : DialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = LayRecyBinding.inflate(inflater, container, false)
+        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT));
 
 
 

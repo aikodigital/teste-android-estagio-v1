@@ -126,6 +126,7 @@ class MapViewModel(private val repo: HttpRepository, private val repoDatabase: D
 
      fun saveBus(){
            CoroutineScope(Dispatchers.IO).launch{
+               repoDatabase.createVehicles(PositionVehicles(1,_items.value?.hr.toString()))
                _items.value?.l?.forEach {
                    it.fid = 1
                    repoDatabase.createL(it)
@@ -144,11 +145,7 @@ class MapViewModel(private val repo: HttpRepository, private val repoDatabase: D
             try {
                 val value = repo.getAllPositionVehicles()
                 _items.postValue( value )
-
-
-
                 searchAdapterItemBus.clear()
-
                 value.id = 1
                 updateWindow.postValue( 1)
                 value.l?.forEach {
@@ -169,10 +166,10 @@ class MapViewModel(private val repo: HttpRepository, private val repoDatabase: D
                     }
                 }
             } catch (e: Exception) {
-                error.postValue(e.toString())
 
-                  val value  = repoDatabase.getAllBus()?.get(0)
-               value?.let {   _items.postValue(it)}
+                val value = repoDatabase.getAllBus()
+                error.postValue(e.message)
+                value.let { _items.postValue(it) }
                 value?.l?.forEach {
                     it.vs?.forEach { lv ->
                         lv.apply {
@@ -199,6 +196,8 @@ class MapViewModel(private val repo: HttpRepository, private val repoDatabase: D
                         }
                     }
                 }
+
+
             }
             delay(60000)
             getBus()

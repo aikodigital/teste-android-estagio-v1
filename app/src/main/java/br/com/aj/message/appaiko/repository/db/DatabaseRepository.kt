@@ -1,5 +1,6 @@
 package br.com.aj.message.appaiko.repository.db
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import br.com.aj.message.appaiko.data.*
 import kotlinx.coroutines.Dispatchers
@@ -19,6 +20,10 @@ class DatabaseRepository(private val dao: MyDatabase?) {
         withContext(Dispatchers.IO) { dao?.daoBus?.create(item) }
     }
 
+    suspend fun createVehicles(item: PositionVehicles) {
+        withContext(Dispatchers.IO) { dao?.daoBus?.create(item) }
+    }
+
     suspend fun createL(item: L)  {
         withContext(Dispatchers.IO) { dao?.daoBus?.create(item) }
     }
@@ -31,24 +36,17 @@ class DatabaseRepository(private val dao: MyDatabase?) {
         return withContext(Dispatchers.IO) {  dao?.daoParada?.getAll() }
     }
 
-    suspend fun getAllBus(): List<PositionVehicles>? {
+    suspend fun getAllBus(): PositionVehicles? {
         return withContext(Dispatchers.IO) {
-            val position = dao?.daoBus?.getAll()
-            val p = position?.value
-            val positionVehicles = p?.map { itp ->
-                val tmpl = dao?.daoBus?.getAllL(1)?.map { itl ->
-                    val tmpv = dao.daoBus.getAllV(itl.cl)
 
-                    itl.vs?.addAll(tmpv)
-                    itl
-                }
-                if (tmpl != null) {
-                    itp.l?.addAll(tmpl)
-                }
-
-                itp
-            }
-            return@withContext positionVehicles
+                val ls =  arrayListOf<L>()
+                    dao?.daoBus?.getAllL(1)?.forEach {
+                        val vs = arrayListOf<V>()
+                         vs.addAll(dao.daoBus.getAllV(it.cl))
+                        it.vs = vs
+                      ls.add(it)
+                    }
+            return@withContext PositionVehicles(1,"",ls)
         }
     }
 

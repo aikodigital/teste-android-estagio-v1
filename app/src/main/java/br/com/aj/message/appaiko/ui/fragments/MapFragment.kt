@@ -14,9 +14,9 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.app.ActivityCompat
 import androidx.core.graphics.drawable.toBitmap
 import androidx.core.view.MenuProvider
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import br.com.aj.message.appaiko.R
-import br.com.aj.message.appaiko.data.MapData
 import br.com.aj.message.appaiko.databinding.ActivityMapaBinding
 import br.com.aj.message.appaiko.ui.adapter.SearchAdapter
 import br.com.aj.message.appaiko.util.ProjectiomItemMap
@@ -41,6 +41,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
     private val model by sharedViewModel<MapViewModel>()
 
+    var clickMap = false
 
     lateinit var smalBitmapParada: Bitmap
     lateinit var smalBitmapbus: Bitmap
@@ -145,12 +146,23 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                     Manifest.permission.ACCESS_COARSE_LOCATION
                 )
             )
+
+
         }
 
         binding.fab3.setOnClickListener {
 
-           val parada =  model.calculeDistance()
-           model.createRouteMap(LatLng(parada.lat.toDouble(), parada.lng.toDouble()))
+
+            clickMap = true
+          val snak =  Snackbar.make(view,"Click no mapa ou bo botão minha localização e depois em calcular",Snackbar.LENGTH_INDEFINITE)
+
+            snak.setAction("Calular Rota"){
+                clickMap = false
+                val parada =  model.calculeDistance()
+                model.createRouteMap(LatLng(parada.lat.toDouble(), parada.lng.toDouble()))
+            }.show()
+
+
 
         }
 
@@ -216,7 +228,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                         val mark = MarkerOptions()
                             .position(LatLng(it.latitude, it.longitude))
                             .icon(BitmapDescriptorFactory.fromBitmap(smalBitmapacc))
-                        projectiomItemMap.items2.put("my_location", mark)
+                        projectiomItemMap.put("my_location", mark)
                         projectiomItemMap.show()
                         mMap?.animateCamera(CameraUpdateFactory.newLatLng(LatLng(it.latitude, it.longitude)))
                         visibleFabs()
@@ -230,7 +242,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                         val mark = MarkerOptions()
                             .position(LatLng(it.latitude, it.longitude))
                             .icon(BitmapDescriptorFactory.fromBitmap(smalBitmapacc))
-                        projectiomItemMap.items2.put("my_location", mark)
+                        projectiomItemMap.put("my_location", mark)
                         projectiomItemMap.show()
                         mMap?.animateCamera(CameraUpdateFactory.newLatLng(LatLng(it.latitude, it.longitude)))
                         visibleFabs()
@@ -354,13 +366,29 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
         p0.setOnMapClickListener {
 
-            if(model.visibleFabs){
-                model.visibleFabs = false
+
+            if(clickMap){
+
+                Toast.makeText(requireContext(),"Local obtido",Toast.LENGTH_LONG).show()
+                model.clickMapLocation.lat  = it.latitude
+                model.clickMapLocation.lng  = it.longitude
+
+                val mark = MarkerOptions()
+                    .position(LatLng(it.latitude, it.longitude))
+                    .icon(BitmapDescriptorFactory.fromBitmap(smalBitmapacc))
+                projectiomItemMap.put("my_location", mark)
+                projectiomItemMap.show()
+                mMap?.animateCamera(CameraUpdateFactory.newLatLng(LatLng(it.latitude, it.longitude)))
+
+
+            }
+            if(binding.fab1.isVisible){
                 visibleFabs()
             }
 
-            model.clickMapLocation.lat  = it.latitude
-            model.clickMapLocation.lng  = it.longitude
+
+
+
 
         }
         p0.setOnMarkerClickListener {
@@ -401,7 +429,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                 lineoption.color(requireContext().getColor(R.color.startColor))
                 lineoption.geodesic(true)
             }
-            p0.addPolyline(lineoption)
+          projectiomItemMap.setPolyline(lineoption)
 
 
         }
