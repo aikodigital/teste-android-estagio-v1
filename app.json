@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "RotaSP",
+    "slug": "RotaSP",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
