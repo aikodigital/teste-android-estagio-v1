@@ -8,7 +8,6 @@ import br.com.daniel.aikoandroidestagio.adapter.PrevisaoChegadaOnibusAdapter
 import br.com.daniel.aikoandroidestagio.databinding.ActivityPrevisaoChegadaOnibusBinding
 import br.com.daniel.aikoandroidestagio.model.LX
 import br.com.daniel.aikoandroidestagio.util.Constants
-import org.koin.android.ext.android.bind
 
 class PrevisaoChegadaOnibus : AppCompatActivity() {
 

@@ -1,16 +1,11 @@
 package br.com.daniel.aikoandroidestagio.adapter
 
 import android.content.Context
-import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
-import androidx.core.content.ContextCompat.startActivity
 import br.com.daniel.aikoandroidestagio.R
 import br.com.daniel.aikoandroidestagio.model.Parada
-import br.com.daniel.aikoandroidestagio.ui.PrevisaoChegada
-import br.com.daniel.aikoandroidestagio.util.Constants
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.Marker
 

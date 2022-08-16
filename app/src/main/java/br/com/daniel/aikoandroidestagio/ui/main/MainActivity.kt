@@ -10,7 +10,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import br.com.daniel.aikoandroidestagio.R
 import br.com.daniel.aikoandroidestagio.databinding.ActivityMainBinding
-import br.com.daniel.aikoandroidestagio.services.ApiModule
+import br.com.daniel.aikoandroidestagio.services.ApiService
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
@@ -25,21 +25,25 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         lifecycleScope.launch(IO) {
-            try {
-                val resposta = ApiModule.autenticar()
-                val biscoitinho = resposta.headers().get("Set-Cookie")
-                biscoitinho?.let {
-                    ApiModule.setCookie(biscoitinho)
-                } ?: Log.d(TAG, "Veio sem cookie")
-
-                Log.d(TAG, "headers-debug: $biscoitinho")
-                Log.d(TAG, "API autenticada")
-            } catch (e: Exception) {
-                Log.d(TAG, "API fora do ar: " + e.message)
-            }
+            autenticaKeyApi()
         }
 
         confNavView()
+    }
+
+    private suspend fun autenticaKeyApi() {
+        try {
+            val resposta = ApiService.autenticar()
+            val biscoitinho = resposta.headers().get("Set-Cookie")
+            biscoitinho?.let {
+                ApiService.setCookie(biscoitinho)
+            } ?: Log.d(TAG, "Veio sem cookie")
+
+            Log.d(TAG, "headers-debug: $biscoitinho")
+            Log.d(TAG, "API autenticada")
+        } catch (e: Exception) {
+            Log.d(TAG, "API fora do ar: " + e.message)
+        }
     }
 
     private fun confNavView() {

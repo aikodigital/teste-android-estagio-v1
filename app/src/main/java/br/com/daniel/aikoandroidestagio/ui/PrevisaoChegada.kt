@@ -10,12 +10,9 @@ import br.com.daniel.aikoandroidestagio.R
 import br.com.daniel.aikoandroidestagio.adapter.PrevisaoChegadaLinhasAdapter
 import br.com.daniel.aikoandroidestagio.databinding.ActivityPrevisaoChegadaBinding
 import br.com.daniel.aikoandroidestagio.model.*
-import br.com.daniel.aikoandroidestagio.model.PrevisaoChegada
-import br.com.daniel.aikoandroidestagio.services.ApiModule
+import br.com.daniel.aikoandroidestagio.services.ApiService
 import br.com.daniel.aikoandroidestagio.util.Constants
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlin.coroutines.CoroutineContext
 
 class PrevisaoChegada : AppCompatActivity() {
     private val binding by lazy { ActivityPrevisaoChegadaBinding.inflate(LayoutInflater.from(this)) }
@@ -31,7 +28,7 @@ class PrevisaoChegada : AppCompatActivity() {
         binding.nomeParada.text = parada.nome
 
         lifecycleScope.launch {
-            val resposta = ApiModule.getPrevisao(parada.id)
+            val resposta = ApiService.getPrevisao(parada.id)
             if (resposta.isSuccessful) {
                 val previsaoChegada = resposta.body()
 

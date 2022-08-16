@@ -11,7 +11,7 @@
     <string name="algo_errado">Something went wrong. Please try again in a moment.</string>
     <string name="nome_rua">Street Name</string>
     <string name="find">Find</string>
-    <string name="nao_encontrei_pontos">I didn not find any bus stops on this street.</string>
+    <string name="nao_encontrei_pontos">I did not find any bus stops on this street.</string>
     <string name="prev_chegada">Click here to see the bus arrival time.</string>
     <string name="sentido_principal">Main direction</string>
     <string name="sentido_secundario">Secondary direction</string>

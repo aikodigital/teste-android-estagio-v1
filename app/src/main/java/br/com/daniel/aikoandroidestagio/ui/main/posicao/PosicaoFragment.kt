@@ -2,7 +2,6 @@ package br.com.daniel.aikoandroidestagio.ui.main.posicao
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,17 +12,10 @@ import androidx.lifecycle.lifecycleScope
 import br.com.daniel.aikoandroidestagio.R
 import br.com.daniel.aikoandroidestagio.databinding.FragmentPosicaoBinding
 import br.com.daniel.aikoandroidestagio.model.LocalizacaoVeiculos
-import br.com.daniel.aikoandroidestagio.services.ApiModule
+import br.com.daniel.aikoandroidestagio.services.ApiService
 import br.com.daniel.aikoandroidestagio.ui.ListaTodosVeiculos
-import br.com.daniel.aikoandroidestagio.ui.main.MainActivity
-import br.com.daniel.aikoandroidestagio.ui.maps.MapsActivity
 import br.com.daniel.aikoandroidestagio.util.Constants
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import retrofit2.Response
-import java.io.Serializable
 
 class PosicaoFragment : Fragment() {
 
@@ -38,7 +30,6 @@ class PosicaoFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val posicaoViewModel = ViewModelProvider(this).get(PosicaoViewModel::class.java)
         _binding = FragmentPosicaoBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
@@ -51,7 +42,7 @@ class PosicaoFragment : Fragment() {
 
     private fun pegaRespostaApi() {
         lifecycleScope.launch {
-            val resposta = ApiModule.getPosicoes()
+            val resposta = ApiService.getPosicoes()
 
             var localizacaoVeiculos: LocalizacaoVeiculos? = null
             if (resposta.isSuccessful) {

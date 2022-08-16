@@ -2,13 +2,13 @@ package br.com.daniel.aikoandroidestagio.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import br.com.daniel.aikoandroidestagio.R
 import br.com.daniel.aikoandroidestagio.adapter.ListaVeiculosAdapter
 import br.com.daniel.aikoandroidestagio.databinding.ActivityListaTodosVeiculosBinding
+import br.com.daniel.aikoandroidestagio.enums.From
 import br.com.daniel.aikoandroidestagio.model.LocalizacaoVeiculos
 import br.com.daniel.aikoandroidestagio.ui.maps.MapsActivity
 import br.com.daniel.aikoandroidestagio.util.Constants
@@ -28,23 +28,25 @@ class ListaTodosVeiculos : AppCompatActivity() {
             binding.rvLinhasOnibus.adapter = ListaVeiculosAdapter(linhasEonibus)
 
             binding.buttonOnibusMapa.setOnClickListener {
-                val intent = Intent(this, MapsActivity::class.java).apply {
-                    putExtra(Constants.from, 4)
-                    putExtra(Constants.veic, linhasEonibus)
-                }
-                startActivity(intent)
+                iniciaMapsActivity(linhasEonibus)
             }
 
             binding.buttonFilter.setOnClickListener {
-                //Dialogo de linhas para filtrar
-                dialogoFiltro()
+                //Eu não consegui fazer aparecer as opções nesse Dialog
+                dialogFiltro()
             }
-
         } ?: ListaNullErro()
-
     }
 
-    private fun dialogoFiltro() {
+    private fun iniciaMapsActivity(linhasEonibus: LocalizacaoVeiculos?) {
+        val intent = Intent(this, MapsActivity::class.java).apply {
+            putExtra(Constants.from, From.ONIBUS)
+            putExtra(Constants.veic, linhasEonibus)
+        }
+        startActivity(intent)
+    }
+
+    private fun dialogFiltro() {
         val multiItems = arrayOf("Item 1", "Item 2", "Item 3")
         val checkedItems = booleanArrayOf(true, false, false, false)
 

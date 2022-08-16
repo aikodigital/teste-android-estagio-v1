@@ -21,7 +21,7 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import br.com.daniel.aikoandroidestagio.databinding.ActivityMapsBinding
-import br.com.daniel.aikoandroidestagio.model.Linha
+import br.com.daniel.aikoandroidestagio.enums.From
 import br.com.daniel.aikoandroidestagio.model.LocalizacaoVeiculos
 import br.com.daniel.aikoandroidestagio.model.Parada
 import br.com.daniel.aikoandroidestagio.ui.PrevisaoChegada
@@ -40,7 +40,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private var lastKnownLocation: Location? = null
     private var cameraPosition: CameraPosition? = null
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
-    private var frag = 0
+    private var from = From.ERRO
     private val defaultLocation = LatLng(-23.5454758, -46.6455341)
     private val TAG = "DEBUG"
     private var onibusVermelhoBitmap: BitmapDescriptor? = null
@@ -51,33 +51,63 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        val mapFragment = supportFragmentManager
-            .findFragmentById(R.id.map) as SupportMapFragment
-        mapFragment.getMapAsync(this)
+        configuraMapaElocalizador()
+        identificaFragmentQueAcessou()
+        configuraTitleEpegaExtra()
+        getLocationPermission()
 
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
+        if (savedInstanceState != null) {
+            lastKnownLocation = savedInstanceState.getParcelable(KEY_LOCATION)
+            cameraPosition = savedInstanceState.getParcelable(KEY_CAMERA_POSITION)
+        }
 
-        frag = intent.getIntExtra(Constants.from, 0)
-        Log.i(TAG, "Recebeu fragment: $frag")
-        when (frag) {
-            1 -> {
-                val linhas = intent.getSerializableExtra("linhas") as List<Linha>?
-                Log.i(TAG, "Recebeu pelo extra: $linhas")
+    }
+
+    override fun onMapReady(googleMap: GoogleMap) {
+        mMap = googleMap
+
+        updateLocationUI()
+        getDeviceLocation()
+        insereMarcadores()
+    }
+
+    private fun insereMarcadores() {
+        when (from) {
+            From.PARADAS -> {
+                mMap.setInfoWindowAdapter(MarkerInfoParadaAdapter(this))
+                paradaVermelhaBitmap =
+                    Utils.bitmapDescriptorFromVector(this, R.drawable.ic_parada_vermelha)
+                colocaMarcadorParadasAtualizaCamera()
             }
-            2 -> {
-
+            From.ONIBUS -> {
+                mMap.setInfoWindowAdapter(MarkerInfoAdapter(this))
+                onibusVermelhoBitmap =
+                    Utils.bitmapDescriptorFromVector(this, R.drawable.ic_onibus_vermelho)
+                colocaMarcadoresOnibus()
             }
-            3 -> {
+            else -> {
+                Toast.makeText(this, getString(R.string.algo_errado), Toast.LENGTH_LONG).show()
+                finish()
+            }
+        }
+    }
+
+    private fun identificaFragmentQueAcessou() {
+        from = intent.getSerializableExtra(Constants.from) as From
+        Log.i(TAG, "Recebeu fragment: $from")
+    }
+
+    private fun configuraTitleEpegaExtra() {
+        when (from) {
+            From.PARADAS -> {
                 title = getString(R.string.title_maps_paradas)
                 paradas = intent.getSerializableExtra(Constants.parada) as List<Parada>
                 Log.i(TAG, "Recebeu pelo extra: $paradas")
             }
-            4 -> {
+            From.ONIBUS -> {
                 title = getString(R.string.title_maps_onibus)
                 linhasEonibus = intent.getSerializableExtra(Constants.veic) as LocalizacaoVeiculos?
             }
@@ -86,14 +116,14 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 finish()
             }
         }
+    }
 
-        getLocationPermission()
+    private fun configuraMapaElocalizador() {
+        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
+        mapFragment.getMapAsync(this)
 
-        if (savedInstanceState != null) {
-            lastKnownLocation = savedInstanceState.getParcelable(KEY_LOCATION)
-            cameraPosition = savedInstanceState.getParcelable(KEY_CAMERA_POSITION)
-        }
-
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
     }
 
     private fun getLocationPermission() {
@@ -136,37 +166,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             else -> super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         }
         updateLocationUI()
-    }
-
-    //Adicionar marcadores, linhas, listeners ou mover a camera aqui
-    override fun onMapReady(googleMap: GoogleMap) {
-        mMap = googleMap
-
-        updateLocationUI()
-        getDeviceLocation()
-
-        when (frag) {
-            1 -> {
-
-            }
-            2 -> {
-
-            }
-            3 -> {
-                mMap.setInfoWindowAdapter(MarkerInfoParadaAdapter(this))
-                paradaVermelhaBitmap = Utils.bitmapDescriptorFromVector(this, R.drawable.ic_parada_vermelha)
-                colocaMarcadorParadasAtualizaCamera()
-            }
-            4 -> {
-                mMap.setInfoWindowAdapter(MarkerInfoAdapter(this))
-                onibusVermelhoBitmap = Utils.bitmapDescriptorFromVector(this, R.drawable.ic_onibus_vermelho)
-                colocaMarcadoresOnibus()
-            }
-            else -> {
-                Toast.makeText(this, getString(R.string.algo_errado), Toast.LENGTH_LONG).show()
-                finish()
-            }
-        }
     }
 
     private fun colocaMarcadorParadasAtualizaCamera() {
