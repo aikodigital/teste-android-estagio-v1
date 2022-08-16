@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.room.*
 import br.com.aj.message.appaiko.data.*
 
+//
 
 @Dao
 interface DaoCorredor {
