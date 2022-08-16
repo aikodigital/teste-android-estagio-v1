@@ -6,21 +6,26 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import br.com.daniel.aikoandroidestagio.R
 import br.com.daniel.aikoandroidestagio.databinding.FragmentPosicaoBinding
 import br.com.daniel.aikoandroidestagio.model.LocalizacaoVeiculos
 import br.com.daniel.aikoandroidestagio.services.ApiModule
 import br.com.daniel.aikoandroidestagio.ui.ListaTodosVeiculos
+import br.com.daniel.aikoandroidestagio.ui.main.MainActivity
+import br.com.daniel.aikoandroidestagio.ui.maps.MapsActivity
 import br.com.daniel.aikoandroidestagio.util.Constants
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import retrofit2.Response
+import java.io.Serializable
 
-class posicaoFragment : Fragment() {
+class PosicaoFragment : Fragment() {
 
     private var _binding: FragmentPosicaoBinding? = null
     private val TAG = "DEBUG"
@@ -38,39 +43,33 @@ class posicaoFragment : Fragment() {
         _binding = FragmentPosicaoBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        //Testando pegar todos os onibus de sp
         _binding?.buttonPosicao?.setOnClickListener {
             //Tentando pegar a resposta da API
             var resposta: Response<LocalizacaoVeiculos>
             lifecycleScope.launch {
                 resposta = ApiModule.getPosicoes()
 
-                var intent: Intent?
+                var localizacaoVeiculos: LocalizacaoVeiculos? = null
                 if (resposta.isSuccessful) {
-
                     //Aqui vou guardar a posicao nos carros e o tamanho na classe
-                    val localizacaoVeiculos = resposta.body()
-                    localizacaoVeiculos?.carregarDados()
-
-                    intent = Intent(activity, ListaTodosVeiculos::class.java).apply {
-                        putExtra(Constants.veic, localizacaoVeiculos)
-                    }
-                } else {
-                    intent = null
-                    Log.d(TAG, "Erro resposta " + resposta.message())
+                    localizacaoVeiculos = resposta.body()
                 }
-                Log.d(TAG, "Chegou no startactivity da lista, null? " + (intent == null).toString())
 
-                withContext(Dispatchers.Main) {
-                    intent?.let {
-                        startActivity(intent)
+                localizacaoVeiculos?.let {
+                    val intent = Intent(context, ListaTodosVeiculos::class.java).apply {
+                        putExtra(Constants.veic, it)
                     }
-                }
+                    startActivity(intent)
+                } ?: listaNull()
             }
         }
 
 
         return root
+    }
+
+    private fun listaNull() {
+        Toast.makeText(context,getString(R.string.algo_errado_veiculos), Toast.LENGTH_SHORT).show()
     }
 
     override fun onDestroyView() {

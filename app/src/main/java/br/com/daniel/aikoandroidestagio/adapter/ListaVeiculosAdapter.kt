@@ -21,20 +21,6 @@ class ListaVeiculosAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        //      aqui pega o veiculo mas eu quero na verdade a linha então deixa paradinho aqui
-//        run breaking@ {
-//            listaLinhasVeiculos.l.forEach { linha ->
-//                if (position < linha.vs.size) {
-//                    linha.vs.forEach { veiculo ->
-//                        if (veiculo.position == position) {
-//                            veiculoEscolhido = veiculo
-//                            return@breaking
-//                        }
-//                    }
-//                }
-//            }
-//        }
-
         val linhaEscolhida: L = listaLinhasVeiculos.l[position]
 
         linhaEscolhida.let {
@@ -43,7 +29,7 @@ class ListaVeiculosAdapter(
     }
 
     override fun getItemCount(): Int {
-        return listaLinhasVeiculos.total
+        return listaLinhasVeiculos.l.size
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {

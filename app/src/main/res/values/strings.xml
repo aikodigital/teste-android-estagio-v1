@@ -20,4 +20,5 @@
     <string name="title_previsao_onibus">Arrival forecast</string>
     <string name="title_maps_paradas">Bus stops</string>
     <string name="title_maps_onibus">All buses</string>
+    <string name="algo_errado_veiculos">Verifique se a API está funcionando corretamente.</string>
 </resources>

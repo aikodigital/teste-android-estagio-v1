@@ -13,8 +13,6 @@ import br.com.daniel.aikoandroidestagio.model.LocalizacaoVeiculos
 import br.com.daniel.aikoandroidestagio.ui.maps.MapsActivity
 import br.com.daniel.aikoandroidestagio.util.Constants
 
-private val TAG = "DEBUG"
-
 class ListaTodosVeiculos : AppCompatActivity() {
 
     private val binding by lazy { ActivityListaTodosVeiculosBinding.inflate(LayoutInflater.from(this)) }
@@ -25,12 +23,11 @@ class ListaTodosVeiculos : AppCompatActivity() {
 
         val linhasEonibus = intent.getSerializableExtra(Constants.veic) as LocalizacaoVeiculos?
 
+        val nulle = (linhasEonibus == null)
+        Log.d("debug", "onCreate: $nulle")
+
         linhasEonibus?.let {
-            if (!it.isEmpty()) {
-                binding.rvLinhasOnibus.adapter = ListaVeiculosAdapter(linhasEonibus)
-            } else {
-                ListaNullErro()
-            }
+            binding.rvLinhasOnibus.adapter = ListaVeiculosAdapter(linhasEonibus)
 
             binding.buttonOnibusMapa.setOnClickListener {
                 val intent = Intent(this, MapsActivity::class.java).apply {
@@ -42,27 +39,10 @@ class ListaTodosVeiculos : AppCompatActivity() {
 
         } ?: ListaNullErro()
 
-
-//        //todo: deletar depois que testar
-//        if (!linhasEonibus.isEmpty()) {
-//            linhasEonibus.l.forEachIndexed { index, linha ->
-//                Log.d(TAG, "--------------------Linha: $index")
-//                    val destino = linha.lt0
-//                    linha.vs.forEachIndexed { index, veiculo ->
-//                        Log.d(TAG, "-Veiculo: $index")
-//                        apontarNoMapa(veiculo.px,veiculo.py, veiculo.p, destino)
-//                    }
-//                }
-//            }
-        }
+    }
 
     private fun ListaNullErro() {
-        Toast.makeText(this, getString(R.string.algo_errado), Toast.LENGTH_LONG).show()
+        Toast.makeText(this, getString(R.string.algo_errado_veiculos), Toast.LENGTH_LONG).show()
         finish()
     }
 }
-
-
-//private fun apontarNoMapa(px: Double, py: Double, idV: Int, destino: String) {
-//    Log.d(TAG, "apontarNoMapa: $px $py $idV $destino")
-//}

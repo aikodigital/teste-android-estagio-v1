@@ -30,6 +30,10 @@
             android:name=".ui.ListaTodosVeiculos"
             android:exported="false" />
         <activity
+            android:name=".ui.maps.MapsActivity"
+            android:exported="false"
+            android:label="@string/title_activity_maps" />
+        <activity
             android:name=".ui.main.MainActivity"
             android:exported="true"
             android:label="@string/title_activity_main">
@@ -46,11 +50,6 @@
         <meta-data
             android:name="OLHO_API_KEY"
             android:value="${OLHO_VIVO_API_KEY}" />
-
-        <activity
-            android:name=".ui.maps.MapsActivity"
-            android:exported="false"
-            android:label="@string/title_activity_maps" />
     </application>
 
 </manifest>

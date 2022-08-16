@@ -19,7 +19,7 @@ data class LocalizacaoVeiculos(
 
         //Linha por linha
         l.forEachIndexed { indexL, linha ->
-            total += linha.vs.size
+            total += linha.vs.size -1
 
             //Veiculo por veiculo
             linha.vs.forEachIndexed { index, veiculo ->
@@ -41,5 +41,6 @@ data class LocalizacaoVeiculos(
                 }
             }
         }
+        Log.d("debug", "acabou")
     }
 }
