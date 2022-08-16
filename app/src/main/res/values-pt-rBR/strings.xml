@@ -27,4 +27,8 @@
     <string name="accept_filter">Filtrar</string>
     <string name="tente_usar">Tente usar:</string>
     <string name="afonso_arminda_maria_augusta_ou_lapa">Afonso, arminda, maria augusta ou lapa</string>
+    <string name="ver_mapa">Ver todos no mapa</string>
+    <string name="clique_ver_previsao_onibus">Clique aqui para ver a previsão dos ônibus dessa linha.</string>
+    <string name="ic_bus">Icone onibus</string>
+    <string name="ic_filter">Icone botão filtro</string>
 </resources>

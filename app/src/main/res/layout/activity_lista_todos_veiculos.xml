@@ -11,7 +11,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:text="Ver todos no mapa"
+        android:text="@string/ver_mapa"
         app:layout_constraintEnd_toStartOf="@+id/button_filter"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -28,7 +28,8 @@
         app:layout_constraintStart_toEndOf="@+id/button_onibus_mapa"
         app:layout_constraintTop_toTopOf="@+id/button_onibus_mapa"
         app:srcCompat="@drawable/ic_filter"
-        app:tint="@color/white" />
+        app:tint="@color/white"
+        android:contentDescription="@string/ic_filter" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_linhas_onibus"

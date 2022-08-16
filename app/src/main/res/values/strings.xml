@@ -27,4 +27,8 @@
     <string name="accept_filter">Filter</string>
     <string name="tente_usar">Try:</string>
     <string name="afonso_arminda_maria_augusta_ou_lapa">Afonso, arminda, maria augusta or lapa</string>
+    <string name="ver_mapa">See all on map</string>
+    <string name="clique_ver_previsao_onibus">Click here to see the bus schedule for this line.</string>
+    <string name="ic_bus">Bus icon</string>
+    <string name="ic_filter">Filter button icon</string>
 </resources>

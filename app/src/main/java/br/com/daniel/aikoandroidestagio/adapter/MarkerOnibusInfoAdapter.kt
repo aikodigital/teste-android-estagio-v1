@@ -19,7 +19,6 @@ class MarkerOnibusInfoAdapter(private val context: Context) : GoogleMap.InfoWind
         val dest = "Destino: ${veiculoLinha.linha.lt1}"
         val orig = "Origem: ${veiculoLinha.linha.lt0}"
 
-        //todo: resolver isso aqui do onibus
         view.findViewById<TextView>(R.id.info_numero).text = veiculoLinha.veiculo.p.toString()
         view.findViewById<TextView>(R.id.info_secundaria).text = dest
         view.findViewById<TextView>(R.id.info_suporte).text = orig

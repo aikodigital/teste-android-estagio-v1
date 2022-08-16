@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -33,14 +34,15 @@
                 app:layout_constraintBottom_toBottomOf="@+id/horario_previsto"
                 app:layout_constraintEnd_toStartOf="@+id/prefix_veiculo"
                 app:layout_constraintTop_toTopOf="@+id/prefix_veiculo"
-                app:srcCompat="@drawable/ic_onibus_vermelho" />
+                app:srcCompat="@drawable/ic_onibus_vermelho"
+                android:contentDescription="@string/ic_bus" />
 
             <TextView
                 android:id="@+id/prefix_veiculo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
-                android:text="Prefix"
+                tools:text="Prefix"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toTopOf="@id/horario_previsto"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -52,7 +54,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
-                android:text="Horario"
+                tools:text="Horario"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

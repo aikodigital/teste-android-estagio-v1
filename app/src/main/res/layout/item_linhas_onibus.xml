@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -27,6 +28,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginLeft="20dp"
+                android:contentDescription="@string/ic_bus"
                 app:layout_constraintBottom_toBottomOf="@id/titulo_destino"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/titulo_origem"
@@ -37,34 +39,34 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
-                android:text="qtOnibus"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
-                app:layout_constraintTop_toTopOf="@+id/imageView" />
+                app:layout_constraintTop_toTopOf="@+id/imageView"
+                tools:text="qtOnibus" />
 
             <TextView
                 android:id="@+id/titulo_origem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:text="Titulo do origem"
                 android:textAppearance="?attr/textAppearanceHeadline6"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Titulo do origem" />
 
             <TextView
                 android:id="@+id/titulo_destino"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Titulo do destino"
                 android:textAppearance="?attr/textAppearanceHeadline6"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/titulo_origem" />
+                app:layout_constraintTop_toBottomOf="@+id/titulo_origem"
+                tools:text="Titulo do destino" />
 
             <TextView
                 android:id="@+id/titulo_secundario"
@@ -73,13 +75,13 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="8dp"
-                android:text="Texto secundario"
                 android:textAppearance="?attr/textAppearanceBody2"
                 android:textColor="?android:attr/textColorSecondary"
                 app:layout_constraintBottom_toBottomOf="@+id/cl_material_card"
                 app:layout_constraintEnd_toStartOf="@id/titulo_suporte"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/titulo_destino" />
+                app:layout_constraintTop_toBottomOf="@+id/titulo_destino"
+                tools:text="Texto secundario" />
 
             <TextView
                 android:id="@+id/titulo_suporte"
@@ -87,12 +89,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="8dp"
-                android:text="Texto de suporte"
                 android:textAppearance="?attr/textAppearanceBody2"
                 android:textColor="?android:attr/textColorSecondary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/titulo_secundario"
-                app:layout_constraintTop_toTopOf="@+id/titulo_secundario" />
+                app:layout_constraintTop_toTopOf="@+id/titulo_secundario"
+                tools:text="Texto de suporte" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
