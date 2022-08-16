@@ -33,7 +33,7 @@ class PrevAdapterItem : ListAdapter<PrevAdapterItem.ViewsV,RecyclerView.ViewHold
             ( holder as MyView).item.horario.text = getItem(position).v?.t
             ( holder as MyView).item.prefixo.text = getItem(position).v?.p.toString()
         }else{
-            ( holder as MyView2).item.termi.text = getItem(position).l?.lt0
+            ( holder as MyView2).item.termi.text = getItem(position).l?.lt0  + "/"+getItem(position).l?.c
             ( holder as MyView2).item.desceiTermi.text = ("${getItem(position).l?.lt1} / ${getItem(position).l?.lt0}")
 
         }

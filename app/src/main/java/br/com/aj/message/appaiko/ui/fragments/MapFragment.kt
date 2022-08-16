@@ -152,6 +152,9 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
         binding.fab3.setOnClickListener {
 
+            if(binding.fab1.isVisible){
+                visibleFabs()
+            }
 
             clickMap = true
           val snak =  Snackbar.make(view,"Click no mapa ou bo botão minha localização e depois em calcular",Snackbar.LENGTH_INDEFINITE)
@@ -382,9 +385,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
 
             }
-            if(binding.fab1.isVisible){
-                visibleFabs()
-            }
+
 
 
 
