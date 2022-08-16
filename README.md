@@ -2,11 +2,13 @@
 
 ![Aiko](imagens/aiko.png)
 
-Neste teste serão avaliados seus conhecimentos e a metodologia aplicada no desenvolvimento de aplicações mobile Android.
+Esse é o meu projeto desenvolvido para o desafio da Aiko!
 
 ## O Desafio
 
-Seu objetivo é criar um aplicativo que exiba dados sobre o transporte público da cidade de São Paulo, consultando a [API **Olho Vivo**](api.md) que provê informações em tempo real do monitoramento da frota de ônibus da cidade de São Paulo.
+O objetivo era criar um app que exibisse os dados do transporte público de São Paulo,
+consultando a [API **Olho Vivo**](api.md) que provê informações em tempo real do 
+monitoramento da frota de ônibus da cidade de São Paulo.
 
 ## Requisitos
 
@@ -22,42 +24,55 @@ Esses requisitos são obrigatórios e devem ser desenvolvidos para a entrega do 
 
 * **Pesquisa e Filtros**: Permitir que o usuário pesquise e filtre esses dados, interagindo com a interface.
 
-## O que é permitido
+# Projeto
 
-* Android Nativo (Java/Kotlin)
+No projeto que desenvolvi é possível: 
 
-* React Native
+<img src="Imagens_app/olho_vivo1.png" width="250">  <img src="Imagens_app/olho_vivo2.png" width="250">
 
-* Native Script (Vue, Angular, etc)
+Escolher entre ver as linhas de São Paulo e os ônibus circulando no momento ou procurar pontos de ônibus usando o nome de ruas de SP.
 
-* Flutter
+<img src="Imagens_app/olho_vivo3.png" width="250">  <img src="Imagens_app/olho_vivo4.png" width="250">  <img src="Imagens_app/olho_vivo5.png" width="245">
 
-* Xamarin
+Se você escolher ver os ônibus, você verá uma lista de linhas com a origem e destino e a quantidade de ônibus circulando naquela linha. Então você tem a opção de filtrar as linhas e/ou abrir a lista atual de ônibus no mapa. Infelizmente não consegui implementar o filtro a tempo. Ao clicar em cada marcador de ônibus é possível ver as informações individuais de cada ônibus. Sentido e número.
 
-* Kivy
+<img src="Imagens_app/olho_vivo6.png" width="250">  <img src="Imagens_app/olho_vivo7.png" width="250">  <img src="Imagens_app/olho_vivo8.png" width="245">   <img src="Imagens_app/olho_vivo9.png" width="245">
 
-* Qualquer tecnologia complementar as citadas anteriormente são permitidas desde que seu uso seja justificável
+Voltando para a tela das paradas de ônibus, é possível pesquisar os pontos mais próximos das ruas que você irá inserir. Os pontos serão exibidos no mapa, é possível clicar em cada ponto para ver as informações individuais de cada um e ao clicar nas informações você é levado para uma lista de ônibus que passam ali.
 
-## O que não é permitido
+É possível escolher um ônibus para ver uma estimativa do horário de chegada.
 
-* Utilizar bibliotecas ou códigos de terceiros que implementem algum dos requisitos.
+## Configuração ⚙️
 
-## Recomendações
+Para usar o aplicativo é necessário que você crie um arquivo chamado: **local.properties**
+Nele você precisará inserir **duas chaves**, uma do google maps e uma que você recebe ao se cadastrar na  **API Olho Vivo**
 
-* **Linter**: Desenvolva o projeto utilizando algum padrão de formatação de código.
+Coloque as chaves da seguinte forma:
 
-## Extras
+```
+MAPS_API_KEY=Sua chave do google maps entra aqui
+OLHO_VIVO_API_KEY=Sua chave da API olho vivo entra aqui
+```
 
-Aqui são listados algumas sugestões para você que quer ir além do desafio inicial. Lembrando que você não precisa se limitar a essas sugestões, se tiver pensado em outra funcionalidade que considera relevante ao escopo da aplicação fique à vontade para implementá-la.
+## Conclusão
 
-* **Refresh automático**: Que as informações exibidas no aplicativo sejam atualizadas de tempo em tempo de forma transparente ao usuário
+Realizei a maioria dos itens obrigatórios como: 
 
-* **Cálculo de rotas**: Exibir a possível rota de um ou mais ônibus em relação a uma parada, ou do usuário em relação a uma parada (Utilizando API do Google Maps ou equivalentes)
+- [x] **Posições dos veículos**: No projeto é possível ver a localização de todos os veículos circulando em São Paulo.
 
-* **Corredores**: Mostrar informações sobre os corredores de ônibus de SP.
+- [x] **Linhas**: No projeto é possível ver todas as linhas que estão circulando em São Paulo.
 
-* **Velocidade das vias**: Mostrar informações sobre as velocidades das vias.
+- [x] **Paradas**:  No projeto é possível ver os pontos de ônibus próximos da rua inserida.
 
-* **Testes**: Desenvolva testes que achar necessário para a aplicação.
+- [x]  **Previsão de chegada**: No projeto ao selecionar o ponto de ônibus é possível ver todos os ônibus que vão passar ali e o horário estimado de chegada.
 
-* **Documentação**: Gerar uma documentação da aplicação. A documentação pode incluir detalhes sobre as decisões tomadas, especificação das funcionalidades desenvolvidas, instruções de uso dentre outras informações que achar relevantes.
+- [ ] **Pesquisa e Filtros**: Infelizmente não consegui concluir essa etapa a tempo.
+
+Gostei muito de ter participado desse teste, porque é interessante colocar em prática em um projeto real o que tenho estudado. Vou continuar implementando funcionalidades nesse projeto porque achei muito interessante até mesmo para portfolio. 
+
+ Agradeço de verdade a oportunidade de ter participado, foi muito divertido e aguardo ansiosamente a resposta de vocês! 
+ 
+ <img src="https://media.giphy.com/media/dXFKDUolyLLi8gq6Cl/giphy-downsized.gif" width="200">
+
+
+
