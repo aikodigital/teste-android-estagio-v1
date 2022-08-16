@@ -22,6 +22,8 @@ class ListaTodosVeiculos : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        title = "Linhas e ônibus"
+
         val linhasEonibus = intent.getSerializableExtra(Constants.veic) as LocalizacaoVeiculos?
 
         linhasEonibus?.let {
