@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name" translatable="false">AIKO Android Estagio</string>
+    <string name="title_activity_maps">Maps</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Line</string>
+    <string name="title_dashboard">Position</string>
+    <string name="title_notifications">Bus stop</string>
+    <string name="content_description_end_icon">Bus icon</string>
+    <string name="linha">Bus line</string>
+    <string name="button_search">Find all lines and buses in São Paulo</string>
+    <string name="algo_errado">Something went wrong. Please try again in a moment.</string>
+    <string name="nome_rua">Street Name</string>
+    <string name="find">Find</string>
+    <string name="nao_encontrei_pontos">I did not find any bus stops on this street.</string>
+    <string name="prev_chegada">Click here to see the bus arrival time.</string>
+    <string name="sentido_principal">Main direction</string>
+    <string name="sentido_secundario">Secondary direction</string>
+    <string name="nao_tem_onibus">The API is not responding correctly. Please try again in a moment.</string>
+    <string name="title_previsao_linhas">Select the line</string>
+    <string name="title_previsao_onibus">Arrival forecast</string>
+    <string name="title_maps_paradas">Bus stops</string>
+    <string name="title_maps_onibus">All buses</string>
+    <string name="algo_errado_veiculos">Check that the API is working properly.</string>
+    <string name="title_filter">Filter</string>
+    <string name="supporting_text_filter">Select the rows you want to filter. No options appear >:C</string>
+    <string name="decline">Cancel</string>
+    <string name="accept_filter">Filter</string>
+    <string name="tente_usar">Try:</string>
+    <string name="afonso_arminda_maria_augusta_ou_lapa">Afonso, arminda, maria augusta or lapa</string>
+    <string name="ver_mapa">See all on map</string>
+    <string name="clique_ver_previsao_onibus">Click here to see the bus schedule for this line.</string>
+    <string name="ic_bus">Bus icon</string>
+    <string name="ic_filter">Filter button icon</string>
+</resources>

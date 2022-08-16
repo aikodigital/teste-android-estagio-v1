@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_posicao">
+
+    <fragment
+        android:id="@+id/navigation_posicao"
+        android:name="br.com.daniel.aikoandroidestagio.ui.main.posicao.PosicaoFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_posicao" />
+
+    <fragment
+        android:id="@+id/navigation_paradas"
+        android:name="br.com.daniel.aikoandroidestagio.ui.main.paradas.ParadasFragment"
+        android:label="@string/title_notifications"
+        tools:layout="@layout/fragment_paradas" />
+</navigation>

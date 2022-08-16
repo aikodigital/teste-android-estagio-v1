@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.ListaTodosVeiculos">
+
+    <Button
+        android:id="@+id/button_onibus_mapa"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="@string/ver_mapa"
+        app:layout_constraintEnd_toStartOf="@+id/button_filter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/button_filter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="5dp"
+        android:backgroundTint="@color/purple_500"
+        android:padding="12dp"
+        app:layout_constraintBottom_toBottomOf="@+id/button_onibus_mapa"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button_onibus_mapa"
+        app:layout_constraintTop_toTopOf="@+id/button_onibus_mapa"
+        app:srcCompat="@drawable/ic_filter"
+        app:tint="@color/white"
+        android:contentDescription="@string/ic_filter" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_linhas_onibus"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_onibus_mapa"
+        tools:listitem="@layout/item_linhas_onibus" />
+</androidx.constraintlayout.widget.ConstraintLayout>
