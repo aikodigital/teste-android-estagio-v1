@@ -4,7 +4,10 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.INVISIBLE
 import android.view.ViewGroup
+import androidx.cardview.widget.CardView
+import androidx.core.view.isVisible
 import com.conti.onibusspemtemporeal.R
 import com.conti.onibusspemtemporeal.databinding.FragmentMapBinding
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -32,6 +35,15 @@ class MapFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupMap()
+        setupHistoryClicked()
+    }
+
+    private fun setupHistoryClicked() {
+
+        binding.imageButtonHistorySearch.setOnClickListener {
+
+
+        }
     }
 
     private fun setupMap() {

@@ -16,4 +16,9 @@
     <string name="search_bus">Buscar Linhas</string>
     <string name="imageButton_history_description">a</string>
 
+
+    <!-- -->
+    <string name="history">Histórico</string>
+    <string name="line">Linha :</string>
+
 </resources>
