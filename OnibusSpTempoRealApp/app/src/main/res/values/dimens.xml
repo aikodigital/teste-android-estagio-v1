@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="fifty_dp">50dp</dimen>
+    <dimen name="forty_dp">40dp</dimen>
+    <dimen name="margin_default">24dp</dimen>
+    <dimen name="margin_sixteen_dp">16dp</dimen>
+    <dimen name="three">3dp</dimen>
+    <dimen name="five">5dp</dimen>
+    <dimen name="ten">10dp</dimen>
+</resources>

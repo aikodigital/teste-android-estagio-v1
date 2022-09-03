@@ -1,0 +1,19 @@
+<resources>
+
+    <string name="app_name">Onibus SP em Tempo Real</string>
+
+
+
+    <!-- Descrições para a acessibilidade no aplicaitov -->
+    <string name="description_floating_button_search">Botão flutuante para abrir o campo de busca na parte superior</string>
+    <string name="description_floating_button_current_location">Botão flutuante para mostrar a atual localização no mapa</string>
+    <string name="description_floating_button_option_app">Botão flutuante para abrir aba com as opções do aplicativo exemplo: Como usar o app, </string>
+
+
+
+    <!-- Menu strings -->
+    <string name="how_to_use">Como Usar</string>
+    <string name="search_bus">Buscar Linhas</string>
+    <string name="imageButton_history_description">a</string>
+
+</resources>
