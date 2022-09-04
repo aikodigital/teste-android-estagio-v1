@@ -2,23 +2,27 @@
 
     <string name="app_name">Onibus SP em Tempo Real</string>
 
-
-
     <!-- Descrições para a acessibilidade no aplicaitov -->
-    <string name="description_floating_button_search">Botão flutuante para abrir o campo de busca na parte superior</string>
-    <string name="description_floating_button_current_location">Botão flutuante para mostrar a atual localização no mapa</string>
+    <string name="description_floating_button_search">Botão para abrir o campo de busca na parte superior</string>
+    <string name="description_floating_button_current_location">Botão para mostrar a atual localização do usuário no mapa</string>
+    <string name="description_floating_button_refresh">Botão para atualizar o monitoramente dos ônibus manualmente</string>
     <string name="description_floating_button_option_app">Botão flutuante para abrir aba com as opções do aplicativo exemplo: Como usar o app, </string>
-
+    <string name="imageView_description_image_bus">Imagem para representar o ônibus na barra de pesquisa de linha</string>
+    <string name="imageButton_history_description">a</string>
 
 
     <!-- Menu strings -->
     <string name="how_to_use">Como Usar</string>
     <string name="search_bus">Buscar Linhas</string>
-    <string name="imageButton_history_description">a</string>
 
 
-    <!-- -->
-    <string name="history">Histórico</string>
-    <string name="line">Linha :</string>
+    <!-- Main activity -->
+    <!-- Todas as strings que fazem parte da Main Activity -->
+
+    <!-- Search bar -->
+    <string name="hint_search">Ex: 8000, Lapa ou Ramos</string>
+    <string name="zero">0</string>
+    <string name="history_title">Histórico</string>
+
 
 </resources>

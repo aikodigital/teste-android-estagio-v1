@@ -13,10 +13,14 @@
 
     <fragment
         android:id="@+id/mapFragment"
-        android:name="com.conti.onibusspemtemporeal.ui.fragments.MapFragment"
+        android:name="com.conti.onibusspemtemporeal.ui.fragments.map.MapFragment"
         android:label="fragment_map"
         tools:layout="@layout/fragment_map" />
 
+    <dialog
+        android:id="@+id/busResultModalBottomSheet"
+        android:name="com.conti.onibusspemtemporeal.ui.fragments.bottomSheet.BusResultModalBottomSheet"
+        android:label="BusResultModalBottomSheet" />
 
 
 </navigation>

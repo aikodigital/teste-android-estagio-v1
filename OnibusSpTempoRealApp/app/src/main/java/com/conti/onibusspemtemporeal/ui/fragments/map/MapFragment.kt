@@ -1,4 +1,4 @@
-package com.conti.onibusspemtemporeal.ui.fragments
+package com.conti.onibusspemtemporeal.ui.fragments.map
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,20 +6,26 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.View.INVISIBLE
 import android.view.ViewGroup
+import androidx.activity.viewModels
 import androidx.cardview.widget.CardView
 import androidx.core.view.isVisible
+import androidx.fragment.app.activityViewModels
 import com.conti.onibusspemtemporeal.R
 import com.conti.onibusspemtemporeal.databinding.FragmentMapBinding
+import com.conti.onibusspemtemporeal.ui.viewModel.OnibusSpViewModel
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import dagger.hilt.android.AndroidEntryPoint
 
 
+@AndroidEntryPoint
 class MapFragment : Fragment() {
 
     private lateinit var binding: FragmentMapBinding
+    private val viewModel: OnibusSpViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,16 +41,10 @@ class MapFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupMap()
-        setupHistoryClicked()
+
     }
 
-    private fun setupHistoryClicked() {
 
-        binding.imageButtonHistorySearch.setOnClickListener {
-
-
-        }
-    }
 
     private fun setupMap() {
         val mapFragment = childFragmentManager.findFragmentById(
