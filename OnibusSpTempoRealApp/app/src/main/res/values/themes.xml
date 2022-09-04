@@ -14,4 +14,9 @@
         <!-- Customize your theme here. -->
         <item name="fontFamily">@font/roboto_medium</item>
     </style>
+
+    <style name="FullScreenDialog" parent="Theme.AppCompat.DayNight.DialogWhenLarge">
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowAnimationStyle">@style/Animation.Design.BottomSheetDialog</item>
+    </style>
 </resources>

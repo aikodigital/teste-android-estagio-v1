@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.activitys.route.RouteBusActivity">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:cardElevation="@dimen/ten">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:id="@+id/imageButton_back_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/ten"
+                android:layout_marginTop="@dimen/five"
+                android:layout_marginBottom="@dimen/five"
+                android:background="?selectableItemBackgroundBorderless"
+                android:clickable="false"
+                android:duplicateParentState="true"
+                android:focusable="false"
+                android:src="@drawable/ic_arrow_origin"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <EditText
+                android:id="@+id/editText_search_route"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/forty_dp"
+                android:layout_marginStart="@dimen/ten"
+                android:layout_marginTop="@dimen/five"
+                android:layout_marginBottom="@dimen/five"
+                android:background="@drawable/textview_round"
+                android:focusedByDefault="true"
+                android:hint="@string/hint_route"
+                android:paddingStart="@dimen/margin_default"
+                app:layout_constraintBottom_toBottomOf="@id/imageButton_back_home"
+                app:layout_constraintEnd_toStartOf="@id/button_search"
+                app:layout_constraintStart_toEndOf="@id/imageButton_back_home"
+                app:layout_constraintTop_toTopOf="@id/imageButton_back_home" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_search"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/three"
+                android:layout_marginEnd="@dimen/five"
+                android:background="@color/black"
+                android:text="@string/search"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/editText_search_route"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView_route"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/app_bar_layout"
+        android:layout_marginTop="@dimen/five"
+        tools:listitem="@layout/card_bus_route" />
+
+    <ProgressBar
+        android:id="@+id/progressBar_loading_search"
+        style="@style/Widget.AppCompat.ProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/black"
+        android:indeterminateTintMode="src_atop"
+        android:visibility="invisible" />
+
+</LinearLayout>

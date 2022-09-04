@@ -12,17 +12,17 @@ import java.util.*
 class ManagerCookiesWithCookieJar : CookieJar {
 
     //MutableList de [Cookie] para armazenar os cookies
-    private var cookiesList: MutableList<Cookie> = mutableListOf()
+    private var cookieList: MutableList<Cookie> = mutableListOf()
 
     override fun saveFromResponse(url: HttpUrl, cookies: List<Cookie>) {
         //Adicionar todos os cookies da request em [cookieList]
-        this.cookiesList.addAll(cookies)
+        cookieList.addAll(cookies)
     }
 
     override fun loadForRequest(url: HttpUrl): List<Cookie> {
-        if (cookiesList.isNotEmpty()) {
+        if (cookieList.isNotEmpty()) {
             //retorna os cookies que foram salvo na ultima request
-            return cookiesList
+            return cookieList
         }
         //retornar uma lista vázia caso não tenha sido salvo nenhum cookie
         return Collections.emptyList();

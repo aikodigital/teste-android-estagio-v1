@@ -2,6 +2,7 @@
 <resources>
     <dimen name="fifty_dp">50dp</dimen>
     <dimen name="forty_dp">40dp</dimen>
+    <dimen name="forty_eight">48dp</dimen>
     <dimen name="margin_default">16dp</dimen>
     <dimen name="margin_sixteen_dp">16dp</dimen>
     <dimen name="three">3dp</dimen>

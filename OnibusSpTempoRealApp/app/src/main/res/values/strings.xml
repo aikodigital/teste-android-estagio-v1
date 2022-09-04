@@ -20,9 +20,16 @@
     <!-- Todas as strings que fazem parte da Main Activity -->
 
     <!-- Search bar -->
-    <string name="hint_search">Ex: 8000, Lapa ou Ramos</string>
+    <string name="hint_search">Buscar Linhas...</string>
     <string name="zero">0</string>
     <string name="history_title">Histórico</string>
+    <string name="connectivtyException">É necessário se conectar a internet para utilizar o aplicativo</string>
+
+    <string name="search">Pesquisar</string>
+    <string name="hint_route">Ex : \"8000\", \"Lapa\"</string>
+    <string name="field_empty">Não foi possível realizar a busca\n Campos vazios</string>
+    <string name="erro">"Não foi possivel realizar a ação : "</string>
+    <string name="history">Histórico</string>
 
 
 </resources>
