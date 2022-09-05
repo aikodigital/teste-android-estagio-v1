@@ -32,13 +32,6 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun providesBusDao(database: BusDatabase): BusDao {
-        return database.busDao()
-    }
-
-
-    @Singleton
-    @Provides
     fun providesBusDatabase(
         @ApplicationContext app: Context
     ): BusDatabase {
@@ -50,10 +43,9 @@ object AppModule {
     }
 
     @Singleton
-    @BusRoomDataSource
     @Provides
-    fun providesRoomBusDataSource(database: BusDatabase): BusDataSourceInterface {
-        return BusDataSourceImpl(database.busDao())
+    fun providesBusDao(database: BusDatabase): BusDao {
+        return database.busDao()
     }
 
     @Singleton
@@ -117,7 +109,3 @@ object AppModule {
     }
 
 }
-
-@Qualifier
-@Retention(AnnotationRetention.RUNTIME)
-annotation class BusRoomDataSource
