@@ -18,5 +18,10 @@
     <style name="FullScreenDialog" parent="Theme.AppCompat.DayNight.DialogWhenLarge">
         <item name="windowNoTitle">true</item>
         <item name="android:windowAnimationStyle">@style/Animation.Design.BottomSheetDialog</item>
+        <item name="android:windowEnterAnimation">@android:anim/slide_out_right</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
     </style>
+
+
+
 </resources>

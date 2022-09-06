@@ -15,4 +15,8 @@
     <dimen name="eighteen">18dp</dimen>
     <dimen name="margin_default_one">24dp</dimen>
     <dimen name="one">1dp</dimen>
+    <dimen name="four">4dp</dimen>
+    <dimen name="font_size_five">5sp</dimen>
+    <dimen name="font_size_fourteen">14sp</dimen>
+    <dimen name="font_size_ten">10sp</dimen>
 </resources>

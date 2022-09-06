@@ -48,7 +48,7 @@
                 android:layout_marginStart="@dimen/five"
                 android:contentDescription="@string/imageView_description_image_bus"
                 android:elevation="@dimen/ten"
-                android:src="@drawable/ic_baseline_directions_bus_24"
+                android:src="@drawable/ic_bus_24dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -108,6 +108,27 @@
 
     </com.google.android.material.card.MaterialCardView>
 
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floating_button_favorite"
+        android:layout_width="@dimen/forty_dp"
+        android:layout_height="@dimen/forty_dp"
+        android:layout_marginStart="@dimen/margin_default"
+        android:layout_marginTop="@dimen/five"
+        android:layout_marginBottom="@dimen/margin_sixteen_dp"
+        android:clickable="true"
+        android:contentDescription="@string/description_floating_button_option_app"
+        android:focusable="true"
+        android:src="@drawable/ic_baseline_star_gray"
+        android:tint="@color/gray_light"
+        app:backgroundTint="@color/white"
+        app:elevation="@dimen/ten"
+        app:fabCustomSize="@dimen/forty_dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_bus_lines"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.Button.Circle" />
+
+    <!--circle button caso de errado o floating
     <Button
         android:id="@+id/button_open_history"
         android:layout_width="@dimen/forty_dp"
@@ -127,35 +148,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/search_bus_lines"
         app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.Button.Circle" />
-
+    -->
 
     <com.google.android.material.chip.Chip
         android:id="@+id/chip_line_selected"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_default"
-        android:layout_marginTop="@dimen/three"
+        android:layout_marginStart="@dimen/ten"
+        android:layout_marginTop="@dimen/four"
         android:layout_marginBottom="@dimen/margin_default"
         android:elevation="@dimen/ten"
         android:textSize="@dimen/font_size_sixteen"
         android:visibility="invisible"
         app:chipBackgroundColor="@color/white"
         app:closeIconEnabled="true"
-        app:layout_constraintStart_toEndOf="@+id/button_open_history"
+        app:layout_constraintStart_toEndOf="@id/floating_button_favorite"
         app:layout_constraintTop_toBottomOf="@id/search_bus_lines" />
-
-    <!-- Segunda opção caso histórico com o PopupMenu não funcionar
-    <include
-        android:id="@+id/chip_group_history"
-        layout="@layout/layout_chip_group"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_default"
-        android:layout_marginTop="@dimen/three"
-        app:layout_constraintStart_toEndOf="@+id/button_open_history"
-        app:layout_constraintTop_toBottomOf="@id/search_bus_lines" />
-
-    -->
 
     <com.google.android.material.chip.Chip
         android:id="@+id/chip_quantity_bus"
@@ -164,13 +172,17 @@
         android:layout_marginStart="@dimen/margin_default"
         android:layout_marginBottom="@dimen/margin_default"
         android:elevation="@dimen/ten"
-        android:text="@string/zero"
+        android:textAlignment="center"
         android:textSize="@dimen/font_size_sixteen"
+        app:chipIconSize="@dimen/margin_sixteen_dp"
+        app:chipStartPadding="@dimen/five"
+        app:chipEndPadding="@dimen/five"
         app:chipBackgroundColor="@color/white"
-        app:chipIcon="@drawable/ic_baseline_directions_bus_24"
+        app:chipIcon="@drawable/ic_bus_card_16"
         app:iconStartPadding="@dimen/three"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="3" />
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -178,8 +190,12 @@
         android:layout_width="@dimen/forty_dp"
         android:layout_height="@dimen/forty_dp"
         android:layout_marginBottom="@dimen/margin_sixteen_dp"
+        android:clickable="true"
         android:contentDescription="@string/description_floating_button_option_app"
+        android:focusable="true"
         android:src="@drawable/ic_options"
+        android:tint="@color/gray_light"
+        app:backgroundTint="@color/white"
         app:elevation="@dimen/ten"
         app:fabCustomSize="@dimen/forty_dp"
         app:layout_constraintBottom_toTopOf="@id/floating_current_location"
@@ -191,13 +207,16 @@
         android:layout_width="@dimen/forty_dp"
         android:layout_height="@dimen/forty_dp"
         android:layout_marginBottom="@dimen/margin_sixteen_dp"
+        android:clickable="true"
         android:contentDescription="@string/description_floating_button_current_location"
-        android:src="@drawable/ic_current_location"
+        android:focusable="true"
+        app:backgroundTint="@color/white"
         app:elevation="@dimen/ten"
         app:fabCustomSize="@dimen/forty_dp"
         app:layout_constraintBottom_toTopOf="@id/floating_refresh_bus"
         app:layout_constraintEnd_toEndOf="@id/floating_refresh_bus"
-        app:layout_constraintStart_toStartOf="@id/floating_refresh_bus" />
+        app:layout_constraintStart_toStartOf="@id/floating_refresh_bus"
+        app:srcCompat="@drawable/ic_current_location" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floating_refresh_bus"
@@ -205,11 +224,16 @@
         android:layout_height="@dimen/forty_eight"
         android:layout_marginEnd="@dimen/margin_default"
         android:layout_marginBottom="@dimen/margin_default_one"
+        android:clickable="true"
         android:contentDescription="@string/description_floating_button_refresh"
+        android:focusable="true"
         android:src="@drawable/ic_baseline_refresh_24"
+        android:tint="@color/gray_light"
+        app:backgroundTint="@color/white"
         app:elevation="@dimen/ten"
         app:fabCustomSize="@dimen/forty_eight"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

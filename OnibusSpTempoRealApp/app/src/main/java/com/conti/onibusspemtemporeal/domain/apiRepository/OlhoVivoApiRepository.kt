@@ -1,6 +1,7 @@
 package com.conti.onibusspemtemporeal.domain.apiRepository
 
 import com.conti.onibusspemtemporeal.data.models.BusRoute
+import com.conti.onibusspemtemporeal.data.models.ResponseAllBus
 import com.conti.onibusspemtemporeal.data.retrofit.implementation.OlhoVivoApiAuthenticateHelperImp
 import com.conti.onibusspemtemporeal.data.retrofit.implementation.OlhoVivoApiHelperImp
 import retrofit2.Response
@@ -15,4 +16,6 @@ class OlhoVivoApiRepository @Inject constructor(
 
     suspend fun getRoutes(searchTerm: String): Response<List<BusRoute>> =
         olhoVivoApiHelperImp.getRoutes(searchTerm)
+
+    suspend fun getAllBus(): Response<ResponseAllBus> = olhoVivoApiHelperImp.getAllBus()
 }

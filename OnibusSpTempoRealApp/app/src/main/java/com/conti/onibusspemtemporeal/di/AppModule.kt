@@ -79,7 +79,7 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun providesOkHttpClientWithCookieJar(
+    fun providesOkHttpClientWithCookieJarAndCheckNetworkInterceptor(
         managerCookieJar: ManagerCookiesWithCookieJar,
         checkNetworkInterceptor: CheckNetworkInterceptor
     ): OkHttpClient {

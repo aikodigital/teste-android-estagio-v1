@@ -30,6 +30,14 @@
     <string name="field_empty">Não foi possível realizar a busca\n Campos vazios</string>
     <string name="erro">"Não foi possivel realizar a ação : "</string>
     <string name="history">Histórico</string>
+    <string name="bus">Ônibus :</string>
+    <string name="origin">De :</string>
+    <string name="destiny">Para :</string>
+    <string name="acessible">Ônibus acessível :</string>
+    <string name="linha">Linha :</string>
+    <string name="update">Última atualização :</string>
+    <string name="favorite">Favoritos</string>
+    <string name="barrier">|</string>
 
 
 </resources>

@@ -1,14 +1,19 @@
 package com.conti.onibusspemtemporeal.ui.viewModel
 
-import android.util.Log
+
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.conti.onibusspemtemporeal.data.models.BusRoute
+import com.conti.onibusspemtemporeal.data.models.BusWithLine
+import com.conti.onibusspemtemporeal.data.models.ResponseAllBus
 import com.conti.onibusspemtemporeal.domain.apiRepository.OlhoVivoApiRepository
 import com.conti.onibusspemtemporeal.domain.roomRepository.RoomRepository
+import com.conti.onibusspemtemporeal.util.Constants.START_BUS_ROUTE
+import com.conti.onibusspemtemporeal.util.Constants.START_MESSAGE
 import com.conti.onibusspemtemporeal.util.retrofitHandling.Resource
+import com.google.android.gms.maps.model.LatLng
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
@@ -23,7 +28,7 @@ class OnibusSpViewModel @Inject constructor(
 ) : ViewModel() {
 
 
-    private val _authenticate = MutableLiveData<Boolean>()
+    private val _authenticate = MutableLiveData<Boolean>(false)
 
     private val _busRoute = MutableLiveData<Resource<List<BusRoute>>>()
     val busRoute: LiveData<Resource<List<BusRoute>>>
@@ -33,19 +38,94 @@ class OnibusSpViewModel @Inject constructor(
     val favoritesBusRoute: LiveData<List<BusRoute>>
         get() = _favoritesBusRoute
 
+    private val _currentBuses = MutableLiveData<Resource<ResponseAllBus>>()
 
-    private val _uiState: MutableStateFlow<UiStateBusRoute> = MutableStateFlow(UiStateBusRoute())
-    val uiState: StateFlow<UiStateBusRoute>
+    private val _uiState: MutableStateFlow<UiState> = MutableStateFlow(UiState())
+    val uiState: StateFlow<UiState>
         get() = _uiState.asStateFlow()
 
 
     init {
 
         authenticate()
-
+        getBus()
         viewModelScope.launch {
             getFavoritesBusRoute()
         }
+    }
+
+
+    fun getBus() {
+        viewModelScope.launch {
+
+            _currentBuses.postValue(Resource.Loading())
+
+            _uiState.update {
+                it.copy(isLoading = true)
+            }
+
+            try {
+                if (_authenticate.value!!) {
+                    val response = apiRepository.getAllBus()
+                    _currentBuses.postValue(handleBusResponse(response))
+                } else {
+                    _uiState.update {
+                        it.copy(message = "Verfique sua conexão, o aplicativo não funciona sem internet ")
+                    }
+                }
+            } catch (t: Throwable) {
+                _uiState.update {
+                    it.copy(message = t.message.toString())
+                }
+            }
+
+        }
+    }
+
+    private fun handleBusResponse(response: Response<ResponseAllBus>): Resource<ResponseAllBus> {
+        if (response.isSuccessful) {
+            response.body()?.let { resultResponse ->
+
+                val currentListBusWithRoute: MutableList<BusWithLine> = mutableListOf()
+                var quantityBus = 0
+
+                resultResponse.lineRelation.forEach { busRouteWithBus ->
+
+                    quantityBus += busRouteWithBus.amountBusFound
+
+                    busRouteWithBus.buses.forEach { bus ->
+
+                        val latLng = LatLng(bus.latBus, bus.longBus)
+
+                        val busWithLine = BusWithLine(
+                            busRouteWithBus.fullPlacard,
+                            bus.prefixBus,
+                            busRouteWithBus.originPlacard,
+                            busRouteWithBus.destinyPlacard,
+                            bus.acessibleBus,
+                            resultResponse.hourGet,
+                            latLng
+                        )
+
+                        currentListBusWithRoute.add(busWithLine)
+                    }
+                }
+
+                _uiState.update {
+                    it.copy(
+                        currentBuses = currentListBusWithRoute,
+                        isLoading = false,
+                        quantityBusInThisRoute = quantityBus
+                    )
+                }
+
+                return Resource.Success(resultResponse)
+            }
+        }
+        _uiState.update {
+            it.copy(message = "Não foi possivel carregar, tente novamente")
+        }
+        return Resource.Error(response.message())
     }
 
 
@@ -108,17 +188,11 @@ class OnibusSpViewModel @Inject constructor(
         }
     }
 
-    fun selectTheBusRoute(lineCod: Int) {
-        _uiState.update {
-            it.copy(lineCod = lineCod)
-        }
-    }
-
     fun favoriteBusRoute(busRoute: BusRoute) {
         viewModelScope.launch {
             roomRepository.favoriteBusRoute(busRoute)
             _uiState.update {
-                it.copy(message = "Linha: ${busRoute.lineCod}, salva nos favoritos com Sucesso!!")
+                it.copy(message = "Linha: ${busRoute.firstNumbersPlacard}-${busRoute.secondPartPlacard}, salva nos favoritos com Sucesso!!")
             }
         }
     }
@@ -136,12 +210,100 @@ class OnibusSpViewModel @Inject constructor(
     }
 
 
+    fun clearLineCode() {
+        _uiState.update {
+            it.copy(lineCod = "")
+        }
+    }
+
+    fun getBusRouteSelected(fullPlacard: String) {
+
+        _uiState.update {
+            it.copy(lineCod = fullPlacard)
+        }
+
+        viewModelScope.launch {
+
+            _currentBuses.postValue(Resource.Loading())
+
+            _uiState.update {
+                it.copy(isLoading = true)
+            }
+
+            try {
+                if (_authenticate.value!!) {
+                    val response = apiRepository.getAllBus()
+                    _currentBuses.postValue(handleBusRoutersResponseAndFilter(response))
+                    _uiState.update {
+                        it.copy(isLoading = false)
+                    }
+                } else {
+                    _uiState.update {
+                        it.copy(message = "Verfique sua conexão, o aplicativo não funciona sem internet ")
+                    }
+                }
+            } catch (t: Throwable) {
+                _uiState.update {
+                    it.copy(message = t.message.toString())
+                }
+            }
+
+        }
+
+    }
+
+    private fun handleBusRoutersResponseAndFilter(response: Response<ResponseAllBus>): Resource<ResponseAllBus> {
+        if (response.isSuccessful) {
+            response.body()?.let { resultResponse ->
+
+                for (line in resultResponse.lineRelation) {
+                    if (line.fullPlacard == _uiState.value.lineCod) {
+
+                        val currentListBusWithRoute: MutableList<BusWithLine> = mutableListOf()
+
+                        line.buses.forEach { bus ->
+
+                            val latLng = LatLng(bus.latBus, bus.longBus)
+
+                            val busWithLine = BusWithLine(
+                                line.fullPlacard,
+                                bus.prefixBus,
+                                line.originPlacard,
+                                line.destinyPlacard,
+                                bus.acessibleBus,
+                                resultResponse.hourGet,
+                                latLng
+                            )
+
+                            currentListBusWithRoute.add(busWithLine)
+                        }
+
+
+                        _uiState.update {
+                            it.copy(
+                                isLoading = false,
+                                currentBuses = currentListBusWithRoute,
+                                quantityBusInThisRoute = line.amountBusFound
+                            )
+                        }
+                        return Resource.Success(resultResponse)
+                    }
+                }
+            }
+        }
+        return Resource.Error(response.message())
+    }
+
+
 }
 
-data class UiStateBusRoute(
-    var message: String = "",
-    var lineCod: Int = -1,
-    var quantityBusInThisRoute: Int = 0
+data class UiState(
+    var message: String = START_MESSAGE,
+    var isLoading: Boolean = false,
+    var clearItem: Boolean = false,
+    var lineCod: String = "",
+    var quantityBusInThisRoute: Int = START_BUS_ROUTE,
+    var currentBuses: MutableList<BusWithLine> = mutableListOf()
 )
 
 

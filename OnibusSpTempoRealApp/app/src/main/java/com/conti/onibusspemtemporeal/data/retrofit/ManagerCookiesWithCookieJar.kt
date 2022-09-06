@@ -25,7 +25,7 @@ class ManagerCookiesWithCookieJar : CookieJar {
             return cookieList
         }
         //retornar uma lista vázia caso não tenha sido salvo nenhum cookie
-        return Collections.emptyList();
+        return emptyList();
     }
 
 }

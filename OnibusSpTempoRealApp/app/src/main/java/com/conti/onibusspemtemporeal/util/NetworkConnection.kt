@@ -7,7 +7,6 @@ import android.net.NetworkCapabilities
 class NetworkConnection (
     private val connectivityManager: ConnectivityManager
 ) {
-
     @SuppressLint("MissingPermission")
     fun checkConnection(): Boolean {
 

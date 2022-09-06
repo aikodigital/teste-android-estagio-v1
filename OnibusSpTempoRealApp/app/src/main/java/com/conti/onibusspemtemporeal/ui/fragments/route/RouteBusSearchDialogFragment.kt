@@ -71,6 +71,7 @@ class RouteBusSearchDialogFragment : DialogFragment() {
         favoriteBusRoute()
         observerBusRoute()
         observerUiState()
+
     }
 
     private fun favoriteBusRoute() {
@@ -81,7 +82,7 @@ class RouteBusSearchDialogFragment : DialogFragment() {
 
     private fun selectTheBusRoute() {
         busRouteAdapter.setonCardClickListener { busRoute ->
-            viewModel.selectTheBusRoute(busRoute.lineCod)
+            viewModel.getBusRouteSelected("${busRoute.firstNumbersPlacard}-${busRoute.secondPartPlacard}")
             dismissAllowingStateLoss()
         }
     }

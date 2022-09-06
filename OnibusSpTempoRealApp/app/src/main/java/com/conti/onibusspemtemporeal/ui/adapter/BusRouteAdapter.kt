@@ -41,18 +41,19 @@ class BusRouteAdapter :
         fun bind(busRoute: BusRoute) {
             binding.apply {
                 if (busRoute.lineWay == 1) {
-                    textViewDestiny.text =
-                        busRoute.secondTerminal.lowercase().replaceFirstChar { it.uppercase() }
                     textViewOrigin.text =
                         busRoute.mainTerminal.lowercase().replaceFirstChar { it.uppercase() }
+                    textViewDestiny.text =
+                        busRoute.secondTerminal.lowercase().replaceFirstChar { it.uppercase() }
                 } else if (busRoute.lineWay == 2) {
-                    textViewDestiny.text =
-                        busRoute.mainTerminal.lowercase().replaceFirstChar { it.uppercase() }
                     textViewOrigin.text =
                         busRoute.secondTerminal.lowercase().replaceFirstChar { it.uppercase() }
+                    textViewDestiny.text =
+                        busRoute.mainTerminal.lowercase().replaceFirstChar { it.uppercase() }
 
                 }
-                textViewLineCod.text = busRoute.lineCod.toString()
+                textViewLineCod.text =
+                    "${busRoute.firstNumbersPlacard}-${busRoute.secondPartPlacard}"
 
                 cardBusRoute.setOnClickListener {
                     onCardClickListener?.let { it(busRoute) }

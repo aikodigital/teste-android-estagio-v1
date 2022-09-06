@@ -16,6 +16,7 @@
         android:name="com.conti.onibusspemtemporeal.ui.fragments.map.MapFragment"
         android:label="fragment_map"
         tools:layout="@layout/fragment_map" />
+
     <dialog
         android:id="@+id/routeBusSearchDialogFragment"
         android:name="com.conti.onibusspemtemporeal.ui.fragments.route.RouteBusSearchDialogFragment"

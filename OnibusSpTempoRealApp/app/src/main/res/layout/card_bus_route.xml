@@ -27,50 +27,74 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <!-- desisti dessa opcao as setas não s
+              <ImageView
+                  android:id="@+id/imageView_arrow_destiny"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginStart="@dimen/margin_default"
+                  android:layout_marginTop="@dimen/five"
+                  android:contentDescription="TODO"
+                  android:src="@drawable/ic_arrow_destiny"
+                  app:layout_constraintBottom_toTopOf="@+id/imageView_arrow_origin"
+                  app:layout_constraintStart_toEndOf="@id/imageView_bus"
+                  app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/imageView_arrow_destiny"
+              <ImageView
+                  android:id="@+id/imageView_arrow_origin"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:contentDescription="TODO"
+                  android:src="@drawable/ic_arrow_origin_blue"
+                  app:layout_constraintBottom_toBottomOf="@id/imageView_bus"
+                  app:layout_constraintEnd_toEndOf="@id/imageView_arrow_destiny"
+                  app:layout_constraintStart_toStartOf="@id/imageView_arrow_destiny"
+                  app:layout_constraintTop_toBottomOf="@id/imageView_arrow_destiny" />
+
+       -->
+        <TextView
+            android:id="@+id/textView_origin_static"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/ten"
-            android:layout_marginTop="@dimen/five"
+            android:layout_marginStart="@dimen/margin_default_one"
+            android:layout_marginTop="@dimen/ten"
             android:contentDescription="TODO"
-            android:src="@drawable/ic_arrow_destiny"
-            app:layout_constraintBottom_toTopOf="@+id/imageView_arrow_origin"
+            android:text="@string/origin"
+            app:layout_constraintBottom_toTopOf="@+id/textView_destiny_static"
             app:layout_constraintStart_toEndOf="@id/imageView_bus"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/imageView_arrow_origin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="TODO"
-            android:src="@drawable/ic_arrow_origin_blue"
-            app:layout_constraintBottom_toBottomOf="@id/imageView_bus"
-            app:layout_constraintEnd_toEndOf="@id/imageView_arrow_destiny"
-            app:layout_constraintStart_toStartOf="@id/imageView_arrow_destiny"
-            app:layout_constraintTop_toBottomOf="@id/imageView_arrow_destiny" />
-
-
         <TextView
-            android:id="@+id/textView_destiny"
+            android:id="@+id/textView_destiny_static"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/five"
-            android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="@id/imageView_arrow_destiny"
-            app:layout_constraintStart_toEndOf="@id/imageView_arrow_destiny"
-            app:layout_constraintTop_toTopOf="@id/imageView_arrow_destiny" />
+            android:layout_marginBottom="@dimen/five"
+            android:contentDescription="TODO"
+            android:text="@string/destiny"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/textView_origin_static"
+            app:layout_constraintStart_toStartOf="@id/textView_origin_static"
+            app:layout_constraintTop_toBottomOf="@id/textView_origin_static" />
 
         <TextView
             android:id="@+id/textView_origin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/five"
-            android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="@id/imageView_arrow_origin"
-            app:layout_constraintStart_toEndOf="@id/imageView_arrow_origin"
-            app:layout_constraintTop_toTopOf="@id/imageView_arrow_origin" />
+            android:textColor="@color/gray_light"
+            app:layout_constraintBottom_toBottomOf="@id/textView_origin_static"
+            app:layout_constraintStart_toEndOf="@id/textView_origin_static"
+            app:layout_constraintTop_toTopOf="@id/textView_origin_static" />
+
+        <TextView
+            android:id="@+id/textView_destiny"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/five"
+            android:textColor="@color/gray_light"
+            app:layout_constraintBottom_toBottomOf="@id/textView_destiny_static"
+            app:layout_constraintStart_toEndOf="@id/textView_destiny_static"
+            app:layout_constraintTop_toTopOf="@id/textView_destiny_static" />
 
         <TextView
             android:id="@+id/textView_line_cod"
@@ -82,7 +106,7 @@
             app:layout_constraintEnd_toEndOf="@id/imageView_bus"
             app:layout_constraintStart_toStartOf="@id/imageView_bus"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="1273" />
+            tools:text="1273-10" />
 
         <ImageButton
             android:id="@+id/imageButton_favorite_route"
@@ -102,11 +126,10 @@
             android:layout_height="@dimen/one"
             android:layout_marginStart="@dimen/ten"
             android:layout_marginEnd="@dimen/ten"
-            android:background="@color/black"
+            android:background="@color/gray_light"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint_inside_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/five"
+        android:background="@drawable/linear_layout_round"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView_bus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_default"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginBottom="@dimen/ten"
+            android:src="@drawable/ic_bus_card"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView_bus_static"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/five"
+            android:text="@string/bus"
+            android:textSize="@dimen/font_size_fourteen"
+            app:layout_constraintBottom_toBottomOf="@id/imageView_bus"
+            app:layout_constraintStart_toEndOf="@id/imageView_bus"
+            app:layout_constraintTop_toTopOf="@id/imageView_bus" />
+
+        <TextView
+            android:id="@+id/textView_placard_static"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/five"
+            android:layout_marginTop="@dimen/five"
+            android:text="@string/linha"
+            android:textSize="@dimen/font_size_fourteen"
+            app:layout_constraintBottom_toBottomOf="@id/textView_barrier"
+            app:layout_constraintStart_toEndOf="@id/textView_barrier"
+            app:layout_constraintTop_toTopOf="@id/textView_barrier" />
+
+        <TextView
+            android:id="@+id/textView_barrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/five"
+            android:layout_marginBottom="@dimen/five"
+            android:text="@string/barrier"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView_bus_number_from_api"
+            app:layout_constraintStart_toEndOf="@+id/textView_bus_number_from_api"
+            app:layout_constraintTop_toTopOf="@+id/textView_bus_number_from_api" />
+
+        <TextView
+            android:id="@+id/textView_placard_full_from_api"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/five"
+            android:layout_marginEnd="@dimen/margin_default"
+            android:textSize="@dimen/font_size_fourteen"
+            app:layout_constraintBottom_toBottomOf="@+id/textView_placard_static"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView_placard_static"
+            app:layout_constraintTop_toTopOf="@+id/textView_placard_static"
+            tools:text="5015-10" />
+
+
+        <TextView
+            android:id="@+id/textView_bus_number_from_api"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/three"
+            android:layout_marginTop="@dimen/five"
+            android:layout_marginBottom="@dimen/three"
+            android:textSize="@dimen/font_size_fourteen"
+            app:layout_constraintBottom_toBottomOf="@id/textView_bus_static"
+            app:layout_constraintStart_toEndOf="@id/textView_bus_static"
+            app:layout_constraintTop_toTopOf="@id/textView_bus_static"
+            tools:text="68021" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/imageView_origin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_default"
+        android:layout_marginTop="@dimen/margin_default"
+        android:src="@drawable/ic_arrow_origin_blue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/constraint_inside_layout" />
+
+    <TextView
+        android:id="@+id/textView_origin_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/ten"
+        android:layout_marginTop="@dimen/ten"
+        android:text="@string/origin"
+        android:textSize="@dimen/font_size_sixteen"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_origin"
+        app:layout_constraintStart_toEndOf="@id/imageView_origin"
+        app:layout_constraintTop_toBottomOf="@id/constraint_inside_layout" />
+
+
+    <ImageView
+        android:id="@+id/imageView_destiny"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_default"
+        android:layout_marginTop="@dimen/ten"
+        android:src="@drawable/ic_arrow_destiny"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageView_origin" />
+
+    <TextView
+        android:id="@+id/textView_destiny_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/ten"
+        android:layout_marginTop="@dimen/ten"
+        android:text="@string/destiny"
+        android:textSize="@dimen/font_size_sixteen"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_destiny"
+        app:layout_constraintStart_toEndOf="@id/imageView_destiny"
+        app:layout_constraintTop_toBottomOf="@id/textView_origin_line" />
+
+    <ImageView
+        android:id="@+id/imageView_acessible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_default"
+        android:layout_marginTop="@dimen/margin_default"
+        android:src="@drawable/ic_baseline_accessible_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_destiny_line" />
+
+    <TextView
+        android:id="@+id/textView_acessible_bus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/ten"
+        android:layout_marginTop="@dimen/margin_default"
+        android:text="@string/acessible"
+        android:textSize="@dimen/font_size_sixteen"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_acessible"
+        app:layout_constraintStart_toEndOf="@id/imageView_acessible"
+        app:layout_constraintTop_toBottomOf="@id/textView_destiny_line" />
+
+
+    <TextView
+        android:id="@+id/textView_origin_from_api"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/ten"
+        android:layout_marginEnd="@dimen/margin_default_one"
+        android:textSize="@dimen/font_size_fourteen"
+        app:layout_constraintBottom_toBottomOf="@id/textView_origin_line"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/textView_origin_line"
+        app:layout_constraintTop_toTopOf="@+id/textView_origin_line"
+        tools:text="PCA.RAMOS DE AZEVEDO" />
+
+    <TextView
+        android:id="@+id/textView_destiny_from_api"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/ten"
+        android:layout_marginEnd="@dimen/margin_default"
+        app:layout_constraintBottom_toBottomOf="@id/textView_destiny_line"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/textView_destiny_line"
+        app:layout_constraintTop_toTopOf="@id/textView_destiny_line"
+        tools:text="PCA.RAMOS DE " />
+
+    <TextView
+        android:id="@+id/textView_acessible_from_api"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/ten"
+        app:layout_constraintBottom_toBottomOf="@id/textView_acessible_bus"
+        app:layout_constraintStart_toEndOf="@id/textView_acessible_bus"
+        app:layout_constraintTop_toTopOf="@id/textView_acessible_bus"
+        tools:text="Sim" />
+
+    <TextView
+        android:id="@+id/textView_last_hour_update_static"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_default_one"
+        android:layout_marginTop="@dimen/margin_default_one"
+        android:layout_marginBottom="@dimen/ten"
+        android:text="@string/update"
+        android:textSize="@dimen/font_size_ten"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_acessible_bus" />
+
+    <TextView
+        android:id="@+id/textView_last_hour_update_from_api"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/five"
+        android:text="@string/update"
+        android:textSize="@dimen/font_size_ten"
+        app:layout_constraintBottom_toBottomOf="@id/textView_last_hour_update_static"
+        app:layout_constraintStart_toEndOf="@id/textView_last_hour_update_static"
+        app:layout_constraintTop_toTopOf="@id/textView_last_hour_update_static"
+        tools:text="10:15" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

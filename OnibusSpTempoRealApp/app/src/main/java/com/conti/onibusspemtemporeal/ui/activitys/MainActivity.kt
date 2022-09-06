@@ -12,12 +12,11 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.conti.onibusspemtemporeal.R
-import com.conti.onibusspemtemporeal.data.models.BusRoute
+
 import com.conti.onibusspemtemporeal.databinding.ActivityMainBinding
 import com.conti.onibusspemtemporeal.ui.fragments.route.RouteBusSearchDialogFragment
 import com.conti.onibusspemtemporeal.ui.viewModel.OnibusSpViewModel
-import com.conti.onibusspemtemporeal.ui.viewModel.UiStateBusRoute
-import com.conti.onibusspemtemporeal.util.retrofitHandling.Resource
+
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -35,15 +34,29 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
-
-        setupPopupmenuHistory()
+        setupPopupmenuFavorite()
         openSearchActivity()
         observerUiState()
+        setupChipSelectCategory()
+        refresh()
 
     }
 
-    private fun setupPopupmenuHistory() {
-        binding.buttonOpenHistory.setOnClickListener {
+
+    private fun setupChipSelectCategory() {
+        binding.chipLineSelected.setOnClickListener {
+            viewModel.getBusRouteSelected(binding.chipLineSelected.text.toString())
+        }
+    }
+
+    private fun refresh() {
+        binding.floatingRefreshBus.setOnClickListener {
+            viewModel.getBus()
+        }
+    }
+
+    private fun setupPopupmenuFavorite() {
+        binding.floatingButtonFavorite.setOnClickListener {
 
             val popupMenu = PopupMenu(this, it)
 
@@ -53,23 +66,20 @@ class MainActivity : AppCompatActivity() {
 
                 popupMenu.menuInflater.inflate(R.menu.menu_popup_historico, popupMenu.menu)
 
-                listBusRoute.forEach {
-                    popupMenu.menu.add("${it.lineCod}")
+                listBusRoute.forEach { busRoute ->
+                    popupMenu.menu.add("${busRoute.firstNumbersPlacard}-${busRoute.secondPartPlacard}")
                 }
-
             }
 
             popupMenu.show()
 
             popupMenu.setOnMenuItemClickListener { item ->
 
-                viewModel.selectTheBusRoute(item.title.toString().toInt())
+                viewModel.getBusRouteSelected(item.toString())
 
                 true
             }
         }
-
-
     }
 
     private fun observerUiState() {
@@ -78,37 +88,40 @@ class MainActivity : AppCompatActivity() {
 
                 viewModel.uiState.collect { uiState ->
 
+                    binding.chipQuantityBus.text = uiState.quantityBusInThisRoute.toString()
+
                     when {
                         uiState.message.isNotEmpty() -> {
                             Toast.makeText(this@MainActivity, uiState.message, Toast.LENGTH_LONG)
                                 .show()
                             viewModel.clearMessages()
                         }
-                        uiState.lineCod >= 0 -> {
+                        uiState.lineCod.isNotEmpty() -> {
                             setChip(uiState.lineCod)
                         }
 
                     }
                 }
-
             }
         }
     }
 
-    private fun setChip(currentLineCod: Int) {
+    private fun setChip(currentLineCod: String) {
 
         with(binding.chipLineSelected) {
 
             isVisible = true
-            text = currentLineCod.toString()
+            text = currentLineCod
 
             setOnCloseIconClickListener {
                 it.isInvisible = true
+                viewModel.clearLineCode()
+                viewModel.getBus()
             }
-
 
         }
     }
+
 
     private fun openSearchActivity() {
         binding.searchBusLines.setOnClickListener {

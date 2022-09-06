@@ -5,13 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.activitys.route.RouteBusActivity">
+    tools:context=".ui.fragments.route.RouteBusSearchDialogFragment">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/app_bar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
+        style="@style/Widget.Material3.CardView.Elevated"
         app:cardElevation="@dimen/ten">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -26,21 +27,23 @@
                 android:layout_marginStart="@dimen/ten"
                 android:layout_marginTop="@dimen/five"
                 android:layout_marginBottom="@dimen/five"
-                android:background="?selectableItemBackgroundBorderless"
+                android:background="?android:selectableItemBackgroundBorderless"
                 android:clickable="false"
                 android:duplicateParentState="true"
+                android:elevation="@dimen/ten"
                 android:focusable="false"
-                android:src="@drawable/ic_arrow_origin"
+                android:src="@drawable/ic_arrow_back_home"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
 
             <EditText
+                android:elevation="@dimen/ten"
                 android:id="@+id/editText_search_route"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/forty_dp"
-                android:layout_marginStart="@dimen/ten"
+                android:layout_marginStart="@dimen/five"
                 android:layout_marginTop="@dimen/five"
                 android:layout_marginBottom="@dimen/five"
                 android:background="@drawable/textview_round"
