@@ -48,7 +48,6 @@ class OnibusSpViewModel @Inject constructor(
     init {
 
         authenticate()
-        getBus()
         viewModelScope.launch {
             getFavoritesBusRoute()
         }
