@@ -74,12 +74,14 @@ class RouteBusSearchDialogFragment : DialogFragment() {
 
     }
 
+    /**Função para favoritar uma linha de ônibus*/
     private fun favoriteBusRoute() {
         busRouteAdapter.setonImageFavoriteClickListener { busRoute ->
             viewModel.favoriteBusRoute(busRoute)
         }
     }
 
+    /** Função para selecionar uma linha de ônibus*/
     private fun selectTheBusRoute() {
         busRouteAdapter.setonCardClickListener { busRoute ->
             viewModel.getBusRouteSelected("${busRoute.firstNumbersPlacard}-${busRoute.secondPartPlacard}")
@@ -87,12 +89,14 @@ class RouteBusSearchDialogFragment : DialogFragment() {
         }
     }
 
+    /**Função para voltar para fechar o dialog */
     private fun backHome() {
         binding.imageButtonBackHome.setOnClickListener {
             dismiss()
         }
     }
 
+    /**Função para observar as linhas de ônibus [busRoute] e reagir de acordo com o ultimo resultado emitado pelo liveData*/
     private fun observerBusRoute() {
         viewModel.busRoute.observe(viewLifecycleOwner) { resourceBusRoute ->
             when (resourceBusRoute) {
@@ -117,6 +121,8 @@ class RouteBusSearchDialogFragment : DialogFragment() {
         }
     }
 
+
+    /** Criação da recyclerView*/
     private fun setupRecyclerView() {
         recyclerViewBusRoute = binding.recyclerViewRoute
         busRouteAdapter = BusRouteAdapter()
@@ -126,6 +132,8 @@ class RouteBusSearchDialogFragment : DialogFragment() {
         }
     }
 
+    /** Função para verificar quando o texto do editText vai mudar e chamar a função de busca
+     * no viewModel, com o texto digitado*/
     private fun searchBusRoute() {
         binding.editTextSearchRoute.addTextChangedListener {
             viewModel.searchBusRoute(it.toString())
@@ -140,6 +148,7 @@ class RouteBusSearchDialogFragment : DialogFragment() {
         }
     }
 
+    /** Função para observar o estado da ui */
     private fun observerUiState() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {

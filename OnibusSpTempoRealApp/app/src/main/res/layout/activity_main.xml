@@ -229,7 +229,7 @@
         android:focusable="true"
         android:src="@drawable/ic_baseline_refresh_24"
         android:tint="@color/gray_light"
-        app:backgroundTint="@color/white"
+        app:backgroundTint="@color/teal_200"
         app:elevation="@dimen/ten"
         app:fabCustomSize="@dimen/forty_eight"
         app:layout_constraintBottom_toBottomOf="parent"

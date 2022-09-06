@@ -54,6 +54,9 @@ class OnibusSpViewModel @Inject constructor(
     }
 
 
+    /** Função para realizar requisição da posição de todos os ônibus, coloco [_uiState] como loading true, e realizo dentro do try e catch,
+     * a requisição utilizando o repositorio da api, utilizo da classe [handleBusRoutersResponse] para manipular a resposta e atualizar ela para
+     * a [_uiState], caso tenha algum erro no processo, atualizo a [_uiState] com a mensagem do erro */
     fun getBus() {
         viewModelScope.launch {
 
@@ -81,6 +84,10 @@ class OnibusSpViewModel @Inject constructor(
         }
     }
 
+    /** Função para manipular uma resposta de linha em relação aos ônibus, caso a resposta for de sucesso
+     * crio uma variável para armazenar a linha e os ônibus em circulação delas, após armazernas todos os õnibus
+     * atualizo o [_uiState] com essa lista de onibus, e para finalizar a função retorno sucesso, caso não tenha entrado no if
+     * finalizo a função retornando erro */
     private fun handleBusResponse(response: Response<ResponseAllBus>): Resource<ResponseAllBus> {
         if (response.isSuccessful) {
             response.body()?.let { resultResponse ->
@@ -153,6 +160,9 @@ class OnibusSpViewModel @Inject constructor(
         }
     }
 
+
+    /** Função para manipular a resposta de linhas de ônibus caso a resposta seja de sucesso
+     *  retorna Resource.Succes, caso não tenha entrado no if, retornar erro */
     private fun handleBusRoutersResponse(response: Response<List<BusRoute>>): Resource<List<BusRoute>> {
         if (response.isSuccessful) {
             response.body()?.let { resultResponse ->
@@ -162,14 +172,21 @@ class OnibusSpViewModel @Inject constructor(
         return Resource.Error(response.message())
     }
 
+
     /** Função para realizar a autenticação da API OLHO VIVO
      * no try e catch realizo a requisição e caso a api seja autenticada com sucesso
      * armazeno a resposta em [_authenticate] e caso ocorra algum problema
      * atualizo a [_uiState] com a mensagem de erro dependendo do tipo de exception*/
     private fun authenticate() {
+        _uiState.update {
+            it.copy(isLoading = true)
+        }
         viewModelScope.launch {
             try {
                 _authenticate.value = apiRepository.postAuthenticate()
+                _uiState.update {
+                    it.copy(isLoading = false)
+                }
             } catch (t: Throwable) {
                 when (t) {
                     is IOException -> {
@@ -187,6 +204,9 @@ class OnibusSpViewModel @Inject constructor(
         }
     }
 
+
+    /** Função para salvar a linha, envio a [busRoute] para o room utilizando o repository do room, e atualizo o [_uiState]
+     * com a mensagem que a linha foi salva */
     fun favoriteBusRoute(busRoute: BusRoute) {
         viewModelScope.launch {
             roomRepository.favoriteBusRoute(busRoute)
@@ -196,12 +216,17 @@ class OnibusSpViewModel @Inject constructor(
         }
     }
 
+
+    /** Função para realizer a coleta de um fluxo de Flow do [roomRepository] com todas as linhas que estão salvas no favorito
+     * no Room e passo esse valor para mutableLiveData [_favoritesBusRoute] */
     private suspend fun getFavoritesBusRoute() {
         roomRepository.getFavoritesBusRoutes().collect { busRouteList ->
             _favoritesBusRoute.value = busRouteList
         }
     }
 
+
+    /** Função para limpar as mensagens do [_uiState]*/
     fun clearMessages() {
         _uiState.update {
             it.copy(message = "")
@@ -209,12 +234,19 @@ class OnibusSpViewModel @Inject constructor(
     }
 
 
+    /** Função para limpar o letreiro completo atual*/
     fun clearLineCode() {
         _uiState.update {
             it.copy(lineCod = "")
         }
     }
 
+
+    /** Função para realizar a requisição de todos os ônibus que estão circulando e a filtragem dessa requisição,
+     * abro um escopo de viewmodel e atualizo o [_uiState] para loading true, no try e catch antes de realizar a requisição
+     * verifico se já estou logado, caso sim, a requisição é feita e enviada para classe [handleBusRoutersResponseAndFilter]
+     * para fazer a manipulação da response filtrar e atualizar o [_uiState] com o novo valor de lista de onibus com relação a linha
+     * caso seja pego algum throwable durante a execução atualizo o [_uiState] com mensagem de erro*/
     fun getBusRouteSelected(fullPlacard: String) {
 
         _uiState.update {
@@ -251,6 +283,11 @@ class OnibusSpViewModel @Inject constructor(
 
     }
 
+
+    /** Função para manipular o resultado de um Response, caso [response] seja de sucesso, utilizo do for in na relação de linha e ônibus
+     *  e verifico qual linha tem o letreiro completo igual ao letreiro atual da [_uiState], quando forem iguais,
+     *  crio uma lista para armazernar todos os ônibus dessa linha, após armazenar todos eles, atualizo o [_uiState], com o valor da [curentListBusWithRoute]
+     *  finalizo o if retornando Resourcer.Sucess, caso não tenha entrado no if retorno Resource.Error*/
     private fun handleBusRoutersResponseAndFilter(response: Response<ResponseAllBus>): Resource<ResponseAllBus> {
         if (response.isSuccessful) {
             response.body()?.let { resultResponse ->
@@ -277,7 +314,6 @@ class OnibusSpViewModel @Inject constructor(
                             currentListBusWithRoute.add(busWithLine)
                         }
 
-
                         _uiState.update {
                             it.copy(
                                 isLoading = false,
@@ -296,6 +332,7 @@ class OnibusSpViewModel @Inject constructor(
 
 }
 
+/** data Class com o estado para ser passado do viewModel para a Ui, para ser utilizada em um StateFlow */
 data class UiState(
     var message: String = START_MESSAGE,
     var isLoading: Boolean = false,

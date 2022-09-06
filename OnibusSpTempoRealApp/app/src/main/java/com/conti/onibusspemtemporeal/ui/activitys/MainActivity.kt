@@ -43,18 +43,24 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+    /** Função para realizar uma busca da linha selecionada caso o chip da linha sejá clicado*/
     private fun setupChipSelectCategory() {
         binding.chipLineSelected.setOnClickListener {
             viewModel.getBusRouteSelected(binding.chipLineSelected.text.toString())
         }
     }
 
+    /** Função para atualizar os ônibus chamando a função getBus do viewModel*/
     private fun refresh() {
         binding.floatingRefreshBus.setOnClickListener {
             viewModel.getBus()
         }
     }
 
+    /** Função para consumir um LiveData das linhas que foram favoritadas e salvas no Room,
+     * ao clickar no floating button, criei um popupMenu e adiciono no popupMenu todos
+     * os itens da lista de linhas que foram consumidas do live data, com o título sendo o letreiro completo da linha
+     * e caso selecione alguma item do menu, envio pra função do viewModel, a linha selecionada*/
     private fun setupPopupmenuFavorite() {
         binding.floatingButtonFavorite.setOnClickListener {
 
@@ -82,6 +88,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /** Função para observar o [uiState]
+     *  para seguir as boas praticas e recomendações do google na forma de coletar um stateFlow,
+     *  utilizei do lifecycleScope e o repeatOnLifecycle, caso o stateFlow [uiState] mude seu valor
+     *  o chip da quantidade de onibus vai mudar, se tiver messagem de error mostrar ele em uma Toast
+     *  e se tiver um codigo de linha, chamar setChip enviando o codigo da linha */
     private fun observerUiState() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -106,6 +117,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /** Função para configurar o Chip da Linha atual,
+     * torna o chip visivel e com a [currentLineCod] coloco no .text do chip
+     * caso o botao do close for clickado, chip fica invisvel e chamo duas funções do viewmodel
+     * retirar a linha atual, e pedir pra buscar todos so ônibus*/
     private fun setChip(currentLineCod: String) {
 
         with(binding.chipLineSelected) {
@@ -123,11 +138,12 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+    /** Função para abrir o dialog fragment de busca de linhas de onibus*/
     private fun openSearchActivity() {
         binding.searchBusLines.setOnClickListener {
             val ft: FragmentTransaction = supportFragmentManager.beginTransaction()
-            val frag = RouteBusSearchDialogFragment()
-            frag.show(ft, "txn_tag")
+            val routeBusSearchDialogFragment = RouteBusSearchDialogFragment()
+            routeBusSearchDialogFragment.show(ft, "Dialog_route_bus")
         }
     }
 
