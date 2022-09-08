@@ -51,5 +51,5 @@ Para pesquisar uma linha, é disponibilizado duas opções, clicar na barra de p
 	Ao clicar nele vai da zoom no primeiro ônibus da lista de ônibus que está no estado da UI  
 
 
-* **Como salvar uma linha no favorito?**   
+**Como salvar uma linha no favorito?**   
 * Botão com o icone de estrela -> Na tela de pesquisa de linha, quando realizar a busca vai ter um icone de estrela ao final de cada linha, ao clicar nesse botão a linha é salva como favorita  
