@@ -78,8 +78,5 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
 
-    // DataStore
-    def data_store_version = "1.0.0"
-    implementation "androidx.datastore:datastore-preferences:$data_store_version"
 
 }
