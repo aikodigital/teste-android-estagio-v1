@@ -6,10 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="fa179974-bde5-49e7-8249-5b61d315afa6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/projetolucas" beforeDir="false" afterPath="$PROJECT_DIR$/projetolucas" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projetolucas/app/src/main/java/com/example/olhovivoaikoproj/OlhoBuserApplication.kt" beforeDir="false" afterPath="$PROJECT_DIR$/projetolucas/app/src/main/java/com/example/olhovivoaikoproj/OlhoBuserApplication.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projetolucas/app/src/main/java/com/example/olhovivoaikoproj/presentation/activity/Adapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/projetolucas/app/src/main/java/com/example/olhovivoaikoproj/presentation/activity/Adapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projetolucas/app/src/main/java/com/example/olhovivoaikoproj/presentation/activity/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/projetolucas/app/src/main/java/com/example/olhovivoaikoproj/presentation/activity/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projetolucas/app/src/main/res/layout/item_search.xml" beforeDir="false" afterPath="$PROJECT_DIR$/projetolucas/app/src/main/res/layout/item_search.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,10 +15,11 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="estagio-lucas-cardoso" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="ProjectId" id="2EUnXFjWdTky8Cr9dD5Xq6xSdXB" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -36,7 +33,7 @@
     <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="cidr.known.project.marker" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/projetolucas" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -49,5 +46,16 @@
       <updated>1662659069918</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
