@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/mapFragment">
+
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.conti.onibusspemtemporeal.ui.activitys.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
+
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="com.conti.onibusspemtemporeal.ui.fragments.map.MapFragment"
+        android:label="fragment_map"
+        tools:layout="@layout/fragment_map" />
+
+    <dialog
+        android:id="@+id/routeBusSearchDialogFragment"
+        android:name="com.conti.onibusspemtemporeal.ui.fragments.route.RouteBusSearchDialogFragment"
+        android:label="RouteBusSearchDialogFragment" />
+
+
+</navigation>
