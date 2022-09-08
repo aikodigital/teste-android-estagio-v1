@@ -1,14 +1,5 @@
-# Teste Android
-
-![Aiko](imagens/aiko.png)
-
-Neste teste serão avaliados seus conhecimentos e a metodologia aplicada no desenvolvimento de aplicações mobile Android.
-
-## O Desafio
-
-Seu objetivo é criar um aplicativo que exiba dados sobre o transporte público da cidade de São Paulo, consultando a [API **Olho Vivo**](api.md) que provê informações em tempo real do monitoramento da frota de ônibus da cidade de São Paulo.
-
-## Requisitos
+# Teste Android     
+## Requisitos   
 
 Esses requisitos são obrigatórios e devem ser desenvolvidos para a entrega do teste
 
