@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -17,14 +18,12 @@ import com.conti.onibusspemtemporeal.data.models.BusWithLine
 import com.conti.onibusspemtemporeal.databinding.FragmentMapBinding
 import com.conti.onibusspemtemporeal.ui.adapter.MarkerInfoWindowAdapter
 import com.conti.onibusspemtemporeal.ui.viewModel.OnibusSpViewModel
+import com.conti.onibusspemtemporeal.util.BitmapHelper
 import com.conti.onibusspemtemporeal.util.BusRenderer
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.CameraPosition
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.Marker
-import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.*
 import com.google.maps.android.clustering.ClusterManager
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -186,10 +185,22 @@ class MapFragment : Fragment() {
 
            //}
 
+            //Icone da localização atual do usuário
+            val iconCurrentLocation: BitmapDescriptor by lazy {
+                val color = ContextCompat.getColor(
+                    requireContext(),
+                    R.color.black
+                )
+                BitmapHelper.vectorToBitmap(
+                    requireContext(),
+                    R.drawable.ic_user_location,
+                    color
+                )
+            }
 
             //Marker para poder referenciar o mesmo marker e trocar a sua posição
             val currentUserMarker = googleMap.addMarker(
-                MarkerOptions().position(LatLng(0.0, 0.0))
+                MarkerOptions().position(LatLng(0.0, 0.0)).icon(iconCurrentLocation)
             )
 
             //o marker vai esta invisivel até o usuário querer ver a sua posição no mapa
