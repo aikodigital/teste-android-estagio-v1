@@ -44,3 +44,20 @@ Para pesquisar uma linha, é disponibilizado duas opções, clicar na barra de p
 
 **Como salvar uma linha no favorito?**   
 * Botão com o icone de estrela -> Na tela de pesquisa de linha, quando realizar a busca vai ter um icone de estrela ao final de cada linha, ao clicar nesse botão a linha é salva como favorita  
+
+## Estruturação do projeto  
+
+Para desenvolver o projeto optei por utilizar a arquitetura MVVM recomendada pelo google, a separação de pasta:   
+
+data -> A fonte de dados do aplicativo, remoto e local com seus models.
+di -> Para injeção de dependências necessárias no aplicativo com o Dagger Hilt
+domain -> Repositórios remoto e local, para receber os pedidos do view Model e buscar os dados localmente ou na API, pelo projeto ser muito pequeno optei por não fazer interface paras os repositórios.
+ui -> Tem todas as Atividades (activity) e Fragmentos (fragments), cada um em suas pastas, uma pasta para os Adaptadores(adapters) utilizados na ui, e a pasta do viewModel, como o projeto era bem simples e tinha só 2 fragments, optei por utilizar apenas um viewModel instanciado na viewModelStore da main activity e compartilhado com os outros dois fragmentos, para torna mais fácil a dinâmica do aplicativo.
+util -> Todas as classes de utilidades dentro do projeto.
+
+Retrofit : Utilizei o retrofit para consumir a API 
+Room: Para salvar localmente as linhas favoritas 
+Dagger Hilt: Para implementação de dependências
+Google Map: Utilizei o sdk do maps para ter acesso ao maps do google
+LifeCycle: Para utilizar os componentes do lifeCycle do android como por exemplo, viewModels, StateFlow, liveData, coroutines, etc.
+  
