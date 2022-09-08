@@ -24,9 +24,9 @@ Esses requisitos são obrigatórios e devem ser desenvolvidos para a entrega do 
 
 ## Documentação 
 
-	Para desenvolver o aplicativo proposto no desafio, primeiro analisei a API, para entender melhor os dados que seriam necessários consumir, tive um pouco de dificuldades para lidar com a autenticação da API.  
+Para desenvolver o aplicativo proposto no desafio, primeiro analisei a API, para entender melhor os dados que seriam necessários consumir, tive um pouco de dificuldades para lidar com a autenticação da API.    
 Julguei necessário utilizar apenas 4 requisições da API para as funcionalidades do aplicativo, o (POST) da autenticação para conseguir o cookie de certificação, (GET) de todos os ônibus em circulação, (GET) de uma linha específica que o usuário pesquisar   
-e (GET) de paradas de uma determinada linha. E para desenvolver o aplicativo utilizei Android nativo com Kotlin.  ]
+e (GET) de paradas de uma determinada linha. E para desenvolver o aplicativo utilizei Android nativo com Kotlin.  
 
 Fiz a descrição de algumas funcionalidades do aplicativo:
 
