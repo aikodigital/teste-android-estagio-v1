@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">DeOlhoNoBus</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home">Início</string>
+    <string name="search">Buscar</string>
+    <string name="map">Mapa</string>
+    <string name="searchFor">Buscar por:</string>
+    <string name="lines">Linhas</string>
+    <string name="stop">Paradas</string>
+    <string name="valueForSearch">Digite o valor da busca aqui</string>
+    <string name="busLineCode">Código da linha</string>
+    <string name="hallCode">Código do corredor</string>
+    <string name="denominationOrNumber">"Denominação ou número da linha"</string>
+    <string name="nameOrAddress">Nome ou endereço</string>
+    <string name="busNumber">Número da linha:  %1$s</string>
+    <string name="origin">Origem:  %1$s</string>
+    <string name="destination">Destino:  %1$s</string>
+    <string name="details">Detalhes</string>
+    <string name="operationType">Operação circular: %1$s</string>
+    <string name="operationMode">Modo de operação: %1$s</string>
+    <string name="localize">Acompanhar</string>
+    <string name="busStopName">Nome: %1$s</string>
+    <string name="address">"Endereço:\n %1$s"</string>
+    <string name="idCode">Código identificador: %1$s</string>
+    <string name="busLine">Linhas que passam aqui</string>
+    <string name="lineStops">Paradas da linha</string>
+    <string name="idBus">"Código da linha: %1$s"</string>
+    <string name="infoAndDetails">Previsões e informações</string>
+    <string name="arrivalForecast">Previsão de chegada: %1$s</string>
+    <string name="accessibleForDisability">Suporte para PCDs: %1$s</string>
+    <string name="hourLastLocation">Hora da última localização: %1$s</string>
+    <string name="seeOnMap">Ver no mapa</string>
+    <string name="noHaveData">Não há dados para serem mostrados.</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="noResultsFound">Nenhum resultado foi encontrado para a busca.</string>
+    <string name="doASearch">Faça uma pesquisa.</string>
+    <string name="nothingFound">Nada foi encontrado, corrija os parâmetros de busca e tente novamente.</string>
+    <string name="favoritesBusStop">Paradas favoritas</string>
+    <string name="favoritesBusLines">Linhas favoritas</string>
+    <string name="favorites">Favoritos</string>
+    <string name="noHaveBusLinesFavorites">Favorite linhas para que elas apareçam aqui.</string>
+    <string name="noHaveBusStopsFavorites">Favorite paradas para que elas apareçam aqui.</string>
+
+
+</resources>
