@@ -38,13 +38,13 @@ Para pesquisar uma linha, é disponibilizado duas opções, clicar na barra de p
   
 
 
-* **Como dar refresh para ver a uma atualização dos ônibus?**    
+**Como dar refresh para ver a uma atualização dos ônibus?**    
 * Botão flutuante de refresh -> Na parte inferior da tela no canto direito, o botão verde com maior destaque, ao clicar atualiza a posição de todos os ônibus de são paulo     
 * Chip da linha atual selecionada -> Quando tem algum linha específica selecionada esse chip fica visivel, e caso clique nele da um zoom no primeiro ônibus da lista de ônibus do estado da UI, e faz um refresh dos ônibus dessa linha para saber qual a posição atual deles   ]  
 	Caso clique no icone de fechar do chip, é feito a remoção da seleção da linha atual, e volta a aparecer todos os ônibus de são paulo, inves da linha que estava selecionada  
 
 
-* **Como dar Zoom no mapa?**  
+**Como dar Zoom no mapa?**  
 * Botão flutuante localizaçao atual -> Caso clicar no botão no canto inferior direito, acima do botão verde de refresh, ele sinaliza a posição atual do usuário no mapa caso ele tenha permitido o app ter acesso a sua localização atual,  
 	caso usuario tenha recusado essa função não esta disponível.    
 * Chip da quantidade de ônibus em circulação -> Na parte inferior da tela no canto esquerdo, o botão com um icone de ônibus e um valor a sua esquerda que representa a quantidade de ônibus na cidade.   
