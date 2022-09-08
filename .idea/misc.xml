@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/AIKO/teste-android-estagio-v1/app/src/main/res/layout/fragment_favorite.xml" value="0.21614583333333334" />
+        <entry key="..\:/AIKO/teste-android-estagio-v1/app/src/main/res/layout/rv_bus_favorite_item.xml" value="0.21614583333333334" />
+        <entry key="..\:/AIKO/teste-android-estagio-v1/app/src/main/res/layout/rv_bus_stop_favorite_item.xml" value="0.21614583333333334" />
+        <entry key="..\:/DeOlhoNoBus/app/src/main/res/drawable-v24/top_layout_background.xml" value="0.115" />
+        <entry key="..\:/DeOlhoNoBus/app/src/main/res/drawable/button_background.xml" value="0.115" />
+        <entry key="..\:/DeOlhoNoBus/app/src/main/res/drawable/edit_text_background.xml" value="0.115" />
+        <entry key="..\:/DeOlhoNoBus/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="..\:/DeOlhoNoBus/app/src/main/res/drawable/ic_map_location.xml" value="0.132" />
+        <entry key="..\:/DeOlhoNoBus/app/src/main/res/drawable/seach_bus_stop_background_selector.xml" value="0.116" />
+        <entry key="..\:/DeOlhoNoBus/app/src/main/res/drawable/seach_type_background_selector.xml" value="0.1285" />
+        <entry key="..\:/DeOlhoNoBus/app/src/main/res/drawable/search_bus_stop_checked_background.xml" value="0.1285" />
+        <entry key="..\:/DeOlhoNoBus/app/src/main/res/drawable/search_bus_stop_unchecked_background.xml" value="0.1285" />
+        <entry key="..\:/DeOlhoNoBus/app/src/main/res/drawable/search_type_checked_background.xml" value="0.1" />
+        <entry key="..\:/DeOlhoNoBus/app/src/main/res/drawable/search_type_unchecked_background.xml" value="0.115" />
+        <entry key="..\:/DeOlhoNoBus/app/src/main/res/drawable/top_layout_background.xml" value="0.1415" />
+        <entry key="..\:/DeOlhoNoBus/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/DeOlhoNoBus/app/src/main/res/layout/activity_main2.xml" value="0.21614583333333334" />
+        <entry key="..\:/DeOlhoNoBus/app/src/main/res/layout/activity_maps.xml" value="0.21614583333333334" />
+        <entry key="..\:/DeOlhoNoBus/app/src/main/res/layout/buttom_dialog_item.xml" value="0.25" />
+        <entry key="..\:/DeOlhoNoBus/app/src/main/res/layout/custom_marker_info.xml" value="0.21614583333333334" />
+        <entry key="..\:/DeOlhoNoBus/app/src/main/res/layout/empty_list_favorite_bus_lines.xml" value="0.21614583333333334" />
+        <entry key="..\:/DeOlhoNoBus/app/src/main/res/layout/empty_list_favorite_bus_stops.xml" value="0.21614583333333334" />
+        <entry key="..\:/DeOlhoNoBus/app/src/main/res/layout/empty_list_item.xml" value="0.21510416666666668" />
+        <entry key="..\:/DeOlhoNoBus/app/src/main/res/layout/fragment_bus_details.xml" value="0.22" />
+        <entry key="..\:/DeOlhoNoBus/app/src/main/res/layout/fragment_bus_stop_details.xml" value="0.25" />
+        <entry key="..\:/DeOlhoNoBus/app/src/main/res/layout/fragment_gmaps.xml" value="0.21614583333333334" />
+        <entry key="..\:/DeOlhoNoBus/app/src/main/res/layout/fragment_home.xml" value="0.21614583333333334" />
+        <entry key="..\:/DeOlhoNoBus/app/src/main/res/layout/fragment_maps.xml" value="0.21614583333333334" />
+        <entry key="..\:/DeOlhoNoBus/app/src/main/res/layout/fragment_search.xml" value="0.22" />
+        <entry key="..\:/DeOlhoNoBus/app/src/main/res/layout/rv_bus_favorite_item.xml" value="0.33" />
+        <entry key="..\:/DeOlhoNoBus/app/src/main/res/layout/rv_bus_item.xml" value="0.25" />
+        <entry key="..\:/DeOlhoNoBus/app/src/main/res/layout/rv_bus_stop_favorite_item.xml" value="0.21614583333333334" />
+        <entry key="..\:/DeOlhoNoBus/app/src/main/res/layout/rv_bus_stop_forescast_item.xml" value="0.21614583333333334" />
+        <entry key="..\:/DeOlhoNoBus/app/src/main/res/layout/rv_bus_stop_item.xml" value="0.25" />
+        <entry key="..\:/DeOlhoNoBus/app/src/main/res/layout/rv_bus_top_item.xml" value="0.21614583333333334" />
+        <entry key="..\:/DeOlhoNoBus/app/src/main/res/layout/rv_forecast_bus_item.xml" value="0.21614583333333334" />
+        <entry key="..\:/DeOlhoNoBus/app/src/main/res/menu/main_menu.xml" value="0.161328125" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

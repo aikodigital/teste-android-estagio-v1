@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:orientation="vertical"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="8dp"
+    android:padding="10dp"
+    android:background="@color/gray">
+
+
+    <ImageView
+        android:src="@drawable/img_bus_128"
+        android:layout_gravity="center"
+        android:layout_width="80dp"
+        android:layout_height="80dp"/>
+
+        <TextView
+            android:id="@+id/tv_numberLine"
+            android:textSize="15sp"
+            android:text="@string/busNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/tv_origin"
+            android:textSize="15sp"
+            android:text="@string/origin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/tv_destination"
+            android:textSize="15sp"
+            android:text="@string/destination"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

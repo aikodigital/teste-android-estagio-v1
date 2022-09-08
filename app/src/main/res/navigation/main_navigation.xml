@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/searchFragment">
+
+
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.andreesperanca.deolhonobus.ui.fragments.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_searchFragment_to_busDetailsFragment"
+            app:destination="@id/busDetailsFragment" />
+        <action
+            android:id="@+id/action_searchFragment_to_busStopDetailsFragment"
+            app:destination="@id/busStopDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.andreesperanca.deolhonobus.ui.fragments.FavoriteFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_favorite" >
+        <action
+            android:id="@+id/action_homeFragment_to_busDetailsFragment"
+            app:destination="@id/busDetailsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_busStopDetailsFragment"
+            app:destination="@id/busStopDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/busDetailsFragment"
+        android:name="com.andreesperanca.deolhonobus.ui.fragments.BusDetailsFragment"
+        android:label="fragment_bus_details"
+        tools:layout="@layout/fragment_bus_details" >
+        <argument
+            android:name="bus"
+            app:argType="com.andreesperanca.deolhonobus.models.BusLine" />
+        <action
+            android:id="@+id/action_busDetailsFragment_to_busStopDetailsFragment"
+            app:destination="@id/busStopDetailsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/busStopDetailsFragment"
+        android:name="com.andreesperanca.deolhonobus.ui.fragments.BusStopDetailsFragment"
+        android:label="fragment_bus_stop_details"
+        tools:layout="@layout/fragment_bus_stop_details" >
+        <argument
+            android:name="busStop"
+            app:argType="com.andreesperanca.deolhonobus.models.BusStop" />
+        <action
+            android:id="@+id/action_busStopDetailsFragment_to_busDetailsFragment"
+            app:destination="@id/busDetailsFragment" />
+    </fragment>
+
+</navigation>
