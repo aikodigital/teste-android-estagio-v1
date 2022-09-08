@@ -21,6 +21,7 @@ import retrofit2.Response
 import java.io.IOException
 import javax.inject.Inject
 
+
 @HiltViewModel
 class OnibusSpViewModel @Inject constructor(
     private val apiRepository: OlhoVivoApiRepository,
@@ -47,10 +48,13 @@ class OnibusSpViewModel @Inject constructor(
 
     init {
 
+        //Por falta de tempo ainda não coloquei um refresh na autenticação por uma quantidade de tempo
         authenticate()
+
         viewModelScope.launch {
             getFavoritesBusRoute()
         }
+
     }
 
 
@@ -110,7 +114,8 @@ class OnibusSpViewModel @Inject constructor(
                             busRouteWithBus.destinyPlacard,
                             bus.acessibleBus,
                             resultResponse.hourGet,
-                            latLng
+                            latLng,
+                            busRouteWithBus.lineCod
                         )
 
                         currentListBusWithRoute.add(busWithLine)
@@ -292,8 +297,13 @@ class OnibusSpViewModel @Inject constructor(
         if (response.isSuccessful) {
             response.body()?.let { resultResponse ->
 
+                //Para saber se a linha que está sendo buscada, tem algum ônibus em circulação
+                var lineSearchExist: Boolean = false
+
                 for (line in resultResponse.lineRelation) {
                     if (line.fullPlacard == _uiState.value.lineCod) {
+
+                        lineSearchExist = true
 
                         val currentListBusWithRoute: MutableList<BusWithLine> = mutableListOf()
 
@@ -308,7 +318,8 @@ class OnibusSpViewModel @Inject constructor(
                                 line.destinyPlacard,
                                 bus.acessibleBus,
                                 resultResponse.hourGet,
-                                latLng
+                                latLng,
+                                line.lineCod
                             )
 
                             currentListBusWithRoute.add(busWithLine)
@@ -321,12 +332,49 @@ class OnibusSpViewModel @Inject constructor(
                                 quantityBusInThisRoute = line.amountBusFound
                             )
                         }
+
                         return Resource.Success(resultResponse)
+                    }
+                }
+
+                if (!lineSearchExist) {
+                    _uiState.update {
+                        it.copy(message = "A linha procurada não tem ônibus em circulação no momento")
                     }
                 }
             }
         }
         return Resource.Error(response.message())
+    }
+
+    //dar o zoom no onibus caso ja tenha um zoom passar para false
+    fun zoomBus() {
+        if (_uiState.value.zoomCurrentBuses) {
+            _uiState.update {
+                it.copy(zoomCurrentBuses = false)
+            }
+        } else {
+            _uiState.update {
+                it.copy(zoomCurrentBuses = true)
+            }
+        }
+    }
+
+    //Atualizar a posição atual do usuario, e passar o zoom no usuario para tru
+    fun currentLocationUser(currentUserLocation: LatLng) {
+        _uiState.update {
+            it.copy(
+                currentLocationUser = currentUserLocation,
+                focusUser = true
+            )
+        }
+    }
+
+    //Atualizar o estado do zoom da camera na posição atual do usuario para false
+    fun offFocusUser() {
+        _uiState.update {
+            it.copy(focusUser = false)
+        }
     }
 
 
@@ -339,7 +387,10 @@ data class UiState(
     var clearItem: Boolean = false,
     var lineCod: String = "",
     var quantityBusInThisRoute: Int = START_BUS_ROUTE,
-    var currentBuses: MutableList<BusWithLine> = mutableListOf()
+    var currentBuses: MutableList<BusWithLine> = mutableListOf(),
+    val zoomCurrentBuses: Boolean = false,
+    val currentLocationUser: LatLng = LatLng(0.0, 0.0),
+    val focusUser: Boolean = false
 )
 
 

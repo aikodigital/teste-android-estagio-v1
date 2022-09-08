@@ -165,6 +165,20 @@
         app:layout_constraintStart_toEndOf="@id/floating_button_favorite"
         app:layout_constraintTop_toBottomOf="@id/search_bus_lines" />
 
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/constraint_info_about_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/chip_line_selected"
+        app:layout_constraintTop_toBottomOf="@id/chip_line_selected">
+
+        <TextView
+            android:id="@+id/textView_line_placard_full"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="1542-12" />
+    </com.google.android.material.card.MaterialCardView>
+
     <com.google.android.material.chip.Chip
         android:id="@+id/chip_quantity_bus"
         android:layout_width="wrap_content"
@@ -174,11 +188,11 @@
         android:elevation="@dimen/ten"
         android:textAlignment="center"
         android:textSize="@dimen/font_size_sixteen"
+        app:chipBackgroundColor="@color/white"
+        app:chipEndPadding="@dimen/five"
+        app:chipIcon="@drawable/ic_bus_card_16"
         app:chipIconSize="@dimen/margin_sixteen_dp"
         app:chipStartPadding="@dimen/five"
-        app:chipEndPadding="@dimen/five"
-        app:chipBackgroundColor="@color/white"
-        app:chipIcon="@drawable/ic_bus_card_16"
         app:iconStartPadding="@dimen/three"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

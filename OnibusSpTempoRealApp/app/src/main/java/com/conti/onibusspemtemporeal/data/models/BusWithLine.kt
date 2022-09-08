@@ -10,7 +10,8 @@ class BusWithLine(
     val destiny: String,
     val accessibleBus: Boolean,
     val lastUpdate: String,
-    val latLng: LatLng
+    val latLng: LatLng,
+    val lineCod: Int
 ) : ClusterItem {
     override fun getPosition(): LatLng {
         return latLng
