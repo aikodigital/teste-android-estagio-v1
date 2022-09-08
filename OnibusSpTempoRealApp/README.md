@@ -13,7 +13,15 @@ Esses requisitos são obrigatórios e devem ser desenvolvidos para a entrega do 
 
 * **Pesquisa e Filtros**: Permitir que o usuário pesquise e filtre esses dados, interagindo com a interface. (Sim, a interface esta dinâmica e o usuário tem a possibilidade de filtra os ônibus no mapa)
 
+
+## Vídeo do Aplicativo desenvolvido em execução   
+  
+
+[![Watch the video](https://www.youtube.com/watch?v=VijbqPqyz6c&ab_channel=gabrielconti)    
+
+
 ## Documentação 
+
 
 Para desenvolver o aplicativo proposto no desafio, primeiro analisei a API, para entender melhor os dados que seriam necessários consumir, tive um pouco de dificuldades para lidar com a autenticação da API.    
 Julguei necessário utilizar apenas 4 requisições da API para as funcionalidades do aplicativo, o (POST) da autenticação para conseguir o cookie de certificação, (GET) de todos os ônibus em circulação, (GET) de uma linha específica que o usuário pesquisar   
@@ -61,3 +69,16 @@ Dagger Hilt: Para implementação de dependências
 Google Map: Utilizei o sdk do maps para ter acesso ao maps do google
 LifeCycle: Para utilizar os componentes do lifeCycle do android como por exemplo, viewModels, StateFlow, liveData, coroutines, etc.
   
+## Como rodar no seu computador  
+
+Para rodar a aplicação é necessário ter o android studio no computador, após isso é só criar um clone desse projeto no seu pc  
+
+E na hora de rodar o aplicativo, você vai precisar fazer duas mudanças  
+
+* No arquivo local.properties do projeto, você vai colocar o valor da sua API key do google maps como exemplificado abaixo.      
+MAPS_API_KEY=(SUA API KEY AQUI DENTRO)	
+
+* No arquivo gradle.properties do projeto, você vai colocar a sua API key da API olho vivo como exemplificado abaixo.   
+API_KEY=("SUA KEY AQUI LEMBRE QUE AQUI É NECESSÁRIO COLOCAR SUA API DENTRO DESSAS ASPAS")
+
+Após essas duas mudanças o aplicativo está pronto para rodar no seu computador  
