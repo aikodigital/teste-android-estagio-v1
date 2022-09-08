@@ -67,7 +67,10 @@ Retrofit : Utilizei o retrofit para consumir a API
 Room: Para salvar localmente as linhas favoritas 
 Dagger Hilt: Para implementação de dependências
 Google Map: Utilizei o sdk do maps para ter acesso ao maps do google
-LifeCycle: Para utilizar os componentes do lifeCycle do android como por exemplo, viewModels, StateFlow, liveData, coroutines, etc.
+LifeCycle: Para utilizar os componentes do lifeCycle do android como por exemplo, viewModels, StateFlow, liveData, coroutines, etc.   
+
+
+
   
 ## Como rodar no seu computador  
 
