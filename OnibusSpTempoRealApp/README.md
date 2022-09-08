@@ -16,12 +16,10 @@ Esses requisitos são obrigatórios e devem ser desenvolvidos para a entrega do 
 
 ## Vídeo do Aplicativo desenvolvido em execução   
 
+<div align="center">
+  <a href="https://www.youtube.com/watch?v=VijbqPqyz6c&ab_channel=gabrielconti"><img src="https://i9.ytimg.com/vi_webp/VijbqPqyz6c/mq1.webp?sqp=CMjA55gG&rs=AOn4CLDv-RY0vO3rtE4V8z2Dq_5HtIgVdg" alt="IMAGE ALT TEXT"></a>
+</div>
 
- <iframe width="560" height="315"
-src="https://www.youtube.com/watch?v=VijbqPqyz6c&ab_channel=gabrielconti" 
-frameborder="0" 
-allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-allowfullscreen></iframe>  
 
 ## Documentação 
 
