@@ -50,6 +50,8 @@ dependencies {
     // Lifecycle components
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.2")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.2")
+    implementation("androidx.fragment:fragment-ktx:1.8.1")
+
 
     // Retrofit for network calls
     implementation("com.squareup.retrofit2:retrofit:2.11.0")
