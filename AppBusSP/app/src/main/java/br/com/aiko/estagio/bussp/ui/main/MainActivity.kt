@@ -30,5 +30,21 @@ class MainActivity : AppCompatActivity() {
         }
 
         viewModel.authentication("5f13bb5bf9366a7a349edf57a769e47421e0d8e9765a307ebb1243bf782dd6b4")
+
+
+//        viewModel.buscarLinha.observe(this) { linhas ->
+//            var res = ""
+//            linhas.forEach { l ->
+//                res += "$l \n"
+//            }
+//            binding.tvLinhas.text = res
+//        }
+//        viewModel.buscarLinha("Lapa")
+
+//        viewModel.buscarLinhaSentido.observe(this) { linhas ->
+//            binding.tvLinhas.text = linhas.toString()
+//        }
+//        viewModel.buscarLinhaSentido("Lapa", 1)
+
     }
 }
