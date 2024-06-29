@@ -1,5 +1,6 @@
 package br.com.aiko.estagio.bussp.data.remote
 
+import br.com.aiko.estagio.bussp.data.remote.response.Corredor
 import br.com.aiko.estagio.bussp.data.remote.response.Linha
 import br.com.aiko.estagio.bussp.data.remote.response.Parada
 import retrofit2.Response
@@ -29,5 +30,8 @@ interface TransService {
 
     @GET("/Parada/BuscarParadasPorCorredor")
     suspend fun buscarParadasPorCorredor(@Query("codigoCorredor") codigoCorredor: Int): Response<List<Parada>>
+
+    @GET("/Corredor")
+    suspend fun corredor(): Response<List<Corredor>>
 
 }

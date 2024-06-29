@@ -2,10 +2,12 @@ package br.com.aiko.estagio.bussp.data.repository
 
 import android.util.Log
 import br.com.aiko.estagio.bussp.data.remote.RemoteDataSource
+import br.com.aiko.estagio.bussp.data.remote.response.Corredor
 import br.com.aiko.estagio.bussp.data.remote.response.Linha
 import br.com.aiko.estagio.bussp.data.remote.response.Parada
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import retrofit2.Response
 import javax.inject.Inject
 
 class TransRepositoryImpl @Inject constructor(
@@ -107,6 +109,22 @@ class TransRepositoryImpl @Inject constructor(
         } catch (e: Exception) {
             Log.e("BUSCAR PARADA POR CORREDOR Exception", e.message.toString())
             emptyList<Parada>()
+        }
+    }
+
+    override suspend fun corredor(): List<Corredor> {
+        val response = remoteDataSource.corredor()
+        return try {
+            if (response.isSuccessful) {
+                val corredores = response.body() ?: emptyList()
+                corredores
+            } else {
+                Log.e("CORREDORES", "${response.code()}")
+                emptyList()
+            }
+        } catch (e: Exception) {
+            Log.e("CORREDORES Exception: ", e.message.toString())
+            emptyList<Corredor>()
         }
     }
 }
