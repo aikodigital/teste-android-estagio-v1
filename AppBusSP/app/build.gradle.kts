@@ -4,6 +4,7 @@ plugins {
 
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
+    kotlin("plugin.serialization") version "1.9.21"
 }
 
 android {
@@ -59,6 +60,10 @@ dependencies {
 
     // Logging
     implementation("com.squareup.okhttp3:logging-interceptor:4.10.0")
+
+
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
+
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
