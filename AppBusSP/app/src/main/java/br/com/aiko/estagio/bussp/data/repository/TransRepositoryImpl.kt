@@ -3,6 +3,7 @@ package br.com.aiko.estagio.bussp.data.repository
 import android.util.Log
 import br.com.aiko.estagio.bussp.data.remote.RemoteDataSource
 import br.com.aiko.estagio.bussp.data.remote.response.Linha
+import br.com.aiko.estagio.bussp.data.remote.response.Parada
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -58,6 +59,38 @@ class TransRepositoryImpl @Inject constructor(
         } catch (e: Exception) {
             Log.e("BUSCAR LINHA SENTINDO Execption: ", e.message.toString())
             emptyList<Linha>()
+        }
+    }
+
+    override suspend fun buscarParada(parada: String): List<Parada> {
+        val response = remoteDataSource.buscarParada(parada)
+        return try {
+            if (response.isSuccessful) {
+                val paradas = response.body() ?: emptyList()
+                paradas
+            } else {
+                Log.e("BUSCAR PARADA", "${response.code()}")
+                emptyList()
+            }
+        } catch (e: Exception) {
+            Log.e("BUSCAR PARADA Exception: ", e.message.toString())
+            emptyList<Parada>()
+        }
+    }
+
+    override suspend fun buscarParadasPorLinha(codigoLinha: String): List<Parada> {
+        val reponse = remoteDataSource.buscarParadasPorLinha(codigoLinha)
+        return try {
+            if (reponse.isSuccessful) {
+                val paradas = reponse.body() ?: emptyList()
+                paradas
+            } else {
+                Log.e("BUSCAR PARADAS POR LINHA", "${reponse.code()}")
+                emptyList()
+            }
+        } catch (e: Exception) {
+            Log.e("BUSCAR PARADAS POR LINHA Exception: ", e.message.toString())
+            emptyList<Parada>()
         }
     }
 }

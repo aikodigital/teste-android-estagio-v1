@@ -1,13 +1,16 @@
 package br.com.aiko.estagio.bussp.ui.main
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.viewModelScope
 import br.com.aiko.estagio.bussp.R
 import br.com.aiko.estagio.bussp.databinding.ActivityMainBinding
+import br.com.aiko.estagio.bussp.ui.main.viewmodel.ParadasViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -15,6 +18,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val viewModel: MainViewModel by viewModels()
+
+    private val paradasViewModel: ParadasViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,5 +51,16 @@ class MainActivity : AppCompatActivity() {
 //        }
 //        viewModel.buscarLinhaSentido("Lapa", 1)
 
+
+//        paradaViewModel.paradas.observe(this) { paradas ->
+//            Log.e("paradaViewModel", paradas.toString())
+//            binding.tvLinhas.text = paradas.toString()
+//        }
+//        paradaViewModel.buscarParada("Afonso")
+
+        paradasViewModel.paradas.observe(this){ paradas ->
+            binding.tvLinhas.text = paradas.toString()
+        }
+        paradasViewModel.buscarParadasPorLinha("34041")
     }
 }

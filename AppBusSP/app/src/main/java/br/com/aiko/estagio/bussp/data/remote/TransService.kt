@@ -1,6 +1,7 @@
 package br.com.aiko.estagio.bussp.data.remote
 
 import br.com.aiko.estagio.bussp.data.remote.response.Linha
+import br.com.aiko.estagio.bussp.data.remote.response.Parada
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.POST
@@ -19,5 +20,11 @@ interface TransService {
         @Query("termosBusca") linha: String,
         @Query("sentido") sentido: Int
     ): Response<List<Linha>>
+
+    @GET("/Parada/Buscar")
+    suspend fun buscarParada(@Query("termosBusca") parada: String): Response<List<Parada>>
+
+    @GET("/Parada/BuscarParadasPorLinha")
+    suspend fun buscarParadasPorLinha(@Query("codigoLinha") codigoLinha: String): Response<List<Parada>>
 
 }

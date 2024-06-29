@@ -1,6 +1,7 @@
 package br.com.aiko.estagio.bussp.data.remote
 
 import br.com.aiko.estagio.bussp.data.remote.response.Linha
+import br.com.aiko.estagio.bussp.data.remote.response.Parada
 import retrofit2.Call
 import retrofit2.Response
 import javax.inject.Inject
@@ -20,4 +21,13 @@ class RemoteDataSource @Inject constructor(
     suspend fun buscarLinhaSentido(termosBusca: String, sentido: Int): Response<List<Linha>> {
         return service.buscarLinhaSentido(termosBusca, sentido)
     }
+
+    suspend fun buscarParada(parada: String): Response<List<Parada>> {
+        return service.buscarParada(parada)
+    }
+
+    suspend fun buscarParadasPorLinha(codigoLinha: String): Response<List<Parada>> {
+        return service.buscarParadasPorLinha(codigoLinha)
+    }
 }
+
