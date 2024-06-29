@@ -1,6 +1,7 @@
 package br.com.aiko.estagio.bussp.data.remote
 
 import br.com.aiko.estagio.bussp.data.remote.response.Corredor
+import br.com.aiko.estagio.bussp.data.remote.response.Empresas
 import br.com.aiko.estagio.bussp.data.remote.response.Linha
 import br.com.aiko.estagio.bussp.data.remote.response.Parada
 import retrofit2.Call
@@ -38,6 +39,10 @@ class RemoteDataSource @Inject constructor(
 
     suspend fun corredor(): Response<List<Corredor>> {
         return service.corredor()
+    }
+
+    suspend fun empresas(): Response<Empresas> {
+        return service.empresas()
     }
 }
 

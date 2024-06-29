@@ -3,6 +3,7 @@ package br.com.aiko.estagio.bussp.data.repository
 import android.util.Log
 import br.com.aiko.estagio.bussp.data.remote.RemoteDataSource
 import br.com.aiko.estagio.bussp.data.remote.response.Corredor
+import br.com.aiko.estagio.bussp.data.remote.response.Empresas
 import br.com.aiko.estagio.bussp.data.remote.response.Linha
 import br.com.aiko.estagio.bussp.data.remote.response.Parada
 import kotlinx.coroutines.Dispatchers
@@ -125,6 +126,22 @@ class TransRepositoryImpl @Inject constructor(
         } catch (e: Exception) {
             Log.e("CORREDORES Exception: ", e.message.toString())
             emptyList<Corredor>()
+        }
+    }
+
+    override suspend fun empresas(): Empresas {
+        val response = remoteDataSource.empresas()
+        return try {
+            if (response.isSuccessful) {
+                val empresas = response.body() ?: Empresas("", emptyList())
+                empresas
+            } else {
+                Log.e("EMPRESAS", "${response.code()}")
+                Empresas("", emptyList())
+            }
+        } catch (e: Exception) {
+            Log.e("EMPRESAS Exception:", e.message.toString())
+            Empresas("", emptyList())
         }
     }
 }
