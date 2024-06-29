@@ -58,9 +58,10 @@ class MainActivity : AppCompatActivity() {
 //        }
 //        paradaViewModel.buscarParada("Afonso")
 
-        paradasViewModel.paradas.observe(this){ paradas ->
-            binding.tvLinhas.text = paradas.toString()
-        }
-        paradasViewModel.buscarParadasPorLinha("34041")
+//        paradasViewModel.paradas.observe(this){ paradas ->
+//            binding.tvLinhas.text = paradas.toString()
+//        }
+//        //paradasViewModel.buscarParadasPorLinha("34041")
+//        paradasViewModel.buscarParadasPorCorredor(8)
     }
 }

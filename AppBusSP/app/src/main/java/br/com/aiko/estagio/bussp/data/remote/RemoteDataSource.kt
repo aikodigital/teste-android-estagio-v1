@@ -4,6 +4,7 @@ import br.com.aiko.estagio.bussp.data.remote.response.Linha
 import br.com.aiko.estagio.bussp.data.remote.response.Parada
 import retrofit2.Call
 import retrofit2.Response
+import retrofit2.http.Query
 import javax.inject.Inject
 
 class RemoteDataSource @Inject constructor(
@@ -28,6 +29,10 @@ class RemoteDataSource @Inject constructor(
 
     suspend fun buscarParadasPorLinha(codigoLinha: String): Response<List<Parada>> {
         return service.buscarParadasPorLinha(codigoLinha)
+    }
+
+    suspend fun buscarParadasPorCorredor(codigoCorredor: Int): Response<List<Parada>> {
+        return service.buscarParadasPorCorredor(codigoCorredor)
     }
 }
 

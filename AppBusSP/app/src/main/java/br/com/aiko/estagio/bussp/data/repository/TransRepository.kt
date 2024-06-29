@@ -15,4 +15,6 @@ interface TransRepository {
     suspend fun buscarParada(parada: String): List<Parada>
 
     suspend fun buscarParadasPorLinha(codigoLinha: String): List<Parada>
+
+    suspend fun buscarParadasPorCorredor(codigoCorredor: Int): List<Parada>
 }

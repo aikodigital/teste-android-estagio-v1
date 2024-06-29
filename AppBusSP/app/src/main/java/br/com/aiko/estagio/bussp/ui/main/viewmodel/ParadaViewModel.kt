@@ -31,4 +31,11 @@ class ParadasViewModel @Inject constructor(
         }
     }
 
+    fun buscarParadasPorCorredor(codigoCorredor: Int) {
+        viewModelScope.launch {
+            val result = repository.buscarParadasPorCorredor(codigoCorredor)
+            _paradas.value = result
+        }
+    }
+
 }

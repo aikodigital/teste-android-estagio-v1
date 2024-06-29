@@ -93,4 +93,20 @@ class TransRepositoryImpl @Inject constructor(
             emptyList<Parada>()
         }
     }
+
+    override suspend fun buscarParadasPorCorredor(codigoCorredor: Int): List<Parada> {
+        val response = remoteDataSource.buscarParadasPorCorredor(codigoCorredor)
+        return try {
+            if (response.isSuccessful) {
+                val paradas = response.body() ?: emptyList()
+                paradas
+            } else {
+                Log.e("BUSCAR PARADA POR CORREDOR", "${response.code()}")
+                emptyList()
+            }
+        } catch (e: Exception) {
+            Log.e("BUSCAR PARADA POR CORREDOR Exception", e.message.toString())
+            emptyList<Parada>()
+        }
+    }
 }

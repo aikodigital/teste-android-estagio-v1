@@ -27,4 +27,7 @@ interface TransService {
     @GET("/Parada/BuscarParadasPorLinha")
     suspend fun buscarParadasPorLinha(@Query("codigoLinha") codigoLinha: String): Response<List<Parada>>
 
+    @GET("/Parada/BuscarParadasPorCorredor")
+    suspend fun buscarParadasPorCorredor(@Query("codigoCorredor") codigoCorredor: Int): Response<List<Parada>>
+
 }
