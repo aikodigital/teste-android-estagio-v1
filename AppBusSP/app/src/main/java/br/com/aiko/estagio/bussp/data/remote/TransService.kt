@@ -6,6 +6,8 @@ import br.com.aiko.estagio.bussp.data.remote.response.Linha
 import br.com.aiko.estagio.bussp.data.remote.response.Parada
 import br.com.aiko.estagio.bussp.data.remote.response.PosVeiculo
 import br.com.aiko.estagio.bussp.data.remote.response.Posicao
+import br.com.aiko.estagio.bussp.data.remote.response.PrevisaoChegada
+import br.com.aiko.estagio.bussp.data.remote.response.PrevisaoChegadaLinha
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.POST
@@ -49,5 +51,16 @@ interface TransService {
     suspend fun posicaoGaragem(
         @Query("codigoEmpresa") codigoEmpresa: Int, @Query("codigoLinha") codigoLinha: Int
     ): Response<Posicao>
+
+    @GET("/Previsao")
+    suspend fun previsao(
+        @Query("codigoParada") codigoParada: Int, @Query("codigoLinha") codigoLinha: Int
+    ): Response<PrevisaoChegada>
+
+    @GET("/Previsao/Linha")
+    suspend fun previsaoLinha(@Query("codigoLinha") codigoLinha: Int): Response<PrevisaoChegadaLinha>
+
+    @GET("/Previsao/Parada")
+    suspend fun previsaoParada(@Query("codigoParada") codigoParada: Int): Response<PrevisaoChegada>
 
 }

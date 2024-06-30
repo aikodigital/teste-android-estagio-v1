@@ -6,8 +6,12 @@ import br.com.aiko.estagio.bussp.data.remote.response.Corredor
 import br.com.aiko.estagio.bussp.data.remote.response.Empresas
 import br.com.aiko.estagio.bussp.data.remote.response.Linha
 import br.com.aiko.estagio.bussp.data.remote.response.Parada
+import br.com.aiko.estagio.bussp.data.remote.response.PontoParada
+import br.com.aiko.estagio.bussp.data.remote.response.PontoParadaLinha
 import br.com.aiko.estagio.bussp.data.remote.response.PosVeiculo
 import br.com.aiko.estagio.bussp.data.remote.response.Posicao
+import br.com.aiko.estagio.bussp.data.remote.response.PrevisaoChegada
+import br.com.aiko.estagio.bussp.data.remote.response.PrevisaoChegadaLinha
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.Response
@@ -34,8 +38,8 @@ class TransRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun buscarLinha(termoBuscar: String): List<Linha> {
-        val response = remoteDataSource.buscarLinha(termoBuscar)
+    override suspend fun buscarLinha(termosBusca: String): List<Linha> {
+        val response = remoteDataSource.buscarLinha(termosBusca)
 
         return try {
             if (response.isSuccessful) {
@@ -192,6 +196,60 @@ class TransRepositoryImpl @Inject constructor(
         } catch (e: Exception) {
             Log.e("POSICAO GARAGEM Exception", e.message.toString())
             Posicao("", emptyList())
+        }
+    }
+
+    override suspend fun previsao(codigoParada: Int, codigoLinha: Int): PrevisaoChegada {
+        val response = remoteDataSource.previsao(codigoParada, codigoLinha)
+        return try {
+            if (response.isSuccessful) {
+                val previsao = response.body() ?: PrevisaoChegada(
+                    "",
+                    PontoParada(0, "", 0.0, 0.0, emptyList())
+                )
+                previsao
+            } else {
+                Log.e("PREVISAO", "${response.code()}")
+                PrevisaoChegada("", PontoParada(0, "", 0.0, 0.0, emptyList()))
+            }
+        } catch (e: Exception) {
+            Log.e("PREVISAO Exception:", e.message.toString())
+            PrevisaoChegada("", PontoParada(0, "", 0.0, 0.0, emptyList()))
+        }
+    }
+
+    override suspend fun previsaoLinha(codigoLinha: Int): PrevisaoChegadaLinha {
+        val response = remoteDataSource.previsaoLinha(codigoLinha)
+        return try {
+            if (response.isSuccessful) {
+                val previsao = response.body() ?: PrevisaoChegadaLinha("", emptyList())
+                previsao
+            } else {
+                Log.e("PREVISAO LINHA", "${response.code()}")
+                PrevisaoChegadaLinha("", emptyList())
+            }
+        } catch (e: Exception) {
+            Log.e("PREVISAO LINHA Exception: ", e.message.toString())
+            PrevisaoChegadaLinha("", emptyList())
+        }
+    }
+
+    override suspend fun previsaoParada(codigoParada: Int): PrevisaoChegada {
+        val response = remoteDataSource.previsaoParada(codigoParada)
+        return try {
+            if (response.isSuccessful) {
+                val previsao = response.body() ?: PrevisaoChegada(
+                    "",
+                    PontoParada(0, "", 0.0, 0.0, emptyList())
+                )
+                previsao
+            }else {
+                Log.e("PREVISAO PARADA", "${response.code()}")
+                PrevisaoChegada("", PontoParada(0, "", 0.0, 0.0, emptyList()))
+            }
+        }catch (e:Exception){
+            Log.e("PREVISAO PARADA Exception:", e.message.toString())
+            PrevisaoChegada("", PontoParada(0, "", 0.0, 0.0, emptyList()))
         }
     }
 }

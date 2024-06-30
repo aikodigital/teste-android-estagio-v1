@@ -6,6 +6,8 @@ import br.com.aiko.estagio.bussp.data.remote.response.Linha
 import br.com.aiko.estagio.bussp.data.remote.response.Parada
 import br.com.aiko.estagio.bussp.data.remote.response.PosVeiculo
 import br.com.aiko.estagio.bussp.data.remote.response.Posicao
+import br.com.aiko.estagio.bussp.data.remote.response.PrevisaoChegada
+import br.com.aiko.estagio.bussp.data.remote.response.PrevisaoChegadaLinha
 import retrofit2.Response
 import retrofit2.http.Query
 
@@ -32,4 +34,10 @@ interface TransRepository {
     suspend fun posicaoLinha(codigoLinha: Int): PosVeiculo
 
     suspend fun posicaoGaragem(codigoEmpresa: Int, codigoLinha: Int): Posicao
+
+    suspend fun previsao(codigoParada: Int, codigoLinha: Int): PrevisaoChegada
+
+    suspend fun previsaoLinha(codigoLinha: Int): PrevisaoChegadaLinha
+
+    suspend fun previsaoParada(codigoParada: Int): PrevisaoChegada
 }
