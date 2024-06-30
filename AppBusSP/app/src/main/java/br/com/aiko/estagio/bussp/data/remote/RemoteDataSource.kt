@@ -4,6 +4,8 @@ import br.com.aiko.estagio.bussp.data.remote.response.Corredor
 import br.com.aiko.estagio.bussp.data.remote.response.Empresas
 import br.com.aiko.estagio.bussp.data.remote.response.Linha
 import br.com.aiko.estagio.bussp.data.remote.response.Parada
+import br.com.aiko.estagio.bussp.data.remote.response.PosVeiculo
+import br.com.aiko.estagio.bussp.data.remote.response.Posicao
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Query
@@ -43,6 +45,18 @@ class RemoteDataSource @Inject constructor(
 
     suspend fun empresas(): Response<Empresas> {
         return service.empresas()
+    }
+
+    suspend fun posicao(): Response<Posicao> {
+        return service.posicao()
+    }
+
+    suspend fun posicaoLinha(codigoLinha: Int): Response<PosVeiculo> {
+        return service.posicaoLinha(codigoLinha)
+    }
+
+    suspend fun posicaoGaragem(codigoEmpresa: Int, codigoLinha: Int): Response<Posicao> {
+        return service.posicaoGaragem(codigoEmpresa, codigoLinha)
     }
 }
 

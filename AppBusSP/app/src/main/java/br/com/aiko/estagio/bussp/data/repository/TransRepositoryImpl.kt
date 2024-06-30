@@ -6,6 +6,8 @@ import br.com.aiko.estagio.bussp.data.remote.response.Corredor
 import br.com.aiko.estagio.bussp.data.remote.response.Empresas
 import br.com.aiko.estagio.bussp.data.remote.response.Linha
 import br.com.aiko.estagio.bussp.data.remote.response.Parada
+import br.com.aiko.estagio.bussp.data.remote.response.PosVeiculo
+import br.com.aiko.estagio.bussp.data.remote.response.Posicao
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.Response
@@ -142,6 +144,54 @@ class TransRepositoryImpl @Inject constructor(
         } catch (e: Exception) {
             Log.e("EMPRESAS Exception:", e.message.toString())
             Empresas("", emptyList())
+        }
+    }
+
+    override suspend fun posicao(): Posicao {
+        val response = remoteDataSource.posicao()
+        return try {
+            if (response.isSuccessful) {
+                val posicao = response.body() ?: Posicao("", emptyList())
+                posicao
+            } else {
+                Log.e("POSICAO", "${response.code()}")
+                Posicao("", emptyList())
+            }
+        } catch (e: Exception) {
+            Log.e("POSICAO Exception: ", e.message.toString())
+            Posicao("", emptyList())
+        }
+    }
+
+    override suspend fun posicaoLinha(codigoLinha: Int): PosVeiculo {
+        val response = remoteDataSource.posicaoLinha(codigoLinha)
+        return try {
+            if (response.isSuccessful) {
+                val posVeiculos = response.body() ?: PosVeiculo("", emptyList())
+                posVeiculos
+            } else {
+                Log.e("POSICAO LINHA", "${response.code()}")
+                PosVeiculo("", emptyList())
+            }
+        } catch (e: Exception) {
+            Log.e("POSICAO LINHA Exception", e.message.toString())
+            PosVeiculo("", emptyList())
+        }
+    }
+
+    override suspend fun posicaoGaragem(codigoEmpresa: Int, codigoLinha: Int): Posicao {
+        val response = remoteDataSource.posicaoGaragem(codigoEmpresa, codigoLinha)
+        return try {
+            if (response.isSuccessful) {
+                val posico = response.body() ?: Posicao("", emptyList())
+                posico
+            } else {
+                Log.e("POSICAO GARAGEM", "${response.code()}")
+                Posicao("", emptyList())
+            }
+        } catch (e: Exception) {
+            Log.e("POSICAO GARAGEM Exception", e.message.toString())
+            Posicao("", emptyList())
         }
     }
 }
