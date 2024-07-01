@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="@color/white"/>
+        </shape>
+    </item>
+
+    <item android:gravity="center"
+        android:top="10dp"
+        android:start="10dp"
+        android:end="10dp"
+        android:bottom="10dp"
+        android:drawable="@drawable/ic_account_circle_fill0_wght400_grad0_opsz48"/>
+
+
+</layer-list>
