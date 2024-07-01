@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activitys.MainActivity">
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/nav_host_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:navGraph="@navigation/navigation_graph" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/search_bus_lines"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_default"
+        android:layout_marginTop="@dimen/margin_default"
+        android:layout_marginEnd="@dimen/margin_default"
+        android:clickable="true"
+        android:focusable="true"
+        app:cardCornerRadius="@dimen/margin_default_one"
+        app:cardElevation="@dimen/ten"
+        app:contentPadding="@dimen/three"
+        app:elevation="@dimen/ten"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/five"
+            android:layout_marginEnd="@dimen/five"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageView_search_bus"
+                android:layout_width="@dimen/twenty_eight"
+                android:layout_height="@dimen/thirty_six"
+                android:layout_marginStart="@dimen/five"
+                android:contentDescription="@string/imageView_description_image_bus"
+                android:elevation="@dimen/ten"
+                android:src="@drawable/ic_bus_24dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/editText_search_bus"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_sixteen_dp"
+                android:layout_marginEnd="@dimen/margin_default"
+                android:clickable="false"
+                android:foregroundTint="@color/black"
+                android:hint="@string/hint_search"
+                android:textSize="@dimen/font_size_sixteen"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/imageView_search"
+                app:layout_constraintStart_toEndOf="@id/imageView_search_bus"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_goneMarginEnd="@dimen/ten"
+                app:layout_goneMarginStart="@dimen/ten" />
+
+            <ImageView
+                android:id="@+id/imageView_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/three"
+                android:layout_marginBottom="@dimen/three"
+                android:src="@drawable/ic_search_circle"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- usar talvez
+             <Button
+                 android:id="@+id/button_enter_search"
+                 android:layout_width="@dimen/thirty_six"
+                 android:layout_height="@dimen/thirty_six"
+                 android:backgroundTint="@color/gray_light"
+                 android:insetLeft="@dimen/zero"
+                 android:insetTop="@dimen/zero"
+                 android:insetRight="@dimen/zero"
+                 android:insetBottom="@dimen/zero"
+                 android:padding="@dimen/zero"
+                 app:elevation="@dimen/ten"
+                 app:icon="@drawable/ic_search"
+                 app:iconGravity="textStart"
+                 app:iconPadding="@dimen/zero"
+                 app:iconSize="@dimen/eighteen"
+                 app:layout_constraintBottom_toBottomOf="parent"
+                 app:layout_constraintEnd_toEndOf="parent"
+                 app:layout_constraintTop_toTopOf="parent"
+                 app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.Button.Circle" />
+
+         -->
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floating_button_favorite"
+        android:layout_width="@dimen/forty_dp"
+        android:layout_height="@dimen/forty_dp"
+        android:layout_marginStart="@dimen/margin_default"
+        android:layout_marginTop="@dimen/five"
+        android:layout_marginBottom="@dimen/margin_sixteen_dp"
+        android:clickable="true"
+        android:contentDescription="@string/description_floating_button_option_app"
+        android:focusable="true"
+        android:src="@drawable/ic_baseline_star_gray"
+        android:tint="@color/gray_light"
+        app:backgroundTint="@color/white"
+        app:elevation="@dimen/ten"
+        app:fabCustomSize="@dimen/forty_dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_bus_lines"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.Button.Circle" />
+
+    <!--circle button caso de errado o floating
+    <Button
+        android:id="@+id/button_open_history"
+        android:layout_width="@dimen/forty_dp"
+        android:layout_height="@dimen/forty_dp"
+        android:layout_marginStart="@dimen/margin_default"
+        android:layout_marginTop="@dimen/ten"
+        android:backgroundTint="@color/gray_light"
+        android:insetLeft="@dimen/zero"
+        android:insetTop="@dimen/zero"
+        android:insetRight="@dimen/zero"
+        android:insetBottom="@dimen/zero"
+        android:padding="@dimen/zero"
+        app:elevation="@dimen/ten"
+        app:icon="@drawable/ic_baseline_star_24"
+        app:iconGravity="textStart"
+        app:iconPadding="@dimen/zero"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_bus_lines"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.Button.Circle" />
+    -->
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/chip_line_selected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/ten"
+        android:layout_marginTop="@dimen/four"
+        android:layout_marginBottom="@dimen/margin_default"
+        android:elevation="@dimen/ten"
+        android:textSize="@dimen/font_size_sixteen"
+        android:visibility="invisible"
+        app:chipBackgroundColor="@color/white"
+        app:closeIconEnabled="true"
+        app:layout_constraintStart_toEndOf="@id/floating_button_favorite"
+        app:layout_constraintTop_toBottomOf="@id/search_bus_lines" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/constraint_info_about_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/chip_line_selected"
+        app:layout_constraintTop_toBottomOf="@id/chip_line_selected">
+
+        <TextView
+            android:id="@+id/textView_line_placard_full"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="1542-12" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/chip_quantity_bus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_default"
+        android:layout_marginBottom="@dimen/margin_default"
+        android:elevation="@dimen/ten"
+        android:textAlignment="center"
+        android:textSize="@dimen/font_size_sixteen"
+        app:chipBackgroundColor="@color/white"
+        app:chipEndPadding="@dimen/five"
+        app:chipIcon="@drawable/ic_bus_card_16"
+        app:chipIconSize="@dimen/margin_sixteen_dp"
+        app:chipStartPadding="@dimen/five"
+        app:iconStartPadding="@dimen/three"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="3" />
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floating_options_app"
+        android:layout_width="@dimen/forty_dp"
+        android:layout_height="@dimen/forty_dp"
+        android:layout_marginBottom="@dimen/margin_sixteen_dp"
+        android:clickable="true"
+        android:contentDescription="@string/description_floating_button_option_app"
+        android:focusable="true"
+        android:src="@drawable/ic_options"
+        android:tint="@color/gray_light"
+        app:backgroundTint="@color/white"
+        app:elevation="@dimen/ten"
+        app:fabCustomSize="@dimen/forty_dp"
+        app:layout_constraintBottom_toTopOf="@id/floating_current_location"
+        app:layout_constraintEnd_toEndOf="@id/floating_refresh_bus"
+        app:layout_constraintStart_toStartOf="@id/floating_refresh_bus" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floating_current_location"
+        android:layout_width="@dimen/forty_dp"
+        android:layout_height="@dimen/forty_dp"
+        android:layout_marginBottom="@dimen/margin_sixteen_dp"
+        android:clickable="true"
+        android:contentDescription="@string/description_floating_button_current_location"
+        android:focusable="true"
+        app:backgroundTint="@color/white"
+        app:elevation="@dimen/ten"
+        app:fabCustomSize="@dimen/forty_dp"
+        app:layout_constraintBottom_toTopOf="@id/floating_refresh_bus"
+        app:layout_constraintEnd_toEndOf="@id/floating_refresh_bus"
+        app:layout_constraintStart_toStartOf="@id/floating_refresh_bus"
+        app:srcCompat="@drawable/ic_current_location" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floating_refresh_bus"
+        android:layout_width="@dimen/forty_eight"
+        android:layout_height="@dimen/forty_eight"
+        android:layout_marginEnd="@dimen/margin_default"
+        android:layout_marginBottom="@dimen/margin_default_one"
+        android:clickable="true"
+        android:contentDescription="@string/description_floating_button_refresh"
+        android:focusable="true"
+        android:src="@drawable/ic_baseline_refresh_24"
+        android:tint="@color/gray_light"
+        app:backgroundTint="@color/teal_200"
+        app:elevation="@dimen/ten"
+        app:fabCustomSize="@dimen/forty_eight"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
