@@ -4,11 +4,18 @@ import android.location.Address
 import android.location.Geocoder
 import android.os.Bundle
 import android.util.Log
+import android.view.ContextMenu
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.View
+import android.view.WindowManager
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
+import android.widget.LinearLayout
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isNotEmpty
+import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.aiko.estagio.bussp.R
 import br.com.aiko.estagio.bussp.data.remote.response.Parada
 import br.com.aiko.estagio.bussp.databinding.ActivityParadasBinding
@@ -44,6 +51,8 @@ class ParadasActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMar
         binding = ActivityParadasBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
+
         autenticacaoSetup()
 
         setupFiltro()
@@ -64,19 +73,31 @@ class ParadasActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMar
             val parada = binding.tilParadaCampo.editText?.text.toString()
             val filtro = binding.tilFiltroParada.editText?.text.toString()
 
-            Log.d("setuplistener", "$parada $filtro")
-
             if (parada.isNotEmpty() && filtro.isNotEmpty()) {
                 when (filtro) {
-                    "Nome ou endereço" -> setupParadas(parada)
+                    "Nome" -> {
+                        setupParadas(parada)
+                    }
 
-                    "Código" -> setupParadasPorLinhas(parada.toInt())
+                    "Endereço" -> {
+                        setupParadas(parada)
+                    }
 
-                    "Corredor" -> setupParadasPorCorredor(parada.toInt())
+                    "Código" -> {
+                        setupParadasPorLinhas(parada.toInt())
+                    }
+
+                    "Corredor" -> {
+                        setupParadasPorCorredor(parada.toInt())
+                    }
                 }
             } else {
                 Log.e("errror", "$parada $filtro")
             }
+        }
+
+        binding.topAppBar.setNavigationOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
         }
     }
 
@@ -85,10 +106,7 @@ class ParadasActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMar
 
         if (cl != -1) {
             setupParadasPorLinhas(cl).toString()
-            binding.tilParadaCampo.hint = "Código"
             binding.tilParadaCampo.editText?.setText(cl.toString())
-            binding.tilFiltroParada.editText?.hint = "Código"
-            binding.tvParadas.text = "Paradas por código da linha"
         }
 
     }
@@ -114,9 +132,8 @@ class ParadasActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMar
         }
     }
 
-
     private fun setupFiltro() {
-        val itens = listOf("Nome ou endereço", "Código", "Corredor")
+        val itens = listOf("Nome", "Endereço", "Código", "Corredor")
         val filtroAdapter = ArrayAdapter(this, R.layout.filtro_item_list, itens)
         (binding.tilFiltroParada.editText as? AutoCompleteTextView)?.setAdapter(filtroAdapter)
     }
@@ -124,8 +141,9 @@ class ParadasActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMar
     private fun setupList() {
         paradasAdapter = ParadasAdapter(this)
         binding.rvParadas.adapter = paradasAdapter
+        binding.rvParadas.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
     }
-
 
     /*
         Funções para construção e manipulação do mapa
@@ -152,6 +170,14 @@ class ParadasActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMar
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 10f))
 
         paradasViewModel.paradas.observe(this) { paradas ->
+
+            mMap.clear()
+
+            mMap.addMarker(MarkerOptions().position(location).title("Eu"))?.setIcon(
+                BitmapDescriptorFactory.fromResource(R.drawable.posicao)
+            )
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 10f))
+
             paradas.forEach {
                 mMap.addMarker(MarkerOptions().position(LatLng(it.py, it.px)).title(it.ed))
                     ?.setIcon(
@@ -164,10 +190,7 @@ class ParadasActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMar
         binding.btnPos.setOnClickListener {
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 10f))
         }
-
-
     }
-
 
     override fun onMarkerClick(p0: Marker): Boolean {
         performReverseGeocoding(p0.position)

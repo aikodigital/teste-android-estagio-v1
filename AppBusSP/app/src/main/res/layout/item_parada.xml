@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="350dp"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
     android:elevation="2dp"
@@ -28,7 +28,7 @@
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_margin="8dp"
-            android:contentDescription="Icone de parada de ônibus"
+            android:contentDescription="@string/parada_descricao"
             android:src="@drawable/ponto_de_onibus"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -51,10 +51,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
+            android:gravity="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_nome_parada"
-            tools:text="AV AUTODROMO/ AV INTERLAGOS -- 27º BPM" />
+            tools:text="AV AUTODROMO\nAV INTERLAGOS -- 27º BPM" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

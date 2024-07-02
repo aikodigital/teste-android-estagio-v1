@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/item_nome_parada"
+        android:enabled="true"
+        android:title="Nome" />
+
+    <item
+        android:id="@+id/item_endereco_parada"
+        android:enabled="true"
+        android:title="Endereo" />
+
+    <item
+        android:id="@+id/item_codigo_linha"
+        android:enabled="true"
+        android:title="Código" />
+
+    <item
+        android:id="@+id/item_corredor"
+        android:enabled="true"
+        android:title="corredor" />
+
+</menu>
