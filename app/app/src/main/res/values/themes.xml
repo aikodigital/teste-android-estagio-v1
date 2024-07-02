@@ -3,6 +3,15 @@
     <style name="Base.Theme.App" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:windowBackground">@color/color_default</item>
+    </style>
+
+    <style name="App.Theme.SplashScreenApp" parent="Base.Theme.App" />
+
+    <style name="Theme.App.SplashScreen" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/color_default</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_map</item>
+        <item name="postSplashScreenTheme">@style/Base.Theme.App</item>
     </style>
 
     <style name="Theme.App" parent="Base.Theme.App" />
