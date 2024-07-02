@@ -13,6 +13,7 @@ import br.com.aiko.estagio.bussp.data.remote.response.VeiculoLocalizado
 import br.com.aiko.estagio.bussp.databinding.ActivityInforOnibusBinding
 import br.com.aiko.estagio.bussp.ui.main.MainActivity.Companion.location
 import br.com.aiko.estagio.bussp.ui.main.adapter.PrevisaoParadaAdapter
+import br.com.aiko.estagio.bussp.ui.main.utils.dialogs.Dialogs
 import br.com.aiko.estagio.bussp.ui.main.viewmodel.PosicaoViewModel
 import br.com.aiko.estagio.bussp.ui.main.viewmodel.PrevisaoViewModel
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -92,7 +93,7 @@ class InforOnibusActivity : AppCompatActivity(), OnMapReadyCallback,
             linha.ps.forEach { l ->
                 l.vs.forEach { v ->
                     val location = LatLng(v.py, v.px)
-                    mMap.addMarker(MarkerOptions().position(location).title(v.t))?.setIcon(
+                    mMap.addMarker(MarkerOptions().position(location).title("${v.p}:${v.t}" ))?.setIcon(
                         BitmapDescriptorFactory.fromResource(R.drawable.onibus_loc)
                     )
 
@@ -190,7 +191,7 @@ class InforOnibusActivity : AppCompatActivity(), OnMapReadyCallback,
                     Log.d("performReverseGeocoding", "Rua não encontrada")
                 }
             } else {
-                Log.e("performReverseGeocoding", "Nenhum endereço encontrado")
+                Dialogs.showErrorMaterialDialog("Nenhum endereço encontrado", this)
             }
         } catch (e: IOException) {
             Log.e("performReverseGeocoding exception", e.message.toString())

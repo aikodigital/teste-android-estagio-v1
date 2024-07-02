@@ -1,5 +1,6 @@
 package br.com.aiko.estagio.bussp.ui.main.activity
 
+import android.app.Dialog
 import android.location.Address
 import android.location.Geocoder
 import android.os.Bundle
@@ -21,6 +22,7 @@ import br.com.aiko.estagio.bussp.data.remote.response.Parada
 import br.com.aiko.estagio.bussp.databinding.ActivityParadasBinding
 import br.com.aiko.estagio.bussp.ui.main.MainActivity.Companion.location
 import br.com.aiko.estagio.bussp.ui.main.adapter.ParadasAdapter
+import br.com.aiko.estagio.bussp.ui.main.utils.dialogs.Dialogs
 import br.com.aiko.estagio.bussp.ui.main.viewmodel.AuthenticationViewModel
 import br.com.aiko.estagio.bussp.ui.main.viewmodel.ParadasViewModel
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -92,6 +94,7 @@ class ParadasActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMar
                     }
                 }
             } else {
+                Dialogs.showErrorMaterialDialog("Os campos \"Pesquisa por\" e \"Filtro\" devem ser preechidos.", this)
                 Log.e("errror", "$parada $filtro")
             }
         }
@@ -211,7 +214,8 @@ class ParadasActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMar
                     Log.d("performReverseGeocoding", "Rua não encontrada")
                 }
             } else {
-                Log.e("performReverseGeocoding", "Nenhum endereço encontrado")
+                Dialogs.showErrorMaterialDialog("Nenhum endereço encontrado", this)
+                //Log.e("performReverseGeocoding", "Nenhum endereço encontrado")
             }
         } catch (e: IOException) {
             Log.e("performReverseGeocoding exception", e.message.toString())

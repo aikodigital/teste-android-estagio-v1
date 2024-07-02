@@ -33,8 +33,8 @@ class PrevisaoParadaAdapter(private val onItemClick: (Int) -> Unit) :
         fun bind(pair: Pair<VeiculoLocalizado, LinhasLocalizada>) {
             val (veiculo, linha) = pair
             binding.tvLeiteiro.text = linha.c
-            binding.tvTerminalDestino.text = linha.lt0
-            binding.tvTerminalOrigem.text = linha.lt1
+            binding.tvTerminalDestino.text = "DESTINO:" + linha.lt0
+            binding.tvTerminalOrigem.text = "ORIGEM:" + linha.lt1
 
             binding.tvPrexifoOnibus.text = veiculo.p.toString()
             binding.tvPrevisaoChegada.text = veiculo.t

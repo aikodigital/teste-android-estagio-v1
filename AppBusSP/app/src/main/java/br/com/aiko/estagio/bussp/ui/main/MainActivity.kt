@@ -14,6 +14,7 @@ import br.com.aiko.estagio.bussp.ui.main.activity.CorredoresActivity
 import br.com.aiko.estagio.bussp.ui.main.activity.EmpresasActivity
 import br.com.aiko.estagio.bussp.ui.main.activity.ParadasActivity
 import br.com.aiko.estagio.bussp.ui.main.adapter.LinhasAdapter
+import br.com.aiko.estagio.bussp.ui.main.utils.dialogs.Dialogs
 import br.com.aiko.estagio.bussp.ui.main.viewmodel.AuthenticationViewModel
 import br.com.aiko.estagio.bussp.ui.main.viewmodel.BuscarLinhaViewModel
 import com.google.android.gms.maps.model.LatLng
@@ -63,25 +64,35 @@ class MainActivity : AppCompatActivity() {
 
     private fun buscarLinhaPorSentido() {
         binding.btnSentidoTp.setOnClickListener {
+
             val linha = binding.tilOrigem.editText?.text.toString().trim()
 
-            binding.tvLinhasProximas.text = "Linhas no sentido Terminal Principal"
+            if(linha.isNotEmpty()) {
 
-            buscarLinhaViewModel.buscarLinhaSentido(linha, 1)
-            buscarLinhaViewModel.buscarLinhaSentido.observe(this) { linha ->
-                linhasAdapter.submitList(linha)
+                binding.tvLinhasProximas.text = "Linhas no sentido Terminal Principal"
+
+                buscarLinhaViewModel.buscarLinhaSentido(linha, 1)
+                buscarLinhaViewModel.buscarLinhaSentido.observe(this) { linha ->
+                    linhasAdapter.submitList(linha)
+                }
+            }else{
+                Dialogs.showErrorMaterialDialog("Preecha os campos de pesquisa", this)
             }
         }
 
         binding.btnSentidoTs.setOnClickListener {
             val linha = binding.tilOrigem.editText?.text.toString().trim()
 
-            binding.tvLinhasProximas.text = "Linhas no sentido Terminal Secundário"
+            if(linha.isNotEmpty()) {
+                binding.tvLinhasProximas.text = "Linhas no sentido Terminal Secundário"
 
-            buscarLinhaViewModel.buscarLinhaSentido.observe(this) { linha ->
-                linhasAdapter.submitList(linha)
+                buscarLinhaViewModel.buscarLinhaSentido.observe(this) { linha ->
+                    linhasAdapter.submitList(linha)
+                }
+                buscarLinhaViewModel.buscarLinhaSentido(linha, 2)
+            }else {
+                Dialogs.showErrorMaterialDialog("Preecha os campos de pesquisa", this)
             }
-            buscarLinhaViewModel.buscarLinhaSentido(linha, 2)
         }
 
     }
@@ -137,14 +148,13 @@ class MainActivity : AppCompatActivity() {
                 val address: Address = addresses[0]
                 val addressText = address.subLocality
                 return addressText
-                Log.d("performReverseGeocoding", addressText)
             } else {
                 return ""
-                Log.e("", "Nenhum endereço encontrado")
+                Dialogs.showErrorMaterialDialog("Nenhum endereço encontrado", this)
             }
         } catch (e: IOException) {
             return ""
-            Log.e("performReverseGeocoding exception", e.message.toString())
+            //Log.e("performReverseGeocoding exception", e.message.toString())
         }
     }
 
