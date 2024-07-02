@@ -1,77 +1,103 @@
-# Teste Android
+# BusLive
 
-![Aiko](imagens/aiko.png)
+Meu sistema de monitoramento de ônibus em São Paulo utiliza a API do Olho Vivo para oferecer informações em tempo real sobre a localização e o status dos ônibus na cidade. Essa tecnologia permite aos usuários acompanhar de forma eficiente e precisa a movimentação dos ônibus, facilitando o planejamento de viagens e melhorando a experiência dos passageiros.
 
-Neste teste serão avaliados seus conhecimentos e a metodologia aplicada no desenvolvimento de aplicações mobile Android.
+## Instalação
 
-## O Desafio
+- Primeiro CLone o Projeto, mude de branch e siga os comandos (para rodar o app é necessário ter um emulador ou aparelho físico configurado e o node 16 ou superior ) :
 
-Seu objetivo é criar um aplicativo que exiba dados sobre o transporte público da cidade de São Paulo, consultando a [API **Olho Vivo**](api.md) que provê informações em tempo real do monitoramento da frota de ônibus da cidade de São Paulo.
+    - ##### git checkout teste/anthony-sa-reis 
+    
+    - ##### git pull 
 
-## Requisitos
+    - ##### npm install 
 
-Esses requisitos são obrigatórios e devem ser desenvolvidos para a entrega do teste
+    - ##### npm run dev
 
-* **Posições dos veículos**: Exibir no mapa onde os veículos estavam na sua última atualização.
 
-* **Linhas**: Exibir informações sobre as linhas de ônibus.
+## Decisões
 
-* **Paradas**: Exibir os pontos de parada da cidade no mapa.
+  - ##### A princípio pensei em fazer um WebSocket, mas no decorrer do desenvolvimento mudei de ideia pois acredito que o intuito era focar no aplicativo e não em configurações para backEnd e o useEffect já serviria para o que foi proposto.
 
-* **Previsão de chegada**: Dado uma parada informar a previsão de chegada de cada veículo que passe pela parada selecionada.
+  - ##### Optei por desenvolver um sistema simples e leve, visando garantir compatibilidade mesmo com aparelhos mais antigos, utilizando uma API level mais baixa e um SDK antigo para assegurar que o aplicativo seja executável em dispositivos que não suportem versões mais recentes do sistema operacional.
+   
+  - ##### Adicionei animações com o react native reanimated e o Moti para deixar a aplicação mais fluída para o usuário.
+   
+  - ##### Optei pelo React Native com Expo pois tenho mais domínio com esse framework.
 
-* **Pesquisa e Filtros**: Permitir que o usuário pesquise e filtre esses dados, interagindo com a interface.
+  - ##### Utilizei pouco da API do google maps por falta de familiaridade com a mesma.
 
-## O que é permitido
+  - ##### Escolhi fazer testes unitários com React Native Testint Libraly e Jest.
 
-* Android Nativo (Java/Kotlin)
+  - ##### Para as requisições usei o axios para facilitar as chamadas à API.
 
-* React Native
+  - ##### Para fazer o Lint usei o ESLint com Prettier.
 
-* Native Script (Vue, Angular, etc)
 
-* Flutter
+## Funcionalidades
 
-* Xamarin
+- Visualização em Tempo Real: O sistema proporciona uma visualização dinâmica da localização atual de todos os ônibus em operação na cidade de São Paulo. Utilizando dados atualizados da API do Olho Vivo, os usuários podem ver onde cada ônibus está em tempo real, cada atualização é feita de minuto em minuto (60 segundos).
 
-* Kivy
+- Detalhes dos Ônibus: Além da localização, o sistema fornece detalhes sobre cada ônibus, como número da linha e destino. Essas informações são essenciais para os passageiros planejarem suas viagens com precisão.
 
-* Qualquer tecnologia complementar as citadas anteriormente são permitidas desde que seu uso seja justificável
+- Detalhes das Paradas: Além da localização, o sistema fornece detalhes sobre cada parada, como qual a linha, destino e horário dos próximos ônibus. Essas informações são essenciais para os passageiros planejarem suas viagens com precisão.
 
-## O que não é permitido
+- Mapa Interativo: Um mapa interativo permite que os usuários visualizem os ônibus em um contexto geográfico. Os ônibus são representados por marcadores que mostram informações relevantes ao serem clicados, facilitando a navegação e a compreensão da rede de transporte público.
 
-* Utilizar bibliotecas ou códigos de terceiros que implementem algum dos requisitos.
+## Benefícios para os Usuários:
 
-## Recomendações
+- Planejamento de Viagens Eficiente: Os usuários podem verificar o status dos ônibus antes de sair, economizando tempo e evitando esperas desnecessárias.
 
-* **Linter**: Desenvolva o projeto utilizando algum padrão de formatação de código.
+- Melhoria na Experiência do Passageiro: Com acesso a informações precisas e atualizadas, os passageiros podem viajar com mais confiança e conveniência.
 
-## Extras
+- Redução do Impacto Ambiental: Ao otimizar o uso do transporte público, o sistema contribui para a redução do tráfego e das emissões de carbono na cidade.
 
-Aqui são listados algumas sugestões para você que quer ir além do desafio inicial. Lembrando que você não precisa se limitar a essas sugestões, se tiver pensado em outra funcionalidade que considera relevante ao escopo da aplicação fique à vontade para implementá-la.
+## Screenshots
 
-* **Refresh automático**: Que as informações exibidas no aplicativo sejam atualizadas de tempo em tempo de forma transparente ao usuário
+- SplashScreen
 
-* **Cálculo de rotas**: Exibir a possível rota de um ou mais ônibus em relação a uma parada, ou do usuário em relação a uma parada (Utilizando API do Google Maps ou equivalentes)
+<img src="https://github.com/AnthonySaDev/aiko-challenge/blob/main/images/splash.png" alt="Splash Screen" width="500">
 
-* **Corredores**: Mostrar informações sobre os corredores de ônibus de SP.
+- Onboard
 
-* **Velocidade das vias**: Mostrar informações sobre as velocidades das vias.
+<img src="https://github.com/AnthonySaDev/aiko-challenge/blob/main/images/onboard.png" alt="Onboard Screen" width="500">
 
-* **Testes**: Desenvolva testes que achar necessário para a aplicação.
+- Dashboard
 
-* **Documentação**: Gerar uma documentação da aplicação. A documentação pode incluir detalhes sobre as decisões tomadas, especificação das funcionalidades desenvolvidas, instruções de uso dentre outras informações que achar relevantes.
+<img src="https://github.com/AnthonySaDev/aiko-challenge/blob/main/images/dashboard.png" alt="Dashboard Screen" width="500">
 
-## Entrega
+- Dashboard - Rotas
 
-Para realizar a entrega do teste você deve:
+<img src="https://github.com/AnthonySaDev/aiko-challenge/blob/main/images/dashbord-rotas.png" alt="Dashboard Rotas Screen" width="500">
 
-* Relizar o fork e clonar esse repositório para sua máquina.
-  
-* Criar uma branch com o nome de `teste/[NOME]`.
-  * `[NOME]`: Seu nome.
-  * Exemplos: `teste/fulano-da-silva`; `teste/beltrano-primeiro-gomes`.
-  
-* Faça um commit da sua branch com a implementação do teste.
-  
-* Realize o pull request da sua branch nesse repositório.
+- Dashboard - Corredores
+
+<img src="https://github.com/AnthonySaDev/aiko-challenge/blob/main/images/dashboard-corredores.png" alt="Dashboard Corredores Screen" width="500">
+
+- Detalhes dos Corredores
+
+<img src="https://github.com/AnthonySaDev/aiko-challenge/blob/main/images/detalhes.png" alt="Detalhes dos Corredores Screen" width="500">
+
+- Listagem das Linhas para a Rota selecionada
+
+<img src="https://github.com/AnthonySaDev/aiko-challenge/blob/main/images/linhas.png" alt="Listagem das Linhas Screen" width="500">
+
+- Monitoramento de Ônibus
+
+<img src="https://github.com/AnthonySaDev/aiko-challenge/blob/main/images/monitoramento.png" alt="Monitoramento de Ônibus Screen" width="500">
+
+## Demonstração
+
+[Assista ao vídeo de demonstração](https://youtu.be/9MHbP2RgKfI) do aplicativo BusLive.
+
+## Aprendizados
+
+Durante o desenvolvimento deste projeto, adquiri valiosos conhecimentos e habilidades que foram fundamentais para a implementação de funcionalidades robustas e eficientes. Algumas das principais lições aprendidas incluem:
+
+- Atualização em Tempo Real: Implementar atualizações em tempo real foi essencial para garantir que os dados exibidos no aplicativo refletissem com precisão a localização e o status atualizados dos ônibus. A integração com a API do Olho Vivo permitiu receber e processar informações, proporcionando uma experiência de usuário mais dinâmica e atualizada.
+
+- Filtragem de Dados em Requisições: A habilidade de filtrar e processar dados diretamente nas requisições à API foi crucial para otimizar o desempenho e a relevância das informações apresentadas aos usuários. Implementar filtros eficazes permitiu personalizar as consultas de acordo com as necessidades específicas do usuário, melhorando a eficiência e a usabilidade do aplicativo.
+
+- Animações Fluidas: A integração de animações fluidas foi crucial para proporcionar uma experiência de usuário mais agradável e interativa. A utilização de bibliotecas como react-native-reanimated e moti permitiu criar transições suaves entre telas e efeitos visuais que aumentaram a usabilidade e a atratividade do aplicativo.
+
+- Roteamento Navegacional: Dominar técnicas avançadas de roteamento foi fundamental para garantir a navegabilidade intuitiva dentro do aplicativo. A utilização do expo-router possibilitou implementar fluxos de navegação claros e eficientes, adaptados às necessidades específicas de cada tela e funcionalidade e permitindo o envio de parâmetros de Rota.
