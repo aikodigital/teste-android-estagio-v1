@@ -2,6 +2,38 @@
 
 Meu sistema de monitoramento de ônibus em São Paulo utiliza a API do Olho Vivo para oferecer informações em tempo real sobre a localização e o status dos ônibus na cidade. Essa tecnologia permite aos usuários acompanhar de forma eficiente e precisa a movimentação dos ônibus, facilitando o planejamento de viagens e melhorando a experiência dos passageiros.
 
+## Instalação
+
+- Primeiro CLone o Projeto, mude de branch e siga os comandos (para rodar o app é necessário ter um emulador ou aparelho físico configurado e o node 16 ou superior ) :
+
+    - ##### git checkout teste/anthony-sa-reis 
+    
+    - ##### git pull 
+
+    - ##### npm install 
+
+    - ##### npm run dev
+
+
+## Decisões
+
+  - ##### A princípio pensei em fazer um WebSocket, mas no decorrer do desenvolvimento mudei de ideia pois acredito que o intuito era focar no aplicativo e não em configurações para backEnd e o useEffect já serviria para o que foi proposto.
+
+  - ##### Optei por desenvolver um sistema simples e leve, visando garantir compatibilidade mesmo com aparelhos mais antigos, utilizando uma API level mais baixa e um SDK antigo para assegurar que o aplicativo seja executável em dispositivos que não suportem versões mais recentes do sistema operacional.
+   
+  - ##### Adicionei animações com o react native reanimated e o Moti para deixar a aplicação mais fluída para o usuário.
+   
+  - ##### Optei pelo React Native com Expo pois tenho mais domínio com esse framework.
+
+  - ##### Utilizei pouco da API do google maps por falta de familiaridade com a mesma.
+
+  - ##### Escolhi fazer testes unitários com React Native Testint Libraly e Jest.
+
+  - ##### Para as requisições usei o axios para facilitar as chamadas à API.
+
+  - ##### Para fazer o Lint usei o ESLint com Prettier.
+
+
 ## Funcionalidades
 
 - Visualização em Tempo Real: O sistema proporciona uma visualização dinâmica da localização atual de todos os ônibus em operação na cidade de São Paulo. Utilizando dados atualizados da API do Olho Vivo, os usuários podem ver onde cada ônibus está em tempo real, cada atualização é feita de minuto em minuto (60 segundos).
