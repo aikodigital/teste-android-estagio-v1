@@ -13,7 +13,7 @@ class LineRepositoryImpl @Inject constructor(
         return serviceAPI.getLines()
     }
 
-    override suspend fun getLineByCode(code: String): List<LineResponse> {
+    override suspend fun getLineByCode(code: String): LineResponse {
         return serviceAPI.getLineByCode(code)
     }
 }

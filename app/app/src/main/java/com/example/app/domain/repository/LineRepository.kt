@@ -5,5 +5,5 @@ import com.example.app.data.model.LineResponse
 
 interface LineRepository {
     suspend fun getLines(): AllLinesResponse
-    suspend fun getLineByCode(code: String): List<LineResponse>
+    suspend fun getLineByCode(code: String): LineResponse
 }
