@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name" translatable="false">Olho Vivo Challenge</string>
+
+    <string name="home">Home</string>
+    <string name="lines">Routes</string>
+    <string name="search">Search</string>
+    <string name="stops">Stops</string>
+    <string name="line">Route</string>
+    <string name="buses">Buses</string>
+    <string name="corridors">Corridors</string>
+
+    <string name="route_filter">Route filter</string>
+    <string name="search_line">Search route</string>
+    <string name="principal_to_secondary">Principal to secondary</string>
+    <string name="secondary_to_principal">Secondary to principal</string>
+
+    <string name="prefix_text">Prefix:</string>
+    <string name="arrival_forecast_text">Arrival forecast:</string>
+    <string name="line_subtitle">Line %1$s</string>
+    <string name="corridor_subtitle">Corridor %1$s</string>
+    <string name="text_arrival_forecast" translatable="false">%1$sh</string>
+
+    <string name="message_please_wait">Please wait</string>
+    <string name="message_authenticating">Authenticating</string>
+    <string name="message_start_search_line">Welcome!\nStart searching routes</string>
+    <string name="message_no_stops_found">No stops found</string>
+
+    <string name="error_authentication_failed">Authentication failed</string>
+
+</resources>
