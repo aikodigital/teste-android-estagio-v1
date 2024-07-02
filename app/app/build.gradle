@@ -5,6 +5,7 @@ plugins {
     id 'kotlin-kapt'
     id 'kotlin-parcelize'
     id 'androidx.navigation.safeargs'
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 }
 
 android {
@@ -40,7 +41,6 @@ android {
 }
 
 dependencies {
-
     implementation libs.androidx.core.ktx
     implementation libs.androidx.appcompat
     implementation libs.material
@@ -71,12 +71,14 @@ dependencies {
     implementation(libs.okhttp)
     implementation(libs.logging.interceptor)
 
-    //hilt
+    // Hilt
     implementation libs.hilt.android
-    implementation libs.play.services.maps
     implementation libs.engage.core
-    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
-    kapt libs.androidx.hilt.compiler
+    kapt libs.hilt.android.compiler
+
+    // Maps SDK for Android
+    implementation libs.play.services.maps
+    implementation libs.android.maps.utils
 
     // Tester
     testImplementation libs.junit
