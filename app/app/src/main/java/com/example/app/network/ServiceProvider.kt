@@ -1,5 +1,6 @@
 package com.example.app.network
 
+import com.example.app.data.api.ServiceAPI
 import com.example.app.util.BASE_URL
 import okhttp3.*
 import okhttp3.logging.HttpLoggingInterceptor
@@ -8,6 +9,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 class ServiceProvider {
+    private var apiCredentials: String = ""
+
     private val client = OkHttpClient.Builder()
         .connectTimeout(30, TimeUnit.SECONDS)
         .readTimeout(30, TimeUnit.SECONDS)
@@ -23,4 +26,22 @@ class ServiceProvider {
         .build()
 
     fun <API> createService(apiClass: Class<API>): API = retrofit.create(apiClass)
+
+    suspend fun authenticate(token: String): Boolean {
+        val apiService = createService(ServiceAPI::class.java)
+        return try {
+            val response = apiService.authenticate(token)
+            if (response.isSuccessful) {
+                val headers = response.headers()
+                val cookies = headers.values("Set-Cookie")
+                apiCredentials = cookies.joinToString(", ")
+                true
+            } else {
+                false
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+            false
+        }
+    }
 }

@@ -74,6 +74,7 @@ dependencies {
     //hilt
     implementation libs.hilt.android
     implementation libs.play.services.maps
+    implementation libs.engage.core
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
     kapt libs.androidx.hilt.compiler
 
