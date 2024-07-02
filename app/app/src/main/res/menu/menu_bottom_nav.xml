@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item
+    android:id="@+id/bus"
+    android:title="Ônibus"
+    android:icon="@drawable/ic_bus"
+    />
+
+    <item
+        android:id="@+id/line"
+        android:title="Linhas"
+        android:icon="@drawable/ic_line"
+        />
+</menu>

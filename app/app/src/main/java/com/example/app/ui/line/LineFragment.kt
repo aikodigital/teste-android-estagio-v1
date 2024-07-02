@@ -1,22 +1,21 @@
-package com.example.app.ui.home
+package com.example.app.ui.line
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.app.R
-import com.example.app.databinding.FragmentHomeBinding
-import com.example.app.databinding.FragmentSplashBinding
+import com.example.app.databinding.FragmentLineBinding
 
-class HomeFragment : Fragment() {
-    private var _binding: FragmentHomeBinding? = null
+class LineFragment : Fragment() {
+    private var _binding: FragmentLineBinding? = null
     private val binding get() = _binding!!
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        _binding = FragmentLineBinding.inflate(inflater, container, false)
         return binding.root
     }
 
