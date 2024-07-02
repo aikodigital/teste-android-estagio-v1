@@ -4,11 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:elevation="5dp"
-    app:cardCornerRadius="1dp">
+    android:layout_margin="8dp"
+    app:cardCornerRadius="5dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+        android:background="@color/cardview_shadow_start_color"
         android:layout_height="match_parent"
         android:padding="16dp">
 
@@ -19,27 +20,26 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:text="118Y-10"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintBottom_toBottomOf="parent" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_terminal_principal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="LAPA"
+            tools:text="TP - LAPA"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toStartOf="@id/iv_direcao_linha"
-            app:layout_constraintStart_toEndOf="@id/tv_letreiro"
-            />
+            app:layout_constraintStart_toEndOf="@id/tv_letreiro" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_terminal_secundario"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="LAUZANE PAULISTA"
+            tools:text="TS - LAUZANE PAULISTA"
             app:layout_constraintEnd_toStartOf="@id/iv_direcao_linha"
             app:layout_constraintStart_toEndOf="@id/tv_letreiro"
             app:layout_constraintTop_toBottomOf="@id/tv_terminal_principal"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintBottom_toBottomOf="parent" />
 
         <ImageView
             android:id="@+id/iv_direcao_linha"
@@ -48,7 +48,7 @@
             android:contentDescription="Direção"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
