@@ -15,29 +15,47 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.tiagomaciel.olhovivo.api.ApiManager
 import com.tiagomaciel.olhovivo.ui.theme.OlhoVivoApplicationTheme
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.tiagomaciel.olhovivo.api.VehiclePosition
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
+            var items by remember {
+                mutableStateOf<VehiclePosition?>(null)
+            }
             OlhoVivoApplicationTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                    ClickableButton(onClick = {
-                        val apiManager = ApiManager()
-                        apiManager.authenticateAndFetchData()
-                    }
-                    )
-                }
+                    LazyColumn(Modifier.padding(innerPadding)) {
+                        item {
+                            ClickableButton(
+                                onClick = {
+                                    val apiManager = ApiManager()
+                                    apiManager.authenticateAndFetchData {
+                                        items = it
+                                    }
+                                }
+                            )
+                        }
+                        items?.let {
+                            items(it.l) { l ->
+                                Text(text = l.c)
+                            }
+                        }
 
+                    }
+                }
             }
         }
     }

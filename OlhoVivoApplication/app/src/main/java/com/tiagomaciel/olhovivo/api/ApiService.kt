@@ -12,6 +12,5 @@ interface ApiService {
 
     @GET("Posicao")
     fun getVehiclePositions(
-        @Query("token") token: String
-    ): Call<Any>
+    ): Call<VehiclePosition>
 }

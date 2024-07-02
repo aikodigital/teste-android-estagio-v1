@@ -14,12 +14,12 @@ class ApiManager {
         apiService = retrofit.create(ApiService::class.java)
     }
 
-    fun authenticateAndFetchData() {
+    fun authenticateAndFetchData(onResult: (VehiclePosition?) -> Unit) {
         apiService.authenticate(token).enqueue(object : Callback<Boolean> {
             override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
                 if (response.isSuccessful && response.body() == true) {
                     Log.d("API", "Authenticated successfully")
-                    fetchVehiclePositions(token)
+                    fetchVehiclePositions(onResult)
                 } else {
                     Log.e("API", "Authentication failed")
                 }
@@ -31,19 +31,20 @@ class ApiManager {
         })
     }
 
-    private fun fetchVehiclePositions(authToken: String) {
-        apiService.getVehiclePositions(authToken).enqueue(object : Callback<Any> {
-            override fun onResponse(call: Call<Any>, response: Response<Any>) {
+    private fun fetchVehiclePositions(onResult: (VehiclePosition?) -> Unit) {
+        apiService.getVehiclePositions().enqueue(object : Callback<VehiclePosition> {
+            override fun onResponse(call: Call<VehiclePosition>, response: Response<VehiclePosition>) {
                 Log.d("API", "Response code: ${response.code()}")
                 if (response.isSuccessful && response.body() != null) {
                     val positions = response.body()
+                    onResult.invoke(positions as? VehiclePosition)
                     Log.d("API", "Positions: $positions")
                 } else {
                     Log.e("API", "Failed to fetch vehicle positions. Error: ${response.message()}")
                 }
             }
 
-            override fun onFailure(call: Call<Any>, t: Throwable) {
+            override fun onFailure(call: Call<VehiclePosition>, t: Throwable) {
                 Log.e("API", "Error: ${t.message}")
             }
         })
