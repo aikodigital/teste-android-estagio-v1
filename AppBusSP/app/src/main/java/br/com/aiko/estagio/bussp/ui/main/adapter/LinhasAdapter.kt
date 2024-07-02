@@ -1,4 +1,4 @@
-package br.com.aiko.estagio.bussp.ui.main
+package br.com.aiko.estagio.bussp.ui.main.adapter
 
 import android.content.Context
 import android.content.Intent
