@@ -3,6 +3,7 @@ package br.com.aiko.estagio.bussp.ui.main.activity
 import android.location.Address
 import android.location.Geocoder
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -25,8 +26,15 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.isActive
+import kotlinx.coroutines.launch
 import java.io.IOException
 import java.util.Locale
+import kotlin.properties.Delegates
 
 @AndroidEntryPoint
 class InforOnibusActivity : AppCompatActivity(), OnMapReadyCallback,
@@ -42,8 +50,8 @@ class InforOnibusActivity : AppCompatActivity(), OnMapReadyCallback,
 
     val map: MutableMap<VeiculoLocalizado, LinhasLocalizada> = mutableMapOf()
 
-
     private var codigoParada = -1
+    private var codigoLinha by Delegates.notNull<Int>()
     private lateinit var minhaParada: LatLng
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,7 +64,17 @@ class InforOnibusActivity : AppCompatActivity(), OnMapReadyCallback,
         setupMap()
         setupListner()
 
+        posicaoAutualizadaVeiculos()
 
+    }
+
+    private fun posicaoAutualizadaVeiculos() {
+        CoroutineScope(Dispatchers.Main).launch {
+            while (isActive) {
+                delay(60000)
+                previsaoLinha(codigoLinha)
+            }
+        }
     }
 
     private fun previsaoParada(codigoParada: Int) {
@@ -93,10 +111,10 @@ class InforOnibusActivity : AppCompatActivity(), OnMapReadyCallback,
             linha.ps.forEach { l ->
                 l.vs.forEach { v ->
                     val location = LatLng(v.py, v.px)
-                    mMap.addMarker(MarkerOptions().position(location).title("${v.p}:${v.t}" ))?.setIcon(
-                        BitmapDescriptorFactory.fromResource(R.drawable.onibus_loc)
-                    )
-
+                    mMap.addMarker(MarkerOptions().position(location).title("${v.p}:${v.t}"))
+                        ?.setIcon(
+                            BitmapDescriptorFactory.fromResource(R.drawable.onibus_loc)
+                        )
                 }
             }
         }
@@ -129,6 +147,7 @@ class InforOnibusActivity : AppCompatActivity(), OnMapReadyCallback,
     private fun handleItemClick(linhaCodigo: Int) {
         // Atualize o mapa com o código da linha
         previsaoLinha(linhaCodigo)
+        codigoLinha = linhaCodigo
     }
 
 
