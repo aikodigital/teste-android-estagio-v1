@@ -61,8 +61,11 @@ dependencies {
     // Logging
     implementation("com.squareup.okhttp3:logging-interceptor:4.10.0")
 
-
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
+
+    // Api Google Maps
+    implementation("com.google.android.gms:play-services-maps:19.0.0")
+    implementation("com.google.android.gms:play-services-location:21.3.0")
 
 
     implementation(libs.androidx.core.ktx)
