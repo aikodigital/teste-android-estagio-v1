@@ -74,7 +74,7 @@ class ParadasActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMar
 
                     "Corredor" -> setupParadasPorCorredor(parada.toInt())
                 }
-            }else{
+            } else {
                 Log.e("errror", "$parada $filtro")
             }
         }
@@ -122,7 +122,7 @@ class ParadasActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMar
     }
 
     private fun setupList() {
-        paradasAdapter = ParadasAdapter()
+        paradasAdapter = ParadasAdapter(this)
         binding.rvParadas.adapter = paradasAdapter
     }
 
@@ -167,7 +167,6 @@ class ParadasActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMar
 
 
     }
-
 
 
     override fun onMarkerClick(p0: Marker): Boolean {

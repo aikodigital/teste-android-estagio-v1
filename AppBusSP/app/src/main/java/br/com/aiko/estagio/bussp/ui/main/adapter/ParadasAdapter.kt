@@ -1,5 +1,7 @@
 package br.com.aiko.estagio.bussp.ui.main.adapter
 
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -7,8 +9,10 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import br.com.aiko.estagio.bussp.data.remote.response.Parada
 import br.com.aiko.estagio.bussp.databinding.ItemParadaBinding
+import br.com.aiko.estagio.bussp.ui.main.activity.InforOnibusActivity
+import br.com.aiko.estagio.bussp.ui.main.activity.ParadasActivity
 
-class ParadasAdapter :
+class ParadasAdapter(private val context: Context) :
     ListAdapter<Parada, ParadasAdapter.ParadasViewHolder>(ParadasDiffCallBack()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ParadasViewHolder {
@@ -18,6 +22,12 @@ class ParadasAdapter :
 
     override fun onBindViewHolder(holder: ParadasViewHolder, position: Int) {
         holder.bind(getItem(position))
+
+        holder.itemView.setOnClickListener {
+            val intent = Intent(context, InforOnibusActivity::class.java)
+            intent.putExtra("parada", getItem(position).cp)
+            context.startActivity(intent)
+        }
     }
 
     inner class ParadasViewHolder(

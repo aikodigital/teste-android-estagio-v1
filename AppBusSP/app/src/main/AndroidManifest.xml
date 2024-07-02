@@ -18,6 +18,10 @@
         android:theme="@style/Theme.BusSP"
         tools:targetApi="31">
         <activity
+            android:name=".ui.main.activity.InforOnibusActivity"
+            android:exported="false">
+        </activity>
+        <activity
             android:name=".ui.main.activity.EmpresasActivity"
             android:exported="false" />
         <activity
