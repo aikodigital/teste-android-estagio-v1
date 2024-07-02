@@ -1,4 +1,4 @@
-package br.com.aiko.estagio.bussp.ui.main
+package br.com.aiko.estagio.bussp.ui.main.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,25 +10,15 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MainViewModel @Inject constructor(
+class BuscarLinhaViewModel @Inject constructor(
     private val repository: TransRepository
 ) : ViewModel() {
-
-    private val _authentication = MutableLiveData<Boolean>()
-    val authentication: MutableLiveData<Boolean> get() = _authentication
 
     private val _buscarlinha = MutableLiveData<List<Linha>>()
     val buscarLinha: MutableLiveData<List<Linha>> get() = _buscarlinha
 
     private val _buscarLinhaSentido = MutableLiveData<List<Linha>>()
     val buscarLinhaSentido: MutableLiveData<List<Linha>> get() = _buscarLinhaSentido
-
-    fun authentication(token: String) {
-        viewModelScope.launch {
-            val result = repository.authentication(token)
-            _authentication.value = result
-        }
-    }
 
     fun buscarLinha(termoBuscar: String) {
         viewModelScope.launch {
