@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="home">Início</string>
+    <string name="lines">Linhas</string>
+    <string name="search">Buscar</string>
+    <string name="stops">Paradas</string>
+    <string name="line">Linha</string>
+    <string name="buses">Ônibus</string>
+    <string name="corridors">Corredores</string>
+
+    <string name="route_filter">Filtro de linha</string>
+    <string name="search_line">Buscar linha</string>
+    <string name="principal_to_secondary">Principal para secundário</string>
+    <string name="secondary_to_principal">Secundário para principal</string>
+
+    <string name="prefix_text">Prefixo:</string>
+    <string name="arrival_forecast_text">Previsão de chegada:</string>
+    <string name="line_subtitle">Linha %1$s</string>
+    <string name="corridor_subtitle">Corredor %1$s</string>
+
+    <string name="message_please_wait">Por favor aguarde</string>
+    <string name="message_authenticating">Autenticando</string>
+    <string name="message_start_search_line">Bem-vindo!\nComece a pesquisar linhas</string>
+    <string name="message_no_stops_found">Nenhuma parada encontrada</string>
+
+    <string name="error_authentication_failed">Falha na autenticação</string>
+
+</resources>
