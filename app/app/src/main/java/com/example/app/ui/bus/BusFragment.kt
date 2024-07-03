@@ -54,7 +54,7 @@ class BusFragment : Fragment() {
     }
 
     private fun getLines() {
-        viewModel.getLines().observe(viewLifecycleOwner, Observer { stateView ->
+        viewModel.getLines().observe(viewLifecycleOwner) { stateView ->
             when (stateView) {
                 is StateView.Loading -> {
                     binding.progressBar.visibility = View.VISIBLE
@@ -94,7 +94,7 @@ class BusFragment : Fragment() {
                     ).show()
                 }
             }
-        })
+        }
     }
 
     private fun extractBusList(allLines: List<AllLines>): List<LineAndBus> {
