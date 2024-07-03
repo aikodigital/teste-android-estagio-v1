@@ -5,4 +5,9 @@
     <string name="parada_descricao">Icone de parada de ônibus</string>
     <string name="hint_pesquisa_parada">Nome ou Endereco</string>
     <string name="localizao_mapa">Volta a localização no mapa</string>
+    <string name="empresas_text">Empresas em São Paulo</string>
+    <string name="corredores_name">Corredores</string>
+    <string name="paradas_name">Paradas</string>
+    <string name="linhas_name">Linhas</string>
+    <string name="empresas_name">Empresas</string>
 </resources>
