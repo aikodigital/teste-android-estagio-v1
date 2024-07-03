@@ -4,28 +4,31 @@ Aplicativo desenvolvido para o teste de estágio desenvolvedor android da Aiko.
 
 ## Descrição
 
-O BusSP foi criado para exibir dados do transporte público de São Paulo, como base na API Olho Vivo, os mapas são gerados utilizando a API do Google Maps. Entre as principais funcionalidades temos:
+O BusSP foi criado para exibir dados do transporte público de São Paulo, como base na API Olho Vivo,
+os mapas são gerados utilizando a API do Google Maps. Entre as principais funcionalidades temos:
 
-- Buscar por Linhas;
-- Buscar por Paradas;
+- Busca por Linhas;
+- Busca por Paradas;
 - A previsão de chegada dos ônibus a parada, com a visualização das paradas no mapa;
 - A visualização dos ônibus no mapa, sendo atualizado a cada um minuto.
 
 ## Requisitos
 
-1. Android Studio:
+### Ambiente de Desenvolvimento
 
-* Microsoft® Windows® 8/10/11 de 64 bits
-* Arquitetura de CPU x86_64; Intel Core de segunda geração ou mais recente ou CPU AMD com suporte a
-* Hipervisor do Windows
-* Pelo menos 8 GB de RAM
-* Mínimo de 8 GB de espaço em disco disponível (ambiente de desenvolvimento integrado + SDK do
-* Android + Android Emulator)
-* Resolução de tela mínima de 1.280 x 800
+- **Android Studio**
+    - Microsoft® Windows® 8/10/11 de 64 bits
+    - Arquitetura de CPU x86_64; Intel Core de segunda geração ou mais recente ou CPU AMD com
+      suporte a Hipervisor do Windows
+    - Pelo menos 8 GB de RAM
+    - Mínimo de 8 GB de espaço em disco disponível (ambiente de desenvolvimento integrado + SDK do
+      Android + Android Emulator)
+    - Resolução de tela mínima de 1.280 x 800
 
-2. SDK
+### SDK e JVM
 
-3. JVM
+- SDK do Android
+- Java Development Kit (JDK)
 
 ## Estrutura do Projeto
 
@@ -82,24 +85,33 @@ O BusSP foi criado para exibir dados do transporte público de São Paulo, como 
 
 ## Funcionalidaes
 
-1. Buscar Linhas: realizar a buscar pelas linhas, ao abrir o aplicativo a
-   função `performReverseGeocoding` realizar a buscar pelo nome da localidade pela latitude e
+1. Buscar Linhas: realizar a busca pelas linhas, ao abrir o aplicativo a
+   função `performReverseGeocoding` realizar a busca pelo nome da localidade pela latitude e
    longitude. Ao digitar a linha, uma lista de linhas serão exibidas, ao clicar, a tela com as
    paradas e criada.
 
-[b1](/imagens/Screenshot_20240702_200835.png) [b2](/imagens/Screenshot_20240702_200946.png) [b3](/imagens/Screenshot_20240702_201012.png) [b4](/imagens/Screenshot_20240702_201027.png)
+[b1](/AppBusSP/imagens/Screenshot_20240702_200835.png) [b2](/AppBusSP/imagens/Screenshot_20240702_200946.png) [b3](/AppBusSP/imagens/Screenshot_20240702_201012.png) [b4](/AppBusSP/imagens/Screenshot_20240702_201027.png)
 
-2. Buscar Paradas: realizar a buscar pelas paradas, podendo ser por: nome; endereço, código e
+2. Buscar Paradas: realizar a busca pelas paradas, podendo ser por: nome; endereço, código e
    corredor. Foi utilizado um filtro para alterar o resultado. Os dados da parada são exibidos numa
    lista horizontal, contendo o código da parada, um ícone da representação no mapa e o endereço.
 
-[p1](/imagens/p1.png) [p2](/imagens/p2.png) [p3](/imagens/p3.png)
+[p1](/AppBusSP/imagens/p1.png) [p2](/AppBusSP/imagens/p2.png) [p3](/AppBusSP/imagens/p3.png)
 
-3. Informações sobre ônibus: buscar a previsão dos ônibus com base na parada, mostrando os dados da
+3. Informações sobre ônibus: busca a previsão dos ônibus com base na parada, mostrando os dados da
    linha e do ônibus. Mostra na tela as informações de trajetória dos ônibus no mapa, para a
    atualização das posições foi utilizado um Coroutines.
 
-[i1](/imagens/i1.png) [i2](/imagens/i2.png) [i3](/imagens/i3.png)
+[i1](/AppBusSP/imagens/i1.png) [i2](/AppBusSP/imagens/i2.png) [i3](/AppBusSP/imagens/i3.png)
+
+## Tecnologias
+
+- Retrofit2
+- OkkHttp3
+- Material Design
+- API Google Maps
+- Hilt
+- Gson
 
 ## Licença
 
