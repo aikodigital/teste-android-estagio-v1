@@ -68,6 +68,10 @@ class InforOnibusActivity : AppCompatActivity(), OnMapReadyCallback,
 
     }
 
+    /*
+     * Função para atualização da posição dos ônibus com base na linha, essa atualização
+     * ocorrer ao pressionar novamente o item da lista (RecyclerView) ou após um minuto.
+     */
     private fun posicaoAutualizadaVeiculos() {
         CoroutineScope(Dispatchers.Main).launch {
             while (isActive) {
@@ -82,6 +86,12 @@ class InforOnibusActivity : AppCompatActivity(), OnMapReadyCallback,
 
         previsaoViewModel.previsaoParada(codigoParada)
         previsaoViewModel.previsao.observe(this) { previsao ->
+            /*
+             * Buscar pelos veículos e a sua linha, adicionando ao map mutável,
+             * permitindo retornar todas os veículos e linhas. Depois converte
+             * para uma lista de par mutável, onde o par (Veiculo, Linha) é passado
+             * ao adapter.
+             */
             previsao.p.l.forEach { linhas ->
                 linhas.vs.forEach { veiculos ->
                     map[veiculos] = linhas
@@ -97,16 +107,20 @@ class InforOnibusActivity : AppCompatActivity(), OnMapReadyCallback,
     }
 
     private fun previsaoLinha(codigoLinha: Int) {
-        mMap.clear()
+        mMap.clear() // limpar o mapa
 
+        // adicionar um marcador de posição
         mMap.addMarker(MarkerOptions().position(minhaParada).title("Ponto"))?.setIcon(
             BitmapDescriptorFactory.fromResource(R.drawable.ponto_de_onibus)
         )
+
+        // adicionar um marcador de parada
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(minhaParada, 10f))
         mMap.addMarker(MarkerOptions().position(location).title("Eu"))?.setIcon(
             BitmapDescriptorFactory.fromResource(R.drawable.posicao)
         )
 
+        // buscar pelo veículos e marcar sua posição no mapa
         previsaoViewModel.previsaoLinha.observe(this) { linha ->
             linha.ps.forEach { l ->
                 l.vs.forEach { v ->
@@ -123,7 +137,6 @@ class InforOnibusActivity : AppCompatActivity(), OnMapReadyCallback,
 
     private fun setupIntentMethod() {
         codigoParada = intent.getIntExtra("parada", -1)
-        Log.e("lllll", codigoParada.toString())
         if (codigoParada != -1) {
             previsaoParada(codigoParada)
         }

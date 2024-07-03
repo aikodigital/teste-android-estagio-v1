@@ -46,13 +46,18 @@ class EmpresasActivity : AppCompatActivity() {
         var list: MutableList<Pair<Empresa, EmpresasAreaOcupcao>> = mutableListOf()
 
         empresaViewModel.empresas.observe(this) { empresas ->
+            /*
+            * Buscar pelas empresas e sua área de ocupação, adicionando ao map mutável,
+            * permitindo retornar todas as empresas sem perder a área de ocupação. Depois
+            * converte para uma lista de par mutável, onde o par (Empresa, Area) é passado ao
+            * adapter.
+            */
             empresas.e.forEach { area ->
                 area.e.forEach { empresa ->
                     map[empresa] = area
                 }
             }
             list.addAll(map.toList())
-            Log.e("empres", list.toString())
             empresaAdapter.submitList(list)
         }
         empresaViewModel.empresas()
@@ -63,6 +68,9 @@ class EmpresasActivity : AppCompatActivity() {
             binding.drawerLayoutEmpresa.open()
         }
 
+        /*
+        *  DrawerLayout
+        */
         binding.navigationView.setNavigationItemSelectedListener { menuItem ->
             menuItem.isChecked = true
             binding.drawerLayoutEmpresa.close()

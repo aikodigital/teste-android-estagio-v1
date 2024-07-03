@@ -30,7 +30,6 @@ class MainActivity : AppCompatActivity() {
     private val authenticationViewModel: AuthenticationViewModel by viewModels()
     private val buscarLinhaViewModel: BuscarLinhaViewModel by viewModels()
 
-
     private lateinit var linhasAdapter: LinhasAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,16 +58,13 @@ class MainActivity : AppCompatActivity() {
             linhasAdapter.submitList(linhas)
         }
         buscarLinhaViewModel.buscarLinha(performReverseGeocoding(location))
-
     }
 
     private fun buscarLinhaPorSentido() {
         binding.btnSentidoTp.setOnClickListener {
-
             val linha = binding.tilOrigem.editText?.text.toString().trim()
 
             if(linha.isNotEmpty()) {
-
                 binding.tvLinhasProximas.text = "Linhas no sentido Terminal Principal"
 
                 buscarLinhaViewModel.buscarLinhaSentido(linha, 1)
@@ -107,6 +103,9 @@ class MainActivity : AppCompatActivity() {
             binding.main.open()
         }
 
+        /*
+        *  DrawerLayout
+        */
         binding.navigationView.setNavigationItemSelectedListener { menuItem ->
             menuItem.isChecked = true
             binding.main.close()
@@ -124,7 +123,6 @@ class MainActivity : AppCompatActivity() {
         navigationHeaderBinding.tvParadas.setOnClickListener {
             val intent = Intent(this, ParadasActivity::class.java)
             startActivity(intent)
-            finish()
         }
         navigationHeaderBinding.tvCorredores.setOnClickListener {
             val intent = Intent(this, CorredoresActivity::class.java)
@@ -139,6 +137,8 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+
+    // Função para recuperar o Bairro a partir da latitude e longitude
     private fun performReverseGeocoding(latlng: LatLng): String {
         val geocoder = Geocoder(this, Locale.getDefault())
         try {
@@ -159,6 +159,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
+        // Alto da Lapa
         val location = LatLng(-23.5354, -46.7178)
     }
 

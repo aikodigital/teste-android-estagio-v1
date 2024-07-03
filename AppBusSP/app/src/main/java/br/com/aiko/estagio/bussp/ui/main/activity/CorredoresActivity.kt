@@ -31,8 +31,6 @@ class CorredoresActivity : AppCompatActivity() {
 
         setupList()
         setupListener()
-
-
     }
 
     private fun setupList() {
@@ -42,8 +40,6 @@ class CorredoresActivity : AppCompatActivity() {
         corredorViewModel.corredor.observe(this) { corredores ->
             Log.e("ssss", corredores.toString())
             corredorAdapter.submitList(corredores)
-
-
         }
         corredorViewModel.corredor()
     }
@@ -53,6 +49,9 @@ class CorredoresActivity : AppCompatActivity() {
             binding.drawerLayoutCorredor.open()
         }
 
+        /*
+        *  DrawerLayout
+        */
         binding.navigationView.setNavigationItemSelectedListener { menuItem ->
             menuItem.isChecked = true
             binding.drawerLayoutCorredor.close()
@@ -70,7 +69,6 @@ class CorredoresActivity : AppCompatActivity() {
         navigationHeaderBinding.tvParadas.setOnClickListener {
             val intent = Intent(this, ParadasActivity::class.java)
             startActivity(intent)
-            finish()
         }
         navigationHeaderBinding.tvCorredores.setOnClickListener {
             val intent = Intent(this, CorredoresActivity::class.java)
