@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">SPBusao</string>
+    <string name="txt_no_conection">sem conexão com a internet</string>
+    <string name="sem_conex_o_com_a_internet">Sem conexão com a internet</string>
+    <string name="permiss_es_concedidas">Permissões concedidas</string>
+    <string name="permiss_es_negadas">Permissões negadas</string>
+    <string name="paradas_e_nibus">Paradas e Ônibus</string>
+    <string name="linhas">Linhas</string>
+    <string name="preencha_pelo_menos_dois_campos">Preencha pelo menos dois campos</string>
+    <string name="todos_os_campos_devem_ser_preenchidos">Todos os campos devem ser preenchidos</string>
+    <string name="veiculo">veiculo</string>
+    <string name="localiza_o_atual">Localização Atual</string>
+    <string name="linha_de_nibus">Linha de Ônibus</string>
+    <string name="linha">Linha</string>
+    <string name="procurar_linhas">Procurar linhas</string>
+    <string name="localiza_o">Localização</string>
+    <string name="txt_sign">Letreiro da Linha: %1s-%2s</string>
+</resources>
