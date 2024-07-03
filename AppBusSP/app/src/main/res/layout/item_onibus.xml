@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="350dp"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="5dp"
+    android:layout_gravity="center_horizontal"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/container_linha"
+            android:background="@color/common_google_signin_btn_text_dark_disabled"
+            android:padding="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_leiteiro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:text="6913-10" />
+
+            <TextView
+                android:id="@+id/tv_terminal_destino"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:gravity="center"
+                app:layout_constraintStart_toEndOf="@id/tv_leiteiro"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="DESTINO: TERM. BANDEIRA" />
+
+            <TextView
+                android:id="@+id/tv_terminal_origem"
+                android:layout_width="0dp"
+                android:gravity="center"
+                app:layout_constraintStart_toEndOf="@id/tv_leiteiro"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_terminal_destino"
+                tools:text="ORIGEM: TERM. VARGINHA" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/tv_prexifo_onibus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="61382" />
+
+            <TextView
+                android:id="@+id/tv_previsao_chegada"
+                android:layout_width="0dp"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_prexifo_onibus"
+                app:layout_constraintEnd_toStartOf="@id/iv_acessivel"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="09:36" />
+
+            <ImageView
+                android:id="@+id/iv_acessivel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+
+                tools:src="@drawable/alvo"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_width="32dp"
+                android:layout_height="32dp"/>
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
