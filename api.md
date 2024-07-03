@@ -6,6 +6,8 @@ A API do Olho Vivo provê informações em tempo real do monitoramento da frota 
 
 Para ter acesso a API siga as instruções no [Guia de referência](http://www.sptrans.com.br/desenvolvedores/api-do-olho-vivo-guia-de-referencia/)
 
+Após a criação da chave, pode ser necessário aguardar algumas horas para que o uso da API seja permitido.
+
 ## Proxy AIKO
 
 Se estiver tendo problema com **CORS** você pode utilizar o proxy da API fornecido pela AIKO:
