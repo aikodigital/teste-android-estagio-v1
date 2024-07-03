@@ -1,9 +1,11 @@
 package br.com.aiko.estagio.bussp.data.remote.di
 
+import android.content.Context
 import br.com.aiko.estagio.bussp.data.remote.TransService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -25,9 +27,19 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpClient(loggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
+    fun provideTimeoutInterceptor(): TimeoutInterceptor {
+        return TimeoutInterceptor()
+    }
+
+    @Provides
+    @Singleton
+    fun provideOkHttpClient(
+        loggingInterceptor: HttpLoggingInterceptor,
+        timeoutInterceptor: TimeoutInterceptor
+    ): OkHttpClient {
         return OkHttpClient.Builder()
             .addNetworkInterceptor(loggingInterceptor)
+            .addInterceptor(timeoutInterceptor)
             .build()
     }
 

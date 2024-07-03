@@ -1,9 +1,11 @@
 package br.com.aiko.estagio.bussp.ui.main.activity
 
+import android.content.Context
 import android.location.Address
 import android.location.Geocoder
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.os.Bundle
-import android.os.Handler
 import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -15,7 +17,7 @@ import br.com.aiko.estagio.bussp.databinding.ActivityInforOnibusBinding
 import br.com.aiko.estagio.bussp.ui.main.MainActivity.Companion.location
 import br.com.aiko.estagio.bussp.ui.main.adapter.PrevisaoParadaAdapter
 import br.com.aiko.estagio.bussp.ui.main.utils.dialogs.Dialogs
-import br.com.aiko.estagio.bussp.ui.main.viewmodel.PosicaoViewModel
+import br.com.aiko.estagio.bussp.ui.main.viewmodel.AuthenticationViewModel
 import br.com.aiko.estagio.bussp.ui.main.viewmodel.PrevisaoViewModel
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -28,7 +30,6 @@ import com.google.android.gms.maps.model.MarkerOptions
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
@@ -43,7 +44,7 @@ class InforOnibusActivity : AppCompatActivity(), OnMapReadyCallback,
     private lateinit var binding: ActivityInforOnibusBinding
     private lateinit var previsaoParadaAdapter: PrevisaoParadaAdapter
 
-    private val posicaoViewModel: PosicaoViewModel by viewModels()
+    private val authenticationViewModel: AuthenticationViewModel by viewModels()
     private val previsaoViewModel: PrevisaoViewModel by viewModels()
 
     private lateinit var mMap: GoogleMap
@@ -59,13 +60,21 @@ class InforOnibusActivity : AppCompatActivity(), OnMapReadyCallback,
         binding = ActivityInforOnibusBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        autenticacaoSetup()
         setupIntentMethod()
         setupList()
         setupMap()
         setupListner()
-
         posicaoAutualizadaVeiculos()
 
+    }
+
+    private fun autenticacaoSetup() {
+        if (isConectado(this)) {
+            authenticationViewModel.authentication("5f13bb5bf9366a7a349edf57a769e47421e0d8e9765a307ebb1243bf782dd6b4")
+        } else {
+            Dialogs.showErrorMaterialDialog("Sem internet", this)
+        }
     }
 
     /*
@@ -84,55 +93,63 @@ class InforOnibusActivity : AppCompatActivity(), OnMapReadyCallback,
     private fun previsaoParada(codigoParada: Int) {
         val list: MutableList<Pair<VeiculoLocalizado, LinhasLocalizada>> = mutableListOf()
 
-        previsaoViewModel.previsaoParada(codigoParada)
-        previsaoViewModel.previsao.observe(this) { previsao ->
-            /*
+        if (isConectado(this)) {
+            previsaoViewModel.previsaoParada(codigoParada)
+            previsaoViewModel.previsao.observe(this) { previsao ->
+                /*
              * Buscar pelos veículos e a sua linha, adicionando ao map mutável,
              * permitindo retornar todas os veículos e linhas. Depois converte
              * para uma lista de par mutável, onde o par (Veiculo, Linha) é passado
              * ao adapter.
              */
-            previsao.p.l.forEach { linhas ->
-                linhas.vs.forEach { veiculos ->
-                    map[veiculos] = linhas
+                previsao.p.l.forEach { linhas ->
+                    linhas.vs.forEach { veiculos ->
+                        map[veiculos] = linhas
+                    }
                 }
+
+                list.addAll(map.toList())
+                previsaoParadaAdapter.submitList(list)
+
+                binding.tvNomeParada.text = "$codigoParada\n${previsao.p.np}"
+
             }
-
-            list.addAll(map.toList())
-            previsaoParadaAdapter.submitList(list)
-
-            binding.tvNomeParada.text = "$codigoParada\n${previsao.p.np}"
-
+        } else {
+            Dialogs.showErrorMaterialDialog("Sem internet", this)
         }
     }
 
     private fun previsaoLinha(codigoLinha: Int) {
-        mMap.clear() // limpar o mapa
+        if (isConectado(this)) {
+            mMap.clear() // limpar o mapa
 
-        // adicionar um marcador de posição
-        mMap.addMarker(MarkerOptions().position(minhaParada).title("Ponto"))?.setIcon(
-            BitmapDescriptorFactory.fromResource(R.drawable.ponto_de_onibus)
-        )
+            // adicionar um marcador de posição
+            mMap.addMarker(MarkerOptions().position(minhaParada).title("Ponto"))?.setIcon(
+                BitmapDescriptorFactory.fromResource(R.drawable.ponto_de_onibus)
+            )
 
-        // adicionar um marcador de parada
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(minhaParada, 10f))
-        mMap.addMarker(MarkerOptions().position(location).title("Eu"))?.setIcon(
-            BitmapDescriptorFactory.fromResource(R.drawable.posicao)
-        )
+            // adicionar um marcador de parada
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(minhaParada, 10f))
+            mMap.addMarker(MarkerOptions().position(location).title("Eu"))?.setIcon(
+                BitmapDescriptorFactory.fromResource(R.drawable.posicao)
+            )
 
-        // buscar pelo veículos e marcar sua posição no mapa
-        previsaoViewModel.previsaoLinha.observe(this) { linha ->
-            linha.ps.forEach { l ->
-                l.vs.forEach { v ->
-                    val location = LatLng(v.py, v.px)
-                    mMap.addMarker(MarkerOptions().position(location).title("${v.p}:${v.t}"))
-                        ?.setIcon(
-                            BitmapDescriptorFactory.fromResource(R.drawable.onibus_loc)
-                        )
+            // buscar pelo veículos e marcar sua posição no mapa
+            previsaoViewModel.previsaoLinha.observe(this) { linha ->
+                linha.ps.forEach { l ->
+                    l.vs.forEach { v ->
+                        val location = LatLng(v.py, v.px)
+                        mMap.addMarker(MarkerOptions().position(location).title("${v.p}:${v.t}"))
+                            ?.setIcon(
+                                BitmapDescriptorFactory.fromResource(R.drawable.onibus_loc)
+                            )
+                    }
                 }
             }
+            previsaoViewModel.previsaoLinha(codigoLinha)
+        } else {
+            Dialogs.showErrorMaterialDialog("Sem internet", this)
         }
-        previsaoViewModel.previsaoLinha(codigoLinha)
     }
 
     private fun setupIntentMethod() {
@@ -161,6 +178,20 @@ class InforOnibusActivity : AppCompatActivity(), OnMapReadyCallback,
         // Atualize o mapa com o código da linha
         previsaoLinha(linhaCodigo)
         codigoLinha = linhaCodigo
+    }
+
+    private fun isConectado(context: Context): Boolean {
+        val connectivityManager =
+            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val activeNetwork = connectivityManager.activeNetwork ?: return false
+        val networkCapabilities =
+            connectivityManager.getNetworkCapabilities(activeNetwork) ?: return false
+        return when {
+            networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
+            networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
+            networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> true
+            else -> false
+        }
     }
 
 

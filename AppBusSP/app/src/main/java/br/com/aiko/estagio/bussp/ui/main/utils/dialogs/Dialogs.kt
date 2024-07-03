@@ -15,6 +15,5 @@ object Dialogs {
             }
             .show()
     }
-
 }
 

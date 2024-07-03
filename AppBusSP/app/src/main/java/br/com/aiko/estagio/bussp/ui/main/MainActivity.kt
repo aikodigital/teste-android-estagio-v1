@@ -1,10 +1,12 @@
 package br.com.aiko.estagio.bussp.ui.main
 
+import android.content.Context
 import android.content.Intent
 import android.location.Address
 import android.location.Geocoder
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.os.Bundle
-import android.util.Log
 import android.view.WindowManager
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -32,6 +34,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var linhasAdapter: LinhasAdapter
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -42,55 +45,54 @@ class MainActivity : AppCompatActivity() {
         autenticacaoSetup()
         setupList()
         setupListener()
-
         buscarLinhaProximidades()
-        buscarLinhaPorSentido()
-
     }
 
-
     private fun autenticacaoSetup() {
-        authenticationViewModel.authentication("5f13bb5bf9366a7a349edf57a769e47421e0d8e9765a307ebb1243bf782dd6b4")
+        if (isConectado(this)) {
+            authenticationViewModel.authentication(
+                "5f13bb5bf9366a7a349edf57a769e47421e0d8e9765a307ebb1243bf782dd6b4"
+            )
+        } else {
+            Dialogs.showErrorMaterialDialog("Sem internet", this)
+        }
     }
 
     private fun buscarLinhaProximidades() {
-        buscarLinhaViewModel.buscarLinha.observe(this) { linhas ->
-            linhasAdapter.submitList(linhas)
+        if (isConectado(this)) {
+            buscarLinhaViewModel.buscarLinha.observe(this) { linhas ->
+                linhasAdapter.submitList(linhas)
+            }
+            buscarLinhaViewModel.buscarLinha(performReverseGeocoding(location))
+        } else {
+            Dialogs.showErrorMaterialDialog("Sem internet", this)
         }
-        buscarLinhaViewModel.buscarLinha(performReverseGeocoding(location))
     }
 
-    private fun buscarLinhaPorSentido() {
-        binding.btnSentidoTp.setOnClickListener {
-            val linha = binding.tilOrigem.editText?.text.toString().trim()
+    private fun buscarLinhaPorSentido(linha: String, sentido: Int) {
+        if (isConectado(this)) {
 
-            if(linha.isNotEmpty()) {
-                binding.tvLinhasProximas.text = "Linhas no sentido Terminal Principal"
-
-                buscarLinhaViewModel.buscarLinhaSentido(linha, 1)
-                buscarLinhaViewModel.buscarLinhaSentido.observe(this) { linha ->
-                    linhasAdapter.submitList(linha)
-                }
-            }else{
-                Dialogs.showErrorMaterialDialog("Preecha os campos de pesquisa", this)
+            buscarLinhaViewModel.buscarLinhaSentido.observe(this) { linha ->
+                linhasAdapter.submitList(linha)
             }
+            buscarLinhaViewModel.buscarLinhaSentido(linha, sentido)
+        } else {
+            Dialogs.showErrorMaterialDialog("Sem internet", this)
         }
+    }
 
-        binding.btnSentidoTs.setOnClickListener {
-            val linha = binding.tilOrigem.editText?.text.toString().trim()
-
-            if(linha.isNotEmpty()) {
-                binding.tvLinhasProximas.text = "Linhas no sentido Terminal Secundário"
-
-                buscarLinhaViewModel.buscarLinhaSentido.observe(this) { linha ->
-                    linhasAdapter.submitList(linha)
-                }
-                buscarLinhaViewModel.buscarLinhaSentido(linha, 2)
-            }else {
-                Dialogs.showErrorMaterialDialog("Preecha os campos de pesquisa", this)
-            }
+    private fun isConectado(context: Context): Boolean {
+        val connectivityManager =
+            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val activeNetwork = connectivityManager.activeNetwork ?: return false
+        val networkCapabilities =
+            connectivityManager.getNetworkCapabilities(activeNetwork) ?: return false
+        return when {
+            networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
+            networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
+            networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> true
+            else -> false
         }
-
     }
 
     private fun setupList() {
@@ -99,6 +101,29 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupListener() {
+        binding.btnSentidoTs.setOnClickListener {
+            val linha = binding.tilOrigem.editText?.text.toString().trim()
+
+            if (linha.isNotEmpty()) {
+                binding.tvLinhasProximas.text = "Linhas no sentido Terminal Secundário"
+
+                buscarLinhaPorSentido(linha, 2)
+            } else {
+                Dialogs.showErrorMaterialDialog("Preecha os campos de pesquisa", this)
+            }
+        }
+
+        binding.btnSentidoTp.setOnClickListener {
+            val linha = binding.tilOrigem.editText?.text.toString().trim()
+
+            if (linha.isNotEmpty()) {
+                binding.tvLinhasProximas.text = "Linhas no sentido Terminal Principal"
+                buscarLinhaPorSentido(linha, 1)
+            } else {
+                Dialogs.showErrorMaterialDialog("Preecha os campos de pesquisa", this)
+            }
+        }
+
         binding.topAppBar.setNavigationOnClickListener {
             binding.main.open()
         }
@@ -136,7 +161,6 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-
 
     // Função para recuperar o Bairro a partir da latitude e longitude
     private fun performReverseGeocoding(latlng: LatLng): String {

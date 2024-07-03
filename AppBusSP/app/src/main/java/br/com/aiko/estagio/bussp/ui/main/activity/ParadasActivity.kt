@@ -1,24 +1,19 @@
 package br.com.aiko.estagio.bussp.ui.main.activity
 
-import android.app.Dialog
+import android.content.Context
 import android.location.Address
 import android.location.Geocoder
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.os.Bundle
 import android.util.Log
-import android.view.ContextMenu
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.View
 import android.view.WindowManager
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
-import android.widget.LinearLayout
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isNotEmpty
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.aiko.estagio.bussp.R
-import br.com.aiko.estagio.bussp.data.remote.response.Parada
 import br.com.aiko.estagio.bussp.databinding.ActivityParadasBinding
 import br.com.aiko.estagio.bussp.ui.main.MainActivity.Companion.location
 import br.com.aiko.estagio.bussp.ui.main.adapter.ParadasAdapter
@@ -56,17 +51,19 @@ class ParadasActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMar
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
 
         autenticacaoSetup()
-
         setupFiltro()
         setupIntentMethod()
         setupList()
-
         setupListener()
         setupMap()
     }
 
     private fun autenticacaoSetup() {
-        authenticationViewModel.authentication("5f13bb5bf9366a7a349edf57a769e47421e0d8e9765a307ebb1243bf782dd6b4")
+        if (isConectado(this)) {
+            authenticationViewModel.authentication("5f13bb5bf9366a7a349edf57a769e47421e0d8e9765a307ebb1243bf782dd6b4")
+        } else {
+            Dialogs.showErrorMaterialDialog("Sem internet", this)
+        }
     }
 
     private fun setupListener() {
@@ -94,7 +91,10 @@ class ParadasActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMar
                     }
                 }
             } else {
-                Dialogs.showErrorMaterialDialog("Os campos \"Pesquisa por\" e \"Filtro\" devem ser preechidos.", this)
+                Dialogs.showErrorMaterialDialog(
+                    "Os campos \"Pesquisa por\" e \"Filtro\" devem ser preechidos.",
+                    this
+                )
                 Log.e("errror", "$parada $filtro")
             }
         }
@@ -115,23 +115,35 @@ class ParadasActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMar
     }
 
     private fun setupParadas(parada: String) {
-        paradasViewModel.buscarParada(parada)
-        paradasViewModel.paradas.observe(this) { paradas ->
-            paradasAdapter.submitList(paradas)
+        if (isConectado(this)) {
+            paradasViewModel.buscarParada(parada)
+            paradasViewModel.paradas.observe(this) { paradas ->
+                paradasAdapter.submitList(paradas)
+            }
+        } else {
+            Dialogs.showErrorMaterialDialog("Sem internet", this)
         }
     }
 
     private fun setupParadasPorLinhas(codigoLinha: Int) {
-        paradasViewModel.buscarParadasPorLinha(codigoLinha.toString())
-        paradasViewModel.paradas.observe(this) { paradas ->
-            paradasAdapter.submitList(paradas)
+        if (isConectado(this)) {
+            paradasViewModel.buscarParadasPorLinha(codigoLinha.toString())
+            paradasViewModel.paradas.observe(this) { paradas ->
+                paradasAdapter.submitList(paradas)
+            }
+        } else {
+            Dialogs.showErrorMaterialDialog("Sem internet", this)
         }
     }
 
     private fun setupParadasPorCorredor(codigoCorredor: Int) {
-        paradasViewModel.buscarParadasPorCorredor(codigoCorredor)
-        paradasViewModel.paradas.observe(this) { paradas ->
-            paradasAdapter.submitList(paradas)
+        if (isConectado(this)) {
+            paradasViewModel.buscarParadasPorCorredor(codigoCorredor)
+            paradasViewModel.paradas.observe(this) { paradas ->
+                paradasAdapter.submitList(paradas)
+            }
+        } else {
+            Dialogs.showErrorMaterialDialog("Sem internet", this)
         }
     }
 
@@ -146,6 +158,20 @@ class ParadasActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMar
         binding.rvParadas.adapter = paradasAdapter
         binding.rvParadas.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+    }
+
+    private fun isConectado(context: Context): Boolean {
+        val connectivityManager =
+            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val activeNetwork = connectivityManager.activeNetwork ?: return false
+        val networkCapabilities =
+            connectivityManager.getNetworkCapabilities(activeNetwork) ?: return false
+        return when {
+            networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
+            networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
+            networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> true
+            else -> false
+        }
     }
 
     /*
