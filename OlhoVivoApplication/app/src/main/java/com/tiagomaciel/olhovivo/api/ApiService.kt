@@ -1,5 +1,7 @@
 package com.tiagomaciel.olhovivo.api
 
+import com.tiagomaciel.olhovivo.api.dataClass.VehicleLines
+import com.tiagomaciel.olhovivo.api.dataClass.VehiclePosition
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.POST
@@ -13,4 +15,7 @@ interface ApiService {
     @GET("Posicao")
     fun getVehiclePositions(
     ): Call<VehiclePosition>
+
+    @GET("Linha/Buscar")
+    fun getBusLines(@Query("termosBusca") searchTerms: String): Call<List<VehicleLines>?>
 }

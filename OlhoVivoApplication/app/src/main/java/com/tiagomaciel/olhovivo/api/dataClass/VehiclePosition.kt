@@ -1,4 +1,4 @@
-package com.tiagomaciel.olhovivo.api
+package com.tiagomaciel.olhovivo.api.dataClass
 
 data class VehiclePosition(
     val hr: String,

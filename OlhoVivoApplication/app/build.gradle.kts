@@ -61,12 +61,25 @@ dependencies {
     implementation(libs.androidx.material3)
 
     //Retrofit
-    implementation (libs.retrofit)
-    implementation (libs.converter.gson)
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
 
     //gson
-    implementation (libs.gson)
-    
+    implementation(libs.gson)
+
+    //googleMaps
+    implementation(libs.maps.compose)
+    implementation(libs.play.services.maps)
+    implementation(libs.accompanist.permissions)
+
+    //viewModel
+
+    implementation(libs.androidx.lifecycle.viewmodel.ktx.v251)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.lifecycle.livedata.ktx.v251)
+    implementation(libs.androidx.lifecycle.runtime.ktx.v283)
+    implementation(libs.androidx.runtime.livedata)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
