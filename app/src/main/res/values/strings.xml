@@ -5,4 +5,6 @@
     <string name="search">Pesquisar</string>
     <string name="search_line_txt">Buscar linha:</string>
     <string name="search_example_txt">Ex.: 8000, Lapa ou Ramos</string>
+    <string name="line_number">8000</string>
+    <string name="line_terminals">PCA.RAMOS DE AZEVEDO/TERMINAL LAPA</string>
 </resources>
