@@ -82,10 +82,11 @@
                 android:id="@+id/iv_acessivel"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+
                 tools:src="@drawable/alvo"
                 app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_width="32dp"
+                android:layout_height="32dp"/>
 
 
 

@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import br.com.aiko.estagio.bussp.R
 import br.com.aiko.estagio.bussp.data.remote.response.LinhasLocalizada
 import br.com.aiko.estagio.bussp.data.remote.response.VeiculoLocalizado
 import br.com.aiko.estagio.bussp.databinding.ItemOnibusBinding
@@ -35,6 +36,12 @@ class PrevisaoParadaAdapter(private val onItemClick: (Int) -> Unit) :
             binding.tvLeiteiro.text = linha.c
             binding.tvTerminalDestino.text = "DESTINO:" + linha.lt0
             binding.tvTerminalOrigem.text = "ORIGEM:" + linha.lt1
+
+            if (veiculo.a) {
+                binding.ivAcessivel.setImageResource(R.drawable.ic_accessible)
+            } else {
+                binding.ivAcessivel.setImageResource(R.drawable.ic_not_accessible)
+            }
 
             binding.tvPrexifoOnibus.text = veiculo.p.toString()
             binding.tvPrevisaoChegada.text = veiculo.t
