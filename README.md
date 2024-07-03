@@ -11,6 +11,10 @@
 <li><code>inicializarComponentes</code>: Método responsável por definir as ações do clique dos botões na interface do usuário.</li>
 <li><code>autenticar</code>: Método responsável por autenticar na API. Ele tenta autenticar usando a API OlhoVivoAPI. Se a autenticação for bem-sucedida, exibe um Toast informando "Conectado a API!". Se a autenticação falhar, exibe um Toast informando "Falha ao conectar a API!". Em caso de exceção (por exemplo, falta de internet), exibe um Toast com a mensagem "Sem conexão com a internet".</li>
 </ul>
+<div>
+    <img width=240 src="/imagens/MainActivity.png">
+</div>
+
 
 <h3>MapsActivity:</h3>
 <p>Activity responsável por exibir um mapa com as marcações de Paradas, Veículos, e Previsão de Veículos, possuindo os seguintes métodos:</p>
@@ -25,6 +29,11 @@
     <li><code>addClusteredVeiculosPrevisao</code>: Adiciona as previsões de veículos ao mapa usando clustering para melhor visualização.</li>
     <li><code>buscarPrevisaoParadas</code>: Busca as previsões de veículos para uma determinada parada a partir da API OlhoVivo.</li>
 </ul>
+<div>
+    <img width=240 src="/imagens/MapsActivity.png">
+    <img width=240 src="/imagens/MapsActivity2.png">
+</div>
+
 
 <h3>LinhasActivity:</h3>
 <p>Activity que permite ao usuário procurar linhas de ônibus utilizando a API OlhoVivo. A atividade exibe uma lista de linhas em um RecyclerView. Possui os seguintes métodos:</p>
@@ -34,6 +43,10 @@
     <li><code>popularRV</code>: Popula o RecyclerView com as linhas de ônibus buscadas a partir da API.</li>
     <li><code>buscarLinhas</code>: Busca as linhas de ônibus da API OlhoVivo e trata possíveis exceções.</li>
 </ul>
+<div>
+    <img width=240 src="/imagens/LinhasActivity.png">
+    <img width=240 src="/imagens/LinhasActivity2.png">
+</div>
 
 <h3>ParadasActivity:</h3>
 <p>Activity que permite ao usuário procurar paradas de ônibus utilizando a API OlhoVivo. A atividade exibe uma lista de paradas em um RecyclerView, possibilitando a visualização dos detalhes de previsão dos veículos e a localização no mapa. Possui os seguintes métodos:</p>
@@ -43,6 +56,10 @@
     <li><code>popularRV</code>: Popula o RecyclerView com as paradas de ônibus buscadas a partir da API.</li>
     <li><code>buscarParadas</code>: Busca as paradas de ônibus da API OlhoVivo, trata possíveis exceções e ordena as paradas pelo nome.</li>
 </ul>
+<div>
+    <img width=240 src="/imagens/ParadasActivity.png">
+    <img width=240 src="/imagens/ParadasActivity2.png">
+</div>
 
 <h3>VeiculosPrevisaoActivity:</h3>
 <p>Activity iniciada a partir de um clique em algum botão do RecyclerView da ParadasActivity, exibe as previsões de chegada de veículos em uma parada específica. A atividade utiliza a API OlhoVivo para buscar as previsões e apresenta os dados em um RecyclerView. Possui os seguintes métodos:</p>
@@ -52,6 +69,10 @@
     <li><code>popularRV</code>: Popula o RecyclerView com as previsões de chegada dos veículos buscadas a partir da API.</li>
     <li><code>buscarPrevisaoParadas</code>: Busca as previsões de chegada dos veículos para uma parada específica da API OlhoVivo, trata possíveis exceções e retorna uma lista de previsões.</li>
 </ul>
+<div>
+    <img width=240 src="/imagens/ParadasPrevisaoActivity.png">
+    <img width=240 src="/imagens/ParadasPrevisaoActivity2.png">
+</div>
 
 <h3>CorredoresActivity:</h3>
 <p>Activity que exibe uma lista de corredores de transporte público. A atividade utiliza a API OlhoVivo para buscar os dados dos corredores e mostra em um RecyclerView. Possui os seguintes métodos:</p>
@@ -61,6 +82,10 @@
     <li><code>popularRV</code>: Popula o RecyclerView com os dados dos corredores buscados a partir da API.</li>
     <li><code>buscarCorredores</code>: Busca a lista de corredores da API OlhoVivo, trata possíveis exceções e retorna uma lista de corredores ordenada por código do corredor.</li>
 </ul>
+<div>
+    <img width=240 src="/imagens/CorredoresActivity.png">
+    <img width=240 src="/imagens/CorredoresActivity2.png">
+</div>
 
 <h2>Adapters:</h2>
 <ul>
