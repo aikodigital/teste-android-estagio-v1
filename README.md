@@ -1,6 +1,7 @@
 ## Aplicativo feito para o teste de estágio da AIKO.
 
 <h1>Documentação App SAED Transporte Público API</h1>
+<h2>Aplicativo feito no Android Studio, usando a linguagem Kotlin</h2>
 
 <h2>Activities:</h2>
 
