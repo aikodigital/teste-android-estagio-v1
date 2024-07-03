@@ -1,0 +1,10 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Base.Theme.SaedRastreamentosAPI" parent="Theme.Material3.DayNight.NoActionBar">
+         <item name="colorPrimary">@color/primary</item>
+         <item name="colorOnPrimary">@color/on_primary</item>
+         <item name="colorSecondary">@color/secondary</item>
+
+    </style>
+
+    <style name="Theme.SaedRastreamentosAPI" parent="Base.Theme.SaedRastreamentosAPI" />
+</resources>
