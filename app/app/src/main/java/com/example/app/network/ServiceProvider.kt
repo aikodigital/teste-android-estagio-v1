@@ -43,7 +43,7 @@ class ServiceProvider {
 
     fun <API> createService(apiClass: Class<API>): API = retrofit.create(apiClass)
 
-    suspend fun authenticate(token: String): Boolean {
+    private suspend fun authenticate(token: String): Boolean {
         val apiService = createService(ServiceAPI::class.java)
         return try {
             val response = apiService.authenticate(token)
