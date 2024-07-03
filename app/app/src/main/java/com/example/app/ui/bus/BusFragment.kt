@@ -1,6 +1,7 @@
 package com.example.app.ui.bus
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.example.app.databinding.FragmentBusBinding
+import com.example.app.domain.model.AllLines
+import com.example.app.domain.model.LineAndBus
+import com.example.app.util.StateView
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.LatLngBounds
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -28,17 +36,56 @@ class BusFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        observeViewModel()
+        getLines()
     }
 
-    private fun observeViewModel() {
-        viewModel.authState.observe(viewLifecycleOwner, Observer { isAuthenticated ->
-            if (isAuthenticated) {
-                Toast.makeText(requireContext(), "True", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(requireContext(), "Usuário não autenticado.", Toast.LENGTH_SHORT).show()
+    private fun getLines() {
+        viewModel.getLines().observe(viewLifecycleOwner, Observer { stateView ->
+            when (stateView) {
+                is StateView.Loading -> {
+                }
+
+                is StateView.Success -> {
+                    stateView.data?.let { list ->
+                        val busList = extractBusList(list)
+                    }
+                }
+
+                is StateView.Error -> {
+                    Toast.makeText(
+                        requireContext(),
+                        "Erro ao obter dados. Tente novamente mais tarde.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
         })
+    }
+
+    private fun extractBusList(allLines: List<AllLines>): List<LineAndBus> {
+        val lineAndBus = mutableListOf<LineAndBus>()
+
+        allLines.forEach { allLines ->
+            allLines.linesRelation.forEach { line ->
+                line?.busList?.forEach { bus ->
+                    val latLng = LatLng(bus?.lat ?: 0.0, bus?.lng ?: 0.0)
+
+                    val busWithLine = LineAndBus(
+                        line.fullPlacard,
+                        bus?.busPrefix ?: 0,
+                        line.lineOrigin,
+                        line.lineDestination,
+                        bus?.isAccessible ?: false,
+                        allLines.requestHour,
+                        latLng,
+                        line.lineCode
+                    )
+
+                    lineAndBus.add(busWithLine)
+                }
+            }
+        }
+        return lineAndBus
     }
 
     override fun onDestroyView() {

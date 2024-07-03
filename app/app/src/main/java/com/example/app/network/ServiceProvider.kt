@@ -1,7 +1,9 @@
 package com.example.app.network
 
+import com.example.app.BuildConfig
 import com.example.app.data.api.ServiceAPI
 import com.example.app.util.BASE_URL
+import kotlinx.coroutines.runBlocking
 import okhttp3.*
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -17,6 +19,20 @@ class ServiceProvider {
         .addInterceptor(HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BODY
         })
+        .authenticator { _, response ->
+            synchronized(this) {
+                runBlocking {
+                    val isAuthenticated = authenticate(BuildConfig.OLHO_VIVO_API_KEY)
+                    if (isAuthenticated) {
+                        response.request.newBuilder()
+                            .header("Cookie", apiCredentials)
+                            .build()
+                    } else {
+                        null
+                    }
+                }
+            }
+        }
         .build()
 
     private var retrofit: Retrofit = Retrofit.Builder()
