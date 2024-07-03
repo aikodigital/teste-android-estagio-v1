@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Saed Transporte Publico Rastreador</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="text_info_linhas">CL: Código identificador da linha. Este é um código identificador único de cada linha do sistema (por sentido de operação)\n\nLC: Indica se uma linha opera no modo circular (sem um terminal secundário)\n\nLT: Informa a primeira parte do letreiro numérico da linha\n\nTL: Informa a segunda parte do letreiro numérico da linha, que indica se a linha opera nos modos: BASE (10), ATENDIMENTO (21, 23, 32, 41)\n\nSL: Informa o sentido ao qual a linha atende, onde 1 significa Terminal Principal para Terminal Secundário e 2 para Terminal Secundário para Terminal Principal\n\nTP: Informa o letreiro descritivo da linha no sentido Terminal Principal para Terminal Secundário\n\nTS: Informa o letreiro descritivo da linha no sentido Terminal Secundário para Terminal Principal</string>
+    <string name="text_info_paradas">CP: Código identificador da parada\n\nNP: Nome da parada\n\nED: Endereço de localização da parada</string>
+    <string name="text_info_previsoee">P: Prefixo do veículo\n\nT: Horário previsto para chegada do veículo no ponto de parada relacionado\n\nA: Indica se o veículo é (true) ou não (false) acessível para pessoas com deficiência\n\nTA: Indica o horário universal (UTC) em que a localização foi capturada. Essa informação está no padrão ISO 8601\n\nPY: Informação de latitude da localização do veículo [double]px Informação de longitude da localização do veículo</string>
+    <string name="text_main">APLICATIVO FEITO PARA O TESTE DE ESTÁGIO ANDROID DA AIKO DIGITAL\n\nDESENVOLVIDO POR: SAED SILVA SOUSA\n\nEMAIL: saed.sousa@hotmail.com</string>
+</resources>
