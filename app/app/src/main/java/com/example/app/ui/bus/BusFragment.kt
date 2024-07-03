@@ -7,9 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.transition.Visibility
 import com.example.app.R
 import com.example.app.databinding.FragmentBusBinding
 import com.example.app.domain.model.AllLines
@@ -42,15 +44,25 @@ class BusFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         getLines()
+        setupClickListeners()
+    }
+
+    private fun setupClickListeners() {
+        binding.btnRefresh.setOnClickListener {
+            getLines()
+        }
     }
 
     private fun getLines() {
         viewModel.getLines().observe(viewLifecycleOwner, Observer { stateView ->
             when (stateView) {
                 is StateView.Loading -> {
+                    binding.progressBar.visibility = View.VISIBLE
                 }
 
                 is StateView.Success -> {
+                    binding.progressBar.visibility = View.GONE
+
                     stateView.data?.let { list ->
                         val busList = extractBusList(list)
 
@@ -74,6 +86,7 @@ class BusFragment : Fragment() {
                 }
 
                 is StateView.Error -> {
+                    binding.progressBar.visibility = View.GONE
                     Toast.makeText(
                         requireContext(),
                         "Erro ao obter dados. Tente novamente mais tarde.",
