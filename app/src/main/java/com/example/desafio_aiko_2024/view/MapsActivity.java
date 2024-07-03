@@ -1,9 +1,7 @@
 package com.example.desafio_aiko_2024.view;
 
-import androidx.fragment.app.FragmentActivity;
-
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-
 import com.example.desafio_aiko_2024.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -13,7 +11,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.example.desafio_aiko_2024.databinding.ActivityMapsBinding;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private ActivityMapsBinding binding;
@@ -25,7 +23,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         binding = ActivityMapsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -47,6 +44,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng sp = new LatLng(-23.5475, -46.63611);
         mMap.addMarker(new MarkerOptions().position(sp).title("São Paulo"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sp));
-        mMap.moveCamera(CameraUpdateFactory.zoomTo(12));
+        mMap.moveCamera(CameraUpdateFactory.zoomTo(16));
     }
 }
