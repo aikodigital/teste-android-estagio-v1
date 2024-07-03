@@ -1,5 +1,6 @@
 package com.example.app.ui.bus
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -64,7 +65,7 @@ class BusFragment : Fragment() {
                                 googleMap.moveCamera(
                                     CameraUpdateFactory.newLatLngBounds(
                                         bounds.build(),
-                                        20
+                                        50
                                     )
                                 )
                             }
@@ -109,7 +110,8 @@ class BusFragment : Fragment() {
         return lineAndBus
     }
 
-    private fun addClusteredMarkers(googleMap: GoogleMap, vehicles: List<LineAndBus>) {
+    @SuppressLint("PotentialBehaviorOverride")
+    private fun addClusteredMarkers(googleMap: GoogleMap, busList: List<LineAndBus>) {
         val clusterManager = ClusterManager<LineAndBus>(requireContext(), googleMap)
 
         clusterManager.clearItems()
@@ -121,8 +123,11 @@ class BusFragment : Fragment() {
                 clusterManager
             )
 
-        clusterManager.addItems(vehicles)
+        clusterManager.markerCollection.setInfoWindowAdapter(MarkerInfoAdapter(requireContext()))
+
+        clusterManager.addItems(busList)
         clusterManager.cluster()
+
 
         googleMap.setOnCameraIdleListener {
             clusterManager.onCameraIdle()

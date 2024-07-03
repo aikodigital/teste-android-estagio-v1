@@ -20,7 +20,7 @@ class BusRenderer(
     private val iconBusBitmap: BitmapDescriptor by lazy {
         val color = ContextCompat.getColor(
             context,
-            R.color.black
+            R.color.icon_color
         )
         BitmapHelper.vectorToBitmap(
             context,
@@ -33,7 +33,8 @@ class BusRenderer(
         item: LineAndBus,
         markerOptions: MarkerOptions
     ) {
-        markerOptions.title(item.fullPlacard)
+        markerOptions
+            .title(item.fullPlacard)
             .position(item.latLng)
             .icon(iconBusBitmap)
     }
