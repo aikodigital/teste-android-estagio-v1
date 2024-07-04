@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_map">
+
+    <fragment
+        android:id="@+id/navigation_map"
+        android:name="br.vino.transmobisp.ui.main_activity.fragments.map.MapFragment"
+        android:label="@string/map"
+        tools:layout="@layout/fragment_map" />
+
+    <fragment
+        android:id="@+id/navigation_lines"
+        android:name="br.vino.transmobisp.ui.main_activity.fragments.lines.LinesFragment"
+        android:label="@string/lines"
+        tools:layout="@layout/fragment_lines" />
+
+    <fragment
+        android:id="@+id/navigation_stops"
+        android:name="br.vino.transmobisp.ui.main_activity.fragments.stops.StopsFragment"
+        android:label="@string/stops"
+        tools:layout="@layout/fragment_stops" />
+</navigation>
