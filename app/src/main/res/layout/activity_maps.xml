@@ -10,7 +10,7 @@
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="450dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/divider"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,118 +25,24 @@
         android:layout_marginTop="0dp" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/details_constraint_layout"
         android:layout_width="match_parent"
-        android:layout_height="220dp"
+        android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf="@+id/divider"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:padding="20dp">
+        android:padding="20dp"
+        android:background="#DBDBDB">
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/bus_details_card"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/details_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_margin="5dp"
-            app:cardElevation="4dp"
-            app:cardCornerRadius="10dp">
+            app:layout_constraintBottom_toBottomOf="parent" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="8dp">
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/line_field"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintBottom_toTopOf="@id/is_circular_field"
-                    android:text="Linha: "
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/line_number"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toTopOf="@id/line_field"
-                    app:layout_constraintStart_toEndOf="@id/line_field"
-                    app:layout_constraintBottom_toBottomOf="@id/line_field"
-                    android:text="8000"
-                    android:textSize="16sp" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/is_circular_field"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/line_field"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintBottom_toTopOf="@id/origin_field"
-                    android:layout_marginTop="5dp"
-                    android:text="Circular: "
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/is_circular"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toTopOf="@id/is_circular_field"
-                    app:layout_constraintStart_toEndOf="@id/is_circular_field"
-                    app:layout_constraintBottom_toBottomOf="@id/is_circular_field"
-                    android:text="Não"
-                    android:textSize="16sp" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/origin_field"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/is_circular_field"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintBottom_toTopOf="@id/destiny_field"
-                    android:layout_marginTop="5dp"
-                    android:text="Origem: "
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/line_start_terminal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toTopOf="@id/origin_field"
-                    app:layout_constraintStart_toEndOf="@id/origin_field"
-                    app:layout_constraintBottom_toBottomOf="@id/origin_field"
-                    android:text="PCA.RAMOS DE AZEVEDO"
-                    android:textSize="16sp" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/destiny_field"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/origin_field"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginTop="5dp"
-                    android:text="Destino: "
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/line_end_terminal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toTopOf="@id/destiny_field"
-                    app:layout_constraintStart_toEndOf="@id/destiny_field"
-                    app:layout_constraintBottom_toBottomOf="@id/destiny_field"
-                    android:text="TERMINAL LAPA"
-                    android:textSize="16sp" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </com.google.android.material.card.MaterialCardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
