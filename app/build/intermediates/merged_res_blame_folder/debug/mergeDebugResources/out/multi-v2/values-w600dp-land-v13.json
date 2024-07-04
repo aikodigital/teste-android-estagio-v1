@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.breno.testeandroidestagiov1.app-mergeDebugResources-32:/values-w600dp-land-v13/values-w600dp-land-v13.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Usuario\\.gradle\\caches\\transforms-4\\68f6fb80b1eef02038f73f38cba6e5c5\\transformed\\material-1.12.0\\res\\values-w600dp-land-v13\\values-w600dp-land-v13.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "54",
+                        "endOffsets": "105"
+                    }
+                }
+            ]
+        }
+    ]
+}

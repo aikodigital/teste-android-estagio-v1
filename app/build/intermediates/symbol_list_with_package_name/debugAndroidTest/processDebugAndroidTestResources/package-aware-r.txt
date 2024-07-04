@@ -1,0 +1,3 @@
+com.breno.testeandroidestagiov1.test
+style WhiteBackgroundDialogTheme
+style WhiteBackgroundTheme

@@ -1,0 +1,5 @@
+com.breno.testeandroidestagiov1.test.app-core-1.6.1-0 C:\Users\Usuario\.gradle\caches\transforms-4\5062374d03213e22439d38a3a23c18f5\transformed\core-1.6.1\res
+com.breno.testeandroidestagiov1.test.app-androidTest-1 C:\Users\Usuario\Documents\dev\AndroidStudioProjects\teste-android-estagio-v1\app\build\generated\res\resValues\androidTest\debug
+com.breno.testeandroidestagiov1.test.app-mergeDebugAndroidTestResources-2 C:\Users\Usuario\Documents\dev\AndroidStudioProjects\teste-android-estagio-v1\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
+com.breno.testeandroidestagiov1.test.app-mergeDebugAndroidTestResources-3 C:\Users\Usuario\Documents\dev\AndroidStudioProjects\teste-android-estagio-v1\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
+com.breno.testeandroidestagiov1.test.app-debugAndroidTest-4 C:\Users\Usuario\Documents\dev\AndroidStudioProjects\teste-android-estagio-v1\app\build\intermediates\merged_res\debugAndroidTest\mergeDebugAndroidTestResources
