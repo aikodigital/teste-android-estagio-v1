@@ -17,6 +17,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.example.desafio_aiko_2024.databinding.ActivityMapsBinding;
 
@@ -55,10 +56,22 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         // Exemplo de localização de uma parada
         LatLng stopPosition = new LatLng(-23.551520, -46.633308);
-        mMap.addMarker(new MarkerOptions()
+        Marker busStop = mMap.addMarker(new MarkerOptions()
                 .position(stopPosition)
                 .title("Parada")
                 .icon(bitmapDescriptorFromVector(this, R.mipmap.bus_stop_icon_round, 0.35)));
+
+        busStop.setTag("stop");
+
+        mMap.setOnMarkerClickListener(m -> {
+            // Verifica se o marcador tem a tag "stop"
+            if ("stop".equals(m.getTag())) {
+                System.out.println("Parada selecionada");
+                return true;
+            }
+
+            return false;
+        });
     }
 
     // Redimensionamento e conversão de arquivos XML para objetos BitmapDescriptor
