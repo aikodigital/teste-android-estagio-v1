@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "455011858812",
+    "project_id": "spbusao-a492d",
+    "storage_bucket": "spbusao-a492d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:455011858812:android:874a5b4c3f861366988cf9",
+        "android_client_info": {
+          "package_name": "com.hilguener.spbusao"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKNYMKEKe30_JPLD48IHQi974NGrcX67E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
