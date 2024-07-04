@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:gravity="left"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    android:layout_marginLeft="20dp">
+
+    <TextView
+        android:id="@+id/txt_linhas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Linha: "
+        android:textSize="20dp"/>
+
+    <TextView
+        android:id="@+id/txt_circular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Circular: "
+        android:textSize="20dp"/>
+
+    <TextView
+        android:id="@+id/txt_sentido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sentido: "
+        android:textSize="20dp"/>
+
+    <TextView
+        android:id="@+id/txt_letreiroNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Letreiro numerico: "
+        android:textSize="20dp"/>
+
+    <TextView
+        android:id="@+id/txt_letreiroDescTP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Letreiro desc TP: "
+        android:textSize="20dp"/>
+
+    <TextView
+        android:id="@+id/txt_letreiroDescTS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Letreiro desc TS: "
+        android:textSize="20dp"/>
+
+
+
+
+</LinearLayout>
