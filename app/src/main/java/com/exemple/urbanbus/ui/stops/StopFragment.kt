@@ -96,10 +96,15 @@ class StopFragment : Fragment(), OnMapReadyCallback {
 
                 is UiState.Success -> {
                     binding.apply {
-                        imageError.visibility = View.GONE
-                        tryAgainBtn.visibility = View.GONE
-                        arrivalList.visibility = View.VISIBLE
-                        arrivalTitle.visibility = View.VISIBLE
+                        if (state.data.isEmpty()) {
+                            withoutArrivalLabel.visibility = View.VISIBLE
+                        } else {
+                            imageError.visibility = View.GONE
+                            tryAgainBtn.visibility = View.GONE
+                            arrivalList.visibility = View.VISIBLE
+                            arrivalTitle.visibility = View.VISIBLE
+                            withoutArrivalLabel.visibility = View.GONE
+                        }
                     }
                     arrivalAdapter.setBusStopArrivalList(state.data)
                     binding.loading.root.visibility = View.GONE
@@ -111,6 +116,7 @@ class StopFragment : Fragment(), OnMapReadyCallback {
                         tryAgainBtn.visibility = View.VISIBLE
                         arrivalList.visibility = View.GONE
                         arrivalTitle.visibility = View.GONE
+                        withoutArrivalLabel.visibility = View.GONE
                     }
 
                     when (state) {

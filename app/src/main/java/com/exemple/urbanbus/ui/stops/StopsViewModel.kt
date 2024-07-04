@@ -1,5 +1,6 @@
 package com.exemple.urbanbus.ui.stops
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -33,6 +34,7 @@ class StopsViewModel @Inject constructor(
         _lineArrival.value = UiState.Loading
         busStopRepository.getStopArrival(stopCode) {
             _lineArrival.value = it
+            Log.d("test", "$it")
         }
     }
 }

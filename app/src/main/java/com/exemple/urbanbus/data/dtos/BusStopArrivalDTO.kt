@@ -8,7 +8,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class BusStopArrivalDTO(
     @SerializedName("hr") val hour: String,
-    @SerializedName("p") val busStopData: BusStopData
+    @SerializedName("p") val busStopData: BusStopData?
 ) : Parcelable
 
 @Parcelize

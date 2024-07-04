@@ -40,6 +40,11 @@ class BusStopRepositoryImp(
             val stopArrival =
                 olhoVivoAPI.getStopArrival(authRepository.authenticate(), busStopCode.toString())
 
+            if (stopArrival.busStopData == null) {
+                result.invoke(UiState.Success(listOf()))
+                return
+            }
+
             val busLineArrival: List<BusStopLineArrival> =
                 stopArrival.busStopData.busLineArrival.map { line ->
                     if (line.direction == 1) {
@@ -52,8 +57,6 @@ class BusStopRepositoryImp(
                     }
                 }
             result.invoke(UiState.Success(busLineArrival))
-
-            Log.d("test", "BusStopRepositoryImp: $busLineArrival")
         } catch (networkError: IOException) {
             Log.d("app-error-arrival", "Network error: $networkError")
             result.invoke(UiState.Failure.NetworkError("Check your network connection"))

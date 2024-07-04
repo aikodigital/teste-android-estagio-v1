@@ -86,6 +86,19 @@
         app:layout_constraintTop_toBottomOf="@id/arrival_title"
         tools:listitem="@layout/item_stop_arrival" />
 
+    <TextView
+        android:id="@+id/without_arrival_label"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/without_arrival_for_stop"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/arrival_title" />
+
     <include
         android:id="@+id/loading"
         layout="@layout/overlay_loading"
