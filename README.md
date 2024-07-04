@@ -1,4 +1,4 @@
-# Aplicativo de Transporte Público
+# UrbanBus
 
 Este projeto foi desenvolvido como parte de um desafio para uma vaga de estágio em Android. O objetivo do aplicativo é fornecer informações sobre o transporte público da cidade de São Paulo, utilizando a [API Olho Vivo](https://www.sptrans.com.br/desenvolvedores/api-do-olho-vivo-guia-de-referencia/). O aplicativo permite visualizar a posição dos veículos, informações sobre as linhas, pontos de parada no mapa, previsão de chegada, além de funcionalidades de pesquisa e filtros.
 
