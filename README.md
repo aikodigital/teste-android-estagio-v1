@@ -1,7 +1,5 @@
 # Teste Android
 
-![Aiko](imagens/aiko.png)
-
 Neste teste serão avaliados seus conhecimentos e a metodologia aplicada no desenvolvimento de aplicações mobile Android.
 
 ## O Desafio
@@ -61,17 +59,3 @@ Aqui são listados algumas sugestões para você que quer ir além do desafio in
 * **Testes**: Desenvolva testes que achar necessário para a aplicação.
 
 * **Documentação**: Gerar uma documentação da aplicação. A documentação pode incluir detalhes sobre as decisões tomadas, especificação das funcionalidades desenvolvidas, instruções de uso dentre outras informações que achar relevantes.
-
-## Entrega
-
-Para realizar a entrega do teste você deve:
-
-* Relizar o fork e clonar esse repositório para sua máquina.
-  
-* Criar uma branch com o nome de `teste/[NOME]`.
-  * `[NOME]`: Seu nome.
-  * Exemplos: `teste/fulano-da-silva`; `teste/beltrano-primeiro-gomes`.
-  
-* Faça um commit da sua branch com a implementação do teste.
-  
-* Realize o pull request da sua branch nesse repositório.
