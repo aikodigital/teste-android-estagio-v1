@@ -7,11 +7,15 @@
 
 ## Inicialização
 
-1. **Instale as dependências:**
+1. **Altere a Branch:**
+```
+git checkout teste/Anizio-Santos
+```
+2. **Instale as dependências:**
 ```
 npm install
 ```
-2. **Para iniciar o projeto, execute o seguinte comando:**
+3. **Para iniciar o projeto, execute o seguinte comando:**
 ```
 npx expo start
 ```
