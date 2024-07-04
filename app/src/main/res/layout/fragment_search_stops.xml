@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/top_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="64dp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/stops_search_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:hint="@string/stops"
+        app:endIconContentDescription="@string/search_icon_description"
+        app:endIconDrawable="@drawable/ic_search_24dp"
+        app:endIconMode="custom"
+        app:helperText="@string/search_stops_field_help_text"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/top_guideline">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageView
+        android:id="@+id/warning_image"
+        android:layout_width="0dp"
+        android:layout_height="300dp"
+        android:contentDescription="@string/no_network_image_description"
+        android:src="@drawable/no_network_connection"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/warning_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/stops_search_input" />
+
+    <TextView
+        android:id="@+id/warning_label"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="@string/try_again_label"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:visibility="gone"
+        app:cornerRadius="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/warning_image" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/stops_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="24dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/stops_search_input"
+        tools:listitem="@layout/item_simple_stop" />
+
+    <include
+        android:id="@+id/loading"
+        layout="@layout/overlay_loading"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
