@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.tiagomaciel.olhovivo.api.ApiManager
+import com.tiagomaciel.olhovivo.api.dataClass.StopLocation
 import com.tiagomaciel.olhovivo.api.dataClass.VehicleLines
 import com.tiagomaciel.olhovivo.api.dataClass.VehiclePosition
 
@@ -16,6 +17,9 @@ class VehiclePositionViewModel : ViewModel() {
     private val _vehicleLines = MutableLiveData<List<VehicleLines?>?>()
     val vehicleLines: LiveData<List<VehicleLines?>?> get() = _vehicleLines
 
+    private val _vehicleStops = MutableLiveData<List<StopLocation?>?>()
+    val vehicleStops: LiveData<List<StopLocation?>?> get() = _vehicleStops
+
     private val _error = MutableLiveData<String>()
     val error: LiveData<String> get() = _error
 
@@ -26,6 +30,9 @@ class VehiclePositionViewModel : ViewModel() {
             },
             onResultVehicleLines = { vehicleLines ->
                 _vehicleLines.postValue(vehicleLines)
+            },
+            onResultVehicleStops = { vehicleStops ->
+                _vehicleStops.postValue(vehicleStops)
             },
             type = type,
             searchTerms = searchTerms

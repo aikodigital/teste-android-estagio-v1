@@ -1,5 +1,6 @@
 package com.tiagomaciel.olhovivo.api
 
+import com.tiagomaciel.olhovivo.api.dataClass.StopLocation
 import com.tiagomaciel.olhovivo.api.dataClass.VehicleLines
 import com.tiagomaciel.olhovivo.api.dataClass.VehiclePosition
 import retrofit2.Call
@@ -18,4 +19,7 @@ interface ApiService {
 
     @GET("Linha/Buscar")
     fun getBusLines(@Query("termosBusca") searchTerms: String): Call<List<VehicleLines>?>
+
+    @GET("Parada/Buscar")
+    fun getVehicleStops(@Query("termosBusca") searchTerms: String): Call<List<StopLocation>?>
 }

@@ -1,6 +1,7 @@
 package com.tiagomaciel.olhovivo.api
 
 import android.util.Log
+import com.tiagomaciel.olhovivo.api.dataClass.StopLocation
 import com.tiagomaciel.olhovivo.api.dataClass.VehicleLines
 import com.tiagomaciel.olhovivo.api.dataClass.VehiclePosition
 import retrofit2.Call
@@ -19,6 +20,7 @@ class ApiManager {
     fun authenticateAndFetchData(
         onResultVehiclePosition: (VehiclePosition?) -> Unit,
         onResultVehicleLines: (List<VehicleLines>?) -> Unit,
+        onResultVehicleStops: (List<StopLocation>?) -> Unit,
         type: String,
         searchTerms: String
     ) {
@@ -26,11 +28,9 @@ class ApiManager {
             override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
                 if (response.isSuccessful && response.body() == true) {
                     Log.d("API", "Authenticated successfully")
-                    if (type == "position") {
-                        fetchVehiclePositions(onResultVehiclePosition)
-                    } else {
-                        fetchBusLines(onResultVehicleLines, searchTerms)
-                    }
+                    fetchVehiclePositions(onResultVehiclePosition)
+                    fetchBusLines(onResultVehicleLines, searchTerms)
+                    fetchVehicleStops(onResultVehicleStops, searchTerms)
                 } else {
                     Log.e("API", "Authentication failed")
                 }
@@ -75,6 +75,25 @@ class ApiManager {
             }
 
             override fun onFailure(call: Call<List<VehicleLines>?>, t: Throwable) {
+                Log.e("API", "Error: ${t.message}")
+            }
+        })
+    }
+
+    fun fetchVehicleStops(onResult: (List<StopLocation>?) -> Unit, searchTerms: String) {
+        apiService.getVehicleStops(searchTerms).enqueue(object : Callback<List<StopLocation>?> {
+            override fun onResponse(call: Call<List<StopLocation>?>, response: Response<List<StopLocation>?>) {
+                Log.d("API", "Response code: ${response.code()}")
+                if (response.isSuccessful && response.body() != null) {
+                    val lines = response.body()
+                    onResult.invoke(lines)
+                    Log.d("API", "Bus Lines: $lines")
+                } else {
+                    Log.e("API", "Failed to fetch bus lines. Error: ${response.message()}")
+                }
+            }
+
+            override fun onFailure(call: Call<List<StopLocation>?>, t: Throwable) {
                 Log.e("API", "Error: ${t.message}")
             }
         })
