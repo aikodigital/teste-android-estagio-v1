@@ -12,6 +12,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import com.example.desafio_aiko_2024.LineDetailsRecyclerViewAdapter;
+import com.example.desafio_aiko_2024.StopDetailsRecyclerViewAdapter;
 import com.example.desafio_aiko_2024.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -44,6 +45,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         LineDetailsRecyclerViewAdapter adapter = new LineDetailsRecyclerViewAdapter(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+//        RecyclerView recyclerView = findViewById(R.id.details_recycler_view);
+//        StopDetailsRecyclerViewAdapter adapter = new StopDetailsRecyclerViewAdapter(this);
+//        recyclerView.setAdapter(adapter);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
     @Override
