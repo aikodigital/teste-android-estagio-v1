@@ -2,6 +2,8 @@ package com.example.desafio_aiko_2024.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -9,6 +11,7 @@ import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
+import com.example.desafio_aiko_2024.LineDetailsRecyclerViewAdapter;
 import com.example.desafio_aiko_2024.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -36,6 +39,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        RecyclerView recyclerView = findViewById(R.id.details_recycler_view);
+        LineDetailsRecyclerViewAdapter adapter = new LineDetailsRecyclerViewAdapter(this);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
     @Override
