@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">TransMobiSP</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="refresh">Atualizar</string>
+    <string name="map">Mapa</string>
+    <string name="lines">Linhas</string>
+    <string name="stops">Paradas</string>
+</resources>

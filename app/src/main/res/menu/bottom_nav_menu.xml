@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_map"
+        android:icon="@drawable/map_icon_24"
+        android:title="@string/map" />
+
+    <item
+        android:id="@+id/navigation_lines"
+        android:icon="@drawable/line_point_icon_24"
+        android:title="@string/lines" />
+
+    <item
+        android:id="@+id/navigation_stops"
+        android:icon="@drawable/bus_stop_icon_24"
+        android:title="@string/stops" />
+
+</menu>
