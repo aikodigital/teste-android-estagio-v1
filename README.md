@@ -8,7 +8,7 @@
 
 ## Processo
 
-As telas e as funcionalidades foram implementadas, porém, um problema com a utilização da API ao tentar obter a lista de linhas de ônibus infelizmente não pôde ser debugado em tempo hábil e acabou por prejudicar a continuidade do projeto para uma entrega 100%. Por razões de segurança, a API do Google Maps foi inserida por meio de uma variável de ambiente. Pretendo continuar tentando resolver as pendências no código para que a aplicação fique 100% funcional.
+As telas e as funcionalidades foram implementadas, porém, um problema com a utilização da API ao tentar obter a lista de linhas de ônibus infelizmente não pôde ser debugado em tempo hábil e acabou por prejudicar a continuidade do projeto para uma entrega 100%. Por razões de segurança, a API do Google Maps foi inserida por meio de uma variável de ambiente. Pretendo continuar tentando resolver as pendências no código mesmo após o encerramento do prazo de entrega para que a aplicação fique 100% funcional.
 
 ---
 
