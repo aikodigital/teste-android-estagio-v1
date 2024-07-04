@@ -28,4 +28,9 @@
             android:name="lineCode"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/stopPoint"
+        android:name="com.example.app.ui.stopPoint.StopPointFragment"
+        android:label="fragment_stop_point"
+        tools:layout="@layout/fragment_stop_point" />
 </navigation>

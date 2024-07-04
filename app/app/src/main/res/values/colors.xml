@@ -5,4 +5,5 @@
     <color name="color_default">#FAFAFA</color>
     <color name="text_color">#242424</color>
     <color name="icon_color">#003184</color>
+    <color name="icon_color_secondary">#00DF00</color>
 </resources>

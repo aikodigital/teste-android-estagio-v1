@@ -22,7 +22,7 @@ class StopPointRenderer(
     private val iconBusBitmap: BitmapDescriptor by lazy {
         val color = ContextCompat.getColor(
             context,
-            R.color.icon_color
+            R.color.icon_color_secondary
         )
         BitmapHelper.vectorToBitmap(
             context,

@@ -17,9 +17,9 @@ interface ServiceAPI {
         @Query("codigoLinha") code: String
     ): LineResponse
 
-    @GET("/Parada/BuscarParadasPorLinha")
+    @GET("Parada/Buscar")
     suspend fun getStopPointByLine(
-        @Query("codigoLinha") code: String = ""
+        @Query("termosBusca") code: String
     ): List<StopPointResponse>
 
     @POST("Login/Autenticar")
