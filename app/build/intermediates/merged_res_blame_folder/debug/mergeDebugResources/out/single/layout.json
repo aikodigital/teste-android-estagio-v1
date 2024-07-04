@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "C:\\Users\\Usuario\\.gradle\\daemon\\8.7\\com.breno.testeandroidestagiov1.app-mergeDebugResources-33:\\layout\\activity_main.xml",
+        "source": "C:\\Users\\Usuario\\.gradle\\daemon\\8.7\\com.breno.testeandroidestagiov1.app-main-36:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "com.breno.testeandroidestagiov1.app-mergeDebugResources-33:/layout/activity_result.xml",
+        "source": "com.breno.testeandroidestagiov1.app-main-36:/layout/activity_result.xml"
+    }
+]

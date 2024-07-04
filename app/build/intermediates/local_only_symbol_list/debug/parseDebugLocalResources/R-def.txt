@@ -1,0 +1,28 @@
+R_DEF: Internal format may change without notice
+local
+color black
+color white
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+drawable ic_search_background
+drawable ic_search_foreground
+drawable rounded_edittext
+id bottomLayout
+id btnFilter
+id btnSearch
+id map
+id resultTextView
+id searchField
+layout activity_main
+layout activity_result
+mipmap ic_launcher
+mipmap ic_launcher_round
+mipmap ic_search
+mipmap ic_search_foreground
+mipmap ic_search_round
+string app_name
+style Base.Theme.Testeandroidestagiov1
+style Theme.Testeandroidestagiov1
+xml backup_rules
+xml data_extraction_rules
+xml network_security_config

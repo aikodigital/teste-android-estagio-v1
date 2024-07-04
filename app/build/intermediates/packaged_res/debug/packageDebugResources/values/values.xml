@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="app_name">teste-android-estagio-v1</string>
+    <style name="Base.Theme.Testeandroidestagiov1" parent="Theme.Material3.DayNight.NoActionBar">
+        
+        
+    </style>
+    <style name="Theme.Testeandroidestagiov1" parent="Base.Theme.Testeandroidestagiov1"/>
+</resources>
