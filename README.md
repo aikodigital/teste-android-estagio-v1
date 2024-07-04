@@ -1,77 +1,74 @@
-# Teste Android
+# UrbanBus
 
-![Aiko](imagens/aiko.png)
+Este projeto foi desenvolvido como parte de um desafio para uma vaga de estágio em Android. O objetivo do aplicativo é fornecer informações sobre o transporte público da cidade de São Paulo, utilizando a [API Olho Vivo](https://www.sptrans.com.br/desenvolvedores/api-do-olho-vivo-guia-de-referencia/). O aplicativo permite visualizar a posição dos veículos, informações sobre as linhas, pontos de parada no mapa, previsão de chegada, além de funcionalidades de pesquisa e filtros.
 
-Neste teste serão avaliados seus conhecimentos e a metodologia aplicada no desenvolvimento de aplicações mobile Android.
+## Tecnologias Utilizadas
 
-## O Desafio
+- **Kotlin**: Linguagem principal do projeto.
+- **Google Maps SDK**: Para exibição de mapas e localização dos pontos de ônibus.
+- **Retrofit**: Para realizar chamadas à API Olho Vivo.
+- **Hilt**: Para injeção de dependências.
+- **Navigation**: Para navegação entre os fragments.
+- **NavArgs**: Para passar dados entre os fragments.
+- **Fragments**: Para a estrutura modular da UI.
+- **Parcelize**: Para serialização de dados entre fragments.
+- **Material Design**: Para a criação de elementos visuais como botões, textos, toolbar, etc.
 
-Seu objetivo é criar um aplicativo que exiba dados sobre o transporte público da cidade de São Paulo, consultando a [API **Olho Vivo**](api.md) que provê informações em tempo real do monitoramento da frota de ônibus da cidade de São Paulo.
+## Funcionalidades
+- **Paradas**:
+  - mostra a localização de cada parada no mapa
+  - permite a realização de busca com filtragem
+  - possibilita ver a previsão de chegada de cada linha em uma determinada parada
+- **Linhas**:
+  - mostra informações sobre linhas, como temrinal de saida e chegada, etc.
+  - informa a localização em tempo real dos ônibus de uma determinada linhas. 
+- **Mapa Interativo**: Exibe a localização dos pontos de ônibus e veículos no mapa.
+- **Pesquisa e Filtros**: Permite buscar e filtrar informações de linhas e pontos de ônibus.
 
-## Requisitos
+## Configuração do Projeto
 
-Esses requisitos são obrigatórios e devem ser desenvolvidos para a entrega do teste
+### Pré-requisitos
 
-* **Posições dos veículos**: Exibir no mapa onde os veículos estavam na sua última atualização.
+- Android Studio instalado
+- Chave de API do Google Maps
 
-* **Linhas**: Exibir informações sobre as linhas de ônibus.
+### Passo a Passo
 
-* **Paradas**: Exibir os pontos de parada da cidade no mapa.
+1. Clone o repositório:
 
-* **Previsão de chegada**: Dado uma parada informar a previsão de chegada de cada veículo que passe pela parada selecionada.
+   ```bash
+   git clone https://github.com/eduardosdl/urban-bus-aiko.git
+   ```
 
-* **Pesquisa e Filtros**: Permitir que o usuário pesquise e filtre esses dados, interagindo com a interface.
+2. Abra o projeto no Android Studio.
 
-## O que é permitido
+3. Crie um arquivo `credentials.properties` na raiz do projeto e adicione sua chave de API do Google Maps:
 
-* Android Nativo (Java/Kotlin)
+   ```properties
+   GOOGLE_MAPS_API_KEY=your_google_maps_api_key
+   ```
+   - caso prefira pode fazer uma copia do arquivo `credentials.properties.sample` e trocar o nome
 
-* React Native
+5. Sincronize o projeto com o Gradle.
 
-* Native Script (Vue, Angular, etc)
+6. Execute o aplicativo em um emulador ou dispositivo Android.
 
-* Flutter
+## Estrutura do Projeto
 
-* Xamarin
+- `app/src/main/java/com/example/urbanbus`
+  - **Activity**: Contém o ponto inicial da aplicação.
+  - **Fragments**: Contém os fragments para as diferentes telas do aplicativo.
+  - **ViewModels**: Contém os ViewModels para gerenciamento do estado da UI.
+  - **Repositories**: Contém os repositórios para acesso aos dados.
+  - **Models**: Contém as classes de dados.
+  - **DTOs**: Contém as classes para recebimentos dos dados.
+  - **Adapters**: Contém os adapters para RecyclerViews.
+  - **Network**: Contém as definições de Retrofit e APIs.
+  - **DI**: Contém os módulos de injeção de dependências Hilt.
 
-* Kivy
-
-* Qualquer tecnologia complementar as citadas anteriormente são permitidas desde que seu uso seja justificável
-
-## O que não é permitido
-
-* Utilizar bibliotecas ou códigos de terceiros que implementem algum dos requisitos.
-
-## Recomendações
-
-* **Linter**: Desenvolva o projeto utilizando algum padrão de formatação de código.
-
-## Extras
-
-Aqui são listados algumas sugestões para você que quer ir além do desafio inicial. Lembrando que você não precisa se limitar a essas sugestões, se tiver pensado em outra funcionalidade que considera relevante ao escopo da aplicação fique à vontade para implementá-la.
-
-* **Refresh automático**: Que as informações exibidas no aplicativo sejam atualizadas de tempo em tempo de forma transparente ao usuário
-
-* **Cálculo de rotas**: Exibir a possível rota de um ou mais ônibus em relação a uma parada, ou do usuário em relação a uma parada (Utilizando API do Google Maps ou equivalentes)
-
-* **Corredores**: Mostrar informações sobre os corredores de ônibus de SP.
-
-* **Velocidade das vias**: Mostrar informações sobre as velocidades das vias.
-
-* **Testes**: Desenvolva testes que achar necessário para a aplicação.
-
-* **Documentação**: Gerar uma documentação da aplicação. A documentação pode incluir detalhes sobre as decisões tomadas, especificação das funcionalidades desenvolvidas, instruções de uso dentre outras informações que achar relevantes.
-
-## Entrega
-
-Para realizar a entrega do teste você deve:
-
-* Relizar o fork e clonar esse repositório para sua máquina.
-  
-* Criar uma branch com o nome de `teste/[NOME]`.
-  * `[NOME]`: Seu nome.
-  * Exemplos: `teste/fulano-da-silva`; `teste/beltrano-primeiro-gomes`.
-  
-* Faça um commit da sua branch com a implementação do teste.
-  
-* Realize o pull request da sua branch nesse repositório.
+## Screenshots do aplicativo 
+<p align="center">
+  <img src="./screenshots/screenshot1.jpg" alt="Home" width="300" />
+  <img src="./screenshots/screenshot2.jpg" alt="Stop arrival" width="300" />
+  <img src="./screenshots/screenshot3.jpg" alt="List lines" width="300" />
+</p>
