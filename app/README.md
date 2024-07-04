@@ -4,8 +4,8 @@
 Para executar o projeto, utilize as ferramentas descritas na sessão **Ferramentas** e siga essas instruções:
 No arquivo local.properties adicione as seguintes chaves:
 
-GOOGLE_MAPS_API_KEY=**SUA_CHAVE_AQUI**
-OLHO_VIVO_API_KEY=**SUA_CHAVE_AQUI**
+GOOGLE_MAPS_API_KEY=AIzaSyCKJDJGZkTxi7ndpPjVXIaJ7mMEqSRvflo
+OLHO_VIVO_API_KEY=8532e7ecca917d76b2bd81a38141922b3ee54ad0c3b4dc0ef6948c8838f4061c
 
 > Para conseguir as chaves do Google Maps e da API do Olho Vivo siga as instruções em suas respectivas documentações, listadas na seção **Links importantes**.
 
