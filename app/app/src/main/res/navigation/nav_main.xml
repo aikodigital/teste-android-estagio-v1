@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/bus">
+
+    <fragment
+        android:id="@+id/bus"
+        android:name="com.example.app.ui.bus.BusFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_bus" />
+    <fragment
+        android:id="@+id/line"
+        android:name="com.example.app.ui.line.LineFragment"
+        android:label="fragment_line"
+        tools:layout="@layout/fragment_line" >
+        <action
+            android:id="@+id/action_line_to_lineBusFragment"
+            app:destination="@id/lineBusFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/lineBusFragment"
+        android:name="com.example.app.ui.lineBus.LineBusFragment"
+        android:label="fragment_line_bus"
+        tools:layout="@layout/fragment_line_bus" >
+        <argument
+            android:name="lineCode"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/stopPoint"
+        android:name="com.example.app.ui.stopPoint.StopPointFragment"
+        android:label="fragment_stop_point"
+        tools:layout="@layout/fragment_stop_point" >
+        <action
+            android:id="@+id/action_stopPoint_to_searchStopPointFragment"
+            app:destination="@id/searchStopPointFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchStopPointFragment"
+        android:name="com.example.app.ui.searchStopPoint.SearchStopPointFragment"
+        android:label="fragment_search_stop_point"
+        tools:layout="@layout/fragment_search_stop_point" />
+</navigation>
