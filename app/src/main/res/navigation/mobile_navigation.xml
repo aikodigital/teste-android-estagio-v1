@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="br.com.okayamafilho.testesptrans.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_ListaLinhasBus"
+        android:name="br.com.okayamafilho.testesptrans.ui.linhas.ListaLinhasBusFragment"
+        android:label="Linhas de ônibus"
+        tools:layout="@layout/fragment_lista_linha" >
+        <action
+            android:id="@+id/action_navigation_ListaLinhasBus_to_LinhaParadaFragment"
+            app:destination="@id/ListaParadaFragment" />
+        <argument
+            android:name="codigo"
+            app:argType="integer" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/ListaParadaFragment"
+        android:name="br.com.okayamafilho.testesptrans.ui.linhas.ListaParadaPorLinhaFragment"
+        android:label="Lista de Paradas"
+        tools:layout="@layout/fragment_lista_parada" >
+        <argument
+            android:name="codigo"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_ListaParadaFragment_to_navigation_ListaLinhasBus"
+            app:destination="@id/navigation_ListaLinhasBus" />
+        <action
+            android:id="@+id/action_ListaParadaFragment_to_listaParadaPrevisaoFragment"
+            app:destination="@id/listaParadaPrevisaoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listaParadaPrevisaoFragment"
+        android:name="br.com.okayamafilho.testesptrans.ui.linhas.ListaParadaPrevisaoFragment"
+        android:label="Lista Previsão de chegada"
+        tools:layout="@layout/fragment_lista_parada_previsao" >
+        <argument
+            android:name="codigo"
+            app:argType="integer" />
+    </fragment>
+</navigation>
