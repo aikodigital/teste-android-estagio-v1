@@ -1,4 +1,4 @@
-package com.example.app.ui.bus
+package com.example.app.ui.lineBus
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -8,11 +8,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 import com.example.app.R
-import com.example.app.databinding.FragmentBusBinding
-import com.example.app.domain.model.AllLines
-import com.example.app.domain.model.LineAndBus
-import com.example.app.util.LineAndBusRenderer
+import com.example.app.databinding.FragmentLineBusBinding
+import com.example.app.domain.model.Bus
+import com.example.app.domain.model.Line
+import com.example.app.ui.bus.MarkerInfoAdapter
+import com.example.app.util.BusRenderer
 import com.example.app.util.StateView
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -23,34 +25,29 @@ import com.google.maps.android.clustering.ClusterManager
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class BusFragment : Fragment() {
-    private var _binding: FragmentBusBinding? = null
+class LineBusFragment : Fragment() {
+
+    private var _binding: FragmentLineBusBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: BusViewModel by viewModels()
+    private val viewModel: LineBusViewModel by viewModels()
+    private val args: LineBusFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentBusBinding.inflate(inflater, container, false)
+        _binding = FragmentLineBusBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        getLines()
-        setupClickListeners()
+        getLineByCode()
     }
 
-    private fun setupClickListeners() {
-        binding.btnRefresh.setOnClickListener {
-            getLines()
-        }
-    }
-
-    private fun getLines() {
-        viewModel.getLines().observe(viewLifecycleOwner) { stateView ->
+    private fun getLineByCode() {
+        viewModel.getLineByCode(args.lineCode.toString()).observe(viewLifecycleOwner) { stateView ->
             when (stateView) {
                 is StateView.Loading -> {
                     binding.progressBar.visibility = View.VISIBLE
@@ -60,7 +57,7 @@ class BusFragment : Fragment() {
                     binding.progressBar.visibility = View.GONE
 
                     stateView.data?.let { list ->
-                        val busList = extractBusList(list)
+                        val busList = extractBusList(list[0])
 
                         val mapFragment =
                             childFragmentManager.findFragmentById(R.id.map_fragment) as SupportMapFragment
@@ -69,7 +66,7 @@ class BusFragment : Fragment() {
 
                             googleMap.setOnMapLoadedCallback {
                                 val bounds = LatLngBounds.builder()
-                                busList.forEach { bounds.include(it.latLng) }
+                                busList.forEach { bounds.include(LatLng(it.lat, it.lng)) }
                                 googleMap.moveCamera(
                                     CameraUpdateFactory.newLatLngBounds(
                                         bounds.build(),
@@ -93,46 +90,20 @@ class BusFragment : Fragment() {
         }
     }
 
-    private fun extractBusList(allLines: List<AllLines>): List<LineAndBus> {
-        val lineAndBusList = mutableListOf<LineAndBus>()
-
-        allLines.forEach { allLines ->
-            allLines.linesRelation.forEach { line ->
-                line?.busList?.forEach { bus ->
-                    val latLng = LatLng(bus?.lat ?: 0.0, bus?.lng ?: 0.0)
-
-                    val busWithLine = LineAndBus(
-                        line.fullPlacard,
-                        bus?.busPrefix ?: 0,
-                        line.lineOrigin,
-                        line.lineDestination,
-                        bus?.isAccessible ?: false,
-                        allLines.requestHour,
-                        latLng,
-                        line.lineCode
-                    )
-
-                    lineAndBusList.add(busWithLine)
-                }
-            }
-        }
-        return lineAndBusList
-    }
-
     @SuppressLint("PotentialBehaviorOverride")
-    private fun addClusteredMarkers(googleMap: GoogleMap, busList: List<LineAndBus>) {
-        val clusterManager = ClusterManager<LineAndBus>(requireContext(), googleMap)
+    private fun addClusteredMarkers(googleMap: GoogleMap, busList: List<Bus>) {
+        val clusterManager = ClusterManager<Bus>(requireContext(), googleMap)
 
         clusterManager.clearItems()
 
         clusterManager.renderer =
-            LineAndBusRenderer(
+            BusRenderer(
                 requireContext(),
                 googleMap,
                 clusterManager
             )
 
-        clusterManager.markerCollection.setInfoWindowAdapter(MarkerInfoAdapter(requireContext()))
+        clusterManager.markerCollection.setInfoWindowAdapter(MarkerBusAdapter(requireContext()))
 
         clusterManager.addItems(busList)
         clusterManager.cluster()
@@ -141,6 +112,27 @@ class BusFragment : Fragment() {
         googleMap.setOnCameraIdleListener {
             clusterManager.onCameraIdle()
         }
+    }
+
+    private fun extractBusList(line: Line): List<Bus> {
+        val busList = mutableListOf<Bus>()
+
+        line.busList.forEach { bus ->
+            val latLng = LatLng(bus?.lat ?: 0.0, bus?.lng ?: 0.0)
+
+            val searchBus = Bus(
+                bus?.busPrefix ?: 0,
+                bus?.isAccessible ?: false,
+                bus?.utcRequestHour ?: "",
+                bus?.lat ?: 0.0,
+                bus?.lng ?: 0.0,
+                bus?.sv ?: false,
+                bus?.`is` ?: false,
+            )
+
+            busList.add(searchBus)
+        }
+        return busList
     }
 
     override fun onDestroyView() {

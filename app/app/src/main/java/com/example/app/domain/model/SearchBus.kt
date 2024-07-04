@@ -1,25 +1,16 @@
 package com.example.app.domain.model
 
 import com.google.android.gms.maps.model.LatLng
-import com.google.gson.annotations.SerializedName
 import com.google.maps.android.clustering.ClusterItem
 
-data class Bus(
-    @SerializedName("p")
+class SaearchBus(
     val busPrefix: Int,
-    @SerializedName("a")
     val isAccessible: Boolean,
-    @SerializedName("ta")
     val utcRequestHour: String,
-    @SerializedName("py")
-    val lat: Double,
-    @SerializedName("px")
-    val lng: Double,
-    val sv: Any,
-    val `is`: Any,
+    val latLng: LatLng
 ) : ClusterItem {
     override fun getPosition(): LatLng {
-        return LatLng(lat, lng)
+        return latLng
     }
 
     override fun getTitle(): String {

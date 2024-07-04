@@ -9,6 +9,8 @@ import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
+import com.example.app.R
 import com.example.app.databinding.FragmentLineBinding
 import com.example.app.domain.model.AllLines
 import com.example.app.domain.model.Bus
@@ -70,7 +72,12 @@ class LineFragment : Fragment() {
     }
 
     private fun initRecycler(lines: List<Line>) {
-        adapter = LineAdapter(lines)
+        adapter = LineAdapter(lines) { lineCode ->
+            val action = LineFragmentDirections
+                .actionLineToLineBusFragment(lineCode)
+            findNavController().navigate(action)
+        }
+
         with(binding.rvLines) {
             setHasFixedSize(true)
             this.adapter = this@LineFragment.adapter

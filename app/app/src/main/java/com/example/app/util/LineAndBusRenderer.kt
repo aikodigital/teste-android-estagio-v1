@@ -3,20 +3,19 @@ package com.example.app.util
 import android.content.Context
 import androidx.core.content.ContextCompat
 import com.example.app.R
-import com.example.app.domain.model.Bus
+import com.example.app.domain.model.LineAndBus
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.BitmapDescriptor
-import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.maps.android.clustering.ClusterManager
 import com.google.maps.android.clustering.view.DefaultClusterRenderer
 
-class BusRenderer(
+class LineAndBusRenderer(
     private val context: Context,
     map: GoogleMap,
-    clusterManager: ClusterManager<Bus>
-) : DefaultClusterRenderer<Bus>(context, map, clusterManager) {
+    clusterManager: ClusterManager<LineAndBus>
+) : DefaultClusterRenderer<LineAndBus>(context, map, clusterManager) {
 
     private val iconBusBitmap: BitmapDescriptor by lazy {
         val color = ContextCompat.getColor(
@@ -31,16 +30,16 @@ class BusRenderer(
     }
 
     override fun onBeforeClusterItemRendered(
-        item: Bus,
+        item: LineAndBus,
         markerOptions: MarkerOptions
     ) {
         markerOptions
-            .title(item.busPrefix.toString())
-            .position(LatLng(item.lat, item.lng))
+            .title(item.fullPlacard)
+            .position(item.latLng)
             .icon(iconBusBitmap)
     }
 
-    override fun onClusterItemRendered(clusterItem: Bus, marker: Marker) {
+    override fun onClusterItemRendered(clusterItem: LineAndBus, marker: Marker) {
         marker.tag = clusterItem
     }
 }

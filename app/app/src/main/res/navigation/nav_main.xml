@@ -14,5 +14,18 @@
         android:id="@+id/line"
         android:name="com.example.app.ui.line.LineFragment"
         android:label="fragment_line"
-        tools:layout="@layout/fragment_line" />
+        tools:layout="@layout/fragment_line" >
+        <action
+            android:id="@+id/action_line_to_lineBusFragment"
+            app:destination="@id/lineBusFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/lineBusFragment"
+        android:name="com.example.app.ui.lineBus.LineBusFragment"
+        android:label="fragment_line_bus"
+        tools:layout="@layout/fragment_line_bus" >
+        <argument
+            android:name="lineCode"
+            app:argType="integer" />
+    </fragment>
 </navigation>

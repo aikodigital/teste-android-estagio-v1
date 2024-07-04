@@ -8,7 +8,8 @@ import com.example.app.databinding.LineItemBinding
 import com.example.app.domain.model.Line
 
 class LineAdapter(
-    private val lines: List<Line>
+    private val lines: List<Line>,
+    private val lineClick: (Int) -> Unit
 ) : RecyclerView.Adapter<LineAdapter.MyViewHolder>() {
     private var filteredLines: List<Line> = lines
 
@@ -44,6 +45,9 @@ class LineAdapter(
             tvLineCode.text = line.lineCode.toString()
             tvOrigin.text = line.lineOrigin
             tvDestination.text = line.lineDestination
+            itemContainer.setOnClickListener {
+                lineClick(line.lineCode)
+            }
         }
     }
 
