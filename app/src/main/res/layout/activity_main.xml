@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="#FFF8F3"
+    android:textStyle="bold">
+
+    <org.osmdroid.views.MapView
+        android:id="@+id/map"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:queryHint=""
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/button_vehicle_positions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Posição dos Ônibus"
+        android:layout_marginTop="70dp"/>
+
+
+    <Button
+        android:id="@+id/button_lines"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Buscar linha de Ônibus"
+        android:layout_below="@id/button_vehicle_positions"
+        android:layout_marginTop="16dp" />
+
+    <Button
+        android:id="@+id/button_stops"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Buscar parada de Ônibus"
+        android:layout_below="@id/button_lines"
+        android:layout_marginTop="16dp" />
+
+    <Button
+        android:id="@+id/button_arrival_forecast"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Previsão da chegada do Ônibus"
+        android:layout_below="@id/button_stops"
+        android:layout_marginTop="16dp" />
+
+    <Button
+        android:id="@+id/button_back"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="Voltar"
+        android:visibility="gone"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="16dp" />
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true">
+
+        <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/textViewResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:textStyle="bold"
+            android:textSize="18sp"/>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/textViewAlert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Clique no ícone da parada para ver os próximos ônibus"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:padding="12dp"
+        android:background="#AADB1255"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold|italic"
+        android:visibility="gone"/>
+
+</RelativeLayout>
