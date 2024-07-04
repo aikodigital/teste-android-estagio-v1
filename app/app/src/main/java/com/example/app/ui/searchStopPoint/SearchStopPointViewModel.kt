@@ -1,4 +1,4 @@
-package com.example.app.ui.stopPoint
+package com.example.app.ui.searchStopPoint
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
@@ -12,13 +12,13 @@ import retrofit2.HttpException
 import javax.inject.Inject
 
 @HiltViewModel
-class StopPointViewModel @Inject constructor(
-    private val getStopPointByLineUseCase: GetStopPointByLineUseCase
+class SearchStopPointViewModel @Inject constructor(
+    private val getBusByStopPointUseCase: GetBusByStopPointUseCase
 ) : ViewModel() {
-    fun getStopPointByLine(code: String = "") = liveData(Dispatchers.IO) {
+    fun getBusByStopPoint(code: String) = liveData(Dispatchers.IO) {
         try {
             emit(StateView.Loading())
-            val stopPoint = getStopPointByLineUseCase(code)
+            val stopPoint = getBusByStopPointUseCase(code)
             emit(StateView.Success(data = listOf(stopPoint)))
         } catch (ex: HttpException) {
             ex.printStackTrace()

@@ -32,5 +32,14 @@
         android:id="@+id/stopPoint"
         android:name="com.example.app.ui.stopPoint.StopPointFragment"
         android:label="fragment_stop_point"
-        tools:layout="@layout/fragment_stop_point" />
+        tools:layout="@layout/fragment_stop_point" >
+        <action
+            android:id="@+id/action_stopPoint_to_searchStopPointFragment"
+            app:destination="@id/searchStopPointFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchStopPointFragment"
+        android:name="com.example.app.ui.searchStopPoint.SearchStopPointFragment"
+        android:label="fragment_search_stop_point"
+        tools:layout="@layout/fragment_search_stop_point" />
 </navigation>

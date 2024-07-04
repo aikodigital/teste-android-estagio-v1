@@ -29,4 +29,17 @@
         android:visibility="gone"
         tools:visibility="visible" />
 
+    <Button
+        android:id="@+id/btn_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_search"
+        android:drawableLeft="@drawable/ic_search"
+        android:layout_margin="16dp"
+        android:drawableTint="@color/white"
+        android:text="Pesquisar por ponto de parada"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigator
+import androidx.navigation.fragment.findNavController
 import com.example.app.R
 import com.example.app.databinding.FragmentStopPointBinding
 import com.example.app.domain.model.StopPoint
@@ -42,6 +44,13 @@ class StopPointFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         getStopPoints()
+        setupClickListeners()
+    }
+
+    private fun setupClickListeners() {
+        binding.btnSearch.setOnClickListener {
+            findNavController().navigate(R.id.action_stopPoint_to_searchStopPointFragment)
+        }
     }
 
     class StopPointRendererFactory : ClusterRenderer<StopPoint> {

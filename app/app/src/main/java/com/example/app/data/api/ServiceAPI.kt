@@ -1,6 +1,7 @@
 package com.example.app.data.api
 
 import com.example.app.data.model.AllLinesResponse
+import com.example.app.data.model.ApiResponse
 import com.example.app.data.model.LineResponse
 import com.example.app.data.model.StopPointResponse
 import retrofit2.Response
@@ -21,6 +22,12 @@ interface ServiceAPI {
     suspend fun getStopPointByLine(
         @Query("termosBusca") code: String
     ): List<StopPointResponse>
+
+    @GET("Previsao/Parada")
+    suspend fun getBusByStopPoint(
+        @Query("codigoParada") code: String
+    ): ApiResponse
+
 
     @POST("Login/Autenticar")
     suspend fun authenticate(
