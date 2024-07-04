@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="search_bus_number">Search Bus Number</string>
+    <string name="version">Version: %s</string>
+</resources>
