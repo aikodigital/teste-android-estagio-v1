@@ -87,7 +87,7 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
     private fun String.autenticarComToken() {
         lifecycleScope.launch(Dispatchers.IO) {
             try {
-                val autenticado = apiService.autenticar("Bearer $this")
+                val autenticado = apiService.autenticar("Bearer $token")
                 if (autenticado) {
                     buscarPosicoesVeiculos("Bearer $this")
                 } else {
