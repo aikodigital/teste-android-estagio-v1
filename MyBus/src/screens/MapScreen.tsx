@@ -85,6 +85,7 @@ const MapScreen: React.FC<MapScreenProps> = ({ route }) => {
   }, [line.cl]);
 
   useEffect(() => {
+    fetchVehiclesPosition();
     fetchData(); 
   }, []);
 
@@ -92,14 +93,6 @@ const MapScreen: React.FC<MapScreenProps> = ({ route }) => {
     setSelectedStop(stop);
     await fetchPredictions(stop.cp); 
   };
-
-  if (loading) {
-    return (
-      <View style={linestyles.center}>
-        <ActivityIndicator size="large" color="red" />
-      </View>
-    );
-  }
 
   if (error) {
     return (
