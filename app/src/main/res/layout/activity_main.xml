@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:gravity="top"
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    tools:visibility="visible">
+
+    <ImageView
+        android:id="@+id/img_aiko"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center"
+        app:srcCompat="@mipmap/aiko"
+        android:importantForAccessibility="no" />
+
+    <TextView
+        android:id="@+id/txt_bemvindo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:scaleY="1.5"
+        android:scaleX="1.5"
+        android:text="@string/bemvindo" />
+    <TextView
+        android:id="@+id/txt_escolha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:scaleY="1.5"
+        android:scaleX="1.5"
+        android:text="@string/escolha" />
+
+    <Button
+        android:id="@+id/bnt_veiculos"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/bnt_bg"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
+        android:textSize="15dp"
+        android:text="Consultar veiculos"
+        app:strokeColor="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/txt_veiculos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="1dp"
+        android:scaleY="1"
+        android:scaleX="1"
+        android:text="Para consultar a posição dos veiculos no mapa" />
+
+    <Button
+        android:id="@+id/bnt_linhas"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/bnt_bg"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
+        android:textSize="15dp"
+        android:text="Consultar linhas"
+        app:strokeColor="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/txt_linhas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="1dp"
+        android:scaleX="1"
+        android:scaleY="1"
+        android:text="Para exibir informações sobre as linhas" />
+
+    <Button
+        android:id="@+id/bnt_paradas"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/bnt_bg"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
+        android:textSize="15dp"
+        android:text="Consultar paradas"
+        app:strokeColor="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/txt_paradas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="1dp"
+        android:scaleY="1"
+        android:scaleX="1"
+        android:text="Para consultar a posição das paradas no mapa" />
+    <Button
+        android:id="@+id/bnt_previsao"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/bnt_bg"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
+        android:textSize="15dp"
+        android:text="Consultar previsão de chegada"
+        app:strokeColor="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/txt_precisao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="1dp"
+        android:scaleY="1"
+        android:scaleX="1"
+        android:text="Para consultar a previsão de chegada dos onibus" />
+
+
+</LinearLayout>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:gravity="top"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Tela_Linhas">
+
+    <ImageButton
+        android:id="@+id/bnt_voltar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:backgroundTint="#023284"
+        app:srcCompat="@android:drawable/ic_menu_revert" />
+
+    <EditText
+        android:id="@+id/editLinha"
+        android:layout_gravity="center"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:hint="Exemplo: 8000, Lapa ou Ramos"/>
+
+
+    <TextView
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sentido: "
+        android:textSize="20dp"/>
+
+    <RadioGroup
+        android:id="@+id/bnt_sentido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        >
+
+        <RadioButton
+            android:id="@+id/bnt_ambos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ambos "
+            tools:layout_editor_absoluteX="269dp"
+            tools:layout_editor_absoluteY="323dp" />
+
+        <RadioButton
+            android:id="@+id/bnt_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Terminal Principal \npara Terminal Secundário"
+            tools:layout_editor_absoluteX="269dp"
+            tools:layout_editor_absoluteY="353dp" />
+
+        <RadioButton
+            android:id="@+id/bnt_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Terminal Secundário \npara Terminal Principal"
+            tools:layout_editor_absoluteX="269dp"
+            tools:layout_editor_absoluteY="383dp" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/bnt_linhas"
+        android:layout_width="250dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/bnt_bg"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
+        android:text="Procurar Linhas"
+        app:strokeColor="#FFFFFF" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listaLinha"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

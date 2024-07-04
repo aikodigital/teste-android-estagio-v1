@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:gravity="left"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    android:layout_marginLeft="20dp">
+
+
+    <TextView
+        android:id="@+id/txt_prefixo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Prefixo do veiculo: "
+        android:textSize="20dp"/>
+
+    <TextView
+        android:id="@+id/txt_horarioprevisto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Horario previsto para a chegada: "
+        android:textSize="20dp"/>
+
+    <TextView
+        android:id="@+id/txt_acessibilidade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Acessível para pessoas com deficiência: "
+        android:textSize="20dp"/>
+
+
+</LinearLayout>
