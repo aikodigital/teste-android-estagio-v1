@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="server_error">Oops, something went wrong.\nPlease try again.</string>
+    <string name="unknown_error">An unknown error occurred</string>
+    <string name="no_internet_error">Couldn\'t reach server. Check your internet connection.</string>
+</resources>

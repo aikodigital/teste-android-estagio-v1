@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="choos_bus_stop">Escolha o ponto de ônibus</string>
+    <string name="next_to_arrive">Próximo a chegar</string>
+    <string name="updated">Atualizado: %s</string>
+    <string name="line">Linha - %s</string>
+</resources>

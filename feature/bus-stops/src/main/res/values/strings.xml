@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="choos_bus_stop">Choos bus stop</string>
+    <string name="next_to_arrive">Next to arrive</string>
+    <string name="updated">Updated: %s</string>
+    <string name="line">Line - %s</string>
+</resources>
