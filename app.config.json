@@ -1,0 +1,49 @@
+{
+  "expo": {
+    "name": "olho_vivo_bus",
+    "slug": "olho_vivo_bus",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/react-logo.png",
+    "scheme": "myapp",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./assets/images/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/aiko.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.matheusfabio.olho_vivo_bus",
+      "versionCode": 1
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static",
+      "favicon": "./assets/images/favicon.png"
+    },
+    "plugins": ["expo-router"],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "27831d09-f2d1-40db-ba3e-c34d152a7706"
+      }
+    },
+    "owner": "matheusfabio",
+    "runtimeVersion": "exposdk:51.0.0",
+    "updates": {
+      "url": "https://u.expo.dev/27831d09-f2d1-40db-ba3e-c34d152a7706"
+    }
+  }
+}
