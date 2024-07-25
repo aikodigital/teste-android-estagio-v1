@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(const OlhoVivoSp());
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class OlhoVivoSp extends StatelessWidget {
+  const OlhoVivoSp({super.key});
 
   @override
   Widget build(BuildContext context) {
