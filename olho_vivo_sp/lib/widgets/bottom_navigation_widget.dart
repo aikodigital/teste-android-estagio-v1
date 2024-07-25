@@ -14,6 +14,12 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
 
   final _items = [
     const BottomNavigationBarItem(
+      icon: Icon(
+        Icons.route,
+      ),
+      label: 'Corredores',
+    ),
+    const BottomNavigationBarItem(
       icon: Icon(Icons.search),
       label: 'Linhas',
     ),
@@ -22,18 +28,6 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
         Icons.directions_bus,
       ),
       label: 'Veículos no mapa',
-    ),
-    const BottomNavigationBarItem(
-      icon: Icon(
-        Icons.dangerous,
-      ),
-      label: 'Paradas',
-    ),
-    const BottomNavigationBarItem(
-      icon: Icon(
-        Icons.route,
-      ),
-      label: 'Corredores',
     ),
   ];
 
