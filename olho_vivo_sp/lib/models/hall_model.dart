@@ -1,5 +1,5 @@
 class HallModel {
-  String code;
+  int code;
   String name;
 
   HallModel({required this.code, required this.name});
