@@ -8,19 +8,16 @@ import { useEffect } from 'react';
 import { PosicaoDosVeiculos } from '@/types/posicao';
 
 export default function HomeScreen() {
-  // const res = fetch('https://aiko-olhovivo-proxy.aikodigital.io/');
-
   useEffect(() => {
     const fetchData = async () => {
-      // const res = await fetch(
-      //   'https://aiko-olhovivo-proxy.aikodigital.io/Posicao'
-      // );
-      // const json = (await res.json()) as PosicaoDosVeiculos;
-      // console.log(json.l[0].vs[0].a);
+      const res = await fetch(process.env.API_URL + '/Posicao');
+      const json = (await res.json()) as PosicaoDosVeiculos;
+      console.log(json.l[0].vs[0]);
     };
 
     fetchData();
   }, []);
+
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
