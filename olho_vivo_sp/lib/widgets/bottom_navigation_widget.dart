@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
 class BottomNavigationWidget extends StatefulWidget {
+  final Function(int) onChangeScreen;
+
   const BottomNavigationWidget({
     super.key,
+    required this.onChangeScreen,
   });
 
   @override
@@ -40,6 +43,7 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
         setState(() {
           _currentIndex = value;
         });
+        widget.onChangeScreen(value);
       },
     );
   }
