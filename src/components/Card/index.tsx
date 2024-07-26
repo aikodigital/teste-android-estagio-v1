@@ -1,4 +1,4 @@
-import { View } from "react-native";
+import MapView, { Marker } from 'react-native-maps';
 import { Container, Content, ContentIcon, ContentIconHeader, ContentItems, ContentMap, ContentTextHeader, Header, Icon, SubTitle, TextIcon, Title } from "./styles";
 
 export function Card() {
@@ -18,7 +18,21 @@ export function Card() {
                 </ContentTextHeader>
             </Header>
             <ContentMap>
-                <Icon name="map" />
+                <MapView
+                    style={{
+                        width: '100%',
+                        height:'100%'
+                    }}
+                    initialRegion={{
+                        latitude: -23.5505,
+                        longitude: -46.6333,
+                        latitudeDelta: 0.0922,
+                        longitudeDelta: 0.0421,
+                    }}
+                >
+                  
+                    <Marker coordinate={{ latitude: -23.5505, longitude: -46.6333 }} title="São Paulo" />
+                </MapView>
             </ContentMap>
             <Content>
                 <ContentIcon>
@@ -54,7 +68,7 @@ export function Card() {
                 </ContentItems>
                 <Icon type="PRIMARY" name="wifi" />
             </Content>
-
         </Container>
-    )
+    );
 }
+
