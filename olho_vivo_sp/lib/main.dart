@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:olho_vivo_sp/providers/data_provider.dart';
+import 'package:olho_vivo_sp/services/api_service.dart';
+import 'package:provider/provider.dart';
 
 import 'widgets/home_widget.dart';
 
@@ -11,15 +14,24 @@ class OlhoVivoSp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'OlhoVivoSP',
-      theme: ThemeData.from(
-        useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.amber,
+    return ChangeNotifierProvider<DataProvider>(
+      create: (ctx) {
+        final dataProvider = DataProvider(
+          apiService: ApiService(),
+        );
+        dataProvider.authenticate();
+
+        return dataProvider;
+      },
+      child: MaterialApp(
+        title: 'OlhoVivoSP',
+        theme: ThemeData.from(
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors.amber,
+          ),
         ),
+        home: const Home(),
       ),
-      home: const Home(),
     );
   }
 }
