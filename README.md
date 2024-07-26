@@ -1,77 +1,79 @@
-# Teste Android
+This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
-![Aiko](imagens/aiko.png)
+# Getting Started
 
-Neste teste serão avaliados seus conhecimentos e a metodologia aplicada no desenvolvimento de aplicações mobile Android.
+>**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
 
-## O Desafio
+## Step 1: Start the Metro Server
 
-Seu objetivo é criar um aplicativo que exiba dados sobre o transporte público da cidade de São Paulo, consultando a [API **Olho Vivo**](api.md) que provê informações em tempo real do monitoramento da frota de ônibus da cidade de São Paulo.
+First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
 
-## Requisitos
+To start Metro, run the following command from the _root_ of your React Native project:
 
-Esses requisitos são obrigatórios e devem ser desenvolvidos para a entrega do teste
+```bash
+# using npm
+npm start
 
-* **Posições dos veículos**: Exibir no mapa onde os veículos estavam na sua última atualização.
+# OR using Yarn
+yarn start
+```
 
-* **Linhas**: Exibir informações sobre as linhas de ônibus.
+## Step 2: Start your Application
 
-* **Paradas**: Exibir os pontos de parada da cidade no mapa.
+Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
 
-* **Previsão de chegada**: Dado uma parada informar a previsão de chegada de cada veículo que passe pela parada selecionada.
+### For Android
 
-* **Pesquisa e Filtros**: Permitir que o usuário pesquise e filtre esses dados, interagindo com a interface.
+```bash
+# using npm
+npm run android
 
-## O que é permitido
+# OR using Yarn
+yarn android
+```
 
-* Android Nativo (Java/Kotlin)
+### For iOS
 
-* React Native
+```bash
+# using npm
+npm run ios
 
-* Native Script (Vue, Angular, etc)
+# OR using Yarn
+yarn ios
+```
 
-* Flutter
+If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
 
-* Xamarin
+This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
 
-* Kivy
+## Step 3: Modifying your App
 
-* Qualquer tecnologia complementar as citadas anteriormente são permitidas desde que seu uso seja justificável
+Now that you have successfully run the app, let's modify it.
 
-## O que não é permitido
+1. Open `App.tsx` in your text editor of choice and edit some lines.
+2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
 
-* Utilizar bibliotecas ou códigos de terceiros que implementem algum dos requisitos.
+   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
 
-## Recomendações
+## Congratulations! :tada:
 
-* **Linter**: Desenvolva o projeto utilizando algum padrão de formatação de código.
+You've successfully run and modified your React Native App. :partying_face:
 
-## Extras
+### Now what?
 
-Aqui são listados algumas sugestões para você que quer ir além do desafio inicial. Lembrando que você não precisa se limitar a essas sugestões, se tiver pensado em outra funcionalidade que considera relevante ao escopo da aplicação fique à vontade para implementá-la.
+- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
+- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
 
-* **Refresh automático**: Que as informações exibidas no aplicativo sejam atualizadas de tempo em tempo de forma transparente ao usuário
+# Troubleshooting
 
-* **Cálculo de rotas**: Exibir a possível rota de um ou mais ônibus em relação a uma parada, ou do usuário em relação a uma parada (Utilizando API do Google Maps ou equivalentes)
+If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
 
-* **Corredores**: Mostrar informações sobre os corredores de ônibus de SP.
+# Learn More
 
-* **Velocidade das vias**: Mostrar informações sobre as velocidades das vias.
+To learn more about React Native, take a look at the following resources:
 
-* **Testes**: Desenvolva testes que achar necessário para a aplicação.
-
-* **Documentação**: Gerar uma documentação da aplicação. A documentação pode incluir detalhes sobre as decisões tomadas, especificação das funcionalidades desenvolvidas, instruções de uso dentre outras informações que achar relevantes.
-
-## Entrega
-
-Para realizar a entrega do teste você deve:
-
-* Relizar o fork e clonar esse repositório para sua máquina.
-  
-* Criar uma branch com o nome de `teste/[NOME]`.
-  * `[NOME]`: Seu nome.
-  * Exemplos: `teste/fulano-da-silva`; `teste/beltrano-primeiro-gomes`.
-  
-* Faça um commit da sua branch com a implementação do teste.
-  
-* Realize o pull request da sua branch nesse repositório.
+- [React Native Website](https://reactnative.dev) - learn more about React Native.
+- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
+- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
+- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
+- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
