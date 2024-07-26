@@ -1,18 +1,24 @@
-import { StyleSheet, Text, View } from 'react-native';
+import MapView, { Marker } from 'react-native-maps';
+import { Container } from './styles';
 
 export function Lines() {
   return (
-    <View style={styles.container}>
-      <Text>Linhas</Text>
-    </View>
+    <Container>
+           <MapView
+                    style={{
+                        width: '100%',
+                        height:'100%'
+                    }}
+                    initialRegion={{
+                        latitude: -23.5505,
+                        longitude: -46.6333,
+                        latitudeDelta: 0.0922,
+                        longitudeDelta: 0.0421,
+                    }}
+                >
+                    <Marker coordinate={{ latitude: -23.5505, longitude: -46.6333 }} title="São Paulo" />
+                </MapView>
+    </Container>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
