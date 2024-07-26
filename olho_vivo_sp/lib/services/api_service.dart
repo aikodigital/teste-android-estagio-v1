@@ -44,18 +44,13 @@ class ApiService extends ChangeNotifier {
         },
       );
 
-      print(response.body);
-
       if (response.statusCode >= HttpStatus.ok &&
           response.statusCode < HttpStatus.multipleChoices) {
         List<dynamic> data = jsonDecode(response.body);
 
         return data
             .map(
-              (hall) => HallModel(
-                code: hall['cc'],
-                name: hall['cn'],
-              ),
+              (hall) => HallModel.fromMap(hall),
             )
             .toList();
       } else {
