@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:olho_vivo_sp/models/hall_model.dart';
 import 'package:olho_vivo_sp/services/api_service.dart';
+import 'package:olho_vivo_sp/widgets/hall_list_item.dart';
 import 'package:provider/provider.dart';
 
 class HallList extends StatelessWidget {
@@ -13,7 +15,19 @@ class HallList extends StatelessWidget {
       future: dataProvider.getHalls(),
       builder: (ctx, snp) {
         if (snp.hasData && snp.connectionState != ConnectionState.active) {
-          return const Text('bom');
+          List<HallModel> halls = snp.data!;
+
+          return ListView.builder(
+            padding: const EdgeInsets.only(
+              left: 20,
+              right: 20,
+              top: 8,
+            ),
+            itemCount: halls.length,
+            itemBuilder: (ctx, i) => HallListItem(
+              hall: halls[i],
+            ),
+          );
         }
 
         if (snp.hasError && snp.connectionState != ConnectionState.active) {
