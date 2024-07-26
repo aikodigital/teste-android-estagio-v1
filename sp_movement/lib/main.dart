@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'app/modules/splash/screens/splash_screen.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'app_module.dart';
+import 'app_widget.dart';
 
 void main() {
-  runApp(MaterialApp(
-    home: SplashScreen(),
-  ));
+  runApp(ModularApp(module: AppModule(), child: AppWidget()));
 }

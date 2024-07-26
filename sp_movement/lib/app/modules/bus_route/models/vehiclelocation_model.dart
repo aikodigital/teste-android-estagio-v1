@@ -1,5 +1,3 @@
-
-
 import 'package:sp_movement/app/modules/bus_route/models/domain/vehiclelocation.dart';
 import 'package:sp_movement/app/modules/bus_route/models/vehicle_model.dart';
 

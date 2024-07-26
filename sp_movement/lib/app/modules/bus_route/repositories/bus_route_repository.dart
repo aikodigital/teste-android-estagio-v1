@@ -39,5 +39,7 @@ class BusRouteRepository {
     }
   }
 
-  static void getGarage() {}
+  static void getGarage() {
+
+  }
 }
