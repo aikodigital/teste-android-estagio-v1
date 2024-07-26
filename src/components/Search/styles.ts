@@ -9,6 +9,7 @@ export const Container = styled.View`
     border-radius: 8px;
     align-items: center;
     background-color: ${({theme}) => theme.COLORS.GRAY_300};
+    margin-bottom: 20px;
 `;
 
 export const Input = styled(TextInput).attrs(({theme}) => ({

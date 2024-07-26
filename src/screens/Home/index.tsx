@@ -9,6 +9,7 @@ export function Home() {
         São Paulo - SP
       </Title>
       <Search/>
+      <Card/>
     </Container>
   );
 }
