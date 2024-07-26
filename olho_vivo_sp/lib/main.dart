@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:olho_vivo_sp/providers/data_provider.dart';
 import 'package:olho_vivo_sp/services/api_service.dart';
 import 'package:provider/provider.dart';
 
@@ -14,11 +13,9 @@ class OlhoVivoSp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<DataProvider>(
+    return ChangeNotifierProvider<ApiService>(
       create: (ctx) {
-        final dataProvider = DataProvider(
-          apiService: ApiService(),
-        );
+        final dataProvider = ApiService();
         dataProvider.authenticate();
 
         return dataProvider;
