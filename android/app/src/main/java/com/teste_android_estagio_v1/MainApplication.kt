@@ -1,4 +1,4 @@
-package com.transportefacil
+package com.teste_android_estagio_v1
 
 import android.app.Application
 import com.facebook.react.PackageList
