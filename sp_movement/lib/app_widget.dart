@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:sp_movement/app/modules/auth/auth_store.dart';
 
 class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    authetinicate();
+      Modular.setInitialRoute(Modular.initialRoute);
     return MaterialApp.router(
       routeInformationParser: Modular.routeInformationParser,
       routerDelegate: Modular.routerDelegate,
@@ -12,6 +15,10 @@ class AppWidget extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
     );
+  }
+  Future<void> authetinicate() async {
+    final authStore = Modular.get<AuthStore>();
+    await authStore.authenticate();
   }
 }
 

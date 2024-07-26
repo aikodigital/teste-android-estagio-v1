@@ -1,44 +1,50 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:mobx/mobx.dart';
-import '../repositories/bus_route_repository.dart';
 import '../stores/bus_route_store.dart';
 
 class BusRoutesView extends StatelessWidget {
-  final BusRouteStore store = BusRouteStore(BusRouteRepository());
+  final store = Modular.get<BusRouteStore>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Bus Routes'),
-      ),
+      appBar: AppBar(title: const Text('Posição dos Veículos')),
       body: Observer(
         builder: (_) {
-          if (store.busRoutesFuture == null) {
-            store.fetchBusRoutes();
-            return Center(child: CircularProgressIndicator());
-          }
-
-          switch (store.busRoutesFuture!.status) {
-            case FutureStatus.pending:
-              return Center(child: CircularProgressIndicator());
-            case FutureStatus.rejected:
-              return Center(child: Text('Failed to load data'));
-            case FutureStatus.fulfilled:
-              final busRoutes = store.busRoutesFuture!.result;
-              return ListView.builder(
-                itemCount: busRoutes.length,
-                itemBuilder: (context, index) {
-                  final route = busRoutes[index];
-                  return ListTile(
-                    title: Text('Route ID: ${route.id}'),
-                    subtitle: Text('Route Name: ${route.name}'),
+          return FlutterMap(
+            options: const MapOptions(
+              initialCenter: LatLng(-23.5505, -46.6333),
+              initialZoom: 12,
+            ),
+            children: [
+              TileLayer(
+                urlTemplate: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+                subdomains: const ['a', 'b', 'c'],
+              ),
+              MarkerLayer(
+                markers: store.busRoutesFuture.map((vehicle) {
+                  return Marker(
+                    width: 80.0,
+                    height: 80.0,
+                    point: LatLng(vehicle.latitude, vehicle.longitude),
+                    child: const Icon(
+                      Icons.location_on,
+                      color: Colors.red,
+                    ),
                   );
-                },
-              );
-          }
+                }).toList(),
+              ),
+            ],
+          );
         },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: store.fetchVehicles,
+        child: const Icon(Icons.refresh),
       ),
     );
   }

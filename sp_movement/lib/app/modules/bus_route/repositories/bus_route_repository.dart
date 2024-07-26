@@ -7,9 +7,9 @@ class BusRouteRepository {
   static String endpoint = "/Posicao";
 
   static Future<List<VehicleLocationModel>> getPosition() async {
-    dynamic response =
-        await AppRepository.getDio()!.get('${AppRepository.baseUrl}$endpoint?token=${AppRepository.token}');
-    
+    final cookies = await AppRepository.cookieJar.loadForRequest(Uri.parse(AppRepository.baseUrl));
+    print('Cookies após autenticação: $cookies');
+    dynamic response = await AppRepository.getDio()!.get('${AppRepository.baseUrl}$endpoint');
     print(response.data);
     List<VehicleLocationModel> list = [];
     if (response != null) {

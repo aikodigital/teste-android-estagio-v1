@@ -1,3 +1,5 @@
+import 'package:cookie_jar/cookie_jar.dart';
+import 'package:dio_cookie_manager/dio_cookie_manager.dart';
 import 'package:sp_movement/app/core/repository/app_repository.dart';
 
 class AuthRepository {
