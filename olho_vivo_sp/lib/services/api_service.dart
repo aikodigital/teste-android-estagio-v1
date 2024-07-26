@@ -16,7 +16,7 @@ class ApiService {
     if (response.statusCode == 200) {
       _sessionToken = response.body;
     } else {
-      throw Exception(Environment.failed_api_auth_msg);
+      throw Exception(Environment.failed_auth_msg);
     }
   }
 }
