@@ -14,13 +14,16 @@ export type LinhaParaPosicao<T> = {
   vs: T[];
 };
 
+export type Posicao = {
+  py: number;
+  px: number;
+};
+
 export type PosicaoVeiculo = {
   p: number;
   a: boolean;
   ta: string;
-  py: number;
-  px: number;
-};
+} & Posicao;
 
 //Linha
 export type Linha = {
@@ -37,16 +40,12 @@ export type Linha = {
 export type Parada = {
   cp: number;
   np: string;
-  py: number;
-  px: number;
   ed: string;
-};
+} & Posicao;
 
 //PrevisaoChegada
 export type PrevisaoChegada = {
   cp: number;
   np: string;
-  py: number;
-  px: number;
   l: LinhaParaPosicao<PosicaoVeiculo & { t: string }>[];
-};
+} & Posicao;
