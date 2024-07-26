@@ -4,9 +4,9 @@ import {
   StyleSheet,
   Button,
   TextInput,
-  ActivityIndicator,
   Text,
   FlatList,
+  TouchableOpacity,
 } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 
@@ -17,8 +17,12 @@ const MyApp = () => {
   const [vehicles, setVehicles] = useState([]);
   const [line, setLine] = useState("");
   const [busPerLine, setBusPerLine] = useState([]);
+  const [codigoParada, setCodigoParada] = useState("");
   const [loading, setLoading] = useState(false);
+  const [forecastVehicles, setForecastVehicles] = useState([]);
+  const [currentList, setCurrentList] = useState("");
 
+  // Get the position of all buses
   const fetchPosition = async () => {
     setLoading(true);
     try {
@@ -59,6 +63,7 @@ const MyApp = () => {
     }
   };
 
+  // Get information about the line
   const fetchLine = async () => {
     try {
       const response = await fetch(
@@ -76,27 +81,75 @@ const MyApp = () => {
       }
       const data = await response.json();
 
-      // Verificar se há dados antes de atualizar o estado e logar
       if (data && data.length > 0) {
         setBusPerLine(data);
-        console.log(data); // Mostrar dados retornados
+        setCurrentList("busPerLine");
       } else {
-        console.log("Nenhum dado retornado.");
-        setBusPerLine([]); // Limpar o estado se não houver dados
+        setBusPerLine([]);
       }
     } catch (error) {
       console.error("Erro ao buscar linha:", error);
     }
   };
 
+  const fetchForecast = async () => {
+    try {
+      const response = await fetch(
+        `${urlBase}/Previsao/Parada?codigoParada=${codigoParada}`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      const data = await response.json();
+
+      // Verifica se a estrutura esperada existe
+      if (data && data.p && Array.isArray(data.p.l)) {
+        // Acessa o array l
+        const paradas = data.p.l;
+        const vehiclesList = []; // Lista para armazenar veículos
+
+        // Itera sobre as paradas para acessar o array vs
+        paradas.forEach((parada) => {
+          if (Array.isArray(parada.vs)) {
+            // Itera sobre os veículos e acessa os campos p e t
+            parada.vs.forEach((veiculo) => {
+              vehiclesList.push(veiculo); // Armazena o veículo na lista
+            });
+          }
+        });
+
+        setForecastVehicles(vehiclesList);
+        setCurrentList("forecastVehicles");
+      } else {
+        console.error("Estrutura de dados inesperada", data);
+      }
+    } catch (error) {
+      console.error("Erro ao buscar previsão:", error);
+    }
+  };
+
+  const renderVehicle = ({ item }) => (
+    <View style={styles.vehicleItem}>
+      <Text>Prefixo do veículo: {item.p}</Text>
+      <Text> Horário previsto para chegada: {item.t}h</Text>
+    </View>
+  );
+
   const renderItem = ({ item }) => (
     <View style={styles.busItem}>
       <Text>CL: {item.cl}</Text>
-      <Text>LT: {item.lt}</Text>
-      <Text>SL: {item.sl}</Text>
-      <Text>TL: {item.tl}</Text>
-      <Text>TP: {item.tp}</Text>
-      <Text>TS: {item.ts}</Text>
+      <Text>Linha: {item.lt}</Text>
+      <Text>Sentido: {item.sl}</Text>
+      <Text>Modos: {item.tl}</Text>
+      <Text>Terminal Principal: {item.tp}</Text>
+      <Text>Terminal Secundário: {item.ts}</Text>
     </View>
   );
 
@@ -125,28 +178,50 @@ const MyApp = () => {
       </View>
       <View style={styles.data}>
         <Button
+          color={"#000"}
           title={loading ? "Carregando..." : "Obter localização dos ônibus"}
           onPress={fetchPosition}
           disabled={loading}
         />
-        <View style={styles.busPerLine}>
+        <Text>Consulte os ônibus disponíveis na linha:</Text>
+        <View style={styles.line}>
           <TextInput
             style={styles.input}
-            placeholder="Digite o número da linha"
+            placeholder="Código da linha"
             value={line}
             onChangeText={setLine}
           />
-          <Button
-            title={"Buscar linha"}
-            onPress={fetchLine}
-            disabled={loading}
+          <TouchableOpacity onPress={fetchLine} style={styles.button}>
+            <Text style={styles.textButton}>Consultar</Text>
+          </TouchableOpacity>
+        </View>
+        <Text>Consulte a previsão de chegada dos ônibus:</Text>
+        <View style={styles.line}>
+          <TextInput
+            style={styles.input}
+            placeholder="Código da parada"
+            value={codigoParada}
+            onChangeText={setCodigoParada}
           />
+
+          <TouchableOpacity onPress={fetchForecast} style={styles.button}>
+            <Text style={styles.textButton}>Consultar</Text>
+          </TouchableOpacity>
+        </View>
+        {currentList === "busPerLine" && (
           <FlatList
             data={busPerLine}
             renderItem={renderItem}
             keyExtractor={(item) => item.cl.toString()}
           />
-        </View>
+        )}
+         {currentList === "forecastVehicles" && (
+            <FlatList
+              data={forecastVehicles}
+              renderItem={renderVehicle}
+              keyExtractor={(item) => item.p.toString()}
+            />
+          )}
       </View>
     </>
   );
@@ -162,19 +237,39 @@ const styles = StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
   },
   data: {
-    flex: 1,
+    flex: 2,
     padding: 16,
     gap: 10,
   },
-  busPerLine: {},
+  line: {
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
   input: {
+    width: "60%",
     height: 40,
     borderColor: "gray",
     borderWidth: 1,
-    marginBottom: 10,
     paddingHorizontal: 8,
+    borderRadius: 10,
+  },
+  button: {
+    width: "30%",
+    justifyContent: "center",
+    backgroundColor: "#f9d797",
+    padding: 10,
+    borderRadius: 15,
+  },
+  textButton: {
+    justifyContent: "center",
+    textAlign: "center",
+    fontSize: 15,
   },
   busItem: {
+    marginBottom: 10,
+  },
+  vehicleItem: {
     marginBottom: 10,
   },
 });
