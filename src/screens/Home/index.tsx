@@ -1,3 +1,5 @@
+import { Card } from "../../components/Card";
+import { Search } from "../../components/Search";
 import { Container, Title } from "./styles";
 
 export function Home() {
@@ -6,6 +8,7 @@ export function Home() {
       <Title>
         São Paulo - SP
       </Title>
+      <Search/>
     </Container>
   );
 }
