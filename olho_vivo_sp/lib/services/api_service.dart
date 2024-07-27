@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:olho_vivo_sp/models/arrival_forecast_model.dart';
 import 'package:olho_vivo_sp/models/bus_stop_model.dart';
 import 'package:olho_vivo_sp/util/environment.dart';
 
@@ -62,7 +63,7 @@ class ApiService extends ChangeNotifier {
     }
   }
 
-  Future<List<BusStopModel>> getBusStopsByHall(String? hallCode) async {
+  Future<List<BusStopModel>> getBusStopsByHall(String hallCode) async {
     try {
       if (_sessionToken == null) {
         await authenticate();
@@ -70,7 +71,7 @@ class ApiService extends ChangeNotifier {
 
       final response = await http.get(
         Uri.parse(
-          '${Environment.base_url}${Environment.bus_stops_by_hall_endpoint}?codigoCorredor=${hallCode ?? ''}',
+          '${Environment.base_url}${Environment.bus_stops_by_hall_endpoint}?codigoCorredor=$hallCode',
         ),
         headers: {
           'Authorization': 'Bearer $_sessionToken',
@@ -87,34 +88,40 @@ class ApiService extends ChangeNotifier {
             )
             .toList();
       } else {
-        throw Exception('');
+        throw Exception(Environment.failed_get_bus_stops);
       }
     } catch (e) {
       rethrow;
     }
   }
 
-  getArrivalForecast({String? busStopCode, String? busLineCode}) async {
+  Future<List> getArrivalForecastByBusStop(String busStopCode) async {
     try {
       if (_sessionToken == null) {
         await authenticate();
       }
 
-      print(
-          '${Environment.base_url}${Environment.arrival_forecast_endpoint}?codigoParada=${busStopCode ?? ''}&codigoLinha=${busLineCode ?? ''}');
-
       final response = await http.get(
         Uri.parse(
-          '${Environment.base_url}${Environment.arrival_forecast_endpoint}?codigoParada=${busStopCode ?? ''}&codigoLinha=${busLineCode ?? ''}',
+          '${Environment.base_url}${Environment.arrival_forecast_by_bus_stop_endpoint}?codigoParada=$busStopCode',
         ),
         headers: {
           'Authorization': 'Bearer $_sessionToken',
         },
       );
 
-      final Map<String, dynamic> data = jsonDecode(response.body);
+      if (response.statusCode >= HttpStatus.ok &&
+          response.statusCode < HttpStatus.multipleChoices) {
+        final Map<String, dynamic> data = jsonDecode(response.body);
 
-      return data;
+        return (data['p']['l'] as List)
+            .map(
+              (e) => ArrivalForecastModel.fromMap(e),
+            )
+            .toList();
+      } else {
+        throw Exception(Environment.failed_get_arrival_forecast);
+      }
     } catch (e) {
       rethrow;
     }
