@@ -17,6 +17,6 @@ class BusStopModel {
       : code = res['cp'],
         name = res['np'],
         address = res['ed'],
-        yPos = res['yp'] ?? double.nan,
-        xPos = res['xp'] ?? double.nan;
+        yPos = res['py'],
+        xPos = res['px'];
 }
