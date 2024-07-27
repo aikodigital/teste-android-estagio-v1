@@ -10,4 +10,5 @@ abstract class Environment {
   static const String bus_stops_endpoint = '/Parada/Buscar';
   static const String bus_stops_by_hall_endpoint =
       '/Parada/BuscarParadasPorCorredor';
+  static const String arrival_forecast_endpoint = '/Previsao';
 }
