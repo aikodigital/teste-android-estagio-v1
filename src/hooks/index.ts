@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 
 interface VehiclePosition {
@@ -18,14 +18,6 @@ interface VehiclePosition {
       px: number;
     }>;
   }>;
-}
-
-interface BusStop {
-  cp: number;
-  np: string;
-  ed: string;
-  py: number;
-  px: number;
 }
 
 interface ArrivalForecast {
@@ -54,17 +46,32 @@ interface ArrivalForecast {
   };
 }
 
+interface BusStop {
+  id: number;
+  name: string;
+  location: {
+    latitude: number;
+    longitude: number;
+  };
+}
+
+export interface NearestBusProps {
+  number: string;
+  linha: number;
+  destination: string;
+}
+
 const token = '3ddea53566a1c1a55686d403261dfcca86ebefa835a5dbd3c2635fa7a05b8b52';
 
 const useOlhoVivoAPI = () => {
   const [authenticated, setAuthenticated] = useState<boolean>(false);
   const [vehiclePositions, setVehiclePositions] = useState<VehiclePosition | null>(null);
   const [busStops, setBusStops] = useState<BusStop[]>([]);
-  const [arrivalForecast, setArrivalForecast] = useState<ArrivalForecast | null>(null);
+  const [arrivalForecast, setArrivalForecast] = useState<ArrivalForecast | null>(null); 
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<Error | null>(null);
 
-  const authenticate = async () => {
+  const authenticate = useCallback(async () => {
     try {
       const response = await axios.post('https://aiko-olhovivo-proxy.aikodigital.io/Login/Autenticar', null, {
         params: { token },
@@ -82,10 +89,9 @@ const useOlhoVivoAPI = () => {
       console.error('Erro durante a autenticação:', error);
       setError(error as Error);
     }
-  };
+  }, []);
 
-  // Função que trás a posição dos ônibus
-  const fetchVehiclePositions = async () => {
+  const fetchVehiclePositions = useCallback(async () => {
     if (!authenticated) return;
 
     setLoading(true);
@@ -100,16 +106,15 @@ const useOlhoVivoAPI = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [authenticated]);
 
-  // função que tras as paradas do ônibus
-
-  const fetchBusStops = async (searchTerm: string) => {
+  const fetchBusStops = useCallback(async (searchTerm: string) => {
     if (!authenticated) return;
 
     setLoading(true);
     try {
-      const response = await axios.get<BusStop[]>(`https://aiko-olhovivo-proxy.aikodigital.io/Parada/Buscar?termosBusca=${searchTerm}`, {
+      const response = await axios.get<BusStop[]>(`https://aiko-olhovivo-proxy.aikodigital.io/Parada/Buscar`, {
+        params: { termosBusca: searchTerm },
         headers: { 'Content-Type': 'application/json' },
       });
       setBusStops(response.data);
@@ -119,33 +124,44 @@ const useOlhoVivoAPI = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [authenticated]);
 
-  // Função que tras a parada e a linha do onibus
-
-  const fetchArrivalForecast = async (codigoParada: number, codigoLinha: number) => {
+  const fetchArrivalForecast = useCallback(async (codigoParada: number | string, codigoLinha: number | string) => {
     if (!authenticated) return;
 
     setLoading(true);
     try {
+      const parada = typeof codigoParada === 'string' ? parseInt(codigoParada, 10) : codigoParada;
+      const linha = typeof codigoLinha === 'string' ? parseInt(codigoLinha, 10) : codigoLinha;
+
+      if (!Number.isInteger(parada) || !Number.isInteger(linha)) {
+        throw new Error('Código da parada ou da linha inválido.');
+      }
+
+      console.log('Buscando previsão de chegada com parâmetros:', { parada, linha });
       const response = await axios.get<ArrivalForecast>('https://aiko-olhovivo-proxy.aikodigital.io/Previsao', {
-        params: { codigoParada, codigoLinha },
-        headers: { 'Content-Type': 'application/json' },
+        params: {
+          codigoParada: parada,
+          codigoLinha: linha
+        },
+        headers: {
+          'Content-Type': 'application/json',
+        },
       });
-      setArrivalForecast(response.data);
+
+      console.log('Resposta da API:', response.data);
+      setArrivalForecast(response.data); 
     } catch (error) {
       console.error('Erro ao buscar previsão de chegada:', error);
       setError(error as Error);
     } finally {
       setLoading(false);
     }
-  };
+  }, [authenticated]);
 
-  const findNearestBus = (location: { latitude: number; longitude: number }) => {
+  const findNearestBus = useCallback((location: { latitude: number; longitude: number }) => {
     if (!vehiclePositions) return null;
 
-    // Função para calcular a distância entre a localização da pessoa a o ônibus mais próximo
-    
     const calculateDistance = (lat1: number, lon1: number, lat2: number, lon2: number) => {
       const R = 6371;
       const dLat = (lat2 - lat1) * (Math.PI / 180);
@@ -157,10 +173,10 @@ const useOlhoVivoAPI = () => {
       const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
       return R * c;
     };
-  
-    let nearestBus = null;
+
+    let nearestBus: NearestBusProps | null = null;
     let minDistance = Infinity;
-  
+
     vehiclePositions.l.forEach(locationData => {
       locationData.vs.forEach(vehicle => {
         const distance = calculateDistance(location.latitude, location.longitude, vehicle.py, vehicle.px);
@@ -168,24 +184,34 @@ const useOlhoVivoAPI = () => {
           minDistance = distance;
           nearestBus = {
             number: locationData.c,
-            destination: locationData.lt1
+            destination: locationData.lt1,
+            linha: locationData.cl
           };
         }
       });
     });
-  
-    return nearestBus;
-  };
 
-  
+    return nearestBus;
+  }, [vehiclePositions]);
+
   useEffect(() => {
     const initialize = async () => {
       await authenticate();
     };
     initialize();
-  }, []);
+  }, [authenticate]);
 
-  return { vehiclePositions, busStops, arrivalForecast, loading, error, fetchVehiclePositions, fetchBusStops, fetchArrivalForecast, findNearestBus };
+  return {
+    vehiclePositions,
+    busStops,
+    arrivalForecast,
+    loading,
+    error,
+    fetchVehiclePositions,
+    fetchBusStops,
+    fetchArrivalForecast,
+    findNearestBus
+  };
 };
 
 export default useOlhoVivoAPI;

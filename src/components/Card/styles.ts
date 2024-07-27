@@ -9,6 +9,7 @@ type Props = {
 
 export const Container = styled.View`
     min-height: 300px;
+    max-height: 500px;
     background-color: ${({theme}) => theme.COLORS.PURPLE_50};
     border-radius: 8px;
 `;
