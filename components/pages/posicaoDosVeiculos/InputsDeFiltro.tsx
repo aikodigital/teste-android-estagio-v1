@@ -4,7 +4,7 @@ import De from './De';
 import Para from './Para';
 import {
   LinhaParaPosicao,
-  MapRegion,
+  RegiaoDoMapa,
   PosicaoVeiculo,
   Trajeto,
 } from '@/types/types';
@@ -14,7 +14,7 @@ type Props = {
   trajeto: Trajeto;
   setTrajeto: React.Dispatch<React.SetStateAction<Trajeto>>;
   linhas: LinhaParaPosicao<PosicaoVeiculo>[];
-  setcoordenadasSp: React.Dispatch<React.SetStateAction<MapRegion>>;
+  setcoordenadasSp: React.Dispatch<React.SetStateAction<RegiaoDoMapa>>;
 };
 
 const InputsDeFiltro = ({

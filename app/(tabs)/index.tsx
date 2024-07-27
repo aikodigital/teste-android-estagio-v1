@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 import {
   LinhaParaPosicao,
-  MapRegion,
+  RegiaoDoMapa,
   PosicaoDosVeiculos,
   PosicaoVeiculo,
   Trajeto,
@@ -25,7 +25,7 @@ export default function HomeScreen() {
     de: 'Todos',
     para: 'Todos',
   });
-  const [coordenadasSp, setcoordenadasSp] = useState<MapRegion>({
+  const [coordenadasSp, setcoordenadasSp] = useState<RegiaoDoMapa>({
     latitude: -23.550522,
     longitude: -46.633328,
     latitudeDelta: 1,

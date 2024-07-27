@@ -1,7 +1,7 @@
 import ContainerParaItem from '@/components/containers/ContainerParaItem';
 import Erro from '@/components/form/error/Erro';
 import Carregando from '@/components/form/loading/Carregando';
-import ItemText from '@/components/text/ItemText';
+import TextoDeItem from '@/components/text/TextoDeItem';
 import Titulo from '@/components/text/Titulo';
 import { ParadaPrevisaoChegada } from '@/types/types';
 import React from 'react';
@@ -34,18 +34,18 @@ const ResultadosDaBusca = ({ formState, inputDePesquisa, parada }: Props) => {
             renderItem={({ item }) => {
               return (
                 <ContainerParaItem>
-                  <ItemText>
+                  <TextoDeItem>
                     De "{item.lt0}" para "{item.lt1}":
-                  </ItemText>
+                  </TextoDeItem>
                   <FlatList
                     data={item.vs}
                     renderItem={({ item }) => {
                       return (
                         <ContainerParaItem>
-                          <ItemText>Carro: {item.p}</ItemText>
-                          <ItemText>
+                          <TextoDeItem>Carro: {item.p}</TextoDeItem>
+                          <TextoDeItem>
                             Previsão de chegada para {item.t}.
-                          </ItemText>
+                          </TextoDeItem>
                         </ContainerParaItem>
                       );
                     }}

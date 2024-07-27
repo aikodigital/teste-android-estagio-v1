@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Linha } from '@/types/types';
 import Titulo from '@/components/text/Titulo';
 import useFetchHook from '@/custom-hooks/useFetchHook';
-import SearchResult from '@/components/pages/linhaDeOnibus/SearchResult';
+import ResultadosDaBusca from '@/components/pages/linhaDeOnibus/ResultadosDaBusca';
 import ContainerParaPagina from '@/components/containers/ContainerParaPagina';
 import InputDeBusca from '@/components/pages/linhaDeOnibus/InputDeBusca';
 
@@ -32,7 +32,7 @@ export default function PaginaDeLinhaDeOnibus() {
         onChangeText={setInputDePesquisa}
         onChange={lidarComPesquisa}
       />
-      <SearchResult
+      <ResultadosDaBusca
         formState={formState}
         inputDePesquisa={inputDePesquisa}
         linhas={linhas}

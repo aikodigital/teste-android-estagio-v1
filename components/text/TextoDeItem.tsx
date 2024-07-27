@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, TextProps } from 'react-native';
 
-const ItemText = (props: TextProps) => {
+const TextoDeItem = (props: TextProps) => {
   return (
     <Text {...props} style={styles.itemText}>
       {props.children}
@@ -9,7 +9,7 @@ const ItemText = (props: TextProps) => {
   );
 };
 
-export default ItemText;
+export default TextoDeItem;
 
 const styles = StyleSheet.create({
   itemText: {

@@ -1,10 +1,10 @@
 import Mapa from '@/components/map/Mapa';
-import { LinhaParaPosicao, MapRegion, PosicaoVeiculo } from '@/types/types';
+import { LinhaParaPosicao, RegiaoDoMapa, PosicaoVeiculo } from '@/types/types';
 import React from 'react';
 import { MapMarker } from 'react-native-maps';
 
 type Props = {
-  coordenadasSp: MapRegion;
+  coordenadasSp: RegiaoDoMapa;
   linhasFiltradas: LinhaParaPosicao<PosicaoVeiculo>[];
 };
 

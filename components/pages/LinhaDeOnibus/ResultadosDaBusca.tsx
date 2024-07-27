@@ -1,7 +1,7 @@
 import ContainerParaItem from '@/components/containers/ContainerParaItem';
 import Erro from '@/components/form/error/Erro';
 import Carregando from '@/components/form/loading/Carregando';
-import ItemText from '@/components/text/ItemText';
+import TextoDeItem from '@/components/text/TextoDeItem';
 import { Linha } from '@/types/types';
 import React from 'react';
 import { FlatList } from 'react-native';
@@ -15,7 +15,7 @@ type Props = {
   linhas: Linha[];
 };
 
-const SearchResult = ({ formState, inputDePesquisa, linhas }: Props) => {
+const ResultadosDaBusca = ({ formState, inputDePesquisa, linhas }: Props) => {
   if (formState.error) return <Erro messagem={formState.error} />;
   return formState.loading && !formState.error ? (
     <Carregando />
@@ -30,14 +30,16 @@ const SearchResult = ({ formState, inputDePesquisa, linhas }: Props) => {
               : 'Secundário para Principal';
           return (
             <ContainerParaItem>
-              <ItemText>
+              <TextoDeItem>
                 Linha: {item.lt} - {item.tl}
-              </ItemText>
-              <ItemText>Código Identificador: {item.cl}</ItemText>
-              <ItemText>Terminal Principal: {item.tp}</ItemText>
-              <ItemText>Terminal Secundário: {item.ts}</ItemText>
-              <ItemText>Sentido: {sl}</ItemText>
-              <ItemText>Operação: {item.lc ? 'Circular' : 'Terminal'}</ItemText>
+              </TextoDeItem>
+              <TextoDeItem>Código Identificador: {item.cl}</TextoDeItem>
+              <TextoDeItem>Terminal Principal: {item.tp}</TextoDeItem>
+              <TextoDeItem>Terminal Secundário: {item.ts}</TextoDeItem>
+              <TextoDeItem>Sentido: {sl}</TextoDeItem>
+              <TextoDeItem>
+                Operação: {item.lc ? 'Circular' : 'Terminal'}
+              </TextoDeItem>
             </ContainerParaItem>
           );
         }}
@@ -46,4 +48,4 @@ const SearchResult = ({ formState, inputDePesquisa, linhas }: Props) => {
   );
 };
 
-export default SearchResult;
+export default ResultadosDaBusca;

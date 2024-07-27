@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { MapRegion, Parada } from '@/types/types';
+import { RegiaoDoMapa, Parada } from '@/types/types';
 import Titulo from '@/components/text/Titulo';
 import useFetchHook from '@/custom-hooks/useFetchHook';
 import InputDeBusca from '@/components/pages/linhaDeOnibus/InputDeBusca';
-import MapResult from '@/components/pages/paradaDeOnibus/MapResult';
+import ResultadoNoMapa from '@/components/pages/paradaDeOnibus/ResultadoNoMapa';
 import ContainerParaPagina from '@/components/containers/ContainerParaPagina';
 
 export default function BuscarParadaDeOnibus() {
@@ -17,7 +17,7 @@ export default function BuscarParadaDeOnibus() {
     latitudeDelta: 0.5,
     longitudeDelta: 0.012,
   };
-  const [coordenadasSp, setcoordenadasSp] = useState<MapRegion>(
+  const [coordenadasSp, setcoordenadasSp] = useState<RegiaoDoMapa>(
     coordernadasSpValorInicial
   );
 
@@ -43,7 +43,7 @@ export default function BuscarParadaDeOnibus() {
         onChange={lidarComPesquisa}
         onChangeText={setInputDePesquisa}
       />
-      <MapResult
+      <ResultadoNoMapa
         coordenadasSp={coordenadasSp}
         formState={formState}
         inputDePesquisa={inputDePesquisa}

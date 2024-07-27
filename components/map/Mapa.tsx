@@ -1,11 +1,11 @@
-import { MapRegion } from '@/types/types';
+import { RegiaoDoMapa } from '@/types/types';
 import React, { PropsWithChildren } from 'react';
 import { StyleSheet } from 'react-native';
 import MapView from 'react-native-maps';
 
 type Props = {
-  region: MapRegion;
-  initialRegion: MapRegion;
+  region: RegiaoDoMapa;
+  initialRegion: RegiaoDoMapa;
 } & PropsWithChildren;
 
 const Mapa = ({ children, region, initialRegion }: Props) => {

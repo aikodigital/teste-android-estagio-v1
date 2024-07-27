@@ -58,7 +58,7 @@ export type ParadaPrevisaoChegada = {
 } & Posicao;
 
 //mapa
-export type MapRegion = {
+export type RegiaoDoMapa = {
   latitude: number;
   longitude: number;
   latitudeDelta: number;

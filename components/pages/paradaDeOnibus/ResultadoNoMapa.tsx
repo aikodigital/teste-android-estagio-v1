@@ -1,6 +1,6 @@
 import Erro from '@/components/form/error/Erro';
 import Carregando from '@/components/form/loading/Carregando';
-import { MapRegion, Parada } from '@/types/types';
+import { RegiaoDoMapa, Parada } from '@/types/types';
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import MapView, { MapMarker } from 'react-native-maps';
@@ -10,12 +10,12 @@ type Props = {
     loading: boolean;
     error: string;
   };
-  coordenadasSp: MapRegion;
+  coordenadasSp: RegiaoDoMapa;
   paradas: Parada[];
   inputDePesquisa: string;
 };
 
-const MapResult = ({
+const ResultadoNoMapa = ({
   formState,
   coordenadasSp,
   paradas,
@@ -45,7 +45,7 @@ const MapResult = ({
   );
 };
 
-export default MapResult;
+export default ResultadoNoMapa;
 
 const styles = StyleSheet.create({
   map: {
