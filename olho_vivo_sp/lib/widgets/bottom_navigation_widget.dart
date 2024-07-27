@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
 class BottomNavigationWidget extends StatefulWidget {
+  final List<BottomNavigationBarItem> items;
   final Function(int) onChangeScreen;
 
   const BottomNavigationWidget({
     super.key,
+    required this.items,
     required this.onChangeScreen,
   });
 
@@ -15,30 +17,11 @@ class BottomNavigationWidget extends StatefulWidget {
 class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
   int _currentIndex = 0;
 
-  final _items = [
-    const BottomNavigationBarItem(
-      icon: Icon(
-        Icons.route,
-      ),
-      label: 'Corredores',
-    ),
-    const BottomNavigationBarItem(
-      icon: Icon(Icons.search),
-      label: 'Linhas',
-    ),
-    const BottomNavigationBarItem(
-      icon: Icon(
-        Icons.directions_bus,
-      ),
-      label: 'Veículos no mapa',
-    ),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       currentIndex: _currentIndex,
-      items: _items,
+      items: widget.items,
       onTap: (value) {
         setState(() {
           _currentIndex = value;
