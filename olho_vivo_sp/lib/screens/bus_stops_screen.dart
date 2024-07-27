@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:olho_vivo_sp/models/bus_stop_model.dart';
 import 'package:olho_vivo_sp/models/hall_model.dart';
 import 'package:olho_vivo_sp/services/api_service.dart';
 import 'package:olho_vivo_sp/widgets/bus_stops_list.dart';
+import 'package:olho_vivo_sp/widgets/map_widget.dart';
 import 'package:provider/provider.dart';
 
-class BusStopsScreen extends StatelessWidget {
+class BusStopsScreen extends StatefulWidget {
   const BusStopsScreen({super.key});
+
+  @override
+  State<BusStopsScreen> createState() => _BusStopsScreenState();
+}
+
+class _BusStopsScreenState extends State<BusStopsScreen> {
+  bool _isShowingMap = false;
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +27,12 @@ class BusStopsScreen extends StatelessWidget {
         title: Text('Paradas do corredor ${hall.name}'),
         actions: [
           IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.map),
+            onPressed: () {
+              setState(() {
+                _isShowingMap = !_isShowingMap;
+              });
+            },
+            icon: Icon(!_isShowingMap ? Icons.map : Icons.list),
           ),
         ],
       ),
@@ -31,7 +44,27 @@ class BusStopsScreen extends StatelessWidget {
           if (snp.hasData && snp.connectionState == ConnectionState.done) {
             final busStops = snp.data as List<BusStopModel>;
 
-            return BusStopsList(busStops: busStops);
+            return !_isShowingMap
+                ? BusStopsList(busStops: busStops)
+                : MapWidget(
+                    markers: busStops
+                        .map(
+                          (busStop) => Marker(
+                            markerId: MarkerId(
+                              busStop.code.toString(),
+                            ),
+                            position: LatLng(
+                              busStop.yPos,
+                              busStop.xPos,
+                            ),
+                            infoWindow: InfoWindow(
+                              title: busStop.name,
+                              snippet: busStop.address,
+                            ),
+                          ),
+                        )
+                        .toSet(),
+                  );
           }
 
           if (snp.hasError && snp.connectionState == ConnectionState.done) {
