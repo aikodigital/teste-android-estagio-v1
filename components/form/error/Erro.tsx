@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
 const Erro = ({ messagem }: { messagem: string }) => {
@@ -23,4 +23,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Erro;
+export default memo(Erro);

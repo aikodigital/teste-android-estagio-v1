@@ -1,5 +1,5 @@
 import { RegiaoDoMapa } from '@/types/types';
-import React, { PropsWithChildren } from 'react';
+import React, { memo, PropsWithChildren } from 'react';
 import { StyleSheet } from 'react-native';
 import MapView from 'react-native-maps';
 
@@ -16,7 +16,7 @@ const Mapa = ({ children, region, initialRegion }: Props) => {
   );
 };
 
-export default Mapa;
+export default memo(Mapa);
 
 const styles = StyleSheet.create({
   map: {

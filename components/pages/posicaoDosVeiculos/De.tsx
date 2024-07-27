@@ -1,5 +1,5 @@
 import { Trajeto } from '@/types/types';
-import React from 'react';
+import React, { memo } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
 
@@ -32,7 +32,7 @@ const De = ({ setTrajeto, trajeto, regioes }: Props) => {
   );
 };
 
-export default De;
+export default memo(De);
 
 export const styles = StyleSheet.create({
   select: {

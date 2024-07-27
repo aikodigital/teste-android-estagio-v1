@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Text, View } from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
 import { styles } from './De';
@@ -66,4 +66,4 @@ const Para = ({ setTrajeto, trajeto, linhas, setcoordenadasSp }: Props) => {
   );
 };
 
-export default Para;
+export default memo(Para);

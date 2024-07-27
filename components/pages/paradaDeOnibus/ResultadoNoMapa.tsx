@@ -1,7 +1,7 @@
 import Erro from '@/components/form/error/Erro';
 import Carregando from '@/components/form/loading/Carregando';
 import { RegiaoDoMapa, Parada } from '@/types/types';
-import React from 'react';
+import React, { memo } from 'react';
 import { StyleSheet } from 'react-native';
 import MapView, { MapMarker } from 'react-native-maps';
 
@@ -45,7 +45,7 @@ const ResultadoNoMapa = ({
   );
 };
 
-export default ResultadoNoMapa;
+export default memo(ResultadoNoMapa);
 
 const styles = StyleSheet.create({
   map: {

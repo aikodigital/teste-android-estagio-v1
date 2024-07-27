@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { ActivityIndicator, StyleSheet, View } from 'react-native';
 
 const Carregando = () => {
@@ -9,7 +9,7 @@ const Carregando = () => {
   );
 };
 
-export default Carregando;
+export default memo(Carregando);
 
 const styles = StyleSheet.create({
   container: {

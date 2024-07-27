@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { StyleSheet, View, ViewProps } from 'react-native';
 
 const ContainerParaItem = ({ children, ...props }: ViewProps) => {
@@ -9,7 +9,7 @@ const ContainerParaItem = ({ children, ...props }: ViewProps) => {
   );
 };
 
-export default ContainerParaItem;
+export default memo(ContainerParaItem);
 
 const styles = StyleSheet.create({
   item: {

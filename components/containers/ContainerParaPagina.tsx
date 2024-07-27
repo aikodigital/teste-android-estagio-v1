@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { StyleSheet, View, ViewProps } from 'react-native';
 
 const ContainerParaPagina = (props: ViewProps) => {
@@ -9,7 +9,7 @@ const ContainerParaPagina = (props: ViewProps) => {
   );
 };
 
-export default ContainerParaPagina;
+export default memo(ContainerParaPagina);
 
 const styles = StyleSheet.create({
   ContainerParaPagina: {

@@ -1,11 +1,11 @@
 import { Tabs } from 'expo-router';
-import React from 'react';
+import React, { memo } from 'react';
 import { BusIcon } from '@/components/navigation/BusIcon';
 import { BusStopIcon } from '@/components/navigation/BusStopIcon';
 import { BusClockIcon } from '@/components/navigation/BusClockIcon';
 import { BusMarkerIcon } from '@/components/navigation/BusMarkerIcon';
 
-export default function TabLayout() {
+function TabLayout() {
   return (
     <Tabs
       screenOptions={{
@@ -58,3 +58,5 @@ export default function TabLayout() {
     </Tabs>
   );
 }
+
+export default memo(TabLayout);

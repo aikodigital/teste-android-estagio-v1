@@ -4,7 +4,7 @@ import Carregando from '@/components/form/loading/Carregando';
 import TextoDeItem from '@/components/text/TextoDeItem';
 import Titulo from '@/components/text/Titulo';
 import { ParadaPrevisaoChegada } from '@/types/types';
-import React from 'react';
+import React, { memo } from 'react';
 import { FlatList } from 'react-native';
 
 type Props = {
@@ -59,4 +59,4 @@ const ResultadosDaBusca = ({ formState, inputDePesquisa, parada }: Props) => {
   );
 };
 
-export default ResultadosDaBusca;
+export default memo(ResultadosDaBusca);

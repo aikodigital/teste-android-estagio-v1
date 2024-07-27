@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { StyleSheet, View } from 'react-native';
 import De from './De';
 import Para from './Para';
@@ -41,7 +41,7 @@ const InputsDeFiltro = ({
   );
 };
 
-export default InputsDeFiltro;
+export default memo(InputsDeFiltro);
 
 const styles = StyleSheet.create({
   inputContainer: {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { StyleSheet, Text, TextProps } from 'react-native';
 
 const TextoDeItem = (props: TextProps) => {
@@ -9,7 +9,7 @@ const TextoDeItem = (props: TextProps) => {
   );
 };
 
-export default TextoDeItem;
+export default memo(TextoDeItem);
 
 const styles = StyleSheet.create({
   itemText: {

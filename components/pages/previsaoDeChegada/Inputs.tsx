@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import InputDeBusca from '../linhaDeOnibus/InputDeBusca';
 
 type Props = {
@@ -42,4 +42,4 @@ const Inputs = ({
   );
 };
 
-export default Inputs;
+export default memo(Inputs);
