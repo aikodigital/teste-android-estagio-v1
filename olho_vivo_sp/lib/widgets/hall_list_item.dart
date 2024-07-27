@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:olho_vivo_sp/models/hall_model.dart';
+import 'package:olho_vivo_sp/util/routes.dart';
 
 class HallListItem extends StatelessWidget {
   final HallModel hall;
@@ -10,7 +11,10 @@ class HallListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
-        onTap: () {},
+        onTap: () => Navigator.of(context).pushNamed(
+          Routes.hall_detail_screen,
+          arguments: hall,
+        ),
         leading: const Icon(Icons.route),
         title: Text(hall.name),
       ),
