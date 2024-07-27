@@ -112,7 +112,7 @@ export default function PaginaDeLinhaDeOnibus() {
 const styles = StyleSheet.create({
   pageContainer: {
     paddingTop: 28,
-    paddingBottom: 180,
+    paddingBottom: 120,
     paddingHorizontal: 14,
     backgroundColor: '#f0f4f8',
   },

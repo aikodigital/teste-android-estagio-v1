@@ -11,6 +11,7 @@ import De from '@/components/pages/posicaoDosVeiculos/De';
 import Para from '@/components/pages/posicaoDosVeiculos/Para';
 import Loading from '@/components/form/loading/Loading';
 import useRodeEmIntervalo from '@/custom-hooks/useRodeEmIntervalo';
+import Title from '@/components/text/Title';
 
 export type Trajeto = { de: string | null; para: string | null };
 
@@ -33,8 +34,9 @@ export default function HomeScreen() {
       const res = await fetch(process.env.API_URL + '/Posicao');
       if (!res.ok) throw Error('Error fetching Data');
       const json = (await res.json()) as PosicaoDosVeiculos;
-      setLinhas(json.l);
-      setRegioes(json.l.map((r) => r.lt0));
+      if (!json) throw new Error('Error fetching Data');
+      setLinhas(json?.l);
+      setRegioes(json?.l.map((r) => r.lt0));
     } catch (error) {
       error instanceof Error && console.log(error.message);
       await autenticarNaApi();
@@ -52,25 +54,28 @@ export default function HomeScreen() {
       )
     : linhas?.slice(0, 66);
 
-  if (!linhas?.length) return <Loading />;
+  if (linhas && !linhas?.length) return <Loading />;
   return (
-    <>
+    <View style={styles.pageContainer}>
+      <Title>Posição dos Veículos</Title>
       <MapView
         region={cordenadasSp}
         initialRegion={cordenadasSp}
         style={styles.map}
       >
-        {linhasFiltradas
-          ?.map(({ vs }) => vs)
-          ?.flat(1)
-          ?.map(({ px, py }, i) => (
-            <MapMarker
-              key={i}
-              tracksViewChanges={false}
-              coordinate={{ latitude: py, longitude: px }}
-              style={{ opacity: 0.5 }}
-            />
-          ))}
+        {linhasFiltradas?.map(({ vs, lt0, lt1 }) =>
+          vs
+            ?.flat(1)
+            ?.map(({ px, py, p }, i) => (
+              <MapMarker
+                key={i}
+                tracksViewChanges={false}
+                coordinate={{ latitude: py, longitude: px }}
+                style={{ opacity: 0.5 }}
+                title={`De ${lt0} para ${lt1}`}
+              />
+            ))
+        )}
       </MapView>
       {regioes.length > 0 && (
         <View style={styles.inputContainer}>
@@ -85,16 +90,20 @@ export default function HomeScreen() {
           )}
         </View>
       )}
-    </>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
+  pageContainer: {
+    paddingTop: 28,
+    paddingBottom: 120,
+    paddingHorizontal: 14,
+    backgroundColor: '#f0f4f8',
+  },
   map: {
-    flex: 1,
     width: '100%',
     height: '100%',
-    position: 'relative',
   },
   inputContainer: {
     display: 'flex',
@@ -106,5 +115,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#f5f5f5',
     opacity: 0.9,
     alignItems: 'center',
+    position: 'absolute',
+    bottom: 50,
+    left: 0,
+    width: '105%',
   },
 });
