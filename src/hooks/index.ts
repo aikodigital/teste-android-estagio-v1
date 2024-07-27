@@ -61,36 +61,37 @@ const useOlhoVivoAPI = () => {
   const [vehiclePositions, setVehiclePositions] = useState<VehiclePosition | null>(null);
   const [busStops, setBusStops] = useState<BusStop[]>([]);
   const [arrivalForecast, setArrivalForecast] = useState<ArrivalForecast | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<Error | null>(null);
 
-const authenticate = async () => {
-  try {
-    const response = await axios.post('http://api.olhovivo.sptrans.com.br/v2.1/Login/Autenticar', null, {
-      params: { token },
-    });
+  const authenticate = async () => {
+    try {
+      const response = await axios.post('https://aiko-olhovivo-proxy.aikodigital.io/Login/Autenticar', null, {
+        params: { token },
+      });
 
-    console.log('Resposta da autenticação:', response.data);
+      console.log('Resposta da autenticação:', response.data);
 
-    if (response.data && response.data.authenticated) {  
-      setAuthenticated(true);
-      console.log('Autenticação bem-sucedida!');
-    } else {
+      if (response.status === 200) {
+        setAuthenticated(true);
+        console.log('Autenticação bem-sucedida!');
+      } else {
+        setAuthenticated(false);
+        console.error('Falha na autenticação: resposta da API não contém dados esperados.');
+      }
+    } catch (error) {
       setAuthenticated(false);
-      console.error('Falha na autenticação: resposta da API não contém dados esperados.');
+      console.error('Erro durante a autenticação:', error);
+      setError(error as Error);
     }
-  } catch (error) {
-    setAuthenticated(false);
-    console.error('Erro durante a autenticação:', error);
-    setError(error as Error);
-  }
-};
+  };
 
   const fetchVehiclePositions = async () => {
     if (!authenticated) return;
 
+    setLoading(true);
     try {
-      const response = await axios.get<VehiclePosition>('http://api.olhovivo.sptrans.com.br/v2.1/Posicao', {
+      const response = await axios.get<VehiclePosition>('https://aiko-olhovivo-proxy.aikodigital.io/Posicao', {
         headers: { 'Content-Type': 'application/json' },
       });
       setVehiclePositions(response.data);
@@ -105,8 +106,9 @@ const authenticate = async () => {
   const fetchBusStops = async (searchTerm: string) => {
     if (!authenticated) return;
 
+    setLoading(true);
     try {
-      const response = await axios.get<BusStop[]>(`http://api.olhovivo.sptrans.com.br/v2.1/Parada/Buscar?termosBusca=${searchTerm}`, {
+      const response = await axios.get<BusStop[]>(`https://aiko-olhovivo-proxy.aikodigital.io/Parada/Buscar?termosBusca=${searchTerm}`, {
         headers: { 'Content-Type': 'application/json' },
       });
       setBusStops(response.data);
@@ -121,8 +123,9 @@ const authenticate = async () => {
   const fetchArrivalForecast = async (codigoParada: number, codigoLinha: number) => {
     if (!authenticated) return;
 
+    setLoading(true);
     try {
-      const response = await axios.get<ArrivalForecast>(`http://api.olhovivo.sptrans.com.br/v2.1/Previsao`, {
+      const response = await axios.get<ArrivalForecast>(`https://aiko-olhovivo-proxy.aikodigital.io/Previsao`, {
         params: { codigoParada, codigoLinha },
         headers: { 'Content-Type': 'application/json' },
       });
@@ -137,14 +140,12 @@ const authenticate = async () => {
 
   useEffect(() => {
     const initialize = async () => {
-      setLoading(true);
       await authenticate();
-      await fetchVehiclePositions();
     };
     initialize();
   }, []);
 
-  return { vehiclePositions, busStops, arrivalForecast, loading, error, fetchBusStops, fetchArrivalForecast };
+  return { vehiclePositions, busStops, arrivalForecast, loading, error, fetchVehiclePositions, fetchBusStops, fetchArrivalForecast };
 };
 
 export default useOlhoVivoAPI;
