@@ -7,6 +7,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:sp_movement/app/modules/auth/auth_repository.dart';
 import 'package:sp_movement/app/modules/bus_route/repositories/bus_route_repository.dart';
+import 'package:sp_movement/app/modules/bus_stops/repository/bus_stops_repository.dart';
 
 void main() {
   test('deve retornar verdadeiro para autenticacao', () async {
@@ -18,4 +19,10 @@ void main() {
     dynamic retorno = await BusRouteRepository.getPosition();
     expect(true, retorno.isNotEmpty);
   });
+
+  test('deve retornar verdadeiro uma lista de paradas', () async {
+    dynamic retorno = await BusStopRepository.searchStops('Afonso');
+    expect(true, retorno.isNotEmpty);
+  });
+
 }
