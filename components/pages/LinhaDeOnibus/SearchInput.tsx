@@ -1,30 +1,12 @@
 import { EvilIcons } from '@expo/vector-icons';
 import React from 'react';
-import { StyleSheet, TextInput, View } from 'react-native';
+import { StyleSheet, TextInput, TextInputProps, View } from 'react-native';
 
-type Props = {
-  inputDePesquisa: string;
-  setInputDePesquisa: React.Dispatch<React.SetStateAction<string>>;
-  lidarComPesquisa: () => void;
-  placeholder: string;
-};
-
-const SearchInput = ({
-  inputDePesquisa,
-  setInputDePesquisa,
-  lidarComPesquisa,
-  placeholder,
-}: Props) => {
+const SearchInput = ({ ...props }: TextInputProps) => {
   return (
     <View style={styles.container}>
       <EvilIcons style={styles.icon} name='search' size={24} color='black' />
-      <TextInput
-        style={styles.input}
-        placeholder={placeholder}
-        value={inputDePesquisa}
-        onChangeText={setInputDePesquisa}
-        onChange={lidarComPesquisa}
-      />
+      <TextInput style={styles.input} {...props} />
     </View>
   );
 };

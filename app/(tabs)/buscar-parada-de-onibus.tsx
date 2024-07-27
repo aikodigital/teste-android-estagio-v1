@@ -39,9 +39,9 @@ export default function BuscarParadaDeOnibus() {
       <Title>Buscar Paradas de Ônibus</Title>
       <SearchInput
         placeholder='Ex: AFONSO BRAZ'
-        inputDePesquisa={inputDePesquisa}
-        lidarComPesquisa={lidarComPesquisa}
-        setInputDePesquisa={setInputDePesquisa}
+        value={inputDePesquisa}
+        onChange={lidarComPesquisa}
+        onChangeText={setInputDePesquisa}
       />
       <MapResult
         cordenadasSp={cordenadasSp}

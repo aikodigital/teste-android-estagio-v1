@@ -28,9 +28,9 @@ export default function PaginaDeLinhaDeOnibus() {
       <Title>Buscar Linhas de Ônibus</Title>
       <SearchInput
         placeholder='Ex: 8000'
-        inputDePesquisa={inputDePesquisa}
-        lidarComPesquisa={lidarComPesquisa}
-        setInputDePesquisa={setInputDePesquisa}
+        value={inputDePesquisa}
+        onChangeText={setInputDePesquisa}
+        onChange={lidarComPesquisa}
       />
       <SearchResult
         formState={formState}
