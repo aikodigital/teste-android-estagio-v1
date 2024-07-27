@@ -4,7 +4,7 @@ import Loading from '@/components/form/loading/Loading';
 import ItemText from '@/components/text/ItemText';
 import { Linha } from '@/types/types';
 import React from 'react';
-import { FlatList, StyleSheet, View } from 'react-native';
+import { FlatList } from 'react-native';
 
 type Props = {
   formState: {

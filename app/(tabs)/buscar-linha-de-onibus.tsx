@@ -1,15 +1,11 @@
-import { FlatList, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useState } from 'react';
 import { Linha } from '@/types/types';
-import Loading from '@/components/form/loading/Loading';
-import ErrorComponent from '@/components/form/error/Error';
-import EvilIcons from '@expo/vector-icons/EvilIcons';
 import Title from '@/components/text/Title';
 import PageContainer from '@/components/containers/PageContainer';
 import useFormState from '@/custom-hooks/useFormState';
 import useOnChangeTimeout from '@/custom-hooks/useOnChangeTimeout';
-import SearchInput from '@/components/pages/LinhaDeOnibus/SearchInput';
-import SearchResult from '@/components/pages/LinhaDeOnibus/SearchResult';
+import SearchInput from '@/components/pages/linhaDeOnibus/SearchInput';
+import SearchResult from '@/components/pages/linhaDeOnibus/SearchResult';
 
 export default function PaginaDeLinhaDeOnibus() {
   const [linhas, setLinhas] = useState<Linha[]>([]);
@@ -45,6 +41,7 @@ export default function PaginaDeLinhaDeOnibus() {
     <PageContainer>
       <Title>Buscar Linhas de Ônibus</Title>
       <SearchInput
+        placeholder='Ex: 8000'
         inputDePesquisa={inputDePesquisa}
         lidarComPesquisa={lidarComPesquisa}
         setInputDePesquisa={setInputDePesquisa}

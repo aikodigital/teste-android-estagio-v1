@@ -6,19 +6,21 @@ type Props = {
   inputDePesquisa: string;
   setInputDePesquisa: React.Dispatch<React.SetStateAction<string>>;
   lidarComPesquisa: () => void;
+  placeholder: string;
 };
 
 const SearchInput = ({
   inputDePesquisa,
   setInputDePesquisa,
   lidarComPesquisa,
+  placeholder,
 }: Props) => {
   return (
     <View style={styles.container}>
       <EvilIcons style={styles.icon} name='search' size={24} color='black' />
       <TextInput
         style={styles.input}
-        placeholder='Ex: 8000'
+        placeholder={placeholder}
         value={inputDePesquisa}
         onChangeText={setInputDePesquisa}
         onChange={lidarComPesquisa}
