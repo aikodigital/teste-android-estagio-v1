@@ -10,31 +10,18 @@ import SearchResult from '@/components/pages/linhaDeOnibus/SearchResult';
 export default function PaginaDeLinhaDeOnibus() {
   const [linhas, setLinhas] = useState<Linha[]>([]);
   const [inputDePesquisa, setInputDePesquisa] = useState('');
-  const { formState, setFormState } = useFormState();
-  const { runTimeout } = useOnChangeTimeout();
+  const { formState, pesquisar } = useFormState();
 
-  const fetchData = async () => {
-    try {
-      const res = await fetch(
-        process.env.API_URL + '/Linha/Buscar?termosBusca=' + inputDePesquisa
-      );
-      if (!res.ok) throw new Error('Houve um erro ao pesquisar.');
-      const json = (await res.json()) as Linha[];
-      if (!json || !json.length) throw new Error(`Nenhuma linha encontrada.`);
-      setLinhas(json);
-    } catch (error) {
-      if (error instanceof Error) {
-        setFormState((prev) => ({ ...prev, error: error.message }));
-      }
-    } finally {
-      setFormState((prev) => ({ ...prev, loading: false }));
-    }
+  const aoConcluirPesquisa = async (json: Linha[]) => {
+    setLinhas(json);
   };
 
-  const lidarComPesquisa = () => {
-    setFormState({ error: '', loading: true });
+  const lidarComPesquisa = async () => {
     setLinhas([]);
-    runTimeout(fetchData);
+    await pesquisar<Linha[]>(
+      aoConcluirPesquisa,
+      process.env.API_URL + '/Linha/Buscar?termosBusca=' + inputDePesquisa
+    );
   };
 
   return (
