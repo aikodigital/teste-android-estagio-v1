@@ -1,12 +1,34 @@
+import React, { useRef, useEffect, useState } from 'react';
 import MapView, { Marker } from 'react-native-maps';
 import { Container, Content, Title } from './styles';
 import { Modalize } from 'react-native-modalize';
-import { useRef } from 'react';
 import { Items } from '../../components/Items';
 import { Search } from '../../components/Search';
+import useOlhoVivoAPI from '../../hooks';
+import { FlatList } from 'react-native';
 
 export function Lines() {
-  const modalizeRef = useRef(null)
+  const modalizeRef = useRef<Modalize>(null);
+  const { vehiclePositions, fetchVehiclePositions, fetchBusStops } = useOlhoVivoAPI();
+  const [buses, setBuses] = useState<{ number: string; latitude: number; longitude: number; }[]>([]);
+  
+  useEffect(() => {
+    fetchVehiclePositions();
+  }, [fetchVehiclePositions]);
+
+  useEffect(() => {
+    if (vehiclePositions) {
+      const newBuses = vehiclePositions.l.flatMap(line =>
+        line.vs.map(vehicle => ({
+          number: line.c,
+          latitude: vehicle.py,
+          longitude: vehicle.px,
+        }))
+      );
+      setBuses(newBuses);
+    }
+  }, [vehiclePositions]);
+
   return (
     <Container>
       <Content>
@@ -25,18 +47,34 @@ export function Lines() {
         }}
       >
         <Marker coordinate={{ latitude: -23.5505, longitude: -46.6333 }} title="São Paulo" />
+        {buses.map((bus, index) => (
+          <Marker
+            key={index}
+            coordinate={{ latitude: bus.latitude, longitude: bus.longitude }}
+            title={`Bus ${bus.number}`}
+          />
+        ))}
       </MapView>
       <Modalize
         ref={modalizeRef}
-        snapPoint={200}
-        alwaysOpen={200}
+        snapPoint={300}
+        alwaysOpen={300}
       >
         <Title>
-          Linhas de ônibus
+          Linhas de ônibus e Paradas
         </Title>
-        <Items />
+        <FlatList
+          data={buses}
+          keyExtractor={(item, index) => index.toString()}
+          renderItem={({ item }) => (
+            <Items
+              destiny={`${item.number}`}
+              number={item.number}
+              time={'Não disponível'} 
+            />
+          )}
+        />
       </Modalize>
     </Container>
   );
 }
-

@@ -67,9 +67,10 @@ const useOlhoVivoAPI = () => {
   const [authenticated, setAuthenticated] = useState<boolean>(false);
   const [vehiclePositions, setVehiclePositions] = useState<VehiclePosition | null>(null);
   const [busStops, setBusStops] = useState<BusStop[]>([]);
-  const [arrivalForecast, setArrivalForecast] = useState<ArrivalForecast | null>(null); 
+  const [arrivalForecast, setArrivalForecast] = useState<ArrivalForecast | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<Error | null>(null);
+  const [allBuses, setAllBuses] = useState<{ number: string; linha: number; destination: string }[]>([]);
 
   const authenticate = useCallback(async () => {
     try {
@@ -100,6 +101,7 @@ const useOlhoVivoAPI = () => {
         headers: { 'Content-Type': 'application/json' },
       });
       setVehiclePositions(response.data);
+      updateAllBuses(response.data);
     } catch (error) {
       console.error('Erro ao buscar posições dos veículos:', error);
       setError(error as Error);
@@ -138,7 +140,6 @@ const useOlhoVivoAPI = () => {
         throw new Error('Código da parada ou da linha inválido.');
       }
 
-      console.log('Buscando previsão de chegada com parâmetros:', { parada, linha });
       const response = await axios.get<ArrivalForecast>('https://aiko-olhovivo-proxy.aikodigital.io/Previsao', {
         params: {
           codigoParada: parada,
@@ -149,8 +150,7 @@ const useOlhoVivoAPI = () => {
         },
       });
 
-      console.log('Resposta da API:', response.data);
-      setArrivalForecast(response.data); 
+      setArrivalForecast(response.data);
     } catch (error) {
       console.error('Erro ao buscar previsão de chegada:', error);
       setError(error as Error);
@@ -158,6 +158,17 @@ const useOlhoVivoAPI = () => {
       setLoading(false);
     }
   }, [authenticated]);
+
+  const updateAllBuses = (vehiclePositions: VehiclePosition) => {
+    const buses = vehiclePositions.l.flatMap(locationData =>
+      locationData.vs.map(vehicle => ({
+        number: locationData.c,
+        linha: locationData.cl,
+        destination: locationData.lt1
+      }))
+    );
+    setAllBuses(buses);
+  };
 
   const findNearestBus = useCallback((location: { latitude: number; longitude: number }) => {
     if (!vehiclePositions) return null;
@@ -194,6 +205,11 @@ const useOlhoVivoAPI = () => {
     return nearestBus;
   }, [vehiclePositions]);
 
+  const fetchAllBuses = useCallback(async () => {
+    await fetchVehiclePositions();
+    // Call other API functions if needed
+  }, [fetchVehiclePositions]);
+
   useEffect(() => {
     const initialize = async () => {
       await authenticate();
@@ -207,10 +223,12 @@ const useOlhoVivoAPI = () => {
     arrivalForecast,
     loading,
     error,
+    allBuses,
     fetchVehiclePositions,
     fetchBusStops,
     fetchArrivalForecast,
-    findNearestBus
+    findNearestBus,
+    fetchAllBuses
   };
 };
 
