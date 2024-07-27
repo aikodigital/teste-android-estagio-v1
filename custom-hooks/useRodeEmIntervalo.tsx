@@ -5,7 +5,6 @@ const useRodeEmIntervalo = (fn: () => Promise<any>, delay: number) => {
 
   useEffect(() => {
     const rodarIntervalo = async () => {
-      console.log('oi');
       await fn();
       if (!intervaloRef.current) {
         intervaloRef.current = setInterval(async () => await fn(), delay);

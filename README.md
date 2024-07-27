@@ -1,50 +1,50 @@
-# Welcome to your Expo app 👋
+# Projeto AikoDigital
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Este projeto foi desenvolvido como parte de um processo seletivo para a empresa AikoDigital.
 
-## Get started
+## Requisitos
 
-1. Install dependencies
+Certifique-se de ter as seguintes ferramentas instaladas:
 
-   ```bash
-   npm install
-   ```
+- Java
+- ADB (Android Debug Bridge)
+- Android Studio
+- Android SDK
+- NodeJS
 
-2. Start the app
+Execute um diagnóstico do ambiente de desenvolvimento usando ferramentas apropriadas para garantir que tudo esteja configurado corretamente.
 
-   ```bash
-    npx expo start
-   ```
+## Instalação do Projeto
 
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+1. Clone o repositório para a sua máquina local.
+2. Navegue até o diretório do projeto.
+3. Execute o comando abaixo para instalar as dependências necessárias:
 
 ```bash
-npm run reset-project
+npm install
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Configuração do Ambiente
 
-## Learn more
+1. Crie um arquivo `.env` na raiz do projeto, seguindo o formato do arquivo `.env.example`.
+2. Preencha o arquivo `.env` com os dados que podem ser obtidos ao criar uma conta gratuita no site da [SPTrans](https://www.sptrans.com.br/desenvolvedores/api-do-olho-vivo-guia-de-referencia/documentacao-api/):
 
-To learn more about developing your project with Expo, look at the following resources:
+```bash
+API_URL=
+API_TOKEN=
+```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## Executando o Projeto
 
-## Join the community
+Para iniciar o projeto no emulador Android, utilize os comandos apropriados para sua configuração local.
 
-Join our community of developers creating universal apps.
+```bash
+npm run android
+```
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## Imagens do Projeto
+
+![Imagem-1](./imagens/1.webp)
+![Imagem-1](./imagens/2.webp)
+![Imagem-1](./imagens/3.webp)
+![Imagem-1](./imagens/4.webp)

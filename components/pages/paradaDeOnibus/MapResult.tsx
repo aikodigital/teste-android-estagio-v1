@@ -31,13 +31,13 @@ const MapResult = ({
         initialRegion={coordenadasSp}
         style={styles.map}
       >
-        {paradas?.map(({ px, py, np }, i) => (
+        {paradas.map((item, i) => (
           <MapMarker
             key={i}
             tracksViewChanges={false}
-            coordinate={{ latitude: py, longitude: px }}
+            coordinate={{ latitude: item.py, longitude: item.px }}
             style={{ opacity: 0.5 }}
-            title={np}
+            title={item.np}
           />
         ))}
       </MapView>
