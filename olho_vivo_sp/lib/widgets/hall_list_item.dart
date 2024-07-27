@@ -12,11 +12,11 @@ class HallListItem extends StatelessWidget {
     return Card(
       child: ListTile(
         onTap: () => Navigator.of(context).pushNamed(
-          Routes.hall_detail_screen,
+          Routes.bus_stops_screen,
           arguments: hall,
         ),
         leading: const Icon(Icons.route),
-        title: Text(hall.name),
+        title: Text('${hall.code} ${hall.name}'),
       ),
     );
   }
