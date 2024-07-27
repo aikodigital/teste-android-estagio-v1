@@ -10,25 +10,7 @@ import { autenticarNaApi } from '@/helpers/autenticarNaApi';
 import De from '@/components/pages/posicaoDosVeiculos/De';
 import Para from '@/components/pages/posicaoDosVeiculos/Para';
 import Loading from '@/components/form/loading/Loading';
-
-const useRodeEmIntervalo = (fn: () => Promise<any>, delay: number) => {
-  const intervaloRef = useRef<NodeJS.Timeout>();
-
-  useEffect(() => {
-    const rodarIntervalo = async () => {
-      // await fn();
-      if (!intervaloRef.current) {
-        intervaloRef.current = setInterval(async () => await fn(), delay);
-      }
-    };
-    rodarIntervalo();
-
-    return () => {
-      clearInterval(intervaloRef.current);
-      intervaloRef.current = undefined;
-    };
-  }, []);
-};
+import useRodeEmIntervalo from '@/custom-hooks/useRodeEmIntervalo';
 
 export type Trajeto = { de: string | null; para: string | null };
 
