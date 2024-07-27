@@ -60,4 +60,30 @@ class ApiService extends ChangeNotifier {
       rethrow;
     }
   }
+
+  Future<List> getBusStopsByHall(String? filter) async {
+    try {
+      if (_sessionToken == null) {
+        await authenticate();
+      }
+
+      final response = await http.get(
+        Uri.parse(
+          '${Environment.base_url}${Environment.bus_stops_by_hall_endpoint}?codigoCorredor=${filter ?? ''}',
+        ),
+        headers: {
+          'Authorization': 'Bearer $_sessionToken',
+        },
+      );
+
+      if (response.statusCode >= HttpStatus.ok &&
+          response.statusCode < HttpStatus.multipleChoices) {
+        return jsonDecode(response.body);
+      }
+
+      return [];
+    } catch (e) {
+      rethrow;
+    }
+  }
 }
