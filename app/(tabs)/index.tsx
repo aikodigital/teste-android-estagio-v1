@@ -4,6 +4,7 @@ import {
   LinhaParaPosicao,
   PosicaoDosVeiculos,
   PosicaoVeiculo,
+  Trajeto,
 } from '@/types/posicao';
 import MapView, { MapMarker } from 'react-native-maps';
 import { autenticarNaApi } from '@/helpers/autenticarNaApi';
@@ -12,8 +13,7 @@ import Para from '@/components/pages/posicaoDosVeiculos/Para';
 import Loading from '@/components/form/loading/Loading';
 import useRodeEmIntervalo from '@/custom-hooks/useRodeEmIntervalo';
 import Title from '@/components/text/Title';
-
-export type Trajeto = { de: string | null; para: string | null };
+import PageContainer from '@/components/containers/PageContainer';
 
 export default function HomeScreen() {
   const [linhas, setLinhas] = useState<LinhaParaPosicao<PosicaoVeiculo>[]>([]);
@@ -56,7 +56,7 @@ export default function HomeScreen() {
 
   if (linhas && !linhas?.length) return <Loading />;
   return (
-    <View style={styles.pageContainer}>
+    <PageContainer>
       <Title>Posição dos Veículos</Title>
       <MapView
         region={cordenadasSp}
@@ -90,17 +90,11 @@ export default function HomeScreen() {
           )}
         </View>
       )}
-    </View>
+    </PageContainer>
   );
 }
 
 const styles = StyleSheet.create({
-  pageContainer: {
-    paddingTop: 28,
-    paddingBottom: 120,
-    paddingHorizontal: 14,
-    backgroundColor: '#f0f4f8',
-  },
   map: {
     width: '100%',
     height: '100%',

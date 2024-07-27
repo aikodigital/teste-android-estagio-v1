@@ -6,8 +6,7 @@ import Loading from '@/components/form/loading/Loading';
 import ErrorComponent from '@/components/form/error/Error';
 import EvilIcons from '@expo/vector-icons/EvilIcons';
 import Title from '@/components/text/Title';
-
-export type Trajeto = { de: string | null; para: string | null };
+import PageContainer from '@/components/containers/PageContainer';
 
 export default function PaginaDeLinhaDeOnibus() {
   const [linhas, setLinhas] = useState<Linha[]>([]);
@@ -23,7 +22,7 @@ export default function PaginaDeLinhaDeOnibus() {
       );
       if (!res.ok) throw new Error('Houve um erro ao pesquisar.');
       const json = (await res.json()) as Linha[];
-      if (!json.length) throw new Error(`Nenhuma linha encontrada.`);
+      if (!json || !json.length) throw new Error(`Nenhuma linha encontrada.`);
       setLinhas(json);
     } catch (error) {
       await autenticarNaApi();
@@ -46,8 +45,8 @@ export default function PaginaDeLinhaDeOnibus() {
   };
 
   return (
-    <View style={styles.pageContainer}>
-      <Text style={styles.title}>Buscar Linhas de Ônibus</Text>
+    <PageContainer>
+      <Title>Buscar Linhas de Ônibus</Title>
       <View style={styles.container}>
         <EvilIcons style={styles.icon} name='search' size={24} color='black' />
         <TextInput
@@ -105,24 +104,11 @@ export default function PaginaDeLinhaDeOnibus() {
           </>
         )
       )}
-    </View>
+    </PageContainer>
   );
 }
 
 const styles = StyleSheet.create({
-  pageContainer: {
-    paddingTop: 28,
-    paddingBottom: 120,
-    paddingHorizontal: 14,
-    backgroundColor: '#f0f4f8',
-  },
-  title: {
-    textAlign: 'center',
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#333',
-    marginBottom: 20,
-  },
   container: {
     flexDirection: 'row',
     alignItems: 'center',

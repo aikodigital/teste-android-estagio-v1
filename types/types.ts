@@ -14,13 +14,15 @@ export type LinhaParaPosicao<T> = {
   vs: T[];
 };
 
+export type Trajeto = { de: string | null; para: string | null };
+
 export type Posicao = {
   py: number;
   px: number;
 };
 
 export type PosicaoVeiculo = {
-  p: number;
+  p: number | string;
   a: boolean;
   ta: string;
 } & Posicao;
@@ -45,7 +47,12 @@ export type Parada = {
 
 //PrevisaoChegada
 export type PrevisaoChegada = {
+  hr: string;
+  p: ParadaPrevisaoChegada;
+};
+
+export type ParadaPrevisaoChegada = {
   cp: number;
   np: string;
-  l: LinhaParaPosicao<PosicaoVeiculo & { t: string }>[];
+  l: LinhaParaPosicao<{ t: string } & PosicaoVeiculo & Posicao>[];
 } & Posicao;

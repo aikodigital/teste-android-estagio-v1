@@ -7,8 +7,7 @@ import ErrorComponent from '@/components/form/error/Error';
 import EvilIcons from '@expo/vector-icons/EvilIcons';
 import Title from '@/components/text/Title';
 import MapView, { MapMarker } from 'react-native-maps';
-
-export type Trajeto = { de: string | null; para: string | null };
+import PageContainer from '@/components/containers/PageContainer';
 
 export default function BuscarParadaDeOnibus() {
   const [paradas, setParadas] = useState<Parada[]>([]);
@@ -55,7 +54,7 @@ export default function BuscarParadaDeOnibus() {
   };
 
   return (
-    <View style={styles.pageContainer}>
+    <PageContainer>
       <Title>Buscar Paradas de Ônibus</Title>
       <View style={styles.container}>
         <EvilIcons style={styles.icon} name='search' size={24} color='black' />
@@ -90,17 +89,11 @@ export default function BuscarParadaDeOnibus() {
           </MapView>
         )
       )}
-    </View>
+    </PageContainer>
   );
 }
 
 const styles = StyleSheet.create({
-  pageContainer: {
-    paddingTop: 28,
-    paddingBottom: 180,
-    paddingHorizontal: 14,
-    backgroundColor: '#f0f4f8',
-  },
   container: {
     flexDirection: 'row',
     alignItems: 'center',
