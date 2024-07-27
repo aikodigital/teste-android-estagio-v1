@@ -15,8 +15,7 @@ import MapResult from '@/components/pages/paradaDeOnibus/MapResult';
 export default function BuscarParadaDeOnibus() {
   const [paradas, setParadas] = useState<Parada[]>([]);
   const [inputDePesquisa, setInputDePesquisa] = useState('');
-  const { formState, setFormState, pesquisar } = useFormState();
-  const { runTimeout } = useOnChangeTimeout();
+  const { formState, pesquisar } = useFormState();
 
   const coordernadasSpValorInicial = {
     latitude: -23.550522,
@@ -33,17 +32,12 @@ export default function BuscarParadaDeOnibus() {
     setParadas(json);
   };
 
-  const fetchData = async () => {
+  const lidarComPesquisa = async () => {
+    setParadas([]);
     await pesquisar<Parada[]>(
       aoConcluirPesquisa,
       process.env.API_URL + '/Parada/Buscar?termosBusca=' + inputDePesquisa
     );
-  };
-
-  const lidarComPesquisa = () => {
-    setFormState({ error: '', loading: true });
-    setParadas([]);
-    runTimeout(fetchData);
   };
 
   return (

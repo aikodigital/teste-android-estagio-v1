@@ -1,18 +1,19 @@
 import { useState } from 'react';
+import useOnChangeTimeout from './useOnChangeTimeout';
 
 const useFormState = () => {
   const [formState, setFormState] = useState({ loading: false, error: '' });
+  const { runTimeout } = useOnChangeTimeout();
 
-  const pesquisar = async <T,>(
+  const pesquisarNaApi = async <T,>(
     conclusao: (json: T) => Promise<any>,
     url: string,
     options?: RequestInit
   ) => {
     try {
-      let json;
       const res = await fetch(url, options);
       if (!res.ok) throw new Error('Houve um erro ao pesquisar.');
-      json = (await res.json()) as T;
+      const json = (await res.json()) as T;
       if (!json) throw new Error(`Houve um erro ao pesquisar.`);
       if (Array.isArray(json) && !json.length)
         throw new Error('Nenhum resultado encontrado.');
@@ -24,6 +25,15 @@ const useFormState = () => {
     } finally {
       setFormState((prev) => ({ ...prev, loading: false }));
     }
+  };
+
+  const pesquisar = async <T,>(
+    conclusao: (json: T) => Promise<any>,
+    url: string,
+    options?: RequestInit
+  ) => {
+    setFormState({ error: '', loading: true });
+    runTimeout(() => pesquisarNaApi<T>(conclusao, url, options));
   };
 
   return { formState, setFormState, pesquisar };
