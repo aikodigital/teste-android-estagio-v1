@@ -70,8 +70,6 @@ const useOlhoVivoAPI = () => {
         params: { token },
       });
 
-      console.log('Resposta da autenticação:', response.data);
-
       if (response.status === 200) {
         setAuthenticated(true);
         console.log('Autenticação bem-sucedida!');
@@ -86,6 +84,7 @@ const useOlhoVivoAPI = () => {
     }
   };
 
+  // Função que trás a posição dos ônibus
   const fetchVehiclePositions = async () => {
     if (!authenticated) return;
 
@@ -102,6 +101,8 @@ const useOlhoVivoAPI = () => {
       setLoading(false);
     }
   };
+
+  // função que tras as paradas do ônibus
 
   const fetchBusStops = async (searchTerm: string) => {
     if (!authenticated) return;
@@ -120,12 +121,14 @@ const useOlhoVivoAPI = () => {
     }
   };
 
+  // Função que tras a parada e a linha do onibus
+
   const fetchArrivalForecast = async (codigoParada: number, codigoLinha: number) => {
     if (!authenticated) return;
 
     setLoading(true);
     try {
-      const response = await axios.get<ArrivalForecast>(`https://aiko-olhovivo-proxy.aikodigital.io/Previsao`, {
+      const response = await axios.get<ArrivalForecast>('https://aiko-olhovivo-proxy.aikodigital.io/Previsao', {
         params: { codigoParada, codigoLinha },
         headers: { 'Content-Type': 'application/json' },
       });
@@ -138,6 +141,43 @@ const useOlhoVivoAPI = () => {
     }
   };
 
+  const findNearestBus = (location: { latitude: number; longitude: number }) => {
+    if (!vehiclePositions) return null;
+
+    // Função para calcular a distância entre a localização da pessoa a o ônibus mais próximo
+    
+    const calculateDistance = (lat1: number, lon1: number, lat2: number, lon2: number) => {
+      const R = 6371;
+      const dLat = (lat2 - lat1) * (Math.PI / 180);
+      const dLon = (lon2 - lon1) * (Math.PI / 180);
+      const a =
+        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos(lat1 * (Math.PI / 180)) * Math.cos(lat2 * (Math.PI / 180)) *
+        Math.sin(dLon / 2) * Math.sin(dLon / 2);
+      const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+      return R * c;
+    };
+  
+    let nearestBus = null;
+    let minDistance = Infinity;
+  
+    vehiclePositions.l.forEach(locationData => {
+      locationData.vs.forEach(vehicle => {
+        const distance = calculateDistance(location.latitude, location.longitude, vehicle.py, vehicle.px);
+        if (distance < minDistance) {
+          minDistance = distance;
+          nearestBus = {
+            number: locationData.c,
+            destination: locationData.lt1
+          };
+        }
+      });
+    });
+  
+    return nearestBus;
+  };
+
+  
   useEffect(() => {
     const initialize = async () => {
       await authenticate();
@@ -145,7 +185,7 @@ const useOlhoVivoAPI = () => {
     initialize();
   }, []);
 
-  return { vehiclePositions, busStops, arrivalForecast, loading, error, fetchVehiclePositions, fetchBusStops, fetchArrivalForecast };
+  return { vehiclePositions, busStops, arrivalForecast, loading, error, fetchVehiclePositions, fetchBusStops, fetchArrivalForecast, findNearestBus };
 };
 
 export default useOlhoVivoAPI;

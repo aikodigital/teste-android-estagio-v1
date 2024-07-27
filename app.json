@@ -37,7 +37,7 @@
       [
         "expo-location",
         {
-          "locationAlwaysAndWhenInUsePermission": "Allow app-mobilidade-sp to use your location."
+          "locationAlwaysAndWhenInUsePermission": "Permita que o app-mobilidade-sp use sua localização."
         }
       ]
     ]

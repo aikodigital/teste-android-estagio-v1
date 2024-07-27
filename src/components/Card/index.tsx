@@ -1,8 +1,19 @@
+import React from 'react';
 import MapView, { Marker } from 'react-native-maps';
 import { Container, ContentIconHeader, ContentMap, ContentTextHeader, Header, Icon, SubTitle, Title } from "./styles";
-import { Items } from '../Items';
+import { ReactNode } from 'react';
 
-export function Card() {
+type CardProps = {
+    station?: string;
+    latitude?: number;
+    longitude?: number;
+    title?: string;
+    children?: ReactNode;
+};
+
+export function Card({ latitude, longitude, station, title, children }: CardProps) {
+    const hasLocation = latitude !== undefined && longitude !== undefined;
+
     return (
         <Container>
             <Header>
@@ -11,33 +22,34 @@ export function Card() {
                 </ContentIconHeader>
                 <ContentTextHeader>
                     <Title>
-                        Estação mais próxima
+                         Estação mais próxima
                     </Title>
                     <SubTitle>
-                        DF - 001 | Recanto das emas (passarela da Unire)
+                        {station}
                     </SubTitle>
                 </ContentTextHeader>
             </Header>
             <ContentMap>
                 <MapView
-                    style={{
-                        width: '100%',
-                        height: '100%'
-                    }}
-                    initialRegion={{
-                        latitude: -23.5505,
-                        longitude: -46.6333,
-                        latitudeDelta: 0.0922,
-                        longitudeDelta: 0.0421,
-                    }}
+                    style={{ width: '100%', height: '100%' }}
+                    initialRegion={
+                        hasLocation ? {
+                            latitude: latitude!,
+                            longitude: longitude!,
+                            latitudeDelta: 0.0922,
+                            longitudeDelta: 0.0421,
+                        } : undefined
+                    }
                 >
-
-                    <Marker coordinate={{ latitude: -23.5505, longitude: -46.6333 }} title="São Paulo" />
+                    {hasLocation && (
+                        <Marker
+                            coordinate={{ latitude: latitude!, longitude: longitude! }}
+                            title={title}
+                        />
+                    )}
                 </MapView>
             </ContentMap>
-            <Items />
-            <Items />
+            {children}
         </Container>
     );
 }
-
