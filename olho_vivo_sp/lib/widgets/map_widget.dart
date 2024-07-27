@@ -9,8 +9,8 @@ class MapWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GoogleMap(
-      initialCameraPosition: const CameraPosition(
-        target: LatLng(-23.5505, -46.6333),
+      initialCameraPosition: CameraPosition(
+        target: markers.first.position,
         zoom: 12,
       ),
       markers: markers,
