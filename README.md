@@ -44,7 +44,4 @@ npm run android
 
 ## Imagens do Projeto
 
-![Imagem-1](./imagens/1.webp)
-![Imagem-1](./imagens/2.webp)
-![Imagem-1](./imagens/3.webp)
-![Imagem-1](./imagens/4.webp)
+![Imagem](./imagens/single-image.webp)
