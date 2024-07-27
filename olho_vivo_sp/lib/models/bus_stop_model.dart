@@ -16,7 +16,7 @@ class BusStopModel {
   BusStopModel.fromMap(Map<String, dynamic> res)
       : code = res['cp'],
         name = res['np'],
-        address = res['ep'],
-        yPos = res['yp'],
-        xPos = res['xp'];
+        address = res['ed'],
+        yPos = res['yp'] ?? double.nan,
+        xPos = res['xp'] ?? double.nan;
 }
