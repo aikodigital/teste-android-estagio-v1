@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { MapRegion, Parada } from '@/types/types';
-import Title from '@/components/text/Title';
-import PageContainer from '@/components/containers/PageContainer';
+import Titulo from '@/components/text/Titulo';
 import useFetchHook from '@/custom-hooks/useFetchHook';
-import SearchInput from '@/components/pages/linhaDeOnibus/SearchInput';
+import InputDeBusca from '@/components/pages/linhaDeOnibus/InputDeBusca';
 import MapResult from '@/components/pages/paradaDeOnibus/MapResult';
+import ContainerParaPagina from '@/components/containers/ContainerParaPagina';
 
 export default function BuscarParadaDeOnibus() {
   const [paradas, setParadas] = useState<Parada[]>([]);
@@ -17,12 +17,12 @@ export default function BuscarParadaDeOnibus() {
     latitudeDelta: 0.5,
     longitudeDelta: 0.012,
   };
-  const [cordenadasSp, setCordenadasSp] = useState<MapRegion>(
+  const [coordenadasSp, setcoordenadasSp] = useState<MapRegion>(
     coordernadasSpValorInicial
   );
 
   const aoConcluirPesquisa = async (json: Parada[]) => {
-    setCordenadasSp(coordernadasSpValorInicial);
+    setcoordenadasSp(coordernadasSpValorInicial);
     setParadas(json);
   };
 
@@ -35,20 +35,20 @@ export default function BuscarParadaDeOnibus() {
   };
 
   return (
-    <PageContainer>
-      <Title>Buscar Paradas de Ônibus</Title>
-      <SearchInput
+    <ContainerParaPagina>
+      <Titulo>Buscar Paradas de Ônibus</Titulo>
+      <InputDeBusca
         placeholder='Ex: AFONSO BRAZ'
         value={inputDePesquisa}
         onChange={lidarComPesquisa}
         onChangeText={setInputDePesquisa}
       />
       <MapResult
-        cordenadasSp={cordenadasSp}
+        coordenadasSp={coordenadasSp}
         formState={formState}
         inputDePesquisa={inputDePesquisa}
         paradas={paradas}
       />
-    </PageContainer>
+    </ContainerParaPagina>
   );
 }

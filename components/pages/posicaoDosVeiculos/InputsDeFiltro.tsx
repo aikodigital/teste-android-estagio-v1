@@ -14,15 +14,15 @@ type Props = {
   trajeto: Trajeto;
   setTrajeto: React.Dispatch<React.SetStateAction<Trajeto>>;
   linhas: LinhaParaPosicao<PosicaoVeiculo>[];
-  setCordenadasSp: React.Dispatch<React.SetStateAction<MapRegion>>;
+  setcoordenadasSp: React.Dispatch<React.SetStateAction<MapRegion>>;
 };
 
-const FilteringInputs = ({
+const InputsDeFiltro = ({
   regioes,
   trajeto,
   setTrajeto,
   linhas,
-  setCordenadasSp,
+  setcoordenadasSp,
 }: Props) => {
   return (
     regioes.length > 0 && (
@@ -31,7 +31,7 @@ const FilteringInputs = ({
         {trajeto.de !== 'Todos' && (
           <Para
             linhas={linhas}
-            setCordenadasSp={setCordenadasSp}
+            setcoordenadasSp={setcoordenadasSp}
             setTrajeto={setTrajeto}
             trajeto={trajeto}
           />
@@ -41,7 +41,7 @@ const FilteringInputs = ({
   );
 };
 
-export default FilteringInputs;
+export default InputsDeFiltro;
 
 const styles = StyleSheet.create({
   inputContainer: {

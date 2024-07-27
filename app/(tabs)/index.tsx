@@ -6,13 +6,13 @@ import {
   PosicaoVeiculo,
   Trajeto,
 } from '@/types/types';
-import Loading from '@/components/form/loading/Loading';
+import Carregando from '@/components/form/loading/Carregando';
 import useRodeEmIntervalo from '@/custom-hooks/useRodeEmIntervalo';
-import Title from '@/components/text/Title';
-import PageContainer from '@/components/containers/PageContainer';
-import HomepageMap from '@/components/pages/posicaoDosVeiculos/HomepageMap';
-import FilteringInputs from '@/components/pages/posicaoDosVeiculos/FilteringInputs';
+import Titulo from '@/components/text/Titulo';
 import useFetchHook from '@/custom-hooks/useFetchHook';
+import ContainerParaPagina from '@/components/containers/ContainerParaPagina';
+import MapaParaPaginaPrincipal from '@/components/pages/posicaoDosVeiculos/MapaParaPaginaPrincipal';
+import InputsDeFiltro from '@/components/pages/posicaoDosVeiculos/InputsDeFiltro';
 
 export default function HomeScreen() {
   const { pesquisar } = useFetchHook({
@@ -25,7 +25,7 @@ export default function HomeScreen() {
     de: 'Todos',
     para: 'Todos',
   });
-  const [cordenadasSp, setCordenadasSp] = useState<MapRegion>({
+  const [coordenadasSp, setcoordenadasSp] = useState<MapRegion>({
     latitude: -23.550522,
     longitude: -46.633328,
     latitudeDelta: 1,
@@ -53,22 +53,22 @@ export default function HomeScreen() {
       )
     : linhas?.slice(0, 66);
 
-  if (linhas && !linhas?.length) return <Loading />;
+  if (linhas && !linhas?.length) return <Carregando />;
 
   return (
-    <PageContainer>
-      <Title>Posição dos Veículos</Title>
-      <HomepageMap
-        cordenadasSp={cordenadasSp}
+    <ContainerParaPagina>
+      <Titulo>Posição dos Veículos</Titulo>
+      <MapaParaPaginaPrincipal
+        coordenadasSp={coordenadasSp}
         linhasFiltradas={linhasFiltradas}
       />
-      <FilteringInputs
+      <InputsDeFiltro
         linhas={linhas}
         regioes={regioes}
-        setCordenadasSp={setCordenadasSp}
+        setcoordenadasSp={setcoordenadasSp}
         setTrajeto={setTrajeto}
         trajeto={trajeto}
       />
-    </PageContainer>
+    </ContainerParaPagina>
   );
 }

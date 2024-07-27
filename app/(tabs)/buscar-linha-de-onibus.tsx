@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { Linha } from '@/types/types';
-import Title from '@/components/text/Title';
-import PageContainer from '@/components/containers/PageContainer';
+import Titulo from '@/components/text/Titulo';
 import useFetchHook from '@/custom-hooks/useFetchHook';
-import SearchInput from '@/components/pages/linhaDeOnibus/SearchInput';
 import SearchResult from '@/components/pages/linhaDeOnibus/SearchResult';
+import ContainerParaPagina from '@/components/containers/ContainerParaPagina';
+import InputDeBusca from '@/components/pages/linhaDeOnibus/InputDeBusca';
 
 export default function PaginaDeLinhaDeOnibus() {
   const [linhas, setLinhas] = useState<Linha[]>([]);
@@ -24,9 +24,9 @@ export default function PaginaDeLinhaDeOnibus() {
   };
 
   return (
-    <PageContainer>
-      <Title>Buscar Linhas de Ônibus</Title>
-      <SearchInput
+    <ContainerParaPagina>
+      <Titulo>Buscar Linhas de Ônibus</Titulo>
+      <InputDeBusca
         placeholder='Ex: 8000'
         value={inputDePesquisa}
         onChangeText={setInputDePesquisa}
@@ -37,6 +37,6 @@ export default function PaginaDeLinhaDeOnibus() {
         inputDePesquisa={inputDePesquisa}
         linhas={linhas}
       />
-    </PageContainer>
+    </ContainerParaPagina>
   );
 }

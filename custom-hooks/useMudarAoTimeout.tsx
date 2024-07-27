@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 
-const useOnChangeTimeout = (time: number = 2000) => {
+const useMudarAoTimeout = (time: number = 2000) => {
   const timeoutRef = useRef<NodeJS.Timeout>();
   const runTimeout = (fn: () => any) => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -12,4 +12,4 @@ const useOnChangeTimeout = (time: number = 2000) => {
   return { runTimeout };
 };
 
-export default useOnChangeTimeout;
+export default useMudarAoTimeout;

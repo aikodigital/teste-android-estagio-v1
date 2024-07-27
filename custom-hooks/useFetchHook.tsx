@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import useOnChangeTimeout from './useOnChangeTimeout';
+import useMudarAoTimeout from './useMudarAoTimeout';
 
 const useFetchHook = ({
   iniciarSemLoading = false,
@@ -9,7 +9,7 @@ const useFetchHook = ({
   pesquisarSemTimeout?: boolean;
 }) => {
   const [formState, setFormState] = useState({ loading: false, error: '' });
-  const { runTimeout } = useOnChangeTimeout();
+  const { runTimeout } = useMudarAoTimeout();
 
   const pesquisarNaApi = async <T,>({
     conclusao,

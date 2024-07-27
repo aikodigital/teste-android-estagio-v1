@@ -1,14 +1,14 @@
 import { MapRegion, Posicao } from '@/types/types';
 import React, { PropsWithChildren } from 'react';
 import { StyleSheet } from 'react-native';
-import MapView, { MapMarker } from 'react-native-maps';
+import MapView from 'react-native-maps';
 
 type Props<T> = {
   region: MapRegion;
   initialRegion: MapRegion;
 } & PropsWithChildren;
 
-const Map = <T,>({ children, region, initialRegion }: Props<T>) => {
+const Mapa = <T,>({ children, region, initialRegion }: Props<T>) => {
   return (
     <MapView region={region} initialRegion={initialRegion} style={styles.map}>
       {children}
@@ -16,7 +16,7 @@ const Map = <T,>({ children, region, initialRegion }: Props<T>) => {
   );
 };
 
-export default Map;
+export default Mapa;
 
 const styles = StyleSheet.create({
   map: {

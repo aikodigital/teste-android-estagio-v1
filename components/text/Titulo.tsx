@@ -1,11 +1,11 @@
 import React, { PropsWithChildren } from 'react';
 import { StyleSheet, Text } from 'react-native';
 
-const Title = ({ children }: PropsWithChildren) => {
+const Titulo = ({ children }: PropsWithChildren) => {
   return <Text style={styles.title}>{children}</Text>;
 };
 
-export default Title;
+export default Titulo;
 
 const styles = StyleSheet.create({
   title: {

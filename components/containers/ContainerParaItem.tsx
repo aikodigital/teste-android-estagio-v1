@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, ViewProps } from 'react-native';
 
-const ItemContainer = ({ children, ...props }: ViewProps) => {
+const ContainerParaItem = ({ children, ...props }: ViewProps) => {
   return (
     <View style={styles.item} {...props}>
       {children}
@@ -9,7 +9,7 @@ const ItemContainer = ({ children, ...props }: ViewProps) => {
   );
 };
 
-export default ItemContainer;
+export default ContainerParaItem;
 
 const styles = StyleSheet.create({
   item: {

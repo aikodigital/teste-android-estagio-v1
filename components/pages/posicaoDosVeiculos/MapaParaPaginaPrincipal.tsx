@@ -1,16 +1,16 @@
-import Map from '@/components/map/Map';
+import Mapa from '@/components/map/Mapa';
 import { LinhaParaPosicao, MapRegion, PosicaoVeiculo } from '@/types/types';
 import React from 'react';
 import { MapMarker } from 'react-native-maps';
 
 type Props = {
-  cordenadasSp: MapRegion;
+  coordenadasSp: MapRegion;
   linhasFiltradas: LinhaParaPosicao<PosicaoVeiculo>[];
 };
 
-const HomepageMap = ({ cordenadasSp, linhasFiltradas }: Props) => {
+const MapaParaPaginaPrincipal = ({ coordenadasSp, linhasFiltradas }: Props) => {
   return (
-    <Map region={cordenadasSp} initialRegion={cordenadasSp}>
+    <Mapa region={coordenadasSp} initialRegion={coordenadasSp}>
       {linhasFiltradas?.map(({ vs, lt0, lt1 }) =>
         vs
           ?.flat(1)
@@ -24,8 +24,8 @@ const HomepageMap = ({ cordenadasSp, linhasFiltradas }: Props) => {
             />
           ))
       )}
-    </Map>
+    </Mapa>
   );
 };
 
-export default HomepageMap;
+export default MapaParaPaginaPrincipal;

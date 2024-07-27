@@ -1,6 +1,6 @@
-import ItemContainer from '@/components/containers/ItemContainer';
-import ErrorComponent from '@/components/form/error/Error';
-import Loading from '@/components/form/loading/Loading';
+import ContainerParaItem from '@/components/containers/ContainerParaItem';
+import Erro from '@/components/form/error/Erro';
+import Carregando from '@/components/form/loading/Carregando';
 import ItemText from '@/components/text/ItemText';
 import { Linha } from '@/types/types';
 import React from 'react';
@@ -16,9 +16,9 @@ type Props = {
 };
 
 const SearchResult = ({ formState, inputDePesquisa, linhas }: Props) => {
-  if (formState.error) return <ErrorComponent messagem={formState.error} />;
+  if (formState.error) return <Erro messagem={formState.error} />;
   return formState.loading && !formState.error ? (
-    <Loading />
+    <Carregando />
   ) : (
     inputDePesquisa.length > 0 && linhas.length > 0 && (
       <FlatList
@@ -29,7 +29,7 @@ const SearchResult = ({ formState, inputDePesquisa, linhas }: Props) => {
               ? 'Principal para Secundário'
               : 'Secundário para Principal';
           return (
-            <ItemContainer>
+            <ContainerParaItem>
               <ItemText>
                 Linha: {item.lt} - {item.tl}
               </ItemText>
@@ -38,7 +38,7 @@ const SearchResult = ({ formState, inputDePesquisa, linhas }: Props) => {
               <ItemText>Terminal Secundário: {item.ts}</ItemText>
               <ItemText>Sentido: {sl}</ItemText>
               <ItemText>Operação: {item.lc ? 'Circular' : 'Terminal'}</ItemText>
-            </ItemContainer>
+            </ContainerParaItem>
           );
         }}
       />

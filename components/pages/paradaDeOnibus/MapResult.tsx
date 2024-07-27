@@ -1,5 +1,5 @@
-import ErrorComponent from '@/components/form/error/Error';
-import Loading from '@/components/form/loading/Loading';
+import Erro from '@/components/form/error/Erro';
+import Carregando from '@/components/form/loading/Carregando';
 import { MapRegion, Parada } from '@/types/types';
 import React from 'react';
 import { StyleSheet } from 'react-native';
@@ -10,25 +10,25 @@ type Props = {
     loading: boolean;
     error: string;
   };
-  cordenadasSp: MapRegion;
+  coordenadasSp: MapRegion;
   paradas: Parada[];
   inputDePesquisa: string;
 };
 
 const MapResult = ({
   formState,
-  cordenadasSp,
+  coordenadasSp,
   paradas,
   inputDePesquisa,
 }: Props) => {
-  if (formState.error) return <ErrorComponent messagem={formState.error} />;
+  if (formState.error) return <Erro messagem={formState.error} />;
   return formState.loading && !formState.error ? (
-    <Loading />
+    <Carregando />
   ) : (
     inputDePesquisa.length > 0 && paradas.length > 0 && (
       <MapView
-        region={cordenadasSp}
-        initialRegion={cordenadasSp}
+        region={coordenadasSp}
+        initialRegion={coordenadasSp}
         style={styles.map}
       >
         {paradas?.map(({ px, py, np }, i) => (

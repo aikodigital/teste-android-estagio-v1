@@ -1,22 +1,16 @@
 import { Tabs } from 'expo-router';
 import React from 'react';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
 import { BusIcon } from '@/components/navigation/BusIcon';
 import { BusStopIcon } from '@/components/navigation/BusStopIcon';
 import { BusClockIcon } from '@/components/navigation/BusClockIcon';
 import { BusMarkerIcon } from '@/components/navigation/BusMarkerIcon';
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         headerShown: false,
         tabBarStyle: {
-          backgroundColor: Colors[colorScheme ?? 'light'].background,
           borderTopWidth: 0,
           shadowColor: '#000',
           shadowOffset: { width: 0, height: 2 },

@@ -1,5 +1,5 @@
 import React from 'react';
-import SearchInput from '../linhaDeOnibus/SearchInput';
+import InputDeBusca from '../linhaDeOnibus/InputDeBusca';
 
 type Props = {
   inputDePesquisa: {
@@ -22,7 +22,7 @@ const Inputs = ({
 }: Props) => {
   return (
     <>
-      <SearchInput
+      <InputDeBusca
         placeholder='Parada - Ex: 340015329'
         value={inputDePesquisa.codigoParada}
         onChangeText={(v) =>
@@ -30,7 +30,7 @@ const Inputs = ({
         }
         onChange={lidarComPesquisa}
       />
-      <SearchInput
+      <InputDeBusca
         placeholder='Linha - Ex: 1989'
         value={inputDePesquisa.codigoLinha}
         onChangeText={(v) =>

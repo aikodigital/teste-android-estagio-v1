@@ -2,7 +2,7 @@ import { EvilIcons } from '@expo/vector-icons';
 import React from 'react';
 import { StyleSheet, TextInput, TextInputProps, View } from 'react-native';
 
-const SearchInput = ({ ...props }: TextInputProps) => {
+const InputDeBusca = ({ ...props }: TextInputProps) => {
   return (
     <View style={styles.container}>
       <EvilIcons style={styles.icon} name='search' size={24} color='black' />
@@ -11,7 +11,7 @@ const SearchInput = ({ ...props }: TextInputProps) => {
   );
 };
 
-export default SearchInput;
+export default InputDeBusca;
 
 const styles = StyleSheet.create({
   container: {

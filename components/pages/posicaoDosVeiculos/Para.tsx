@@ -9,7 +9,7 @@ type Props = {
   setTrajeto: (value: React.SetStateAction<Trajeto>) => void;
   trajeto: Trajeto;
   linhas: LinhaParaPosicao<PosicaoVeiculo>[];
-  setCordenadasSp: (
+  setcoordenadasSp: (
     value: React.SetStateAction<{
       latitude: number;
       longitude: number;
@@ -19,7 +19,7 @@ type Props = {
   ) => void;
 };
 
-const Para = ({ setTrajeto, trajeto, linhas, setCordenadasSp }: Props) => {
+const Para = ({ setTrajeto, trajeto, linhas, setcoordenadasSp }: Props) => {
   return (
     <View style={styles.selectContainer}>
       <Text style={styles.label}>Para:</Text>
@@ -27,7 +27,7 @@ const Para = ({ setTrajeto, trajeto, linhas, setCordenadasSp }: Props) => {
         useNativeAndroidPickerStyle={false}
         onValueChange={(value) => {
           setTrajeto((prev) => ({ ...prev, para: value }));
-          setCordenadasSp((prev) => {
+          setcoordenadasSp((prev) => {
             const linhasFiltradas = linhas?.filter(
               (linha) => linha.lt1 === value
             );

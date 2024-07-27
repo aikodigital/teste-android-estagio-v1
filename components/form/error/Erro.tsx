@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-const ErrorComponent = ({ messagem }: { messagem: string }) => {
+const Erro = ({ messagem }: { messagem: string }) => {
   return (
     <View style={styles.containerDeErro}>
       <Text style={styles.mensagemDeErro}>{messagem}</Text>
@@ -23,4 +23,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ErrorComponent;
+export default Erro;
