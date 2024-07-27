@@ -1,7 +1,7 @@
 import { Trajeto } from '@/app/(tabs)';
 import { LinhaParaPosicao, PosicaoVeiculo } from '@/types/posicao';
 import React from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
 
 type Props = {
@@ -20,7 +20,7 @@ type Props = {
 
 const Para = ({ setTrajeto, trajeto, linhas, setCordenadasSp }: Props) => {
   return (
-    <>
+    <View style={styles.selectContainer}>
       <Text>Para:</Text>
       <RNPickerSelect
         useNativeAndroidPickerStyle={false}
@@ -62,7 +62,7 @@ const Para = ({ setTrajeto, trajeto, linhas, setCordenadasSp }: Props) => {
             })),
         ]}
       />
-    </>
+    </View>
   );
 };
 
@@ -75,5 +75,11 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     paddingHorizontal: 8,
     fontSize: 12,
+  },
+  selectContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
   },
 });

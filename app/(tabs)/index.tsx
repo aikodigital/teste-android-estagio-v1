@@ -1,15 +1,15 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { useEffect, useRef, useState } from 'react';
 import {
   LinhaParaPosicao,
   PosicaoDosVeiculos,
   PosicaoVeiculo,
 } from '@/types/posicao';
-import MapView, { MapMarker, Marker } from 'react-native-maps';
+import MapView, { MapMarker } from 'react-native-maps';
 import { autenticarNaApi } from '@/helpers/autenticarNaApi';
-import RNPickerSelect from 'react-native-picker-select';
 import De from '@/components/pages/posicaoDosVeiculos/De';
 import Para from '@/components/pages/posicaoDosVeiculos/Para';
+import Loading from '@/components/form/loading/Loading';
 
 const useRodeEmIntervalo = (fn: () => Promise<any>, delay: number) => {
   const intervaloRef = useRef<NodeJS.Timeout>();
@@ -70,7 +70,7 @@ export default function HomeScreen() {
       )
     : linhas?.slice(0, 66);
 
-  if (!linhas?.length) return <Text>Carregando</Text>;
+  if (!linhas?.length) return <Loading />;
   return (
     <>
       <MapView
@@ -116,6 +116,7 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     display: 'flex',
+    flexWrap: 'wrap',
     flexDirection: 'row',
     gap: 8,
     padding: 12,
