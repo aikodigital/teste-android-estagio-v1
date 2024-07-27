@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:olho_vivo_sp/models/bus_stop_model.dart';
 import 'package:olho_vivo_sp/models/hall_model.dart';
 import 'package:olho_vivo_sp/services/api_service.dart';
+import 'package:olho_vivo_sp/widgets/bus_stops_list.dart';
 import 'package:provider/provider.dart';
 
 class BusStopsScreen extends StatelessWidget {
@@ -27,30 +29,13 @@ class BusStopsScreen extends StatelessWidget {
         ),
         builder: (ctx, snp) {
           if (snp.hasData && snp.connectionState == ConnectionState.done) {
-            final busStops = snp.data as List;
+            final busStops = snp.data as List<BusStopModel>;
 
-            return ListView.builder(
-              padding: const EdgeInsets.only(
-                left: 20,
-                right: 20,
-                top: 8,
-              ),
-              itemBuilder: (ctx, i) {
-                return Card(
-                  child: ListTile(
-                    leading: const Icon(Icons.bus_alert),
-                    onTap: () {},
-                    title: Text(busStops[i]['np']),
-                    subtitle: Text(busStops[i]['ed']),
-                  ),
-                );
-              },
-              itemCount: busStops.length,
-            );
+            return BusStopsList(busStops: busStops);
           }
 
           if (snp.hasError && snp.connectionState == ConnectionState.done) {
-            return const Text('Deu ruim');
+            return Center(child: Text(snp.error.toString()));
           }
 
           return const Center(
