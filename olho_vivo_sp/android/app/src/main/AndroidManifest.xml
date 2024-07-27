@@ -3,6 +3,8 @@
         android:label="olho_vivo_sp"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+        <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyBUcQ68IS4rUdihyt1Vc6rT5Yi6CsnJFNY"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"
