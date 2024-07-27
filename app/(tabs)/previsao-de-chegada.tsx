@@ -7,6 +7,7 @@ import EvilIcons from '@expo/vector-icons/EvilIcons';
 import Title from '@/components/text/Title';
 import PageContainer from '@/components/containers/PageContainer';
 import { Linha, ParadaPrevisaoChegada, PrevisaoChegada } from '@/types/types';
+import ItemText from '@/components/text/ItemText';
 
 export default function PaginaDeLinhaDeOnibus() {
   const [parada, setParada] = useState<ParadaPrevisaoChegada | null>(null);
@@ -25,36 +26,7 @@ export default function PaginaDeLinhaDeOnibus() {
           `/Previsao?codigoParada=${340015329}&codigoLinha=${1989}`
       );
       if (!res.ok) throw new Error('Houve um erro ao pesquisar.');
-      // const json = (await res.json()) as PrevisaoChegada;
-      const json: PrevisaoChegada = {
-        hr: '20:09',
-        p: {
-          cp: 4200953,
-          np: 'PARADA ROBERTO SELMI DEI B/C',
-          py: -23.675901,
-          px: -46.752812,
-          l: [
-            {
-              c: '7021-10',
-              cl: 1989,
-              sl: 1,
-              lt0: 'TERM. JOÃO DIAS',
-              lt1: 'JD. MARACÁ',
-              qv: 1,
-              vs: [
-                {
-                  p: '74558',
-                  t: '23:11',
-                  a: true,
-                  ta: '2017-05-07T23:09:05Z',
-                  py: -23.67603,
-                  px: -46.75891166666667,
-                },
-              ],
-            },
-          ],
-        },
-      };
+      const json = (await res.json()) as PrevisaoChegada;
       if (!json) throw new Error(`Houve um erro ao pesquisar.`);
       if (json && !json.p)
         throw new Error('Nenhuma previsão foi encontrada para essa pesquisa.');
@@ -119,39 +91,24 @@ export default function PaginaDeLinhaDeOnibus() {
             <FlatList
               data={parada.l}
               renderItem={({ item }) => {
-                // let sl: string;
-                // switch (item.sl) {
-                //   case 1:
-                //     sl = 'Principal para Secundário';
-                //     break;
-                //   case 2:
-                //     sl = 'Secundário para Principal';
-                //     break;
-                //   default:
-                //     sl = '';
-                //     break;
-                // }
-                console.log(item);
-
                 return (
                   <View style={styles.item}>
-                    <Text style={styles.itemText}>Linha {item.cl}</Text>
-                    {/* <Text style={styles.itemText}>
-                      Linha: {item.lt} - {item.tl}
-                    </Text>
-                    <Text style={styles.itemText}>
-                      Código Identificador: {item.cl}
-                    </Text>
-                    <Text style={styles.itemText}>
-                      Terminal Principal: {item.tp}
-                    </Text>
-                    <Text style={styles.itemText}>
-                      Terminal Secundário: {item.ts}
-                    </Text>
-                    <Text style={styles.itemText}>Sentido: {sl}</Text>
-                    <Text style={styles.itemText}>
-                      Operação: {item.lc ? 'Circular' : 'Terminal'}
-                    </Text> */}
+                    <ItemText>
+                      De "{item.lt0}" para "{item.lt1}":
+                    </ItemText>
+                    <FlatList
+                      data={item.vs}
+                      renderItem={({ item }) => {
+                        return (
+                          <View style={styles.item}>
+                            <ItemText>Carro: {item.p}</ItemText>
+                            <ItemText>
+                              Previsão de chegada para {item.t}.
+                            </ItemText>
+                          </View>
+                        );
+                      }}
+                    />
                   </View>
                 );
               }}
@@ -200,10 +157,5 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 2,
     elevation: 2,
-  },
-  itemText: {
-    fontSize: 16,
-    color: '#333',
-    marginBottom: 4,
   },
 });

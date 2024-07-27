@@ -1,11 +1,11 @@
 import { StyleSheet, View } from 'react-native';
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import {
   LinhaParaPosicao,
   PosicaoDosVeiculos,
   PosicaoVeiculo,
   Trajeto,
-} from '@/types/posicao';
+} from '@/types/types';
 import MapView, { MapMarker } from 'react-native-maps';
 import { autenticarNaApi } from '@/helpers/autenticarNaApi';
 import De from '@/components/pages/posicaoDosVeiculos/De';
@@ -40,7 +40,7 @@ export default function HomeScreen() {
     } catch (error) {
       error instanceof Error && console.log(error.message);
       await autenticarNaApi();
-      await fetchData();
+      setTimeout(async () => await fetchData(), 15000);
     }
   };
 

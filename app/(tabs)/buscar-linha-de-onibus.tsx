@@ -1,6 +1,6 @@
 import { FlatList, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useRef, useState } from 'react';
-import { Linha } from '@/types/posicao';
+import { Linha } from '@/types/types';
 import { autenticarNaApi } from '@/helpers/autenticarNaApi';
 import Loading from '@/components/form/loading/Loading';
 import ErrorComponent from '@/components/form/error/Error';

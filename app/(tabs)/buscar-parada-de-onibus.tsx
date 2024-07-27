@@ -1,6 +1,6 @@
 import { StyleSheet, TextInput, View } from 'react-native';
 import { useRef, useState } from 'react';
-import { Parada } from '@/types/posicao';
+import { Parada } from '@/types/types';
 import { autenticarNaApi } from '@/helpers/autenticarNaApi';
 import Loading from '@/components/form/loading/Loading';
 import ErrorComponent from '@/components/form/error/Error';
