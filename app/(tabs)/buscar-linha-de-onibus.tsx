@@ -5,6 +5,8 @@ import { autenticarNaApi } from '@/helpers/autenticarNaApi';
 import Loading from '@/components/form/loading/Loading';
 import ErrorComponent from '@/components/form/error/Error';
 import EvilIcons from '@expo/vector-icons/EvilIcons';
+import Title from '@/components/text/Title';
+
 export type Trajeto = { de: string | null; para: string | null };
 
 export default function PaginaDeLinhaDeOnibus() {
@@ -60,9 +62,9 @@ export default function PaginaDeLinhaDeOnibus() {
       {formState.loading && !formState.error ? (
         <Loading />
       ) : (
-        inputDePesquisa.length > 0 && (
+        inputDePesquisa.length > 0 &&
+        linhas.length > 0 && (
           <>
-            <Text style={styles.title}>{linhas[0].lt}</Text>
             <FlatList
               data={linhas}
               renderItem={({ item }) => {
@@ -80,14 +82,22 @@ export default function PaginaDeLinhaDeOnibus() {
                 }
                 return (
                   <View style={styles.item}>
-                    <Text>
+                    <Text style={styles.itemText}>
                       Linha: {item.lt} - {item.tl}
                     </Text>
-                    <Text>Código Identificador: {item.cl}</Text>
-                    <Text>Terminal Principal: {item.tp}</Text>
-                    <Text>Terminal Secundário: {item.ts}</Text>
-                    <Text>Sentido: {sl}</Text>
-                    <Text>Operação: {item.lc ? 'Circular' : 'Terminal'}</Text>
+                    <Text style={styles.itemText}>
+                      Código Identificador: {item.cl}
+                    </Text>
+                    <Text style={styles.itemText}>
+                      Terminal Principal: {item.tp}
+                    </Text>
+                    <Text style={styles.itemText}>
+                      Terminal Secundário: {item.ts}
+                    </Text>
+                    <Text style={styles.itemText}>Sentido: {sl}</Text>
+                    <Text style={styles.itemText}>
+                      Operação: {item.lc ? 'Circular' : 'Terminal'}
+                    </Text>
                   </View>
                 );
               }}
@@ -102,33 +112,57 @@ export default function PaginaDeLinhaDeOnibus() {
 const styles = StyleSheet.create({
   pageContainer: {
     paddingTop: 28,
-    paddingBottom: 100,
+    paddingBottom: 180,
     paddingHorizontal: 14,
+    backgroundColor: '#f0f4f8',
   },
-  title: { textAlign: 'center' },
+  title: {
+    textAlign: 'center',
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#333',
+    marginBottom: 20,
+  },
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#F2F2F2',
+    backgroundColor: '#fff',
     borderRadius: 10,
     paddingHorizontal: 10,
     marginVertical: 10,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
+    elevation: 2,
   },
-  icon: { marginBottom: 4 },
+  icon: {
+    marginBottom: 4,
+    marginRight: 8,
+  },
   input: {
     flex: 1,
     height: 40,
     fontSize: 16,
+    color: '#333',
   },
   item: {
     borderWidth: 1,
     borderRadius: 6,
-    borderColor: '#eee',
-    backgroundColor: 'white',
-    padding: 8,
+    borderColor: '#ddd',
+    backgroundColor: '#fff',
+    padding: 16,
     fontSize: 18,
     marginTop: 8,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
+    elevation: 2,
+  },
+  itemText: {
+    fontSize: 16,
     color: '#333',
-    // width: 180,
+    marginBottom: 4,
   },
 });

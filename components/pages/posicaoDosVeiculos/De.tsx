@@ -12,19 +12,19 @@ type Props = {
 const De = ({ setTrajeto, trajeto, regioes }: Props) => {
   return (
     <View style={styles.selectContainer}>
-      <Text>De:</Text>
+      <Text style={styles.label}>De:</Text>
       <RNPickerSelect
         useNativeAndroidPickerStyle={false}
         onValueChange={(value) =>
           setTrajeto((prev) => ({ ...prev, de: value }))
         }
         value={trajeto.de}
-        style={{ inputAndroid: styles.select }}
+        style={{ inputAndroid: styles.select, inputIOS: styles.select }}
         items={[
           { label: 'Todos', value: 'Todos' },
-          ...regioes.map((rergiao) => ({
-            label: rergiao,
-            value: rergiao,
+          ...regioes.map((regiao) => ({
+            label: regiao,
+            value: regiao,
           })),
         ]}
       />
@@ -34,18 +34,36 @@ const De = ({ setTrajeto, trajeto, regioes }: Props) => {
 
 export default De;
 
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
   select: {
-    borderColor: '1px solid #333',
+    borderColor: '#333',
     borderWidth: 1,
-    borderRadius: 4,
-    paddingHorizontal: 8,
-    fontSize: 12,
+    borderRadius: 8,
+    paddingHorizontal: 10,
+    backgroundColor: '#fff',
+    color: '#333',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    elevation: 2,
+    fontSize: 11,
   },
   selectContainer: {
-    display: 'flex',
     flexDirection: 'row',
+    gap: 8,
     alignItems: 'center',
-    gap: 4,
+    backgroundColor: '#f9f9f9',
+    padding: 10,
+    borderRadius: 10,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 1,
+  },
+  label: {
+    fontWeight: 'bold',
+    color: '#333',
   },
 });
