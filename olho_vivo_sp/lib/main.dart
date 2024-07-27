@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:olho_vivo_sp/screens/bus_stops_screen.dart';
-import 'package:olho_vivo_sp/screens/hall_detail_screen.dart';
+import 'package:olho_vivo_sp/screens/map_detail_screen.dart';
 import 'package:olho_vivo_sp/services/api_service.dart';
 import 'package:provider/provider.dart';
 
@@ -32,8 +32,8 @@ class OlhoVivoSp extends StatelessWidget {
         ),
         home: const Home(),
         routes: {
-          Routes.hall_detail_screen: (ctx) => const HallDetailScreen(),
           Routes.bus_stops_screen: (ctx) => const BusStopsScreen(),
+          Routes.map_detail_screen: (ctx) => const MapDetailScreen(),
         },
       ),
     );
