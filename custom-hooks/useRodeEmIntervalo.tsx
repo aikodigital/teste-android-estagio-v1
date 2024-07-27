@@ -14,7 +14,6 @@ const useRodeEmIntervalo = (fn: () => Promise<any>, delay: number) => {
 
     return () => {
       clearInterval(intervaloRef.current);
-      intervaloRef.current = undefined;
     };
   }, []);
 };

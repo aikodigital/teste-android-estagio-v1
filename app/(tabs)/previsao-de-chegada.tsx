@@ -1,13 +1,14 @@
 import { FlatList, StyleSheet, Text, TextInput, View } from 'react-native';
-import { useRef, useState } from 'react';
-import { autenticarNaApi } from '@/helpers/autenticarNaApi';
+import { useState } from 'react';
 import Loading from '@/components/form/loading/Loading';
 import ErrorComponent from '@/components/form/error/Error';
 import EvilIcons from '@expo/vector-icons/EvilIcons';
 import Title from '@/components/text/Title';
 import PageContainer from '@/components/containers/PageContainer';
-import { Linha, ParadaPrevisaoChegada, PrevisaoChegada } from '@/types/types';
+import { ParadaPrevisaoChegada, PrevisaoChegada } from '@/types/types';
 import ItemText from '@/components/text/ItemText';
+import useFormState from '@/custom-hooks/useFormState';
+import useOnChangeTimeout from '@/custom-hooks/useOnChangeTimeout';
 
 export default function PaginaDeLinhaDeOnibus() {
   const [parada, setParada] = useState<ParadaPrevisaoChegada | null>(null);
@@ -15,12 +16,11 @@ export default function PaginaDeLinhaDeOnibus() {
     codigoParada: '',
     codigoLinha: '',
   });
-  const [formState, setFormState] = useState({ loading: false, error: '' });
-  const timeoutRef = useRef<NodeJS.Timeout>();
+  const { formState, setFormState } = useFormState();
+  const { runTimeout } = useOnChangeTimeout();
 
   const fetchData = async () => {
     try {
-      await autenticarNaApi();
       const res = await fetch(
         process.env.API_URL +
           `/Previsao?codigoParada=${340015329}&codigoLinha=${1989}`
@@ -32,7 +32,6 @@ export default function PaginaDeLinhaDeOnibus() {
         throw new Error('Nenhuma previsão foi encontrada para essa pesquisa.');
       setParada(json.p);
     } catch (error) {
-      await autenticarNaApi();
       if (error instanceof Error) {
         console.log(error.message);
         setFormState((prev) => ({ ...prev, error: error.message }));
@@ -46,10 +45,7 @@ export default function PaginaDeLinhaDeOnibus() {
     if (!inputDePesquisa.codigoLinha || !inputDePesquisa.codigoParada) return;
     setFormState({ error: '', loading: true });
     setParada(null);
-    if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    timeoutRef.current = setTimeout(async () => {
-      await fetchData();
-    }, 2000);
+    runTimeout(fetchData);
   };
 
   return (

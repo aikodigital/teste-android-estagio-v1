@@ -1,22 +1,22 @@
 import { FlatList, StyleSheet, Text, TextInput, View } from 'react-native';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { Linha } from '@/types/types';
-import { autenticarNaApi } from '@/helpers/autenticarNaApi';
 import Loading from '@/components/form/loading/Loading';
 import ErrorComponent from '@/components/form/error/Error';
 import EvilIcons from '@expo/vector-icons/EvilIcons';
 import Title from '@/components/text/Title';
 import PageContainer from '@/components/containers/PageContainer';
+import useFormState from '@/custom-hooks/useFormState';
+import useOnChangeTimeout from '@/custom-hooks/useOnChangeTimeout';
 
 export default function PaginaDeLinhaDeOnibus() {
   const [linhas, setLinhas] = useState<Linha[]>([]);
   const [inputDePesquisa, setInputDePesquisa] = useState('');
-  const [formState, setFormState] = useState({ loading: false, error: '' });
-  const timeoutRef = useRef<NodeJS.Timeout>();
+  const { formState, setFormState } = useFormState();
+  const { runTimeout } = useOnChangeTimeout();
 
   const fetchData = async () => {
     try {
-      await autenticarNaApi();
       const res = await fetch(
         process.env.API_URL + '/Linha/Buscar?termosBusca=' + inputDePesquisa
       );
@@ -25,9 +25,7 @@ export default function PaginaDeLinhaDeOnibus() {
       if (!json || !json.length) throw new Error(`Nenhuma linha encontrada.`);
       setLinhas(json);
     } catch (error) {
-      await autenticarNaApi();
       if (error instanceof Error) {
-        console.log(error.message);
         setFormState((prev) => ({ ...prev, error: error.message }));
       }
     } finally {
@@ -38,10 +36,7 @@ export default function PaginaDeLinhaDeOnibus() {
   const lidarComPesquisa = () => {
     setFormState({ error: '', loading: true });
     setLinhas([]);
-    if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    timeoutRef.current = setTimeout(async () => {
-      await fetchData();
-    }, 2000);
+    runTimeout(fetchData);
   };
 
   return (

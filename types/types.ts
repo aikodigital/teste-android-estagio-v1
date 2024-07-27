@@ -56,3 +56,11 @@ export type ParadaPrevisaoChegada = {
   np: string;
   l: LinhaParaPosicao<{ t: string } & PosicaoVeiculo & Posicao>[];
 } & Posicao;
+
+//mapa
+export type MapRegion = {
+  latitude: number;
+  longitude: number;
+  latitudeDelta: number;
+  longitudeDelta: number;
+};

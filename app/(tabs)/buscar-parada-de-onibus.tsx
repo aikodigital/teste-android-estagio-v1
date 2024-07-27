@@ -1,5 +1,5 @@
 import { StyleSheet, TextInput, View } from 'react-native';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { Parada } from '@/types/types';
 import { autenticarNaApi } from '@/helpers/autenticarNaApi';
 import Loading from '@/components/form/loading/Loading';
@@ -8,12 +8,15 @@ import EvilIcons from '@expo/vector-icons/EvilIcons';
 import Title from '@/components/text/Title';
 import MapView, { MapMarker } from 'react-native-maps';
 import PageContainer from '@/components/containers/PageContainer';
+import useFormState from '@/custom-hooks/useFormState';
+import useOnChangeTimeout from '@/custom-hooks/useOnChangeTimeout';
 
 export default function BuscarParadaDeOnibus() {
   const [paradas, setParadas] = useState<Parada[]>([]);
   const [inputDePesquisa, setInputDePesquisa] = useState('');
-  const [formState, setFormState] = useState({ loading: false, error: '' });
-  const timeoutRef = useRef<NodeJS.Timeout>();
+  const { formState, setFormState } = useFormState();
+  const { runTimeout } = useOnChangeTimeout();
+
   const cordernadasSpValorInicial = {
     latitude: -23.550522,
     longitude: -46.633328,
@@ -24,7 +27,6 @@ export default function BuscarParadaDeOnibus() {
 
   const fetchData = async () => {
     try {
-      await autenticarNaApi();
       const res = await fetch(
         process.env.API_URL + '/Parada/Buscar?termosBusca=' + inputDePesquisa
       );
@@ -34,7 +36,6 @@ export default function BuscarParadaDeOnibus() {
       setParadas(json);
       setCordenadasSp(cordernadasSpValorInicial);
     } catch (error) {
-      await autenticarNaApi();
       if (error instanceof Error) {
         console.log(error.message);
         setFormState((prev) => ({ ...prev, error: error.message }));
@@ -47,10 +48,7 @@ export default function BuscarParadaDeOnibus() {
   const lidarComPesquisa = () => {
     setFormState({ error: '', loading: true });
     setParadas([]);
-    if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    timeoutRef.current = setTimeout(async () => {
-      await fetchData();
-    }, 2000);
+    runTimeout(fetchData);
   };
 
   return (
