@@ -7,7 +7,7 @@ import Title from '@/components/text/Title';
 import PageContainer from '@/components/containers/PageContainer';
 import { ParadaPrevisaoChegada, PrevisaoChegada } from '@/types/types';
 import ItemText from '@/components/text/ItemText';
-import useFormState from '@/custom-hooks/useFormState';
+import useFetchHook from '@/custom-hooks/useFetchHook';
 import useOnChangeTimeout from '@/custom-hooks/useOnChangeTimeout';
 
 export default function PaginaDeLinhaDeOnibus() {
@@ -16,7 +16,7 @@ export default function PaginaDeLinhaDeOnibus() {
     codigoParada: '',
     codigoLinha: '',
   });
-  const { formState, setFormState } = useFormState();
+  const { formState, setFormState } = useFetchHook({});
   const { runTimeout } = useOnChangeTimeout();
 
   const fetchData = async () => {

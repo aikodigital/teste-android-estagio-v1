@@ -1,15 +1,25 @@
 import { useState } from 'react';
 import useOnChangeTimeout from './useOnChangeTimeout';
 
-const useFormState = () => {
+const useFetchHook = ({
+  iniciarSemLoading = false,
+  pesquisarSemTimeout = false,
+}: {
+  iniciarSemLoading?: boolean;
+  pesquisarSemTimeout?: boolean;
+}) => {
   const [formState, setFormState] = useState({ loading: false, error: '' });
   const { runTimeout } = useOnChangeTimeout();
 
-  const pesquisarNaApi = async <T,>(
-    conclusao: (json: T) => Promise<any>,
-    url: string,
-    options?: RequestInit
-  ) => {
+  const pesquisarNaApi = async <T,>({
+    conclusao,
+    url,
+    options,
+  }: {
+    conclusao: (json: T) => Promise<any>;
+    url: string;
+    options?: RequestInit;
+  }) => {
     try {
       const res = await fetch(url, options);
       if (!res.ok) throw new Error('Houve um erro ao pesquisar.');
@@ -32,11 +42,15 @@ const useFormState = () => {
     url: string,
     options?: RequestInit
   ) => {
-    setFormState({ error: '', loading: true });
-    runTimeout(() => pesquisarNaApi<T>(conclusao, url, options));
+    if (!iniciarSemLoading) setFormState({ error: '', loading: true });
+    if (pesquisarSemTimeout) {
+      pesquisarNaApi<T>({ conclusao, url, options });
+    } else {
+      runTimeout(() => pesquisarNaApi<T>({ conclusao, url, options }));
+    }
   };
 
   return { formState, setFormState, pesquisar };
 };
 
-export default useFormState;
+export default useFetchHook;

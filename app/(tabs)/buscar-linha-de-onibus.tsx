@@ -2,15 +2,14 @@ import { useState } from 'react';
 import { Linha } from '@/types/types';
 import Title from '@/components/text/Title';
 import PageContainer from '@/components/containers/PageContainer';
-import useFormState from '@/custom-hooks/useFormState';
-import useOnChangeTimeout from '@/custom-hooks/useOnChangeTimeout';
+import useFetchHook from '@/custom-hooks/useFetchHook';
 import SearchInput from '@/components/pages/linhaDeOnibus/SearchInput';
 import SearchResult from '@/components/pages/linhaDeOnibus/SearchResult';
 
 export default function PaginaDeLinhaDeOnibus() {
   const [linhas, setLinhas] = useState<Linha[]>([]);
   const [inputDePesquisa, setInputDePesquisa] = useState('');
-  const { formState, pesquisar } = useFormState();
+  const { formState, pesquisar } = useFetchHook({});
 
   const aoConcluirPesquisa = async (json: Linha[]) => {
     setLinhas(json);

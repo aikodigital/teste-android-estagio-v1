@@ -1,21 +1,15 @@
-import { StyleSheet, TextInput, View } from 'react-native';
 import { useState } from 'react';
 import { MapRegion, Parada } from '@/types/types';
-import Loading from '@/components/form/loading/Loading';
-import ErrorComponent from '@/components/form/error/Error';
-import EvilIcons from '@expo/vector-icons/EvilIcons';
 import Title from '@/components/text/Title';
-import MapView, { MapMarker } from 'react-native-maps';
 import PageContainer from '@/components/containers/PageContainer';
-import useFormState from '@/custom-hooks/useFormState';
-import useOnChangeTimeout from '@/custom-hooks/useOnChangeTimeout';
+import useFetchHook from '@/custom-hooks/useFetchHook';
 import SearchInput from '@/components/pages/linhaDeOnibus/SearchInput';
 import MapResult from '@/components/pages/paradaDeOnibus/MapResult';
 
 export default function BuscarParadaDeOnibus() {
   const [paradas, setParadas] = useState<Parada[]>([]);
   const [inputDePesquisa, setInputDePesquisa] = useState('');
-  const { formState, pesquisar } = useFormState();
+  const { formState, pesquisar } = useFetchHook({});
 
   const coordernadasSpValorInicial = {
     latitude: -23.550522,

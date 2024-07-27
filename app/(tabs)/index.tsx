@@ -12,8 +12,13 @@ import Title from '@/components/text/Title';
 import PageContainer from '@/components/containers/PageContainer';
 import HomepageMap from '@/components/pages/posicaoDosVeiculos/HomepageMap';
 import FilteringInputs from '@/components/pages/posicaoDosVeiculos/FilteringInputs';
+import useFetchHook from '@/custom-hooks/useFetchHook';
 
 export default function HomeScreen() {
+  const { pesquisar } = useFetchHook({
+    iniciarSemLoading: true,
+    pesquisarSemTimeout: true,
+  });
   const [linhas, setLinhas] = useState<LinhaParaPosicao<PosicaoVeiculo>[]>([]);
   const [regioes, setRegioes] = useState<string[]>([]);
   const [trajeto, setTrajeto] = useState<Trajeto>({
@@ -27,21 +32,19 @@ export default function HomeScreen() {
     longitudeDelta: 0.012,
   });
 
-  const fetchData = async () => {
-    try {
-      const res = await fetch(process.env.API_URL + '/Posicao');
-      if (!res.ok) throw Error('Error fetching Data');
-      const json = (await res.json()) as PosicaoDosVeiculos;
-      if (!json) throw new Error('Error fetching Data');
-      setLinhas(json?.l);
-      setRegioes(json?.l.map((r) => r.lt0));
-    } catch (error) {
-      error instanceof Error && console.log(error.message);
-      setTimeout(async () => await fetchData(), 15000);
-    }
+  const aoConcluirPesquisa = async (json: PosicaoDosVeiculos) => {
+    setLinhas(json?.l);
+    setRegioes(json?.l.map((r) => r.lt0));
   };
 
-  useRodeEmIntervalo(fetchData, 10000);
+  const fetchData = async () => {
+    await pesquisar<PosicaoDosVeiculos>(
+      aoConcluirPesquisa,
+      process.env.API_URL + '/Posicao'
+    );
+  };
+
+  useRodeEmIntervalo(fetchData, 15000);
 
   const seTiverFiltro = linhas.length > 0 && trajeto.para !== 'Todos';
   const linhasFiltradas = seTiverFiltro
