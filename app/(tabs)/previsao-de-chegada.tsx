@@ -1,4 +1,4 @@
-import { FlatList, StyleSheet, Text, TextInput, View } from 'react-native';
+import { FlatList, StyleSheet, TextInput, View } from 'react-native';
 import { useState } from 'react';
 import Loading from '@/components/form/loading/Loading';
 import ErrorComponent from '@/components/form/error/Error';
@@ -8,7 +8,6 @@ import PageContainer from '@/components/containers/PageContainer';
 import { ParadaPrevisaoChegada, PrevisaoChegada } from '@/types/types';
 import ItemText from '@/components/text/ItemText';
 import useFetchHook from '@/custom-hooks/useFetchHook';
-import useOnChangeTimeout from '@/custom-hooks/useOnChangeTimeout';
 
 export default function PaginaDeLinhaDeOnibus() {
   const [parada, setParada] = useState<ParadaPrevisaoChegada | null>(null);
@@ -16,36 +15,19 @@ export default function PaginaDeLinhaDeOnibus() {
     codigoParada: '',
     codigoLinha: '',
   });
-  const { formState, setFormState } = useFetchHook({});
-  const { runTimeout } = useOnChangeTimeout();
+  const { pesquisar, formState } = useFetchHook({});
 
-  const fetchData = async () => {
-    try {
-      const res = await fetch(
-        process.env.API_URL +
-          `/Previsao?codigoParada=${340015329}&codigoLinha=${1989}`
-      );
-      if (!res.ok) throw new Error('Houve um erro ao pesquisar.');
-      const json = (await res.json()) as PrevisaoChegada;
-      if (!json) throw new Error(`Houve um erro ao pesquisar.`);
-      if (json && !json.p)
-        throw new Error('Nenhuma previsão foi encontrada para essa pesquisa.');
-      setParada(json.p);
-    } catch (error) {
-      if (error instanceof Error) {
-        console.log(error.message);
-        setFormState((prev) => ({ ...prev, error: error.message }));
-      }
-    } finally {
-      setFormState((prev) => ({ ...prev, loading: false }));
-    }
+  const aoConcluirPesquisa = async (json: PrevisaoChegada) => {
+    setParada(json.p);
   };
 
-  const lidarComPesquisa = () => {
+  const lidarComPesquisa = async () => {
     if (!inputDePesquisa.codigoLinha || !inputDePesquisa.codigoParada) return;
-    setFormState({ error: '', loading: true });
     setParada(null);
-    runTimeout(fetchData);
+    await pesquisar<PrevisaoChegada>(
+      aoConcluirPesquisa,
+      `/Previsao?codigoParada=${inputDePesquisa.codigoParada}&codigoLinha=${inputDePesquisa.codigoLinha}`
+    );
   };
 
   return (
