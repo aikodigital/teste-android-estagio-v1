@@ -1,9 +1,9 @@
 import useRodeEmIntervalo from '@/custom-hooks/useRodeEmIntervalo';
 import { autenticarNaApi } from '@/helpers/autenticarNaApi';
-import React, { PropsWithChildren } from 'react';
+import React, { PropsWithChildren, useCallback } from 'react';
 
 const EnvolvedorDeAutorizacao = ({ children }: PropsWithChildren) => {
-  useRodeEmIntervalo(autenticarNaApi, 600000);
+  useRodeEmIntervalo(useCallback(autenticarNaApi, []), 600000);
   return <>{children}</>;
 };
 

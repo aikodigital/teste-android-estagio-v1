@@ -1,9 +1,8 @@
-import { Trajeto } from '@/app/(tabs)';
-import { LinhaParaPosicao, PosicaoVeiculo } from '@/types/posicao';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
 import { styles } from './De';
+import { LinhaParaPosicao, PosicaoVeiculo, Trajeto } from '@/types/types';
 
 type Props = {
   setTrajeto: (value: React.SetStateAction<Trajeto>) => void;

@@ -35,7 +35,6 @@ export default function PaginaPrevisaoDeChegada() {
         lidarComPesquisa={lidarComPesquisa}
         setInputDePesquisa={setInputDePesquisa}
       />
-
       <ResultadosDaBusca
         formState={formState}
         inputDePesquisa={inputDePesquisa}

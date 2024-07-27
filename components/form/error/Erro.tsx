@@ -11,13 +11,13 @@ const Erro = ({ messagem }: { messagem: string }) => {
 
 const styles = StyleSheet.create({
   containerDeErro: {
-    backgroundColor: '#f2dede', // Cor de fundo para indicar erro
+    backgroundColor: '#f2dede',
     padding: 10,
     borderRadius: 5,
     marginBottom: 10,
   },
   mensagemDeErro: {
-    color: '#a94442', // Cor do texto de erro
+    color: '#a94442',
     fontSize: 16,
     fontWeight: 'bold',
   },

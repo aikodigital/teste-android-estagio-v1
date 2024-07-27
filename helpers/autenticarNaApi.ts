@@ -6,9 +6,10 @@ export const autenticarNaApi = async () => {
         String(process.env.API_TOKEN),
       { method: 'POST' }
     );
-    if ((await res.text()) == 'false') throw new Error('Erro ao logar.');
+    if ((await res.text()) === 'false') throw new Error('Erro ao logar.');
     return true;
   } catch (error) {
+    console.log(error);
     return false;
   }
 };

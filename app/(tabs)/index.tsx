@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import {
   LinhaParaPosicao,
   MapRegion,
@@ -32,17 +32,17 @@ export default function HomeScreen() {
     longitudeDelta: 0.012,
   });
 
-  const aoConcluirPesquisa = async (json: PosicaoDosVeiculos) => {
+  const aoConcluirPesquisa = useCallback(async (json: PosicaoDosVeiculos) => {
     setLinhas(json?.l);
     setRegioes(json?.l.map((r) => r.lt0));
-  };
+  }, []);
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     await pesquisar<PosicaoDosVeiculos>(
       aoConcluirPesquisa,
       process.env.API_URL + '/Posicao'
     );
-  };
+  }, [pesquisar, aoConcluirPesquisa]);
 
   useRodeEmIntervalo(fetchData, 15000);
 

@@ -21,11 +21,10 @@ type Props = {
 
 const ResultadosDaBusca = ({ formState, inputDePesquisa, parada }: Props) => {
   if (formState.error) return <Erro messagem={formState.error} />;
-  {
-    formState.loading && !formState.error ? (
-      <Carregando />
-    ) : (
-      inputDePesquisa.codigoLinha.length > 0 &&
+  return formState.loading && !formState.error ? (
+    <Carregando />
+  ) : (
+    inputDePesquisa.codigoLinha.length > 0 &&
       inputDePesquisa.codigoParada.length > 0 &&
       parada && (
         <>
@@ -57,8 +56,7 @@ const ResultadosDaBusca = ({ formState, inputDePesquisa, parada }: Props) => {
           />
         </>
       )
-    );
-  }
+  );
 };
 
 export default ResultadosDaBusca;
