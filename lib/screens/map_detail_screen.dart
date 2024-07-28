@@ -102,6 +102,8 @@ class MapDetailScreen extends StatelessWidget {
                                         margin:
                                             const EdgeInsets.only(bottom: 12),
                                         child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           children: [
                                             const Text(
                                               'Parada',
@@ -117,9 +119,11 @@ class MapDetailScreen extends StatelessWidget {
                                         margin:
                                             const EdgeInsets.only(bottom: 12),
                                         child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           children: [
                                             const Text(
-                                              'Parada',
+                                              'Endereço da parada',
                                               style: TextStyle(
                                                 fontWeight: FontWeight.bold,
                                               ),
@@ -132,9 +136,11 @@ class MapDetailScreen extends StatelessWidget {
                                         margin:
                                             const EdgeInsets.only(bottom: 12),
                                         child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           children: [
                                             const Text(
-                                              'Parada',
+                                              'Horário previsto para chegada do ônibus',
                                               style: TextStyle(
                                                 fontWeight: FontWeight.bold,
                                               ),
