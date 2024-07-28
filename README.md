@@ -1,77 +1,46 @@
-# Teste Android
+## DOCUMENTAÇÃO APP-AIK-TRANSIT-BUS
 
-![Aiko](imagens/aiko.png)
+# Como iniciar o projeto
+  Ao abrir o projeto abra o console do VSCODE e vá para a pasta destino:<br> <strong> cd app-aiko-transit-bus </strong> <br><br>
+    <strong>Exculte o comando:</strong>
 
-Neste teste serão avaliados seus conhecimentos e a metodologia aplicada no desenvolvimento de aplicações mobile Android.
+    
+     npm run start 
 
-## O Desafio
+Ao carregamento do terminal: <br> 
+Abrir no celular: <strong>Escaneie o código QR com o aplicato ExpoGo.</strong> <br>
+Para abrir no android stúdio ou programa da preferência aperte a letra A para execultar no android.
 
-Seu objetivo é criar um aplicativo que exiba dados sobre o transporte público da cidade de São Paulo, consultando a [API **Olho Vivo**](api.md) que provê informações em tempo real do monitoramento da frota de ônibus da cidade de São Paulo.
+## O Aplicativo
 
-## Requisitos
+<strong>(OBS:) O aplicativo está setado com as configurações no mapa para um região de são paulo para facilitar a visualização das paradas.</strong> <br>
+Para trocar para a localização atual do usuário seguir esses passos: 
 
-Esses requisitos são obrigatórios e devem ser desenvolvidos para a entrega do teste
+Ná pagina Home terá o componente <strong> MarkView</strong>  com a propriedade de: <strong>InitialRegion</strong> com: <strong>latitude e longitude.</strong><br>
+Para realizar a troca modifique: <br>
+<strong>Latitude</strong> por:  <strong>currentLocation.coords.latitude.</strong> <br> 
+<strong>longitude</strong> por: <strong>currentLocation.coords.longitude </strong><br>
 
-* **Posições dos veículos**: Exibir no mapa onde os veículos estavam na sua última atualização.
+<br><br>
 
-* **Linhas**: Exibir informações sobre as linhas de ônibus.
+Ao abrir o aplicativo você verá a tela Home com o button superior esquerdo indicando o <strong>MENU</strong><br>
+O button ao canto inferior indica uma volta de localização para sua localização atual no mapa. caso você movimente o mapa basta apertar no button para voltar a sua localização atual no mapa.<br>
 
-* **Paradas**: Exibir os pontos de parada da cidade no mapa.
+O campo na parte inferior da home possui um button com " linhas e destinos " você pode apertar no button e ir para a tela de Busca onde pode buscar as linhas que desejar. <br>
+Esse mesmo campo ao clicar em alguma parada exibida no mapa pelo ícone de um Onibus abrirá as linhas e horários daquela parada espécifica. <br>
+Os ícones de onibus no mapa exibem as paradas conforme o range que o mapa esta sendo exibido. as paradas só são carregadas conforme o usuário movimenta o mapa para evitar requests desnecessários.<br><br> 
 
-* **Previsão de chegada**: Dado uma parada informar a previsão de chegada de cada veículo que passe pela parada selecionada.
+Ao clicar no menu ele irá abrir com três opções: mapa, rotas e buscar linha.<br>
+Rotas e buscas linha levam para a mesma página. Rotas foi implementado por questão visual. não existe funcionalidade ao digitar no campo.<br>
+Buscar linhas existe uma interatividade onde o usuário pode pesquisar pelo nome da linha ou pelo código da linha. 
 
-* **Pesquisa e Filtros**: Permitir que o usuário pesquise e filtre esses dados, interagindo com a interface.
+## Paradas <br>
 
-## O que é permitido
+Ao clicar nas paradas será exibido as linhas e previsões de chegada dessa para específica.<br>
+Ao clicar em uma linha dentro desse campo que será exibido, irá abrir a tela de Linhas. <br>
+Nessa tela o usuário tem acesso a: proximos horários do onibus, localização atual no mapa do onibus e as paradas dessa linha específica. 
 
-* Android Nativo (Java/Kotlin)
+## Mapa <br>
+O mapa da home tem essa funcionalidade: Se o usuário pinçar muito o mapa para cima exibirá um button para que ele aproxime mais o mapa para que as paradas sejam exibidas novamente
 
-* React Native
 
-* Native Script (Vue, Angular, etc)
-
-* Flutter
-
-* Xamarin
-
-* Kivy
-
-* Qualquer tecnologia complementar as citadas anteriormente são permitidas desde que seu uso seja justificável
-
-## O que não é permitido
-
-* Utilizar bibliotecas ou códigos de terceiros que implementem algum dos requisitos.
-
-## Recomendações
-
-* **Linter**: Desenvolva o projeto utilizando algum padrão de formatação de código.
-
-## Extras
-
-Aqui são listados algumas sugestões para você que quer ir além do desafio inicial. Lembrando que você não precisa se limitar a essas sugestões, se tiver pensado em outra funcionalidade que considera relevante ao escopo da aplicação fique à vontade para implementá-la.
-
-* **Refresh automático**: Que as informações exibidas no aplicativo sejam atualizadas de tempo em tempo de forma transparente ao usuário
-
-* **Cálculo de rotas**: Exibir a possível rota de um ou mais ônibus em relação a uma parada, ou do usuário em relação a uma parada (Utilizando API do Google Maps ou equivalentes)
-
-* **Corredores**: Mostrar informações sobre os corredores de ônibus de SP.
-
-* **Velocidade das vias**: Mostrar informações sobre as velocidades das vias.
-
-* **Testes**: Desenvolva testes que achar necessário para a aplicação.
-
-* **Documentação**: Gerar uma documentação da aplicação. A documentação pode incluir detalhes sobre as decisões tomadas, especificação das funcionalidades desenvolvidas, instruções de uso dentre outras informações que achar relevantes.
-
-## Entrega
-
-Para realizar a entrega do teste você deve:
-
-* Relizar o fork e clonar esse repositório para sua máquina.
-  
-* Criar uma branch com o nome de `teste/[NOME]`.
-  * `[NOME]`: Seu nome.
-  * Exemplos: `teste/fulano-da-silva`; `teste/beltrano-primeiro-gomes`.
-  
-* Faça um commit da sua branch com a implementação do teste.
-  
-* Realize o pull request da sua branch nesse repositório.
