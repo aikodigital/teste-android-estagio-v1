@@ -1,8 +1,8 @@
 import { Text, View, ScrollView } from "react-native";
 import {Header} from "../components/header"; 
-
+import { BuscarLinha } from "../components/buscarLinha"
 import Constants  from "expo-constants";
-
+import ListLine from "../components/lineList"
 const statusBar = Constants.statusBarHeight;
 
 export default function Index() {
@@ -12,8 +12,10 @@ export default function Index() {
         <View className="w-full px-4" style={{ marginTop: statusBar + 8}}>
 
           <Header />
-
+          <BuscarLinha />
         </View>
+        
+        <ListLine />
     </View>
   );
 }
