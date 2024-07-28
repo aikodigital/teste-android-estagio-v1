@@ -15,7 +15,7 @@ class BusStopListItem extends StatelessWidget {
         onTap: () {
           Navigator.of(context).pushNamed(
             Routes.map_detail_screen,
-            arguments: busStop.code,
+            arguments: busStop,
           );
         },
         leading: const Icon(Icons.bus_alert),
