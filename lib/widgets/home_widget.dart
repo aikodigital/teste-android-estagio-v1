@@ -14,7 +14,11 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   final _screens = [
     const HallList(),
-    const MapWidget(target: LatLng(-23.5489, -46.6388), markers: {}),
+    const MapWidget(
+      searchLabel: 'Pesquisar(Linha, ônibus, parada, previsão de chegada)',
+      target: LatLng(-23.5489, -46.6388),
+      markers: {},
+    ),
   ];
   int _index = 0;
 
