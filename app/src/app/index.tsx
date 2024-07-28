@@ -2,20 +2,25 @@ import { Text, View, ScrollView } from "react-native";
 import {Header} from "../components/header"; 
 import { BuscarLinha } from "../components/buscarLinha"
 import Constants  from "expo-constants";
-import ListLine from "../components/lineList"
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+
+
 const statusBar = Constants.statusBarHeight;
 
 export default function Index() {
   return (
-    <View style={{ flex: 1}} className="bg-slate-200">
 
-        <View className="w-full px-4" style={{ marginTop: statusBar + 8}}>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <View style={{ flex: 1}} className="bg-slate-200">
+          
+          <View className="w-full px-4" style={{ marginTop: statusBar + 8}}>
 
-          <Header />
-          <BuscarLinha />
-        </View>
-        
-        <ListLine />
-    </View>
+            <Header />    
+            <BuscarLinha />            
+          </View>
+
+
+      </View>
+    </GestureHandlerRootView>
   );
 }

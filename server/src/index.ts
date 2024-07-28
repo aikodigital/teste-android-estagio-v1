@@ -1,7 +1,6 @@
 import express, { Request, Response } from 'express';
 import dotenv from 'dotenv';
-import { autenticationController,
-         getPositionsController,
+import { getPositionsController,
          getLines,
          getParadeByLine } from './services/transporteController';
 
@@ -16,7 +15,7 @@ app.get('/', (req: Request, res: Response) => {
   res.send('Hello, World!');
 }); 
 
-app.get('/autentication', autenticationController);7
+// app.get('/autentication', autenticationController);7
 
 app.get('/positions', getPositionsController);
 
