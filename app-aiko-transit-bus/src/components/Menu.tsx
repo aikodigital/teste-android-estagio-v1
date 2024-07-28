@@ -9,6 +9,7 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../Routes";
+import React from "react";
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList, "Home">;
 
