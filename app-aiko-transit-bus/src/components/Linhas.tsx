@@ -1,22 +1,19 @@
-import axios from "axios";
 import React, { useState } from "react";
-import { ScrollView, Text, View } from "react-native";
-import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
-import Icon from "react-native-vector-icons/FontAwesome5";
 
+import axios from "axios";
+
+import { ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { TextInput } from "react-native-gesture-handler";
+
+import Icon from "react-native-vector-icons/FontAwesome5";
 export const Linhas = () => {
   const [dataLinhas, setDataLinhas] = useState<[]>([]);
 
   const getLinha = async (value: String) => {
-    try {
-      const response = await axios.get(
-        `http://api.olhovivo.sptrans.com.br/v2.1/Linha/Buscar?termosBusca=${value}`
-      );
-      console.log(response.data);
-      setDataLinhas(response.data);
-    } catch (error: any) {
-      console.log("erro ao fazer o fetch" + error);
-    }
+    const response = await axios.get(
+      `http://api.olhovivo.sptrans.com.br/v2.1/Linha/Buscar?termosBusca=${value}`
+    );
+    setDataLinhas(response.data);
   };
 
   return (
@@ -43,8 +40,8 @@ export const Linhas = () => {
             <View className="pt-5 pb-7">
               <ScrollView>
                 {dataLinhas?.map((linhas: any) => (
-                  <View key={linhas.cl} className="pt-9">
-                    <View className="">
+                  <TouchableOpacity key={linhas.cl} className="pt-9">
+                    <View>
                       <View className="flex flex-row flex-wrap ">
                         <Text className="text-grayPrimary text-lg font-medium">
                           {linhas.cl} -
@@ -57,7 +54,7 @@ export const Linhas = () => {
                         </Text>
                       </View>
                     </View>
-                  </View>
+                  </TouchableOpacity>
                 ))}
               </ScrollView>
             </View>
