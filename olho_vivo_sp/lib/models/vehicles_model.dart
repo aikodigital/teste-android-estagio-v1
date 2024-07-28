@@ -1,4 +1,9 @@
 class VehiclesModel {
+  final String label;
+  final int lineCode;
+  final int direction;
+  final String labelOrigin;
+  final String labelDestination;
   final String prefix;
   final String arrivalTime;
   final bool isAffordable;
@@ -6,6 +11,11 @@ class VehiclesModel {
   final double xPos;
 
   VehiclesModel({
+    required this.label,
+    required this.lineCode,
+    required this.direction,
+    required this.labelOrigin,
+    required this.labelDestination,
     required this.prefix,
     required this.arrivalTime,
     required this.isAffordable,
@@ -14,7 +24,12 @@ class VehiclesModel {
   });
 
   VehiclesModel.fromMap(Map<String, dynamic> res)
-      : prefix = res['p'],
+      : label = res['c'],
+        lineCode = res['cl'],
+        direction = res['sl'],
+        labelOrigin = res['lt0'],
+        labelDestination = res['lt1'],
+        prefix = res['p'],
         arrivalTime = res['t'],
         isAffordable = res['a'],
         yPos = res['py'],
