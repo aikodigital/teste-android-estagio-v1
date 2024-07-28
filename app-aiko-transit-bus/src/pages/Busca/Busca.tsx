@@ -1,3 +1,4 @@
+import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { Text, View } from "react-native";
 import { TouchableOpacity, TouchableWithoutFeedback } from "react-native-gesture-handler";
@@ -6,13 +7,14 @@ import { GlobalContext } from "../../context/GlobalContext";
 import { useContext } from "react";
 import { Linhas } from "../../components/Linhas";
 import { Rotas } from "../../components/Rotas";
-import LottieView from "lottie-react-native";
+
 
 export default function Busca() {
 
   const { rowOrSearch,  setRowOrSearch } = useContext(GlobalContext)
 
   const navigation = useNavigation();
+
 
   return (
     <View className="w-full h-full flex bg-[#fff] absolute top-0 bottom-0 left-0 right-0 px-5">
