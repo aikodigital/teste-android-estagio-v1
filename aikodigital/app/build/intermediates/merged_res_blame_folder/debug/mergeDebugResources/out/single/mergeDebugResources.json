@@ -1,0 +1,106 @@
+[
+    {
+        "merged": "C:\\Users\\Eu\\.gradle\\daemon\\8.7\\com.example.aikodigital.app-debug-62:\\mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Eu\\.gradle\\daemon\\8.7\\com.example.aikodigital.app-main-64:\\mipmap-mdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\Eu\\.gradle\\daemon\\8.7\\com.example.aikodigital.app-debug-62:\\drawable_bus.xml.flat",
+        "source": "C:\\Users\\Eu\\.gradle\\daemon\\8.7\\com.example.aikodigital.app-main-64:\\drawable\\bus.xml"
+    },
+    {
+        "merged": "C:\\Users\\Eu\\.gradle\\daemon\\8.7\\com.example.aikodigital.app-debug-62:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\Eu\\.gradle\\daemon\\8.7\\com.example.aikodigital.app-main-64:\\xml\\backup_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\Eu\\.gradle\\daemon\\8.7\\com.example.aikodigital.app-debug-62:\\drawable_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\Eu\\.gradle\\daemon\\8.7\\com.example.aikodigital.app-main-64:\\drawable\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\Eu\\.gradle\\daemon\\8.7\\com.example.aikodigital.app-debug-62:\\mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Eu\\.gradle\\daemon\\8.7\\com.example.aikodigital.app-main-64:\\mipmap-xhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\Eu\\.gradle\\daemon\\8.7\\com.example.aikodigital.app-debug-62:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\Eu\\.gradle\\daemon\\8.7\\com.example.aikodigital.app-main-64:\\xml\\data_extraction_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\Eu\\.gradle\\daemon\\8.7\\com.example.aikodigital.app-debug-62:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\Eu\\.gradle\\daemon\\8.7\\com.example.aikodigital.app-main-64:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\Eu\\.gradle\\daemon\\8.7\\com.example.aikodigital.app-debug-62:\\mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Eu\\.gradle\\daemon\\8.7\\com.example.aikodigital.app-main-64:\\mipmap-hdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\Eu\\.gradle\\daemon\\8.7\\com.example.aikodigital.app-debug-62:\\mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Eu\\.gradle\\daemon\\8.7\\com.example.aikodigital.app-main-64:\\mipmap-hdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\Eu\\.gradle\\daemon\\8.7\\com.example.aikodigital.app-debug-62:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Eu\\.gradle\\daemon\\8.7\\com.example.aikodigital.app-main-64:\\mipmap-xxxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\Eu\\.gradle\\daemon\\8.7\\com.example.aikodigital.app-debug-62:\\drawable_public_transport.png.flat",
+        "source": "C:\\Users\\Eu\\.gradle\\daemon\\8.7\\com.example.aikodigital.app-main-64:\\drawable\\public_transport.png"
+    },
+    {
+        "merged": "C:\\Users\\Eu\\.gradle\\daemon\\8.7\\com.example.aikodigital.app-debug-62:\\drawable_search.xml.flat",
+        "source": "C:\\Users\\Eu\\.gradle\\daemon\\8.7\\com.example.aikodigital.app-main-64:\\drawable\\search.xml"
+    },
+    {
+        "merged": "C:\\Users\\Eu\\.gradle\\daemon\\8.7\\com.example.aikodigital.app-debug-62:\\layout_activity_maps.xml.flat",
+        "source": "C:\\Users\\Eu\\.gradle\\daemon\\8.7\\com.example.aikodigital.app-main-64:\\layout\\activity_maps.xml"
+    },
+    {
+        "merged": "C:\\Users\\Eu\\.gradle\\daemon\\8.7\\com.example.aikodigital.app-debug-62:\\drawable_location.png.flat",
+        "source": "C:\\Users\\Eu\\.gradle\\daemon\\8.7\\com.example.aikodigital.app-main-64:\\drawable\\location.png"
+    },
+    {
+        "merged": "C:\\Users\\Eu\\.gradle\\daemon\\8.7\\com.example.aikodigital.app-debug-62:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\Eu\\.gradle\\daemon\\8.7\\com.example.aikodigital.app-main-64:\\drawable\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\Eu\\.gradle\\daemon\\8.7\\com.example.aikodigital.app-debug-62:\\drawable_line.png.flat",
+        "source": "C:\\Users\\Eu\\.gradle\\daemon\\8.7\\com.example.aikodigital.app-main-64:\\drawable\\line.png"
+    },
+    {
+        "merged": "C:\\Users\\Eu\\.gradle\\daemon\\8.7\\com.example.aikodigital.app-debug-62:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Eu\\.gradle\\daemon\\8.7\\com.example.aikodigital.app-main-64:\\mipmap-xhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\Eu\\.gradle\\daemon\\8.7\\com.example.aikodigital.app-debug-62:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Eu\\.gradle\\daemon\\8.7\\com.example.aikodigital.app-main-64:\\mipmap-xxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\Eu\\.gradle\\daemon\\8.7\\com.example.aikodigital.app-debug-62:\\drawable_arrow_circle_left.xml.flat",
+        "source": "C:\\Users\\Eu\\.gradle\\daemon\\8.7\\com.example.aikodigital.app-main-64:\\drawable\\arrow_circle_left.xml"
+    },
+    {
+        "merged": "C:\\Users\\Eu\\.gradle\\daemon\\8.7\\com.example.aikodigital.app-debug-62:\\drawable_icon_arrow.png.flat",
+        "source": "C:\\Users\\Eu\\.gradle\\daemon\\8.7\\com.example.aikodigital.app-main-64:\\drawable\\icon_arrow.png"
+    },
+    {
+        "merged": "C:\\Users\\Eu\\.gradle\\daemon\\8.7\\com.example.aikodigital.app-debug-62:\\mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Eu\\.gradle\\daemon\\8.7\\com.example.aikodigital.app-main-64:\\mipmap-xxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\Eu\\.gradle\\daemon\\8.7\\com.example.aikodigital.app-debug-62:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\Eu\\.gradle\\daemon\\8.7\\com.example.aikodigital.app-main-64:\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\Eu\\.gradle\\daemon\\8.7\\com.example.aikodigital.app-debug-62:\\mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Eu\\.gradle\\daemon\\8.7\\com.example.aikodigital.app-main-64:\\mipmap-mdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\Eu\\.gradle\\daemon\\8.7\\com.example.aikodigital.app-debug-62:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Eu\\.gradle\\daemon\\8.7\\com.example.aikodigital.app-main-64:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\Eu\\.gradle\\daemon\\8.7\\com.example.aikodigital.app-debug-62:\\drawable_aiko.png.flat",
+        "source": "C:\\Users\\Eu\\.gradle\\daemon\\8.7\\com.example.aikodigital.app-main-64:\\drawable\\aiko.png"
+    },
+    {
+        "merged": "com.example.aikodigital.app-debug-62:/drawable_location.png.flat",
+        "source": "com.example.aikodigital.app-main-64:/drawable/location.png"
+    }
+]

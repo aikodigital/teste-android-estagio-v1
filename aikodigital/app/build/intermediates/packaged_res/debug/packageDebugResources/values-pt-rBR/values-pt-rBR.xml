@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="accessibility">Acessibilidade</string>
+    <string name="app_name">AikoDigital</string>
+    <string name="arrival">Previsão de chegada: </string>
+    <string name="busStop">Não encontramos nenhuma parada para esta linha.</string>
+    <string name="corredors">Corredores</string>
+    <string name="endress">Endereço</string>
+    <string name="enter">Continue</string>
+    <string name="error">Ocorreu um errro, volte mais tarde.</string>
+    <string name="hrs">Ultima atualização</string>
+    <string name="line">Linha</string>
+    <string name="lines">Linhas</string>
+    <string name="name">Nome</string>
+    <string name="no">Não</string>
+    <string name="number">Número</string>
+    <string name="search">Procure pelo nome ou pelo número</string>
+    <string name="stop">Parada: </string>
+    <string name="stops">Paradas</string>
+    <string name="terminal">Terminal</string>
+    <string name="update">Atualizado em:  </string>
+    <string name="welcome">Bem Vindo</string>
+    <string name="yes">Sim</string>
+</resources>
