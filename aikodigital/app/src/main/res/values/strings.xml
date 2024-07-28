@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">AikoDigital</string>
+    <string name="welcome">Welcome</string>
+    <string name="enter">Continue</string>
+    <string name="lines">Lines</string>
+    <string name="stops">Stops</string>
+    <string name="corredors">Corredors</string>
+    <string name="line">Line</string>
+    <string name="terminal">Terminal</string>
+    <string name="name">Name</string>
+    <string name="endress">Endress</string>
+    <string name="busStop">We couldn\'t find any stops for this line.</string>
+    <string name="hrs">Last update</string>
+    <string name="accessibility">Accessibility</string>
+    <string name="number">Number</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="error">An error occurred, please come back later</string>
+    <string name="search">Search by name or number</string>
+    <string name="stop">Stop: </string>
+    <string name="update">Updated at:  </string>
+    <string name="arrival">Arrival Forecast: </string>
+    <string name="location">Getting a location...</string>
+    <string name="denied">Error getting location: Permission denied</string>
+
+</resources>
