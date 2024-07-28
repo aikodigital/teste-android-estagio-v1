@@ -1,15 +1,18 @@
-import { Text, View, Image, Touchable } from "react-native";
+import React from "react";
 import { GlobalContext } from "../context/GlobalContext";
 import { useContext } from "react";
 
-import aiko from "../assets/aiko.png";
-import close from "../assets/close.png";
-import Icon from "react-native-vector-icons/FontAwesome";
-import { TouchableOpacity } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../Routes";
-import React from "react";
+
+import { Text, View, Image } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
+
+import aiko from "../assets/aiko.png";
+import close from "../assets/close.png";
+
+import Icon from "react-native-vector-icons/FontAwesome";
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList, "Home">;
 
