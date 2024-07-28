@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:sp_movement/app/core/repository/app_repository.dart';
-import 'package:sp_movement/app/modules/bus_route/models/vehicle_model.dart';
-import 'package:sp_movement/app/modules/bus_route/models/vehiclelocation_model.dart';
+import 'package:sp_movement/app/modules/vehicle_position/models/vehicle_model.dart';
+import 'package:sp_movement/app/modules/vehicle_position/models/vehiclelocation_model.dart';
 
-class BusRouteRepository {
+class VehiclePositionRepository {
   static String endpoint = "/Posicao";
 
   static Future<List<VehicleLocationModel>> getPosition() async {

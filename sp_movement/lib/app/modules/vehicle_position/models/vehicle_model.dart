@@ -1,4 +1,4 @@
-import 'package:sp_movement/app/modules/bus_route/models/domain/vehicle.dart';
+import 'package:sp_movement/app/modules/vehicle_position/models/domain/vehicle.dart';
 
 class VehicleModel extends Vehicle{
   VehicleModel({

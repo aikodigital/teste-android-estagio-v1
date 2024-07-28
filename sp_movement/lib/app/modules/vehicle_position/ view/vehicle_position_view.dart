@@ -4,10 +4,10 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:mobx/mobx.dart';
-import '../stores/bus_route_store.dart';
+import '../stores/vehicle_position_store.dart';
 
-class BusRoutesView extends StatelessWidget {
-  final store = Modular.get<BusRouteStore>();
+class VehiclePositionsView extends StatelessWidget {
+  final store = Modular.get<VehiclePositionStore>();
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class BusRoutesView extends StatelessWidget {
                 subdomains: const ['a', 'b', 'c'],
               ),
               MarkerLayer(
-                markers: store.busRoutesFuture.map((vehicle) {
+                markers: store.VehiclePositionsFuture.map((vehicle) {
                   return Marker(
                     width: 80.0,
                     height: 80.0,

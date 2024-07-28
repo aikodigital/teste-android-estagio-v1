@@ -1,5 +1,5 @@
-import 'package:sp_movement/app/modules/bus_route/models/domain/vehiclelocation.dart';
-import 'package:sp_movement/app/modules/bus_route/models/vehicle_model.dart';
+import 'package:sp_movement/app/modules/vehicle_position/models/domain/vehiclelocation.dart';
+import 'package:sp_movement/app/modules/vehicle_position/models/vehicle_model.dart';
 
 class VehicleLocationModel extends VehicleLocation{
   VehicleLocationModel({

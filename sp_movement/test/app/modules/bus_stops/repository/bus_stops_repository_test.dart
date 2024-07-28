@@ -6,7 +6,6 @@
 // tree, read text, and verify that the values of widget properties are correct.
 import 'package:flutter_test/flutter_test.dart';
 import 'package:sp_movement/app/modules/auth/auth_repository.dart';
-import 'package:sp_movement/app/modules/bus_route/repositories/bus_route_repository.dart';
 import 'package:sp_movement/app/modules/bus_stops/repository/bus_stops_repository.dart';
 
 void main() {
@@ -15,14 +14,20 @@ void main() {
     expect(true, retorno);
   });
 
-  test('deve retornar verdadeiro uma lista de posiçoes', () async {
-    dynamic retorno = await BusRouteRepository.getPosition();
+  test('deve retornar verdadeiro uma lista de paradas', () async {
+    dynamic retorno = await BusStopRepository.searchByStops('Afonso');
     expect(true, retorno.isNotEmpty);
   });
 
-  test('deve retornar verdadeiro uma lista de paradas', () async {
-    dynamic retorno = await BusStopRepository.searchStops('Afonso');
+  test('deve retornar verdadeiro uma lista de paradas por linha', () async {
+    dynamic retorno = await BusStopRepository.searchByCodeLine(516);
     expect(true, retorno.isNotEmpty);
   });
+
+  test('deve retornar verdadeiro uma lista de paradas por corredor', () async {
+    dynamic retorno = await BusStopRepository.SearchByCodeRunner(8);
+    expect(true, retorno.isNotEmpty);
+  });
+
 
 }

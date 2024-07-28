@@ -3,15 +3,17 @@ import 'package:sp_movement/app/modules/vehicle_position/%20view/vehicle_positio
 import 'package:sp_movement/app/modules/vehicle_position/repositories/vehicle_position_repository.dart';
 import 'package:sp_movement/app/modules/vehicle_position/stores/vehicle_position_store.dart';
 
-import 'auth_store.dart';
-
-class AuthModule extends Module {
+class VehiclePositionModule extends Module {
   @override
   void binds(i) {
-    i.addLazySingleton(() => AuthStore());
+    i.addLazySingleton(() => VehiclePositionStore());
   }
 
   @override
   void routes(r) {
+    r.child(
+      '/',
+      child: (context) => VehiclePositionsView(),
+    );
   }
 }
