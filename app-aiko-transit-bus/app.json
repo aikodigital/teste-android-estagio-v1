@@ -1,0 +1,27 @@
+{
+  "expo": {
+    "name": "app-aiko-transit-bus",
+    "slug": "app-aiko-transit-bus",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./src/assets/aiko-loading.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./src/assets/aiko-loading.png",
+      "resizeMode": "native",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./src/assets/aiko-loading.png",
+        "backgroundColor": "#fff"
+      }
+    },
+    "web": {
+      "favicon": "./src/assets/aiko-loading.png"
+    }
+  }
+}
