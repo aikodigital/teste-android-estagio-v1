@@ -23,4 +23,4 @@ export function Header(){
             </Pressable>
         </View>
     )
-}
+}   

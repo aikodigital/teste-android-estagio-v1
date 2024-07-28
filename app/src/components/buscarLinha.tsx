@@ -3,9 +3,18 @@ import { Feather } from '@expo/vector-icons';
 import { ScrollView } from 'react-native-gesture-handler';
 import {useState} from 'react'
 import { getLine } from "../context/apiContexts"
+interface Line {
+    cl: number;
+    lc: boolean;
+    lt: string;
+    sl: number;
+    tl: number;
+    tp: string;
+    ts: string;
+}
+
 
 export function BuscarLinha() {
-
     const [searchTerm, setSearchTerm] = useState('');
     const [lines, setLines ]  = useState([])
 
@@ -20,14 +29,13 @@ export function BuscarLinha() {
         }
     };
 
-    const renderItem = ({ item   }) => (
+    const renderItem = ({ item }: { item: Line }) => (
         <View className='p-4 border-b border-gray-200'>
             <Text className='text-black font-bold'>{item.lt}</Text>
             <Text className='text-gray-600'>{item.tp}</Text>
             <Text className='text-gray-600'>{item.ts}</Text>
         </View>
     );
-
 
     return ( 
        <View>
