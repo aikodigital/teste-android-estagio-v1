@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../widgets/bus_search_delegate.dart';
 import '../services/api_service.dart';
-import 'bus_stops.dart';
+import 'bus_stops.dart'; // Correctly import BusStopsPage
 
 class HomePage extends StatefulWidget {
   @override
@@ -17,6 +17,7 @@ class _HomePageState extends State<HomePage> {
   final TextEditingController _searchController = TextEditingController();
   List<dynamic> _busLines = [];
   List<dynamic> _busStops = [];
+  bool _isLoading = false;
 
   @override
   void initState() {
@@ -61,31 +62,67 @@ class _HomePageState extends State<HomePage> {
     print('Linhas de ônibus encontradas: $_busLines');
   }
 
+  Future<void> _fetchCorridors() async {
+    setState(() {
+      _isLoading = true;
+    });
+    try {
+      final corridors = await apiService.fetchCorridors();
+      setState(() {
+        _markers = corridors.map((corridor) {
+          return Marker(
+            markerId: MarkerId(corridor['cc'].toString()),
+            position: LatLng(corridor['py'], corridor['px']),
+            icon: BitmapDescriptor.defaultMarkerWithHue(
+                BitmapDescriptor.hueGreen),
+            infoWindow: InfoWindow(
+              title: 'Corredor ${corridor['nc']}',
+            ),
+          );
+        }).toSet();
+      });
+      print('Corredores atualizados.');
+    } catch (e) {
+      print('Erro ao buscar corredores: $e');
+    }
+    setState(() {
+      _isLoading = false;
+    });
+  }
+
+  Future<void> _fetchRoadSpeeds() async {
+    setState(() {
+      _isLoading = true;
+    });
+    try {
+      final speeds = await apiService.fetchRoadSpeeds();
+      setState(() {
+        _markers = speeds.map((speed) {
+          return Marker(
+            markerId: MarkerId(speed['id'].toString()),
+            position: LatLng(speed['py'], speed['px']),
+            icon:
+                BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
+            infoWindow: InfoWindow(
+              title: 'Velocidade: ${speed['velocidade']} km/h',
+            ),
+          );
+        }).toSet();
+      });
+      print('Velocidades das vias atualizadas.');
+    } catch (e) {
+      print('Erro ao buscar velocidades das vias: $e');
+    }
+    setState(() {
+      _isLoading = false;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Transporte Público SP'),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.search),
-            onPressed: () {
-              showSearch(
-                context: context,
-                delegate: BusSearchDelegate(apiService: apiService),
-              );
-            },
-          ),
-          IconButton(
-            icon: Icon(Icons.directions_bus),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => BusStops()),
-              );
-            },
-          ),
-        ],
       ),
       body: Column(
         children: [
@@ -102,15 +139,62 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-          Expanded(
-            child: GoogleMap(
-              onMapCreated: _onMapCreated,
-              initialCameraPosition: CameraPosition(
-                target: LatLng(-23.5505, -46.6333),
-                zoom: 12,
-              ),
-              markers: _markers,
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Expanded(
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue, // Background color
+                      foregroundColor: Colors.white, // Text color
+                    ),
+                    onPressed: _fetchCorridors,
+                    child: Text('Corredores'),
+                  ),
+                ),
+                SizedBox(width: 8),
+                Expanded(
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue, // Background color
+                      foregroundColor: Colors.white, // Text color
+                    ),
+                    onPressed: _fetchRoadSpeeds,
+                    child: Text('Velocidades das Vias'),
+                  ),
+                ),
+                SizedBox(width: 8),
+                Expanded(
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue, // Background color
+                      foregroundColor: Colors.white, // Text color
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => BusStops()),
+                      );
+                    },
+                    child: Text('Paradas'),
+                  ),
+                ),
+              ],
             ),
+          ),
+          Expanded(
+            child: _isLoading
+                ? Center(child: CircularProgressIndicator())
+                : GoogleMap(
+                    onMapCreated: _onMapCreated,
+                    initialCameraPosition: CameraPosition(
+                      target: LatLng(-23.5505, -46.6333),
+                      zoom: 12,
+                    ),
+                    markers: _markers,
+                  ),
           ),
           Expanded(
             child: ListView.builder(

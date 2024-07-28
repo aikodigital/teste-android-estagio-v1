@@ -12,36 +12,33 @@ class _BusStopsState extends State<BusStops> {
   final ApiService apiService = ApiService(
       '28449b6fc5bffd3d0f282bf499f6296c79650c7c04d244bb1d74ad485b8e5a62');
   Set<Marker> _markers = {};
-  final TextEditingController _searchController = TextEditingController();
   bool _isLoading = false;
 
   @override
   void initState() {
     super.initState();
-    _authenticate();
+    _initialize();
   }
 
-  Future<void> _authenticate() async {
+  Future<void> _initialize() async {
     setState(() {
       _isLoading = true;
     });
     try {
       await apiService.authenticate();
+      await _fetchAllBusStops();
     } catch (e) {
-      print('Erro durante a autenticação: $e');
+      print('Erro durante a inicialização: $e');
     }
     setState(() {
       _isLoading = false;
     });
   }
 
-  Future<void> _fetchBusStops(String searchTerm) async {
-    setState(() {
-      _isLoading = true;
-    });
+  Future<void> _fetchAllBusStops() async {
     try {
-      print('Buscando pontos de parada...');
-      final stops = await apiService.fetchBusStops(searchTerm);
+      print('Buscando todos os pontos de parada...');
+      final stops = await apiService.fetchBusStops('');
       setState(() {
         _markers = stops.map((stop) {
           return Marker(
@@ -56,13 +53,10 @@ class _BusStopsState extends State<BusStops> {
           );
         }).toSet();
       });
-      print('Pontos de parada atualizados.');
+      print('Todos os pontos de parada atualizados.');
     } catch (e) {
-      print('Erro ao buscar pontos de parada: $e');
+      print('Erro ao buscar todos os pontos de parada: $e');
     }
-    setState(() {
-      _isLoading = false;
-    });
   }
 
   void _onMapCreated(GoogleMapController controller) {
@@ -80,13 +74,12 @@ class _BusStopsState extends State<BusStops> {
           Padding(
             padding: EdgeInsets.all(8.0),
             child: TextField(
-              controller: _searchController,
               decoration: InputDecoration(
-                hintText: 'Pesquisar paradas de ônibus',
+                hintText: 'Pesquisar linhas de ônibus',
                 suffixIcon: IconButton(
                   icon: Icon(Icons.search),
                   onPressed: () {
-                    _fetchBusStops(_searchController.text);
+                    _fetchAllBusStops();
                   },
                 ),
               ),

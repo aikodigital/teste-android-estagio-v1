@@ -81,6 +81,26 @@ class ApiService {
     }
   }
 
+  Future<List<dynamic>> fetchBusStopsByLine(int lineId) async {
+    if (_authToken == null) {
+      throw Exception('Token de autenticação não disponível');
+    }
+
+    final response = await http.get(
+      Uri.parse(
+          'http://api.olhovivo.sptrans.com.br/v2.1/Parada/BuscarParadasPorLinha?codigoLinha=$lineId'),
+      headers: {'cookie': _authToken!},
+    );
+
+    if (response.statusCode == 200) {
+      final data = jsonDecode(response.body);
+      return data;
+    } else {
+      print('Falha ao carregar pontos de parada por linha: ${response.body}');
+      throw Exception('Falha ao carregar pontos de parada por linha');
+    }
+  }
+
   Future<List<dynamic>> fetchArrivalPredictions(int stopId) async {
     if (_authToken == null) {
       throw Exception('Token de autenticação não disponível');
@@ -98,6 +118,44 @@ class ApiService {
     } else {
       print('Falha ao carregar previsões de chegada: ${response.body}');
       throw Exception('Falha ao carregar previsões de chegada');
+    }
+  }
+
+  Future<List<dynamic>> fetchCorridors() async {
+    if (_authToken == null) {
+      throw Exception('Token de autenticação não disponível');
+    }
+
+    final response = await http.get(
+      Uri.parse('http://api.olhovivo.sptrans.com.br/v2.1/Corredor'),
+      headers: {'cookie': _authToken!},
+    );
+
+    if (response.statusCode == 200) {
+      final data = jsonDecode(response.body);
+      return data;
+    } else {
+      print('Falha ao carregar corredores: ${response.body}');
+      throw Exception('Falha ao carregar corredores');
+    }
+  }
+
+  Future<List<dynamic>> fetchRoadSpeeds() async {
+    if (_authToken == null) {
+      throw Exception('Token de autenticação não disponível');
+    }
+
+    final response = await http.get(
+      Uri.parse('http://api.olhovivo.sptrans.com.br/v2.1/KMZ'),
+      headers: {'cookie': _authToken!},
+    );
+
+    if (response.statusCode == 200) {
+      final data = jsonDecode(response.body);
+      return data;
+    } else {
+      print('Falha ao carregar velocidades das vias: ${response.body}');
+      throw Exception('Falha ao carregar velocidades das vias');
     }
   }
 }
