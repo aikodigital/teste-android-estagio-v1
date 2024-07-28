@@ -1,77 +1,40 @@
-# Teste Android
+# Transporte Público SP
 
-![Aiko](imagens/aiko.png)
+Este aplicativo exibe dados sobre o transporte público da cidade de São Paulo, utilizando a API Olho Vivo para fornecer informações em tempo real sobre a frota de ônibus.
 
-Neste teste serão avaliados seus conhecimentos e a metodologia aplicada no desenvolvimento de aplicações mobile Android.
+## Índice
 
-## O Desafio
+1. [Introdução](#introdução)
+2. [Decisões de Design](#decisões-de-design)
+3. [Funcionalidades Desenvolvidas](#funcionalidades-desenvolvidas)
+4. [Instruções de Uso](#instruções-de-uso)
+5. [Estrutura do Projeto](#estrutura-do-projeto)
+6. [Código Fonte](#código-fonte)
+7. [Considerações Finais](#considerações-finais)
 
-Seu objetivo é criar um aplicativo que exiba dados sobre o transporte público da cidade de São Paulo, consultando a [API **Olho Vivo**](api.md) que provê informações em tempo real do monitoramento da frota de ônibus da cidade de São Paulo.
+## Introdução
 
-## Requisitos
+Este documento descreve a implementação de um aplicativo de transporte público para a cidade de São Paulo, utilizando a API Olho Vivo. O aplicativo exibe informações em tempo real sobre a frota de ônibus, incluindo posições dos veículos, linhas de ônibus, paradas, corredores e velocidades das vias.
 
-Esses requisitos são obrigatórios e devem ser desenvolvidos para a entrega do teste
+## Decisões de Design
 
-* **Posições dos veículos**: Exibir no mapa onde os veículos estavam na sua última atualização.
+1. **Tecnologia Utilizada**: O aplicativo foi desenvolvido utilizando Flutter devido à sua popularidade e capacidade de criar aplicativos multiplataforma com uma única base de código.
+2. **Google Maps**: Utilizamos o plugin `google_maps_flutter` para exibir mapas e marcadores.
+3. **Gerenciamento de Estado**: Utilizamos o `setState` para gerenciamento simples de estado.
+4. **Autenticação**: A autenticação com a API Olho Vivo é realizada uma vez durante a inicialização do aplicativo.
 
-* **Linhas**: Exibir informações sobre as linhas de ônibus.
+## Funcionalidades Desenvolvidas
 
-* **Paradas**: Exibir os pontos de parada da cidade no mapa.
+1. **Posições dos Veículos**: Exibe no mapa as posições dos veículos na última atualização.
+2. **Linhas de Ônibus**: Permite pesquisar e exibir informações sobre as linhas de ônibus.
+3. **Paradas**: Exibe os pontos de parada da cidade no mapa.
+4. **Previsão de Chegada**: Informa a previsão de chegada de cada veículo em uma parada selecionada.
+5. **Corredores**: Mostra informações sobre os corredores de ônibus de São Paulo.
+6. **Velocidade das Vias**: Mostra informações sobre as velocidades das vias.
 
-* **Previsão de chegada**: Dado uma parada informar a previsão de chegada de cada veículo que passe pela parada selecionada.
+## Instruções de Uso
 
-* **Pesquisa e Filtros**: Permitir que o usuário pesquise e filtre esses dados, interagindo com a interface.
-
-## O que é permitido
-
-* Android Nativo (Java/Kotlin)
-
-* React Native
-
-* Native Script (Vue, Angular, etc)
-
-* Flutter
-
-* Xamarin
-
-* Kivy
-
-* Qualquer tecnologia complementar as citadas anteriormente são permitidas desde que seu uso seja justificável
-
-## O que não é permitido
-
-* Utilizar bibliotecas ou códigos de terceiros que implementem algum dos requisitos.
-
-## Recomendações
-
-* **Linter**: Desenvolva o projeto utilizando algum padrão de formatação de código.
-
-## Extras
-
-Aqui são listados algumas sugestões para você que quer ir além do desafio inicial. Lembrando que você não precisa se limitar a essas sugestões, se tiver pensado em outra funcionalidade que considera relevante ao escopo da aplicação fique à vontade para implementá-la.
-
-* **Refresh automático**: Que as informações exibidas no aplicativo sejam atualizadas de tempo em tempo de forma transparente ao usuário
-
-* **Cálculo de rotas**: Exibir a possível rota de um ou mais ônibus em relação a uma parada, ou do usuário em relação a uma parada (Utilizando API do Google Maps ou equivalentes)
-
-* **Corredores**: Mostrar informações sobre os corredores de ônibus de SP.
-
-* **Velocidade das vias**: Mostrar informações sobre as velocidades das vias.
-
-* **Testes**: Desenvolva testes que achar necessário para a aplicação.
-
-* **Documentação**: Gerar uma documentação da aplicação. A documentação pode incluir detalhes sobre as decisões tomadas, especificação das funcionalidades desenvolvidas, instruções de uso dentre outras informações que achar relevantes.
-
-## Entrega
-
-Para realizar a entrega do teste você deve:
-
-* Relizar o fork e clonar esse repositório para sua máquina.
-  
-* Criar uma branch com o nome de `teste/[NOME]`.
-  * `[NOME]`: Seu nome.
-  * Exemplos: `teste/fulano-da-silva`; `teste/beltrano-primeiro-gomes`.
-  
-* Faça um commit da sua branch com a implementação do teste.
-  
-* Realize o pull request da sua branch nesse repositório.
+1. **Inicialização**: Ao abrir o aplicativo, a autenticação com a API Olho Vivo é realizada.
+2. **Pesquisa de Linhas**: Utilize a barra de pesquisa para encontrar linhas de ônibus.
+3. **Exibição de Paradas**: Clique no botão "Paradas" para exibir os pontos de parada no mapa.
+4. **Corredores e Velocidades**: Utilize os botões "Corredores" e "Velocidades" para exibir essas informações no mapa.
