@@ -14,7 +14,7 @@ export default function Index() {
       <View style={{ flex: 1}} className="bg-slate-200">
           
           <View className="w-full px-4" style={{ marginTop: statusBar + 8}}>
-
+    
             <Header />    
             <BuscarLinha />            
           </View>

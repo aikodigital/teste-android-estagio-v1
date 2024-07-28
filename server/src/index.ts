@@ -1,14 +1,19 @@
 import express, { Request, Response } from 'express';
 import dotenv from 'dotenv';
+import cors from 'cors'
 import { getPositionsController,
          getLines,
          getParadeByLine } from './services/transporteController';
+
+
+
 
 dotenv.config();
 
 const app = express();
 const port = 3000;
 
+app.use(cors());
 app.use(express.json());
 
 app.get('/', (req: Request, res: Response) => {

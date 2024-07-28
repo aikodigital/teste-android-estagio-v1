@@ -1,4 +1,4 @@
-import { View, TextInput, Pressable, Text} from 'react-native';
+import { View, TextInput, Pressable, Text, FlatList} from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { ScrollView } from 'react-native-gesture-handler';
 import {useState} from 'react'
@@ -10,6 +10,7 @@ export function BuscarLinha() {
     const [lines, setLines ]  = useState([])
 
     const handleSearch = async () => {
+        setLines([]);
         try {
             const data = await getLine(searchTerm);
             setLines(data);
@@ -18,6 +19,14 @@ export function BuscarLinha() {
             console.error('Error fetching lines:', error);
         }
     };
+
+    const renderItem = ({ item   }) => (
+        <View className='p-4 border-b border-gray-200'>
+            <Text className='text-black font-bold'>{item.lt}</Text>
+            <Text className='text-gray-600'>{item.tp}</Text>
+            <Text className='text-gray-600'>{item.ts}</Text>
+        </View>
+    );
 
 
     return ( 
@@ -38,11 +47,13 @@ export function BuscarLinha() {
             </Pressable>
         </View>
         
-
-
-        <View className=''>
-            <Text className='text-black font-bold'>Linhas</Text>
-        </View>
+        <FlatList
+                data={lines}
+                keyExtractor={(item) => item.cl.toString()}
+                renderItem={renderItem}
+                ListEmptyComponent={<Text className='ml-32 text-gray-600'>Nada na listagem</Text>}
+                className='mt-4'
+            />
         
         </View> 
   );
