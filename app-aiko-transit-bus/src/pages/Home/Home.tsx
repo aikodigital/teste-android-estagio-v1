@@ -5,30 +5,52 @@ import {
   watchPositionAsync,
   LocationAccuracy,
 } from "expo-location";
-import MapView from "react-native-maps";
+import MapView, { Marker } from "react-native-maps";
 import { useEffect, useState, useRef, useContext } from "react";
-import { Text, TouchableOpacity, View } from "react-native";
+import { TouchableOpacity, TouchableWithoutFeedback, View } from "react-native";
 
 import Icon from "react-native-vector-icons/FontAwesome5";
 
 import { Menu } from "../../components/Menu";
 import { GlobalContext } from "../../context/GlobalContext";
-import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "react-native-screens/lib/typescript/native-stack/types";
 import { RootStackParamList } from "../../Routes";
+import React from "react";
+import axios from "axios";
+import { IconParadas } from "../../components/iconParadas";
+import InfoParadaSelected from "../../components/InfoParadaSelected";
 
-type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'Home'>;
+type NavigationProp = NativeStackNavigationProp<RootStackParamList, "Home">;
 
 export default function Home() {
-  const { showMenu, setShowMenu, setRowOrSearch } = useContext(GlobalContext);
-
-  const navigation = useNavigation<NavigationProp>();
+  const {showMenu,setShowMenu,token,setInfoParada,infoParada, setDataParada, dataParada, filterParada} = useContext(GlobalContext);
 
   const [currentLocation, setCurrentLocation] = useState<LocationObject | null>(
     null
   );
   const [isLocationVisible, setIsLocationVisible] = useState<boolean>(true);
   const mapRef = useRef<MapView>(null); // Referência para o MapView
+
+  useEffect(() => {
+    const initialRequestPost = async () => {
+      await axios.post(
+        `https://api.olhovivo.sptrans.com.br/v2.1/Login/Autenticar?token=${token}`
+      );
+    };
+
+    initialRequestPost();
+  }, []);
+
+  const urlParada =
+    "https://api.olhovivo.sptrans.com.br/v2.1/Parada/Buscar?termosBusca=Ibirapuera";
+  useEffect(() => {
+    const requestParada = async () => {
+      const response = await axios.get(urlParada);
+      setDataParada(response.data);
+    };
+
+    requestParada();
+  }, [urlParada]);
 
   async function requestLocaltionPermition() {
     const { granted } = await requestForegroundPermissionsAsync();
@@ -95,45 +117,55 @@ export default function Home() {
     <View>
       {currentLocation && (
         <View className="w-full h-full">
-          <MapView
-            className="w-full h-[87%]"
-            ref={mapRef}
-            initialRegion={{
-              latitude: currentLocation.coords.latitude,
-              longitude: currentLocation.coords.longitude,
-              latitudeDelta: 0.005,
-              longitudeDelta: 0.005,
-            }}
-            showsUserLocation
-            zoomEnabled={true}
-            scrollEnabled={true}
-            pitchEnabled={true}
-            rotateEnabled={true}
-            onRegionChange={onRegionChange}
-          />
+          <TouchableWithoutFeedback className="w-full h-full" onPress={()=> setInfoParada(false)}>
+            <MapView
+              style={{ flex: 1 }}
+              ref={mapRef}
+              initialRegion={{
+                latitude: -23.610592,
+                longitude: -46.665759,
+                latitudeDelta: 0.005,
+                longitudeDelta: 0.005,
+              }}
+              showsUserLocation
+              zoomEnabled={true}
+              scrollEnabled={true}
+              pitchEnabled={true}
+              rotateEnabled={true}
+              onRegionChange={onRegionChange}
+            >
+              {dataParada &&
+                dataParada.map((parada: any) => (
+                  <Marker
+                    key={parada.cp}
+                    coordinate={{
+                      latitude: parada.py,
+                      longitude: parada.px,
+                    }}
+                    onPress={() => {
+                      filterParada(parada.cp)
+                      setInfoParada(true);
+                    }}
+                  >
+                    <IconParadas />
+                  </Marker>
+                ))}
+            </MapView>
+          </TouchableWithoutFeedback>
+
           <TouchableOpacity
             className="w-[70px] h-[70px] flex items-center justify-center bg-[#fff] rounded-full absolute top-[80px] left-5 shadow-lg shadow-[#000]"
-            onPress={() => {
-              setShowMenu(true);
-            }}
+            onPress={() => setShowMenu(true)}
           >
             <Icon name="bars" size={30} color="#003184" />
           </TouchableOpacity>
-          <View className="w-full h-[116px] absolute bottom-0 flex px-5 items-center  rounded-t-[20px] bg-[#fff] border border-[#F2F2F2] shadow-lg shadow-[#000]">
-            <TouchableOpacity
-              className="w-full h-[50px] flex flex-row items-center mt-[18px] bg-[#fff] border border-[#F2F2F2] rounded-[30px] pl-5 shadow-lg shadow-[#000]"
-              onPress={() => {
-                setRowOrSearch("linhas")
-                navigation.navigate("Busca")}}
-            >
-              <Icon name="search" size={30} color="#949494" />
-              <Text className="pl-3 text-[#949494] font-semibold text-xl">
-                Linhas e destinos
-              </Text>
-            </TouchableOpacity>
-          </View>
+          
+          <InfoParadaSelected/>
+
           <TouchableOpacity
-            className="w-[60px] h-[60px] flex items-center justify-center bg-[#fff] rounded-full absolute bottom-[136px] right-5 border border-[#F2F2F2] shadow-lg shadow-[#000]"
+            className={`w-[60px] h-[60px] flex items-center justify-center bg-[#fff] rounded-full absolute ${
+              infoParada ? "bottom-[416px]" : "bottom-[136px]"
+            }  right-5 border border-[#F2F2F2] shadow-lg shadow-[#000]`}
             onPress={goToCurrentLocation}
           >
             <Icon
