@@ -3,8 +3,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:olho_vivo_sp/models/arrival_forecast_model.dart';
 import 'package:olho_vivo_sp/models/bus_stop_model.dart';
+import 'package:olho_vivo_sp/models/vehicles_model.dart';
 import 'package:olho_vivo_sp/util/environment.dart';
 
 import '../models/hall_model.dart';
@@ -95,7 +95,8 @@ class ApiService extends ChangeNotifier {
     }
   }
 
-  Future<List> getArrivalForecastByBusStop(String busStopCode) async {
+  Future<List<VehiclesModel>> getArrivalForecastByBusStop(
+      String busStopCode) async {
     try {
       if (_sessionToken == null) {
         await authenticate();
@@ -113,12 +114,30 @@ class ApiService extends ChangeNotifier {
       if (response.statusCode >= HttpStatus.ok &&
           response.statusCode < HttpStatus.multipleChoices) {
         final Map<String, dynamic> data = jsonDecode(response.body);
+        List<VehiclesModel> vehicles = [];
 
-        return (data['p']['l'] as List)
-            .map(
-              (e) => ArrivalForecastModel.fromMap(e),
-            )
-            .toList();
+        for (var e in data['p']['l']) {
+          for (var v in e['vs']) {
+            vehicles.add(
+              VehiclesModel.fromMap(
+                {
+                  'c': e['c'],
+                  'cl': e['cl'],
+                  'sl': e['sl'],
+                  'lt0': e['lt0'],
+                  'lt1': e['lt1'],
+                  'p': v['p'],
+                  't': v['t'],
+                  'a': v['a'],
+                  'py': v['py'],
+                  'px': v['px'],
+                },
+              ),
+            );
+          }
+        }
+
+        return vehicles;
       } else {
         throw Exception(Environment.failed_get_arrival_forecast);
       }
