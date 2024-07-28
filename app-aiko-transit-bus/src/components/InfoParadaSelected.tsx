@@ -1,16 +1,21 @@
-import React, { useContext, useState } from "react";
-import { Text, View, TouchableOpacity, ScrollView } from "react-native";
+import React, { useContext } from "react";
+
 import { GlobalContext } from "../context/GlobalContext";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { RootStackParamList } from "../Routes";
-import Icon from "react-native-vector-icons/FontAwesome5";
+
 import { useNavigation } from "@react-navigation/native";
+import { RootStackParamList } from "../Routes";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+
+import { Text, View, TouchableOpacity, ScrollView } from "react-native";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
+
+import Icon from "react-native-vector-icons/FontAwesome5";
+
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList, "Home">;
 
 const InfoParadaSelected = () => {
-  const { setRowOrSearch, infoParada, paradaAtualData } =
+  const { setRowOrSearch, infoParada, paradaAtualData, getLinha } =
     useContext(GlobalContext);
   const navigation = useNavigation<NavigationProp>();
 
@@ -50,16 +55,21 @@ const InfoParadaSelected = () => {
                 Chegadas:
               </Text>
               {paradaAtualData?.p?.l.map((parada: any) => (
-                <View key={parada.cl} className="pt-3 border-b border-[#F2F2F2] pb-2 ">
+                <TouchableWithoutFeedback
+                  key={parada.cl}
+                  className="pt-3 border-b border-[#F2F2F2] pb-2"
+                  onPress={() => {
+                    getLinha(parada.cl);
+                    navigation.navigate("Linha");
+                  }}
+                >
                   <TouchableWithoutFeedback className="w-[70px] flex items-center px-3 py-1 bg-greenPrimary text-[18px] rounded-full">
                     <Text className="text-[#fff] font-bold">{parada.cl}</Text>
                   </TouchableWithoutFeedback>
                   <View className="flex flex-row items-center pt-2 pl-3">
                     <View className="flex-1 flex flex-row items-center flex-wrap">
                       <Text className="text-grayPrimary">{parada.lt0} /</Text>
-                      <Text className="text-grayPrimary">
-                        {parada.lt1}
-                      </Text>
+                      <Text className="text-grayPrimary">{parada.lt1}</Text>
                     </View>
                     {parada.vs.length > 0 && (
                       <View className="flex flex-row items-center pl-2 pr-2">
@@ -70,7 +80,7 @@ const InfoParadaSelected = () => {
                       </View>
                     )}
                   </View>
-                </View>
+                </TouchableWithoutFeedback>
               ))}
             </ScrollView>
           </View>
