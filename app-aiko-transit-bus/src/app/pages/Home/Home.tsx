@@ -1,4 +1,6 @@
 import React from "react";
+import { API_ACCESS_TOKEN } from '@env'; 
+
 import { useEffect, useState, useRef, useContext } from "react";
 
 import { GlobalContext } from "../../../context/GlobalContext";
@@ -53,7 +55,7 @@ export default function Home() {
   useEffect(() => {
     const initialRequestPost = async () => {
       await axios.post(
-        `https://api.olhovivo.sptrans.com.br/v2.1/Login/Autenticar?token=${token}`
+        `https://api.olhovivo.sptrans.com.br/v2.1/Login/Autenticar?token=${API_ACCESS_TOKEN}`
       );
     };
 
@@ -152,8 +154,8 @@ export default function Home() {
               style={{ flex: 1 }}
               ref={mapRef}
               initialRegion={{
-                latitude: currentLocation.coords.latitude,
-                longitude: currentLocation.coords.longitude,
+                latitude: -23.610592,
+                longitude: -46.665759,
                 latitudeDelta: 0.01,
                 longitudeDelta: 0.01,
               }}
