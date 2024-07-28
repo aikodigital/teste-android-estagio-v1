@@ -56,8 +56,8 @@ export const ParadasBusSelected: FunctionComponent<ParadaBusSelectedprops> = ({
         <Text className="font-bold text-bluePrimary text-xl pl-5 pt-2">Paradas da linha</Text>
           <View className="pb-[220px]">
               <ScrollView>
-                {dataParadas?.map((paradas: any) => (
-                  <View className="px-5 pt-6">
+                {dataParadas?.map((paradas: any, index: number) => (
+                  <View key={index} className="px-5 pt-6">
                     <View className="flex flex-row items-center">
                       <Icon name="map-pin" size={18} color="#003184" />
                       <Text className="text-[#C9C9C9] text-sm font-semibold pl-1">
