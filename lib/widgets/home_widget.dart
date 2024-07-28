@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:olho_vivo_sp/widgets/hall_list.dart';
+import 'package:olho_vivo_sp/widgets/map_widget.dart';
 import 'bottom_navigation_widget.dart';
 
 class Home extends StatefulWidget {
@@ -12,8 +14,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   final _screens = [
     const HallList(),
-    const Placeholder(),
-    const Placeholder(),
+    const MapWidget(target: LatLng(-23.5489, -46.6388), markers: {}),
   ];
   int _index = 0;
 
@@ -31,14 +32,10 @@ class _HomeState extends State<Home> {
       label: 'Corredores',
     ),
     const BottomNavigationBarItem(
-      icon: Icon(Icons.search),
-      label: 'Linhas',
-    ),
-    const BottomNavigationBarItem(
       icon: Icon(
-        Icons.directions_bus,
+        Icons.map,
       ),
-      label: 'Veículos no mapa',
+      label: 'Mapa',
     ),
   ];
 
