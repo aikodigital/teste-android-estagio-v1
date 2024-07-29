@@ -69,3 +69,18 @@ Para rodar o aplicativo, siga os passos abaixo:
 
 Agora o aplicativo estará pronto para exibir informações sobre o transporte público da cidade de São Paulo, utilizando a API Olho Vivo e o Google Maps no emulador que desejar.
 
+## Download do app
+
+Se prefir você pode baixar o apk.
+
+Apk disponível em: https://drive.google.com/file/d/1gTLYOLlf9SabbSW0vTYYvb4DLLdBrGfG/view?usp=sharing
+
+## Desenvolvido por Mateus de Almeida
+
+Se tiver alguma dúvida ou sugestão, sinta-se à vontade para entrar em contato!
+
+### Contato
+- GitHub: https://github.com/Mateuszinnn
+- LinkedIn: https://www.linkedin.com/in/mateusalmeidadias/
+- Email: mateusdealmeida.trab@gmail.com
+
