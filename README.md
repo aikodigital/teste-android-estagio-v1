@@ -30,12 +30,8 @@ Alem do flutter as seguintes bibliotecas foram utilizadas no desenvolvimento do 
 
 ## Fotos do Aplicativo
 
-<img src="/images/img1.png">
-<img src="/images/img2.png">
-<img src="/images/img3.png">
-<img src="/img4.png">
-<img src="/images/img5.png">
-<img src="/images/img6.png">
-<img src="/images/img7.png">
-<img src="/images/img8.png">
-<img src="/images/img9.png">
+<img src="/images/img1.png" width="33.33%"> <img src="/images/img2.png" width="33.33%"> <img src="/images/img3.png" width="33.33%">
+
+<img src="/images/img4.png" width="33.33%"> <img src="/images/img5.png" width="33.33%"> <img src="/images/img6.png" width="33.33%">
+
+<img src="/images/img7.png" width="33.33%"> <img src="/images/img8.png" width="33.33%"> <img src="/images/img9.png" width="33.33%">
