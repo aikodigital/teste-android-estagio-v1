@@ -1,4 +1,19 @@
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+
 abstract class Environment {
+  static const String app_name = 'OlhoVivoSP';
+
+  static const String halls_label = 'Corredores';
+  static const String maps_label = 'Mapa';
+
+  static const LatLng sao_paulo_downtown_coordinates =
+      LatLng(-23.5489, -46.6388);
+
+  static const String no_bus_msg = 'Sem ônibus disponiveis';
+
+  static const String snippet_vehicle_marker_msg =
+      'Clique para obter mais informações';
+
   static const String failed_auth_msg = 'Falha ao realizar autenticação.';
   static const String failed_get_halls_msg = 'Falha ao obter corredores.';
   static const String failed_get_arrival_forecast =
