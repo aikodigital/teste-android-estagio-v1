@@ -12,55 +12,52 @@ Seu objetivo é criar um aplicativo que exiba dados sobre o transporte público 
 
 Esses requisitos são obrigatórios e devem ser desenvolvidos para a entrega do teste
 
-* **Posições dos veículos**: Exibir no mapa onde os veículos estavam na sua última atualização.
+* **Posições dos veículos**: Exibir no mapa onde os veículos estavam na sua última atualização. [X]
 
-* **Linhas**: Exibir informações sobre as linhas de ônibus.
+* **Linhas**: Exibir informações sobre as linhas de ônibus. [X]
 
-* **Paradas**: Exibir os pontos de parada da cidade no mapa.
+* **Paradas**: Exibir os pontos de parada da cidade no mapa.[X]
 
-* **Previsão de chegada**: Dado uma parada informar a previsão de chegada de cada veículo que passe pela parada selecionada.
+* **Previsão de chegada**: Dado uma parada informar a previsão de chegada de cada veículo que passe pela parada selecionada.[X]
 
-* **Pesquisa e Filtros**: Permitir que o usuário pesquise e filtre esses dados, interagindo com a interface.
+* **Pesquisa e Filtros**: Permitir que o usuário pesquise e filtre esses dados, interagindo com a interface. [X]
 
-## O que é permitido
 
-* Android Nativo (Java/Kotlin)
+## Tecnologia Ultilizada
 
-* React Native
+* React Native 
+* TypeScript
+* Expo
 
-* Native Script (Vue, Angular, etc)
+## Dependencias e Instalação
 
-* Flutter
+    "@react-native-community/masked-view": "^0.1.11",
+    "@react-navigation/native": "^6.1.18",
+    "@react-navigation/stack": "^6.4.1",
+    "expo": "~51.0.14",
+    "expo-location": "^17.0.1",
+    "expo-status-bar": "~1.12.1",
+    "react": "18.2.0",
+    "react-native": "0.74.2",
+    "react-native-gesture-handler": "^2.17.1",
+    "react-native-maps": "^1.17.1",
+    "react-native-reanimated": "^3.14.0",
+    "react-native-safe-area-context": "^4.10.8",
+    "react-native-screens": "^3.32.0"
 
-* Xamarin
+Para o uso do app, apòs clonar o repositorio, siga esses passos:
+no terminal, use o 
+`npm install`
+ou
+`yarn install`
 
-* Kivy
+e para comando de teste use `npm start`
 
-* Qualquer tecnologia complementar as citadas anteriormente são permitidas desde que seu uso seja justificável
 
-## O que não é permitido
+## Contato
 
-* Utilizar bibliotecas ou códigos de terceiros que implementem algum dos requisitos.
-
-## Recomendações
-
-* **Linter**: Desenvolva o projeto utilizando algum padrão de formatação de código.
-
-## Extras
-
-Aqui são listados algumas sugestões para você que quer ir além do desafio inicial. Lembrando que você não precisa se limitar a essas sugestões, se tiver pensado em outra funcionalidade que considera relevante ao escopo da aplicação fique à vontade para implementá-la.
-
-* **Refresh automático**: Que as informações exibidas no aplicativo sejam atualizadas de tempo em tempo de forma transparente ao usuário
-
-* **Cálculo de rotas**: Exibir a possível rota de um ou mais ônibus em relação a uma parada, ou do usuário em relação a uma parada (Utilizando API do Google Maps ou equivalentes)
-
-* **Corredores**: Mostrar informações sobre os corredores de ônibus de SP.
-
-* **Velocidade das vias**: Mostrar informações sobre as velocidades das vias.
-
-* **Testes**: Desenvolva testes que achar necessário para a aplicação.
-
-* **Documentação**: Gerar uma documentação da aplicação. A documentação pode incluir detalhes sobre as decisões tomadas, especificação das funcionalidades desenvolvidas, instruções de uso dentre outras informações que achar relevantes.
+* E-mail - prattithiago5@gmail.com
+* Whatszap - (81) 99302-3107 
 
 ## Entrega
 
