@@ -2,7 +2,7 @@ import ConfigAPI from './ConfigAPI';
 
 export const SearchExpectedTime = async (stop) => {
   try {
-    const response = await ConfigAPI.get(`Previsao/Parada?codigoParada=${stop}`);   
+    const response = await ConfigAPI.get(`Previsao/Linha?codigoLinha=${stop}`);   
     //console.log('Resposta da API SearchExpectedTime:', response);
 
     return response.data;

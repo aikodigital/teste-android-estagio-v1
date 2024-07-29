@@ -7,7 +7,7 @@ import { SearchStops } from '../config/services/SearchStops';
 const LineStops = () => {
   const route = useRoute();
   const { lineCode } = route.params || {}; //Pega o parâmetro se a função estiver sendo chamada a partir de outra página
-  
+
   const [searchTerm, setSearchTerm] = useState(lineCode || ''); //Inicializa a pesquisa com o parâmetro, se houver
   const [stops, setStops] = useState([]);
   const [error, setError] = useState('');
@@ -32,10 +32,10 @@ const LineStops = () => {
       setError('Digite uma linha de ônibus:');
       return;
     }
-    
+
     setLoading(true);
     setError('');
-    
+
     try {
       const data = await SearchStops(term);
       if (Array.isArray(data)) {
@@ -63,7 +63,7 @@ const LineStops = () => {
       <Button title="Buscar" onPress={() => handleSearch()} color="#003184" />
 
       {loading && <Text style={styles.loading}>Buscando...</Text>}
-      
+
       {error ? (
         <Text style={styles.error}>{error}</Text>
       ) : (
@@ -74,8 +74,7 @@ const LineStops = () => {
             longitude: -46.63, // Longitude default (apenas para que a pagina inicie já com mapa na cidade) para SP
             latitudeDelta: 0.0922, // Latitude delta default (apenas para que a pagina inicie já com mapa na cidade) para SP
             longitudeDelta: 0.0421, // Longitude delta default (apenas para que a pagina inicie já com mapa na cidade) para SP
-          }}
-        >
+          }}>
           {stops.map((stop) => (
             <Marker
               key={stop.cp}

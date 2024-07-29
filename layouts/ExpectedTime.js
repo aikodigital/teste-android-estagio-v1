@@ -21,10 +21,10 @@ const ExpectedTime = () => {
     try {
       const response = await SearchExpectedTime(stop);
 
-      if (response) {
-        setData(response);
+      if (response && response.ps && response.ps.length > 0) {
+        setData(response.ps);
       } else {
-        setError('Nenhuma informação encontrada a linha pesquisada.');
+        setError('Nenhuma informação encontrada para a linha pesquisada.');
         setData(null);
       }
     } catch (err) {
@@ -37,15 +37,15 @@ const ExpectedTime = () => {
 
   const renderItem = ({ item }) => (
     <View style={styles.item}>
-      <Text style={styles.itemText}>Linha: <Text style={styles.boldText}>{item.c}</Text></Text>
-      <Text style={styles.itemText}>Circular: <Text style={styles.boldText}>{item.sl ? 'Sim' : 'Não'}</Text></Text>
-      <Text style={styles.itemText}>Destino: <Text style={styles.boldText}>{item.lt0} -> {item.lt1}</Text></Text>
+      <Text style={styles.itemText}>Ponto: <Text style={styles.boldText}>{item.np}</Text></Text>
       <FlatList
         data={item.vs}
-        keyExtractor={(stop) => stop.p}
+        keyExtractor={(vehicle) => vehicle.p}
         renderItem={({ item }) => (
           <View style={styles.stopItem}>
+            <Text style={styles.stopText}>Veículo: <Text style={styles.boldText}>{item.p}</Text></Text>
             <Text style={styles.stopText}>Previsão: <Text style={styles.boldText}>{item.t}</Text></Text>
+            <Text style={styles.stopText}>Acessível: <Text style={styles.boldText}>{item.a ? 'Sim' : 'Não'}</Text></Text>
           </View>
         )}
       />
@@ -63,11 +63,21 @@ const ExpectedTime = () => {
       <Button title="Buscar" onPress={handleSearch} color="#003184" />
 
       {loading && <Text style={styles.loading}>Buscando...</Text>}
-
-      
-        <Text style={styles.placeholderText}>
-          Informe uma linha de ônibus para buscar as informações de veículos em tempo real.
-        </Text>
+      {error ? (
+        <Text style={styles.error}>{error}</Text>
+      ) : (
+        data ? (
+          <FlatList
+            data={data}
+            keyExtractor={(item, index) => index.toString()}
+            renderItem={renderItem}
+          />
+        ) : (
+          <Text style={styles.placeholderText}>
+            Informe uma linha de ônibus para buscar as informações de veículos em tempo real.
+          </Text>
+        )
+      )}
     </View>
   );
 };
