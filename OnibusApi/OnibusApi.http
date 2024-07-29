@@ -1,0 +1,11 @@
+@OnibusApi_HostAddress = http://localhost:5153
+
+GET {{OnibusApi_HostAddress}}/todos/
+Accept: application/json
+
+###
+
+GET {{OnibusApi_HostAddress}}/todos/1
+Accept: application/json
+
+###

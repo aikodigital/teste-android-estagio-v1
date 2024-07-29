@@ -1,0 +1,11 @@
+C:\Users\franc\source\repos\MeuBusuApp\MeuBus.CoreBusiness\bin\Debug\net8.0\MeuBus.CoreBusiness.deps.json
+C:\Users\franc\source\repos\MeuBusuApp\MeuBus.CoreBusiness\bin\Debug\net8.0\MeuBus.CoreBusiness.dll
+C:\Users\franc\source\repos\MeuBusuApp\MeuBus.CoreBusiness\bin\Debug\net8.0\MeuBus.CoreBusiness.pdb
+C:\Users\franc\source\repos\MeuBusuApp\MeuBus.CoreBusiness\obj\Debug\net8.0\MeuBus.CoreBusiness.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\franc\source\repos\MeuBusuApp\MeuBus.CoreBusiness\obj\Debug\net8.0\MeuBus.CoreBusiness.AssemblyInfoInputs.cache
+C:\Users\franc\source\repos\MeuBusuApp\MeuBus.CoreBusiness\obj\Debug\net8.0\MeuBus.CoreBusiness.AssemblyInfo.cs
+C:\Users\franc\source\repos\MeuBusuApp\MeuBus.CoreBusiness\obj\Debug\net8.0\MeuBus.CoreBusiness.csproj.CoreCompileInputs.cache
+C:\Users\franc\source\repos\MeuBusuApp\MeuBus.CoreBusiness\obj\Debug\net8.0\MeuBus.CoreBusiness.dll
+C:\Users\franc\source\repos\MeuBusuApp\MeuBus.CoreBusiness\obj\Debug\net8.0\refint\MeuBus.CoreBusiness.dll
+C:\Users\franc\source\repos\MeuBusuApp\MeuBus.CoreBusiness\obj\Debug\net8.0\MeuBus.CoreBusiness.pdb
+C:\Users\franc\source\repos\MeuBusuApp\MeuBus.CoreBusiness\obj\Debug\net8.0\ref\MeuBus.CoreBusiness.dll

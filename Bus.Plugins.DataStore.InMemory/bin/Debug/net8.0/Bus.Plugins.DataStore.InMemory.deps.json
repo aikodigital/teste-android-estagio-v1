@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "Bus.Plugins.DataStore.InMemory/1.0.0": {
+        "runtime": {
+          "Bus.Plugins.DataStore.InMemory.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Bus.Plugins.DataStore.InMemory/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
