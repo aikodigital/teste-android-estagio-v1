@@ -70,10 +70,11 @@ Para executar o aplicativo localmente é necessário seguir os passos abaixo:
     
 `4. O aplicativo será exibido na tela do emulador`
     
-`7. Parâmetros testados:`
+`7. Parâmetros utilizados nas pesquisas:`
 
     Linha: 8000
     Parada: 2506
+    Previsão: 1273
     
 ## ✅ TESTES  
 
