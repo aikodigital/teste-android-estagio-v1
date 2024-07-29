@@ -29,3 +29,14 @@ Alem do flutter as seguintes bibliotecas foram utilizadas no desenvolvimento do 
 * **MVC**: Tentei utilizar as boas práticas de arquitetura de projeto utilizando o MVC, os componentes foram separados em Model( que cuidavam da estrutura e atributos dos dados), Views( Que cuidavam da parte visual do aplicativo) e Controllers/Store( Que controlovam a regra de negócio dos dados dentro da aplicação).
 
 ## Fotos do Aplicativo
+
+<img src="https://drive.google.com/file/d/1aWO-V5Cphg7fOA3J84t7sMQnftXa3Qgf/view?usp=drive_link">
+<img src="https://drive.google.com/file/d/1GKWCJMTB5urLlftWeCSubicCIJdnaoip/view?usp=drive_link">
+<img src="https://drive.google.com/file/d/1nAoiVvp1Z6wibRwSX_l-1ooj0FMSBDax/view?usp=drive_link">
+<img src="https://drive.google.com/file/d/19s32crelGz9B4PHnjyQMB_cM58xSMVlz/view?usp=drive_link">
+<img src="https://drive.google.com/file/d/1rA-3PiXF62EyTk5HOku54PjcvSQC2Qvh/view?usp=drive_link">
+<img src="https://drive.google.com/file/d/15oYtIVaih-u9oniUfzduuiFUinJOPr1H/view?usp=drive_link">
+<img src="https://drive.google.com/file/d/1d_dJHU5EMzXqgjq1hHTrULpiqNVKvQsD/view?usp=drive_link">
+<img src="https://drive.google.com/file/d/1uVgVLSmRfI0UDV6eLYKH4yn-zWaoz-Iu/view?usp=drive_link">
+<img src="https://drive.google.com/file/d/1ToOJ2NhuAVRmkDvF7FYC4c_Hw_U0FjW0/view?usp=drive_link">
+
