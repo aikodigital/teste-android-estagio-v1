@@ -49,13 +49,13 @@ Aplicativo que exibe os dados sobre o transporte público da cidade de São Paul
 
 ## Como rodar esse projeto
 
-# vá para o repositório do projeto
+#### vá para o repositório do projeto
 $ cd teste
 
-# instale as dependências
+#### instale as dependências
 $ npm install
 
-# rode o servidor
+#### rode o servidor
 $ npx expo start
 
 O Android SDK (device manager) foi utilizado para esse projeto: 
