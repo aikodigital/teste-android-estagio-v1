@@ -29,5 +29,9 @@ void main() {
     expect(true, retorno.isNotEmpty);
   });
 
+  test('deve retornar verdadeiro uma lista de paradas', () async {
+    dynamic retorno = await BusStopRepository.searchListStop();
+    expect(true, retorno.isNotEmpty);
+  });
 
 }

@@ -23,6 +23,7 @@ class _BusLinesViewState extends State<BusLinesView> {
           title: Text('Linhas'),
         ),
         body: SingleChildScrollView(
+          padding: const EdgeInsets.all(10),
           child: Column(
             children: [
               Row(
@@ -37,7 +38,6 @@ class _BusLinesViewState extends State<BusLinesView> {
                         ),
                       )),
                   SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.2,
                     child: IconButton(
                       onPressed: () async {
                         FocusNode().unfocus();

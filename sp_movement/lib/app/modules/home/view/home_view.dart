@@ -2,20 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 import 'package:sp_movement/app/modules/bus_lines/view/bus_lines_view.dart';
+import 'package:sp_movement/app/modules/estimated_arrival/view/estimated_arrival_view.dart';
+import 'package:sp_movement/app/modules/home/home_store.dart';
 import 'package:sp_movement/app/modules/vehicle_position/%20view/vehicle_position_view.dart';
 import 'package:sp_movement/app/modules/vehicle_position/stores/vehicle_position_store.dart';
 import 'package:sp_movement/app/modules/vehicle_position/vehicle_position_module.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class HomeView extends StatefulWidget {
+  const HomeView({Key? key}) : super(key: key);
 
   @override
-  _HomePageState createState() => _HomePageState();
+  _HomeViewState createState() => _HomeViewState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomeViewState extends State<HomeView> {
   late PersistentTabController _controller;
-  // var store = Modular.get<VehiclePositionStore>();
+
 
   @override
   void initState() {
@@ -27,7 +29,7 @@ class _HomePageState extends State<HomePage> {
     return [
       VehiclePositionsView(), // HomeModule
       BusLinesView(), // HomeModule
-      VehiclePositionsView(), // HomeModule
+      EstimatedArrivalView(), // HomeModule
     ];
   }
 

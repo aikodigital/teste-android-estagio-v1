@@ -7,6 +7,7 @@ import 'package:mobx/mobx.dart';
 import '../stores/vehicle_position_store.dart';
 
 class VehiclePositionsView extends StatelessWidget {
+
   final store = Modular.get<VehiclePositionStore>();
 
   @override

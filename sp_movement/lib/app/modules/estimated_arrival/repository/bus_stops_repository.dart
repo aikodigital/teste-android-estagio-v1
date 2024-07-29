@@ -17,6 +17,7 @@ class BusStopRepository {
       }
       return list;
     }
+
   static Future<List<BusStopsModel>> searchByCodeLine(int codeLine ) async {
     // final cookies = await AppRepository.cookieJar.loadForRequest(Uri.parse(AppRepository.baseUrl));
     dynamic response = await AppRepository.getDio()!.get('${AppRepository.baseUrl}$endpoint/BuscarParadasPorLinha?codigoLinha=$codeLine');
@@ -41,5 +42,23 @@ class BusStopRepository {
     }
     return list;
   }
+  
+  
+  static Future<List<BusStopsModel>> searchListStop({String? term}) async {
+    // final cookies = await AppRepository.cookieJar.loadForRequest(Uri.parse(AppRepository.baseUrl));
+    dynamic response = await AppRepository.getDio()!.get(
+        '${AppRepository.baseUrl}$endpoint/Buscar?termosBusca=${term??''}');
+    if (response != null) {
+      dynamic responseJson = AppRepository.returnResponse(response);
+      List<BusStopsModel> list = [];
+      for (var item in responseJson.data) {
+        list.add(BusStopsModel.fromJson(item));
+      }
+      return list;
+    }
+    return [];
+  }
+
+
 
 }

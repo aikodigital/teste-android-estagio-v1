@@ -5,8 +5,7 @@ import 'package:sp_movement/app/modules/auth/auth_store.dart';
 class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    authetinicate();
-      Modular.setInitialRoute(Modular.initialRoute);
+      Modular.setInitialRoute('/splash');
     return MaterialApp.router(
       routeInformationParser: Modular.routeInformationParser,
       routerDelegate: Modular.routerDelegate,
@@ -16,9 +15,6 @@ class AppWidget extends StatelessWidget {
       ),
     );
   }
-  Future<void> authetinicate() async {
-    final authStore = Modular.get<AuthStore>();
-    await authStore.authenticate();
-  }
+
 }
 

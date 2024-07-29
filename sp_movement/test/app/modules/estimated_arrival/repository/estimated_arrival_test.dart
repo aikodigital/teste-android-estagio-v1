@@ -9,7 +9,7 @@ void main() {
   });
 
   test('deve retornar verdadeiro uma lista de previsão de chegada', () async {
-    dynamic retorno = await EstimatedArrivalRepository.searchEstimatedArrival(340015748, 32816);
+    dynamic retorno = await EstimatedArrivalRepository.searchEstimatedArrival(340015748);
     expect(true, retorno != null);
   });
 
