@@ -29,7 +29,7 @@ Esses requisitos são obrigatórios e devem ser desenvolvidos para a entrega do 
 * TypeScript
 * Expo
 
-## Dependencias
+## Dependencias e Instalação
 
     "@react-native-community/masked-view": "^0.1.11",
     "@react-navigation/native": "^6.1.18",
@@ -44,6 +44,20 @@ Esses requisitos são obrigatórios e devem ser desenvolvidos para a entrega do 
     "react-native-reanimated": "^3.14.0",
     "react-native-safe-area-context": "^4.10.8",
     "react-native-screens": "^3.32.0"
+
+Para o uso do app, apòs clonar o repositorio, siga esses passos:
+no terminal, use o 
+`npm install`
+ou
+`yarn install`
+
+e para comando de teste use `npm start`
+
+
+## Contato
+
+* E-mail - prattithiago5@gmail.com
+* Whatszap - (81) 99302-3107 
 
 ## Entrega
 
