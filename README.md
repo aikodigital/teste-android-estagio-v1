@@ -1,6 +1,8 @@
 ## 🦾 DESAFIO 
 **Proposta para a fase técnica do processo seletivo para Estágio na Aiko Digital:** Construir uma aplicação mobile que integre a API da SPTrans e implemente recursos úteis para os usuários, conforme direcionamentos repassados pela empresa.
 
+
+
 ## 🛠️ TECNOLOGIAS 
 - **Expo (v51.0.0):** IDE para desenvolvimento de aplicativos mobile em Android, iOS, entre outros.
 - **Bibliotecas principais:**
@@ -10,6 +12,10 @@
   - [React Native Gesture Handler](https://www.npmjs.com/package/react-native-gesture-handler)
   - [Axios](https://www.npmjs.com/package/react-native-axios)
   - Demais bibliotecas detalhadas no [`package.json`](https://github.com/fsaantiago/teste-fernando-santiago/blob/teste/fernando-santiago/package.json)
+ 
+## 📱 O APLICATIVO
+
+Este aplicativo foi desenvolvido em React Native, uma tecnologia de desenvolvimento híbrido, permitindo que ele funcione corretamente tanto em dispositivos `Android` quanto `iOS`.
 
 ## 📐 ARQUITETURA 
 O aplicativo foi construído utilizando uma arquitetura componentizada conforme estrutura abaixo:
