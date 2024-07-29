@@ -18,7 +18,7 @@ const SearchLineScreen: React.FC<{navigation: any}> = ({navigation}) => {
   return (
     <View style={styles.container}>
       <InputPrimary
-        placeholder="Nome ou Código"
+        placeholder="Nome ou Código da Linha"
         value={searchTerm}
         onChangeText={setSearchTerm}
       />
