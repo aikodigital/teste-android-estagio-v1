@@ -37,27 +37,27 @@ O aplicativo foi construído utilizando uma arquitetura componentizada conforme 
 ## 🖼️ TELAS  
 - **Splash + Onboarding:** Telas de carregamento inicial do aplicativo e carregamento da tela de onboarding.
 
-  <img src="https://github.com/fsaantiago/teste-fernando-santiago/blob/teste/fernando-santiago/assets/images/splash_onboarding.gif" width="200" height="400">
+  <img src="https://github.com/fsaantiago/teste-fernando-santiago/blob/teste/fernando-santiago/src/assets/images/splash_onboarding.gif" width="200" height="400">
 
 - **Tempo Real:** Tela inicial do aplicativo que renderiza um mapa mostra a posição em tempo real dos veículos conforme pesquisa pela linha de ônibus. O mapa é atualizado a cada 5 segundos.
 
-<img src="https://github.com/fsaantiago/teste-fernando-santiago/blob/teste/fernando-santiago/assets/images/posicoes_veiculos_realtime.gif"  width="200" height="400">
+<img src="https://github.com/fsaantiago/teste-fernando-santiago/blob/teste/fernando-santiago/src/assets/images/posicoes_veiculos_realtime.gif"  width="200" height="400">
 
 - **Linhas:** Tela que permite ao usuário pesquisar pela linha de ônibus e receber as informações detalhadas da linha, incluindo um botão para acessar as paradas possíveis de cada linha.
   
-<img src="https://github.com/fsaantiago/teste-fernando-santiago/blob/teste/fernando-santiago/assets/images/linhas.gif"  width="200" height="400">
+<img src="https://github.com/fsaantiago/teste-fernando-santiago/blob/teste/fernando-santiago/src/assets/images/linhas.gif"  width="200" height="400">
 
 - **Paradas:** Tela que renderiza um mapa e mostra as paradas disponíveis para a linha pesquisada.
 
-<img src="https://github.com/fsaantiago/teste-fernando-santiago/blob/teste/fernando-santiago/assets/images/paradas.gif"  width="200" height="400">
+<img src="https://github.com/fsaantiago/teste-fernando-santiago/blob/teste/fernando-santiago/src/assets/images/paradas.gif"  width="200" height="400">
 
 - **Previsões:** Tela que permite ao usuário descobrir quais os próximos horários disponíveis para a linha de ônibus pesquisada.
 
-<img src="https://github.com/fsaantiago/teste-fernando-santiago/blob/teste/fernando-santiago/assets/images/previsao.gif"  width="200" height="400">
+<img src="https://github.com/fsaantiago/teste-fernando-santiago/blob/teste/fernando-santiago/src/assets/images/previsao.gif"  width="200" height="400">
 
 - **Corredores:** Opção disponível via menu lateral, onde usuário pode ter acesso aos corredores da cidade.
 
-<img src="https://github.com/fsaantiago/teste-fernando-santiago/blob/teste/fernando-santiago/assets/images/corredores.gif"  width="200" height="400">
+<img src="https://github.com/fsaantiago/teste-fernando-santiago/blob/teste/fernando-santiago/src/assets/images/corredores.gif"  width="200" height="400">
 
 ## 🚀 EXECUTANDO O PROJETO  
 Para executar o aplicativo localmente é necessário seguir os passos abaixo:
