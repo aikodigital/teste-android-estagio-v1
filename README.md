@@ -37,4 +37,6 @@ Este projeto foi desenvolvido com o objetivo de proporcionar uma solução flex�
 - **Lifecycle**: O Android Lifecycle é integrado para gerenciar ciclos de vida de componentes, garantindo um comportamento correto em relação às atividades e fragmentos.
 
 🤝 Contribuindo
-Sinta-se à vontade para contribuir com o meu projeto! para mais informações mande um Email para jpedro.rpessoa@gmail.com 
+## Sinta-se à vontade para contribuir com o meu projeto!
+
+## para mais informações mande um Email para jpedro.rpessoa@gmail.com 
