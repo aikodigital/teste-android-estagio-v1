@@ -24,7 +24,7 @@ Este projeto foi desenvolvido com o objetivo de proporcionar uma solução flex�
 ## 🚀 Tecnologias e Arquitetura Utilizadas
 
 ### 🏛️ Arquitetura
-- **MVVM (Model-View-ViewModel)**: A aplicação adota a arquitetura MVVM para manter uma separação limpa entre a View, ViewModel e Model.
+- **MVVM (Model-View-ViewModel)**: A aplicação adota a arquitetura MVVM para manter uma separação limpa entre a View(UI), ViewModel e Model.
 - **Clean Code**: Nosso código segue os princípios de Clean Code, tornando-o fácil de ler e manter.
 
 ### 📚 Bibliotecas e Frameworks
