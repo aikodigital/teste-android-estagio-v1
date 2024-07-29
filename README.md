@@ -30,12 +30,12 @@ Alem do flutter as seguintes bibliotecas foram utilizadas no desenvolvimento do 
 
 ## Fotos do Aplicativo
 
-<img src="../teste-android-estagio-v1/images/img1.png">
-<img src="../teste-android-estagio-v1/images/img2.png">
-<img src="../teste-android-estagio-v1/images/img3.png">
-<img src="../teste-android-estagio-v1/images/img4.png">
-<img src="../teste-android-estagio-v1/images/img5.png">
-<img src="../teste-android-estagio-v1/images/img6.png">
-<img src="../teste-android-estagio-v1/images/img7.png">
-<img src="../teste-android-estagio-v1/images/img8.png">
-<img src="../teste-android-estagio-v1/images/img9.png">
+<img src="/images/img1.png">
+<img src="/images/img2.png">
+<img src="/images/img3.png">
+<img src="/img4.png">
+<img src="/images/img5.png">
+<img src="/images/img6.png">
+<img src="/images/img7.png">
+<img src="/images/img8.png">
+<img src="/images/img9.png">
