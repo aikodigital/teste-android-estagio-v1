@@ -1,19 +1,24 @@
 package com.devandroid.test_aiko.services.repository
 
-import com.devandroid.test_aiko.models.Line
 import com.devandroid.test_aiko.services.ApiService
 
 class LiveEyeRepository(private val apiService : ApiService) {
 
-    private val token = "5cd400e8ad8211ebb5ab33097103b867c53e4baa6d8aaceefd447d8621b8e87f"
+    private val token = "82e31af3b774a240b144f4dae7dac3393ba7a9e78320dc87b12525b72fa0a645"
+    private var authToken : String? = null
 
-    suspend fun authenticate(): Boolean {
+    suspend fun authenticate(token: String): Boolean {
         val response = apiService.authenticate(token)
-        return response.body() ?: false
+        if (response.isSuccessful) {
+            authToken = "Bearer $token" // Ajuste conforme necessário
+            return response.body() == true
+        }
+        return false
     }
 
-    suspend fun searchLine(term: String): List<Line>? {
-        val response = apiService.searchLine(term)
-        return if (response.isSuccessful) response.body() else null
-    }
+    suspend fun getPositionVehicle() = apiService.getPositionVehicle()
+    suspend fun getStopPoints(stopPoint : String) = apiService.getStopPoints(stopPoint)
+    suspend fun getArrivalForecast(stopCode : Int) = apiService.getArrivalForecast(stopCode)
+    suspend fun getPositionWithLines(lineCode : Int) = apiService.getPositionWithLines(lineCode)
+    suspend fun getLine(termSearch : String) = apiService.getLines(termSearch)
 }

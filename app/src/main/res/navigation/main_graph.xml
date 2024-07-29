@@ -3,19 +3,78 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/splashFragment2">
+    app:startDestination="@id/splashFragment">
+    <navigation
+        android:id="@+id/authUser"
+        app:startDestination="@id/loginFragment">
+        <fragment
+            android:id="@+id/loginFragment"
+            android:name="com.devandroid.workoutschedule.ui.auth.LoginFragment"
+            android:label="fragment_login"
+            tools:layout="@layout/fragment_login">
+            <action
+                android:id="@+id/action_loginFragment_to_registerFragment"
+                app:destination="@id/loginFragment" />
+            <action
+                android:id="@+id/action_loginFragment_to_recoverAccountFragment"
+                app:destination="@id/recoverAccountFragment" />
+            <action
+                android:id="@+id/action_loginFragment_to_registerFragment2"
+                app:destination="@id/registerFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/registerFragment"
+            android:name="com.devandroid.workoutschedule.ui.auth.RegisterFragment"
+            android:label="fragment_register"
+            tools:layout="@layout/fragment_register" />
+        <fragment
+            android:id="@+id/recoverAccountFragment"
+            android:name="com.devandroid.workoutschedule.ui.auth.RecoverAccountFragment"
+            android:label="fragment_recover_account"
+            tools:layout="@layout/fragment_recover_account" />
+        <action
+            android:id="@+id/action_global_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+    </navigation>
     <fragment
-        android:id="@+id/splashFragment2"
+        android:id="@+id/splashFragment"
         android:name="com.devandroid.test_aiko.ui.SplashFragment"
         android:label="fragment_splash"
         tools:layout="@layout/fragment_splash" >
         <action
-            android:id="@+id/action_splashFragment2_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            android:id="@+id/action_splashFragment_to_authUser"
+            app:destination="@id/authUser" />
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.devandroid.test_aiko.ui.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_mapsFragment"
+            app:destination="@id/mapsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_stopMapFragment"
+            app:destination="@id/stopMapFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mapsFragment"
+        android:name="com.devandroid.test_aiko.ui.MapsVehiclePositionsFragment"
+        android:label="fragment_maps"
+        tools:layout="@layout/fragment_vehicle_position_maps" >
+        <action
+            android:id="@+id/action_mapsFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/stopMapFragment"
+        android:name="com.devandroid.test_aiko.ui.StopMapFragment"
+        android:label="fragment_stop_map"
+        tools:layout="@layout/fragment_stop_map" >
+        <action
+            android:id="@+id/action_stopMapFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>

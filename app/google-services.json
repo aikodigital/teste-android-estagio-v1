@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1089740474247",
+    "project_id": "aiko-test",
+    "storage_bucket": "aiko-test.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1089740474247:android:1e59f716cb39c993993522",
+        "android_client_info": {
+          "package_name": "com.devandroid.test_aiko"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdqRukpXDWiPClEyGmrmCs2iMwbu5zHwc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

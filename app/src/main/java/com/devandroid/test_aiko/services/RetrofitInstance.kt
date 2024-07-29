@@ -2,16 +2,20 @@ package com.devandroid.test_aiko.services
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.moshi.MoshiConverterFactory
 
 object RetrofitInstance {
 
-    private const val URL_LIVE_EYE = "http://api.olhovivo.sptrans.com.br/v2.1/"
+    private const val URL_LIVE_EYE = " https://aiko-olhovivo-proxy.aikodigital.io/"
 
-    val api : ApiService by lazy {
+    private val retrofit by lazy {
         Retrofit.Builder()
             .baseUrl(URL_LIVE_EYE)
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(MoshiConverterFactory.create())
             .build()
-            .create(ApiService::class.java)
+    }
+
+    val api : ApiService by lazy {
+        retrofit.create(ApiService ::class.java)
     }
 }

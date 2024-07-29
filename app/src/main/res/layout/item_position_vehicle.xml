@@ -5,14 +5,14 @@
     android:padding="8dp">
 
     <TextView
-        android:id="@+id/textViewLineName"
+        android:id="@+id/textViewVehiclePrefix"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="18sp"
         android:textColor="@color/white" />
 
     <TextView
-        android:id="@+id/textViewLineDetails"
+        android:id="@+id/textViewVehicleDetails"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="14sp"

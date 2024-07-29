@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.devandroid.test_aiko.R
 import com.devandroid.test_aiko.databinding.FragmentSplashBinding
@@ -28,11 +29,12 @@ class SplashFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        Handler(Looper.getMainLooper()).postDelayed(this::goToHome,4000) // tempo de tela splash
+        Handler(Looper.getMainLooper()).postDelayed(this::goToHome,2000) // tempo de tela splash
     }
 
     private fun goToHome(){
-        findNavController().navigate(R.id.action_splashFragment2_to_homeFragment)
+
+        findNavController().navigate(R.id.action_splashFragment_to_authUser)
     }
 
     override fun onDestroy() {

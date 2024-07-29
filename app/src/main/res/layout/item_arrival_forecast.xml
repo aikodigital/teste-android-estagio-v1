@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -5,16 +6,16 @@
     android:padding="8dp">
 
     <TextView
-        android:id="@+id/textViewLineName"
+        android:id="@+id/textViewVehicleName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="18sp"
         android:textColor="@color/white" />
 
     <TextView
-        android:id="@+id/textViewLineDetails"
+        android:id="@+id/textViewArrivelTime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="14sp"
-        android:textColor="@android:color/darker_gray" />
+        android:textColor="@color/white" />
 </LinearLayout>

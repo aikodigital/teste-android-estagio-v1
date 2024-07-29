@@ -1,4 +1,4 @@
-package com.devandroid.test_aiko.adapters
+package com.devandroid.test_aiko.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -27,8 +27,8 @@ class LineAdapter : RecyclerView.Adapter<LineAdapter.LineViewHolder>() {
 
     override fun onBindViewHolder(holder: LineViewHolder, position: Int) {
         val line = lines[position]
-        holder.textViewLineName.text = line.DenominacaoTPTS
-        holder.textViewLineDetails.text = "Código da Linha: ${line.CodigoLinha}, Sentido: ${line.Sentido}"
+        holder.textViewLineName.text = line.tp
+        holder.textViewLineDetails.text = "Código da Linha: ${line.cl}, Sentido: ${line.sl}"
     }
 
     class LineViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
