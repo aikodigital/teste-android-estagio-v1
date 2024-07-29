@@ -11,6 +11,13 @@ import '../models/hall_model.dart';
 
 class ApiService extends ChangeNotifier {
   String? _sessionToken;
+  final List<HallModel> _halls = [];
+  final List<BusStopModel> _busStops = [];
+  final List<VehiclesModel> _vehicles = [];
+
+  List<HallModel> get halls => _halls;
+  List<BusStopModel> get busStops => _busStops;
+  List<VehiclesModel> get vehicles => _vehicles;
 
   Future<Null> authenticate() async {
     try {
@@ -31,7 +38,7 @@ class ApiService extends ChangeNotifier {
     }
   }
 
-  Future<List<HallModel>> getHalls() async {
+  Future<Null> getHalls() async {
     try {
       if (_sessionToken == null) {
         await authenticate();
@@ -50,11 +57,25 @@ class ApiService extends ChangeNotifier {
           response.statusCode < HttpStatus.multipleChoices) {
         List<dynamic> data = jsonDecode(response.body);
 
-        return data
-            .map(
-              (hall) => HallModel.fromMap(hall),
-            )
-            .toList();
+        _halls.clear();
+
+        for (var hall in data) {
+          _halls.add(HallModel.fromMap(hall));
+        }
+
+        _halls.sort(
+          (h1, h2) {
+            if (h1.code > h2.code) {
+              return 1;
+            } else if (h1.code < h2.code) {
+              return -1;
+            }
+
+            return 0;
+          },
+        );
+
+        notifyListeners();
       } else {
         throw Exception(Environment.failed_get_halls_msg);
       }
@@ -63,7 +84,7 @@ class ApiService extends ChangeNotifier {
     }
   }
 
-  Future<List<BusStopModel>> getBusStopsByHall(String hallCode) async {
+  Future<Null> getBusStopsByHall(String hallCode) async {
     try {
       if (_sessionToken == null) {
         await authenticate();
@@ -82,11 +103,13 @@ class ApiService extends ChangeNotifier {
           response.statusCode < HttpStatus.multipleChoices) {
         final List<dynamic> data = jsonDecode(response.body);
 
-        return data
-            .map(
-              (busStop) => BusStopModel.fromMap(busStop),
-            )
-            .toList();
+        _busStops.clear();
+
+        for (var busStop in data) {
+          _busStops.add(BusStopModel.fromMap(busStop));
+        }
+
+        notifyListeners();
       } else {
         throw Exception(Environment.failed_get_bus_stops);
       }
@@ -95,8 +118,7 @@ class ApiService extends ChangeNotifier {
     }
   }
 
-  Future<List<VehiclesModel>> getArrivalForecastByBusStop(
-      String busStopCode) async {
+  Future<Null> getArrivalForecastByBusStop(String busStopCode) async {
     try {
       if (_sessionToken == null) {
         await authenticate();
@@ -114,11 +136,12 @@ class ApiService extends ChangeNotifier {
       if (response.statusCode >= HttpStatus.ok &&
           response.statusCode < HttpStatus.multipleChoices) {
         final Map<String, dynamic> data = jsonDecode(response.body);
-        List<VehiclesModel> vehicles = [];
+
+        _vehicles.clear();
 
         for (var e in data['p']['l']) {
           for (var v in e['vs']) {
-            vehicles.add(
+            _vehicles.add(
               VehiclesModel.fromMap(
                 {
                   'c': e['c'],
@@ -137,7 +160,7 @@ class ApiService extends ChangeNotifier {
           }
         }
 
-        return vehicles;
+        notifyListeners();
       } else {
         throw Exception(Environment.failed_get_arrival_forecast);
       }
