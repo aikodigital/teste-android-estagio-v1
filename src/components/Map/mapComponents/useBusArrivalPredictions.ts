@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
-import { getBusArrivalPredictions } from "../../../../api/getBusArrivalPrediction";
-import { ArrivalPredictions } from "../../../types/types";
-import { postAuth } from "../../../../api/postAuth";
+import { useState, useEffect } from 'react';
+import { getBusArrivalPredictions } from '../../../../api/getBusArrivalPrediction';
+import { ArrivalPredictions } from '../../../types/types';
+import { postAuth } from '../../../../api/postAuth';
 
 export const useBusArrivalPredictions = (codigoParada: number) => {
   const [arrivalPredictions, setArrivalPredictions] =

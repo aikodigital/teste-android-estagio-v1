@@ -1,14 +1,14 @@
-import React, { useContext } from "react";
-import { Text, View } from "react-native";
-import MapView from "react-native-maps";
-import { styles } from "./styles";
-import { useBusPositions } from "./mapComponents/useBusPositions";
-import { useBusStations } from "./mapComponents/useBusStations";
-import { useRegion } from "./mapComponents/useRegion";
-import { BusMarker } from "./mapComponents/BusMarker";
-import { BusStationsMarker } from "./mapComponents/BusStationsMarker";
-import { MapContext } from "../../contexts/MapContext";
-import { useUpdateHour } from "./mapComponents/lastUpdate";
+import React, { useContext } from 'react';
+import { Text, View } from 'react-native';
+import MapView from 'react-native-maps';
+import { styles } from './styles';
+import { useBusPositions } from './mapComponents/useBusPositions';
+import { useBusStations } from './mapComponents/useBusStations';
+import { useRegion } from './mapComponents/useRegion';
+import { BusMarker } from './mapComponents/BusMarker';
+import { BusStationsMarker } from './mapComponents/BusStationsMarker';
+import { MapContext } from '../../contexts/MapContext';
+import { useUpdateHour } from './mapComponents/lastUpdate';
 
 export function MapRender() {
   const busPositions = useBusPositions();
@@ -18,7 +18,7 @@ export function MapRender() {
   const lastUpdate = useUpdateHour();
 
   if (!context) {
-    throw new Error("MapRender must be used within a MapProvider");
+    throw new Error('MapRender must be used within a MapProvider');
   }
 
   const { showBusStations, showBuses } = context;
@@ -49,7 +49,7 @@ export function MapRender() {
         }
       }
     }
-    return { lt0: "", lt1: "" };
+    return { lt0: '', lt1: '' };
   };
 
   const renderBusMarkers = () => {

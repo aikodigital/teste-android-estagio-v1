@@ -1,14 +1,14 @@
-import React, { useContext, useState } from "react";
-import { View, Image, TouchableOpacity, Text, TextInput } from "react-native";
-import { CheckBox } from "react-native-elements";
-import { styles } from "@/components/Filter/styles";
-import { MapContext } from "../../contexts/MapContext";
+import React, { useContext, useState } from 'react';
+import { View, Image, TouchableOpacity, Text } from 'react-native';
+import { CheckBox } from 'react-native-elements';
+import { styles } from '@/components/Filter/styles';
+import { MapContext } from '../../contexts/MapContext';
 
 export function Filter() {
   const context = useContext(MapContext);
 
   if (!context) {
-    throw new Error("Filter must be used within a MapProvider");
+    throw new Error('Filter must be used within a MapProvider');
   }
 
   const { showBuses, setShowBuses, showBusStations, setShowBusStations } =
@@ -17,8 +17,6 @@ export function Filter() {
   const [showFilters, setShowFilters] = useState(false);
   const [busesChecked, setBusesChecked] = useState(showBuses);
   const [stationsChecked, setStationsChecked] = useState(showBusStations);
-  const [linesChecked, setLinesChecked] = useState(false);
-  const [filterText, setFilterText] = useState("");
 
   const toggleFilters = () => {
     setShowFilters(!showFilters);
@@ -51,9 +49,9 @@ export function Filter() {
       )}
       <TouchableOpacity style={styles.button} onPress={toggleFilters}>
         <Text style={styles.text}>
-          Filter{"   "}
+          Filter{'   '}
           <Image
-            source={require("@/assets/lupa.png")}
+            source={require('@/assets/lupa.png')}
             style={styles.buttonImage}
           />
         </Text>

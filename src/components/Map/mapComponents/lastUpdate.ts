@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
-import { postAuth } from "../../../../api/postAuth";
-import { getBusPositions } from "../../../../api/getBusPositions";
+import { useState, useEffect } from 'react';
+import { postAuth } from '../../../../api/postAuth';
+import { getBusPositions } from '../../../../api/getBusPositions';
 
 interface BusPositionsResponse {
   hr: string[];

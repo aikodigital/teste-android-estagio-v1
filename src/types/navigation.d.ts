@@ -1,4 +1,4 @@
-import { Bus } from "./types";
+import { Bus } from './types';
 
 declare global {
   namespace ReactNavigation {

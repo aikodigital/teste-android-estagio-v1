@@ -1,11 +1,11 @@
-import React from "react";
-import { View, Text, ActivityIndicator, ScrollView } from "react-native";
-import { useRoute, RouteProp } from "@react-navigation/native";
-import { useBusArrivalPredictions } from "../../../components/Map/mapComponents/useBusArrivalPredictions";
-import { RootStackParamList } from "../../../types/types";
-import { styles } from "./styles";
+import React from 'react';
+import { View, Text, ActivityIndicator, ScrollView } from 'react-native';
+import { useRoute, RouteProp } from '@react-navigation/native';
+import { useBusArrivalPredictions } from '../../../components/Map/mapComponents/useBusArrivalPredictions';
+import { RootStackParamList } from '../../../types/types';
+import { styles } from './styles';
 
-type DetailsRouteProp = RouteProp<RootStackParamList, "Details">;
+type DetailsRouteProp = RouteProp<RootStackParamList, 'Details'>;
 
 export function Details() {
   const route = useRoute<DetailsRouteProp>();

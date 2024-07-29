@@ -1,23 +1,23 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
   image: {
-    width: "100%",
+    width: '100%',
     height: 200,
   },
   gradient: {
     flex: 1,
     padding: 24,
-    justifyContent: "flex-end",
+    justifyContent: 'flex-end',
   },
   timer: {
-    color: "#FFF",
+    color: '#FFF',
     fontSize: 40,
-    fontWeight: "bold",
-    width: "100%",
+    fontWeight: 'bold',
+    width: '100%',
     height: 60,
-    textAlign: "center",
-    justifyContent: "center",
+    textAlign: 'center',
+    justifyContent: 'center',
     borderRadius: 5,
     marginBottom: 7,
   },

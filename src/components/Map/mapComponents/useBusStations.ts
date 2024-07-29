@@ -1,7 +1,7 @@
-import { useState, useEffect, useCallback } from "react";
-import { postAuth } from "../../../../api/postAuth";
-import { getBusStations } from "../../../../api/getBusStations";
-import { BusStation } from "../../../types/types";
+import { useState, useEffect, useCallback } from 'react';
+import { postAuth } from '../../../../api/postAuth';
+import { getBusStations } from '../../../../api/getBusStations';
+import { BusStation } from '../../../types/types';
 
 export const useBusStations = () => {
   const [busStations, setBusStations] = useState<BusStation[]>([]);

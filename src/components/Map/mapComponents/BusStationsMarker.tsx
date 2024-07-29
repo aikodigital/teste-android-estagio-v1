@@ -1,11 +1,11 @@
-import React from "react";
-import { Marker } from "react-native-maps";
-import { useNavigation } from "@react-navigation/native";
-import { StackNavigationProp } from "@react-navigation/stack";
+import React from 'react';
+import { Marker } from 'react-native-maps';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 import {
   BusStationsMarkerProps,
   RootStackParamList,
-} from "../../../types/types";
+} from '../../../types/types';
 
 export const BusStationsMarker: React.FC<BusStationsMarkerProps> = ({
   station,
@@ -13,12 +13,12 @@ export const BusStationsMarker: React.FC<BusStationsMarkerProps> = ({
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
   const handlePress = () => {
-    navigation.navigate("Details", { codigoParada: station.cp });
+    navigation.navigate('Details', { codigoParada: station.cp });
   };
 
   return (
     <Marker
-      image={require("@/assets/busstation.png")}
+      image={require('@/assets/busstation.png')}
       coordinate={{
         latitude: station.py,
         longitude: station.px,

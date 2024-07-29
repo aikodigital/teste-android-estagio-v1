@@ -1,14 +1,14 @@
-import React from "react";
-import { View } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-import { Cover } from "../../components/Cover";
-import { Filter } from "../../components/Filter";
-import { Lines } from "../Nav/Lines";
-import { Details } from "../Nav/Details";
-import { styles } from "./styles";
-import { RootStackParamLists } from "../../types/types";
-import { MapProvider } from "@/contexts/MapContext";
+import React from 'react';
+import { View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { Cover } from '../../components/Cover';
+import { Filter } from '../../components/Filter';
+import { Lines } from '../Nav/Lines';
+import { Details } from '../Nav/Details';
+import { styles } from './styles';
+import { RootStackParamLists } from '../../types/types';
+import { MapProvider } from '@/contexts/MapContext';
 
 const Stack = createStackNavigator<RootStackParamLists>();
 

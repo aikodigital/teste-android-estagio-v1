@@ -1,7 +1,7 @@
-import { useState, useEffect, useCallback } from "react";
-import { postAuth } from "../../../../api/postAuth";
-import { getBusPositions } from "../../../../api/getBusPositions";
-import { BusData, Line } from "../../../types/types";
+import { useState, useEffect, useCallback } from 'react';
+import { postAuth } from '../../../../api/postAuth';
+import { getBusPositions } from '../../../../api/getBusPositions';
+import { BusData, Line } from '../../../types/types';
 
 export const useBusPositions = () => {
   const [busPositions, setBusPositions] = useState<Line[]>([]);

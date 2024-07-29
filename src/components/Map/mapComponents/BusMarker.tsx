@@ -1,14 +1,14 @@
-import React from "react";
-import { Marker } from "react-native-maps";
-import { useNavigation } from "@react-navigation/native";
-import { StackNavigationProp } from "@react-navigation/stack";
-import { BusMarkerProps, RootStackParamList } from "../../../types/types";
+import React from 'react';
+import { Marker } from 'react-native-maps';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { BusMarkerProps, RootStackParamList } from '../../../types/types';
 
 export const BusMarker: React.FC<BusMarkerProps> = ({ bus, lineDetails }) => {
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
   const handlePress = () => {
-    navigation.navigate("Details", {
+    navigation.navigate('Details', {
       lt0: lineDetails.lt0,
       lt1: lineDetails.lt1,
     });
@@ -16,7 +16,7 @@ export const BusMarker: React.FC<BusMarkerProps> = ({ bus, lineDetails }) => {
 
   return (
     <Marker
-      image={require("@/assets/bus.png")}
+      image={require('@/assets/bus.png')}
       coordinate={{
         latitude: bus.py,
         longitude: bus.px,
