@@ -1,8 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.transporte_publico_sp">
+
     <application
         android:label="transporte_publico_sp"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/ic_launcher"
+        android:enableOnBackInvokedCallback="true"> <!-- Adicione esta linha -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDdeZEeJ0txqBl8_mwz_W8aGpjtxYehX98"/>
@@ -13,7 +15,7 @@
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
             android:hardwareAccelerated="true"
             android:windowSoftInputMode="adjustResize"
-            android:exported="true">
+            android:exported="true"> <!-- Adicione o atributo android:exported -->
             <meta-data
                 android:name="io.flutter.embedding.android.NormalTheme"
                 android:resource="@style/NormalTheme"

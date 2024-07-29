@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:typed_data';
 import 'package:http/http.dart' as http;
 
 class ApiService {
@@ -19,6 +20,25 @@ class ApiService {
     } else {
       print('Falha na autenticação: ${response.body}');
       throw Exception('Falha na autenticação');
+    }
+  }
+
+  Future<List<dynamic>> fetchCorridors() async {
+    if (_authToken == null) {
+      throw Exception('Token de autenticação não disponível');
+    }
+
+    final response = await http.get(
+      Uri.parse('http://api.olhovivo.sptrans.com.br/v2.1/Corredor'),
+      headers: {'cookie': _authToken!},
+    );
+
+    if (response.statusCode == 200) {
+      final data = jsonDecode(response.body);
+      return data;
+    } else {
+      print('Falha ao carregar corredores: ${response.body}');
+      throw Exception('Falha ao carregar corredores');
     }
   }
 
@@ -121,38 +141,22 @@ class ApiService {
     }
   }
 
-  Future<List<dynamic>> fetchCorridors() async {
+  Future<Uint8List> fetchRoadSpeeds({String? sentido}) async {
     if (_authToken == null) {
       throw Exception('Token de autenticação não disponível');
     }
 
+    final url = sentido != null
+        ? 'http://api.olhovivo.sptrans.com.br/v2.1/KMZ/$sentido'
+        : 'http://api.olhovivo.sptrans.com.br/v2.1/KMZ';
+
     final response = await http.get(
-      Uri.parse('http://api.olhovivo.sptrans.com.br/v2.1/Corredor'),
+      Uri.parse(url),
       headers: {'cookie': _authToken!},
     );
 
     if (response.statusCode == 200) {
-      final data = jsonDecode(response.body);
-      return data;
-    } else {
-      print('Falha ao carregar corredores: ${response.body}');
-      throw Exception('Falha ao carregar corredores');
-    }
-  }
-
-  Future<List<dynamic>> fetchRoadSpeeds() async {
-    if (_authToken == null) {
-      throw Exception('Token de autenticação não disponível');
-    }
-
-    final response = await http.get(
-      Uri.parse('http://api.olhovivo.sptrans.com.br/v2.1/KMZ'),
-      headers: {'cookie': _authToken!},
-    );
-
-    if (response.statusCode == 200) {
-      final data = jsonDecode(response.body);
-      return data;
+      return response.bodyBytes;
     } else {
       print('Falha ao carregar velocidades das vias: ${response.body}');
       throw Exception('Falha ao carregar velocidades das vias');

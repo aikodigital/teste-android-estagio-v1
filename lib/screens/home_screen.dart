@@ -1,7 +1,12 @@
+import 'dart:convert';
+import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:archive/archive_io.dart';
 import '../services/api_service.dart';
 import 'bus_stops.dart';
+import 'corridors_page.dart';
+import 'road_speeds_page.dart'; // Adicione esta linha
 
 class HomePage extends StatefulWidget {
   @override
@@ -61,62 +66,6 @@ class _HomePageState extends State<HomePage> {
     print('Linhas de ônibus encontradas: $_busLines');
   }
 
-  Future<void> _fetchCorridors() async {
-    setState(() {
-      _isLoading = true;
-    });
-    try {
-      final corridors = await apiService.fetchCorridors();
-      setState(() {
-        _markers = corridors.map((corridor) {
-          return Marker(
-            markerId: MarkerId(corridor['cc'].toString()),
-            position: LatLng(corridor['py'], corridor['px']),
-            icon: BitmapDescriptor.defaultMarkerWithHue(
-                BitmapDescriptor.hueGreen),
-            infoWindow: InfoWindow(
-              title: 'Corredor ${corridor['nc']}',
-            ),
-          );
-        }).toSet();
-      });
-      print('Corredores atualizados.');
-    } catch (e) {
-      print('Erro ao buscar corredores: $e');
-    }
-    setState(() {
-      _isLoading = false;
-    });
-  }
-
-  Future<void> _fetchRoadSpeeds() async {
-    setState(() {
-      _isLoading = true;
-    });
-    try {
-      final speeds = await apiService.fetchRoadSpeeds();
-      setState(() {
-        _markers = speeds.map((speed) {
-          return Marker(
-            markerId: MarkerId(speed['id'].toString()),
-            position: LatLng(speed['py'], speed['px']),
-            icon:
-                BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
-            infoWindow: InfoWindow(
-              title: 'Velocidade: ${speed['velocidade']} km/h',
-            ),
-          );
-        }).toSet();
-      });
-      print('Velocidades das vias atualizadas.');
-    } catch (e) {
-      print('Erro ao buscar velocidades das vias: $e');
-    }
-    setState(() {
-      _isLoading = false;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -149,7 +98,15 @@ class _HomePageState extends State<HomePage> {
                       backgroundColor: Colors.blue, // Background color
                       foregroundColor: Colors.white, // Text color
                     ),
-                    onPressed: _fetchCorridors,
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              CorridorsPage(apiService: apiService),
+                        ),
+                      );
+                    },
                     child: Text('Corredores'),
                   ),
                 ),
@@ -160,7 +117,15 @@ class _HomePageState extends State<HomePage> {
                       backgroundColor: Colors.blue, // Background color
                       foregroundColor: Colors.white, // Text color
                     ),
-                    onPressed: _fetchRoadSpeeds,
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              RoadSpeedsPage(apiService: apiService),
+                        ),
+                      );
+                    },
                     child: Text('Velocidades das Vias'),
                   ),
                 ),
