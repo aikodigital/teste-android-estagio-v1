@@ -16,10 +16,10 @@ const MainScreen: React.FC<{navigation: any}> = ({navigation}) => {
           title="Buscar por Linha"
           onPress={() => navigation.navigate('SearchLineScreen')}
         />
-        <ButtonPrimary title="Buscar por Parada" onPress={() => null} />
-        <ButtonPrimary title="Buscar por Corredor" onPress={() => null} />
-        <ButtonPrimary title="Checar Congestionamentos" onPress={() => null} />
-        <ButtonPrimary title="Sobre o Aplicativo" onPress={() => null} />
+        <ButtonPrimary
+          title="Buscar por Parada"
+          onPress={() => navigation.navigate('SearchStopScreen')}
+        />
       </View>
     </View>
   );

@@ -6,6 +6,9 @@ export default StyleSheet.create({
   container: {
     padding: RFValue(15),
   },
+  containerButton: {
+    marginTop: RFValue(10),
+  },
   itemContainer: {
     flex: 1,
     alignItems: 'center',
@@ -22,17 +25,17 @@ export default StyleSheet.create({
   itemText: {
     fontSize: RFValue(12),
     fontStyle: 'italic',
-    paddingBottom: RFValue(5),
-    color: theme.colors.contrast,
-  },
-  arrivalText: {
-    fontSize: RFValue(12),
-    fontWeight: 'bold',
-    color: theme.colors.primary,
-  },
-  itemTextWarning: {
-    fontSize: RFValue(14),
     paddingTop: RFValue(5),
     color: theme.colors.contrast,
+  },
+  linkContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop: RFValue(5),
+  },
+  buttonText: {
+    color: theme.colors.primary,
+    fontSize: RFValue(13),
   },
 });

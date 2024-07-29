@@ -22,7 +22,7 @@ export default StyleSheet.create({
   itemText: {
     fontSize: RFValue(12),
     fontStyle: 'italic',
-    paddingBottom: RFValue(5),
+    paddingVertical: RFValue(5),
     color: theme.colors.contrast,
   },
   arrivalText: {

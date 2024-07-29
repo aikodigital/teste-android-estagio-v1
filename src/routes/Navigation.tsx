@@ -1,18 +1,21 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import theme from '../global/theme';
 import MainScreen from '../screens/MainScreen';
 import SearchLineScreen from '../screens/SearchLineScreen';
 import LineDetailsScreen from '../screens/LineDetailsScreen';
 import LineMapScreen from '../screens/LineMapScreen';
-import theme from '../global/theme';
+import SearchStopScreen from '../screens/SearchStopScreen';
+import StopDetailsScreen from '../screens/StopDetailsScreen';
 
 export type RootStackParamList = {
-  AuthenticationScreen: undefined;
   MainScreen: undefined;
   SearchLineScreen: undefined;
   LineDetailsScreen: {lineId: number};
   LineMapScreen: {lineId: number};
+  SearchStopScreen: undefined;
+  StopDetailsScreen: {stopId: number};
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -62,6 +65,20 @@ const Navigation: React.FC = () => {
               backgroundColor: theme.colors.secondary,
             },
             statusBarColor: theme.colors.secondary,
+          }}
+        />
+        <Stack.Screen
+          name="SearchStopScreen"
+          component={SearchStopScreen}
+          options={{
+            headerTitle: 'Buscar Paradas',
+          }}
+        />
+        <Stack.Screen
+          name="StopDetailsScreen"
+          component={StopDetailsScreen}
+          options={{
+            headerTitle: 'Linhas da Parada',
           }}
         />
       </Stack.Navigator>

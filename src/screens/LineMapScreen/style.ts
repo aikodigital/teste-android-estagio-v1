@@ -1,4 +1,5 @@
 import {StyleSheet, Dimensions} from 'react-native';
+import theme from '../../global/theme';
 
 export default StyleSheet.create({
   container: {
@@ -11,8 +12,11 @@ export default StyleSheet.create({
     height: Dimensions.get('window').height,
   },
   loadingContainer: {
+    top: '40%',
+    marginHorizontal: 'auto',
     position: 'absolute',
-    backgroundColor: 'rgba(255, 255, 255, 0)',
+    backgroundColor: theme.colors.secondary,
+    borderRadius: 100,
     zIndex: 5000,
   },
 });

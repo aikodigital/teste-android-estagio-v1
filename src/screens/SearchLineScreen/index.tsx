@@ -18,7 +18,7 @@ const SearchLineScreen: React.FC<{navigation: any}> = ({navigation}) => {
   return (
     <View style={styles.container}>
       <InputPrimary
-        placeholder="Pesquisar linhas"
+        placeholder="Nome ou Código"
         value={searchTerm}
         onChangeText={setSearchTerm}
       />
@@ -52,7 +52,7 @@ const SearchLineScreen: React.FC<{navigation: any}> = ({navigation}) => {
                 onPress={() =>
                   navigation.navigate('LineMapScreen', {lineId: item.cl})
                 }>
-                <Text style={styles.buttonText}>Ver no Mapa</Text>
+                <Text style={styles.buttonText}>Ver Mapa</Text>
               </TouchableOpacity>
             </View>
           </View>
