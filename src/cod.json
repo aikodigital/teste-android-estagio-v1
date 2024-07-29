@@ -1,0 +1,108 @@
+POST/Login/Autenticar?token={token}
+//bccfa09eeab7e01d279ea4f4d92f7a0d37dcafaf9326f5ab73c58d433ebdfaa6
+
+//infos local onibus
+get/Posicao
+[
+    {
+        "cl": 1273,
+        "lc": false,
+        "lt": "8000",
+        "sl": 1,
+        "tl": 10,
+        "tp": "PCA.RAMOS DE AZEVEDO",
+        "ts": "TERMINAL LAPA"
+    },
+    {
+        "cl": 34041,
+        "lc": false,
+        "lt": "8000",
+        "sl": 2,
+        "tl": 10,
+        "tp": "PCA.RAMOS DE AZEVEDO",
+        "ts": "TERMINAL LAPA"
+    }
+]
+
+//infos linhas
+get/Linha/Buscar?termosBusca=8000
+[
+    {
+        "cl": 1273,
+        "lc": false,
+        "lt": "8000",
+        "sl": 1,
+        "tl": 10,
+        "tp": "PCA.RAMOS DE AZEVEDO",
+        "ts": "TERMINAL LAPA"
+    },
+    {
+        "cl": 34041,
+        "lc": false,
+        "lt": "8000",
+        "sl": 2,
+        "tl": 10,
+        "tp": "PCA.RAMOS DE AZEVEDO",
+        "ts": "TERMINAL LAPA"
+    }
+]
+
+//infos paradas
+get/Parada/Buscar?termosBusca={termosBusca}
+[
+  {
+    "cp": 340015329,
+    "np": "AFONSO BRAZ B/C1",
+    "ed": "R ARMINDA/ R BALTHAZAR DA VEIGA",
+    "py": -23.592938,
+    "px": -46.672727
+  }
+]
+
+//previsao chegada
+/Previsao?codigoParada={codigoParada}&codigoLinha={codigoLinha}
+{
+    "hr": "20:09",
+    "p": {
+      "cp": 4200953,
+      "np": "PARADA ROBERTO SELMI DEI B/C",
+      "py": -23.675901,
+      "px": -46.752812,
+      "l": [
+        {
+          "c": "7021-10",
+          "cl": 1989,
+          "sl": 1,
+          "lt0": "TERM. JOÃO DIAS",
+          "lt1": "JD. MARACÁ",
+          "qv": 1,
+          "vs": [
+            {
+              "p": "74558",
+              "t": "23:11",
+              "a": true,
+              "ta": "2017-05-07T23:09:05Z",
+              "py": -23.67603,
+              "px": -46.75891166666667
+            }
+          ]
+        }
+      ]
+    }
+  }
+
+//infos corredores
+GET/Corredor
+[
+  {
+    "cc":8,
+    "nc":"Campo Limpo"
+  }
+]
+
+//velocidade vias
+
+/KMZ/BC
+/KMZ/CB
+/KMZ/OutrasVias
+/KMZ/OutrasVias/BC
