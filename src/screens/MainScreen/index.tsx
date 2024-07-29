@@ -18,7 +18,7 @@ const MainScreen: React.FC<{navigation: any}> = ({navigation}) => {
         />
         <ButtonPrimary title="Buscar por Parada" onPress={() => null} />
         <ButtonPrimary title="Buscar por Corredor" onPress={() => null} />
-        <ButtonPrimary title="Mapa de Engarrafamento" onPress={() => null} />
+        <ButtonPrimary title="Checar Congestionamentos" onPress={() => null} />
         <ButtonPrimary title="Sobre o Aplicativo" onPress={() => null} />
       </View>
     </View>

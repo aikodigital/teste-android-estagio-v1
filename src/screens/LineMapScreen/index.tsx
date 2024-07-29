@@ -16,26 +16,51 @@ const LineMapScreen: React.FC<LineMapScreenProps> = ({route}) => {
   const {lineId} = route.params;
   const [stops, setStops] = useState<LinePrediction['ps']>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const [refreshing, setRefreshing] = useState<boolean>(false);
+
+  const fetchLinePrediction = async () => {
+    if (!loading) {
+      setRefreshing(true);
+    }
+    const result = await getLinePrediction(lineId);
+    if (result) {
+      setStops(result.ps);
+    }
+    setLoading(false);
+    setTimeout(() => {
+      setRefreshing(false);
+    }, 1000);
+  };
 
   useEffect(() => {
-    const fetchLinePrediction = async () => {
-      const result = await getLinePrediction(lineId);
-      if (result) {
-        setStops(result.ps);
-      }
-      setLoading(false);
-    };
-
     fetchLinePrediction();
+
+    const interval = setInterval(() => {
+      fetchLinePrediction();
+    }, 30000);
+
+    return () => clearInterval(interval);
   }, [lineId]);
 
   if (loading) {
-    return <ActivityIndicator size="large" color="#0000ff" />;
+    return <ActivityIndicator size="large" color="red" />;
   }
 
   return (
     <View style={styles.container}>
-      <MapView style={styles.map}>
+      {refreshing && (
+        <View style={styles.loadingContainer}>
+          <ActivityIndicator size={75} color="red" />
+        </View>
+      )}
+      <MapView
+        style={styles.map}
+        initialRegion={{
+          latitude: -23.55052,
+          longitude: -46.633308,
+          latitudeDelta: 0.4,
+          longitudeDelta: 0.4,
+        }}>
         {stops.map(stop => (
           <Marker
             key={stop.cp}
@@ -50,7 +75,9 @@ const LineMapScreen: React.FC<LineMapScreenProps> = ({route}) => {
               key={`${stop.cp}-${index}`}
               coordinate={{latitude: vehicle.py, longitude: vehicle.px}}
               title={`Veículo ${vehicle.p}`}
-              description={`Próxima parada: ${stop.np}`}
+              description={`Acessibilidade: ${
+                vehicle.a ? 'Acessível' : 'Não Acessível'
+              }`}
               pinColor="blue"
             />
           )),
