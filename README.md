@@ -42,7 +42,7 @@ O aplicativo foi construído utilizando uma arquitetura componentizada conforme 
 
 - **Linhas:** Tela que permite ao usuário pesquisar pela linha de ônibus e receber as informações detalhadas da linha, incluindo um botão para acessar as paradas possíveis de cada linha.
   
-<img src="https://github.com/fsaantiago/teste-fernando-santiago/blob/teste/fernando-santiago/assets/images/linhas"  width="200" height="400">
+<img src="https://github.com/fsaantiago/teste-fernando-santiago/blob/teste/fernando-santiago/assets/images/linhas.gif"  width="200" height="400">
 
 - **Paradas:** Tela que renderiza um mapa e mostra as paradas disponíveis para a linha pesquisada.
 
