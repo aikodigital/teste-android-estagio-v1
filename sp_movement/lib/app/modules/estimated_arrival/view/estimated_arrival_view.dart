@@ -36,7 +36,9 @@ class EstimatedArrivalView extends StatelessWidget {
                     point: LatLng(busStopPoint.latitude, busStopPoint.longitude),
                     child: GestureDetector(
                       onTap: () {
-                        store.findEstimatedArrivalByStopPoint(busStopPoint.stopId);
+                        store.findEstimatedArrivalByStopPoint(busStopPoint.stopId).then((value) {
+                          _showDialog(context, busStopPoint);
+                        });
                       },
                       child: const Icon(
                         Icons.location_on,
@@ -62,8 +64,20 @@ class EstimatedArrivalView extends StatelessWidget {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text(busStopPoint.name),
-          content: Text('Latitude: ${busStopPoint.latitude} \nLongitude: ${busStopPoint.longitude}'),
+          title: Text(busStopPoint.stopName),
+          content: SizedBox(
+            height: 200,
+            width: 300,
+            child: ListView.builder(
+              itemCount: store.busStopPoints.length,
+              itemBuilder: (context, index) {
+                return ListTile(
+                  title: Text(store.busStopPoints[index]),
+                );
+              },
+            ),
+
+          ),
           actions: <Widget>[
             TextButton(
               onPressed: () {

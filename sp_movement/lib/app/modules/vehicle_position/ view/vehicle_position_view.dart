@@ -27,7 +27,7 @@ class VehiclePositionsView extends StatelessWidget {
                 subdomains: const ['a', 'b', 'c'],
               ),
               MarkerLayer(
-                markers: store.VehiclePositionsFuture.map((vehicle) {
+                markers: store.vehiclePositionsFuture.map((vehicle) {
                   return Marker(
                     width: 80.0,
                     height: 80.0,
@@ -43,9 +43,13 @@ class VehiclePositionsView extends StatelessWidget {
           );
         },
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: store.fetchVehicles,
-        child: const Icon(Icons.refresh),
+      floatingActionButton:  Observer(
+        builder: (_) {
+          return store.loading ? const CircularProgressIndicator(color: Colors.green,) : FloatingActionButton(
+            onPressed: store.fetchVehicles,
+            child: const Icon(Icons.refresh),
+          );
+        }
       ),
     );
   }

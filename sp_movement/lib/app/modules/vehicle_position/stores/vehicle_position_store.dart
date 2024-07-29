@@ -9,12 +9,16 @@ class VehiclePositionStore = _VehiclePositionStore with _$VehiclePositionStore;
 
 abstract class _VehiclePositionStore with Store {
 
+  @observable
+  bool loading = false;
+  @action
+  void setLoading(bool value) => loading = value;
 
-
-  ObservableList<VehicleModel> VehiclePositionsFuture = ObservableList<VehicleModel>();
+  ObservableList<VehicleModel> vehiclePositionsFuture = ObservableList<VehicleModel>();
 
   @action
   Future<void> fetchVehicles() async{
+    setLoading(true);
     List<VehicleLocationModel> list= await VehiclePositionRepository.getPosition();
     List<VehicleModel> emptyList = [];
     for (var route in list) {
@@ -22,7 +26,8 @@ abstract class _VehiclePositionStore with Store {
         emptyList.add(vehicle as VehicleModel);
       }
     }
-    VehiclePositionsFuture = emptyList.asObservable();
+    vehiclePositionsFuture = emptyList.asObservable();
+    setLoading(false);
   }
   // Future fetchVehiclePositions() => VehiclePositionsFuture = ObservableFuture(VehiclePositionRepository.getPosition());
 }

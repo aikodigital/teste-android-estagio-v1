@@ -23,15 +23,14 @@ class _SplashViewState extends State<SplashView> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
+      color: Colors.white,
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
       child: Center(
-        child: Container(
-          width: 200,
+        child: SizedBox(
           height: 200,
-          color: Colors.amber,
-          // child: Image.asset('assets/images/logo.png'),
+          child: Image.asset('assets/images/aiko.png'),
         ),
       ),
     );
