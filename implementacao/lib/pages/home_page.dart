@@ -19,13 +19,17 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  static const LatLng initialCameraPosition = LatLng(-23.5505, -46.6333);
+  static const CameraPosition initialCameraPosition = CameraPosition(
+    target: LatLng(-23.56052, -46.640308),
+    zoom: 13,
+  );
   final ApiOlhoVivo api = ApiOlhoVivo();
-  Set<Marker> _markers = {};
+  final Set<Marker> _markers = {};
   BitmapDescriptor? _busIcon;
   BitmapDescriptor? _stopIcon;
   List<Parada> lstParadas = [];
-  bool _isLoading = true;
+  GoogleMapController? _controller;
+  bool _isMapLoaded = false;
 
   @override
   void initState() {
@@ -35,27 +39,21 @@ class _HomePageState extends State<HomePage> {
 
   Future<void> _loadCustomMarkers() async {
     final Uint8List busMarkerIcon =
-        await getBytesFromAsset('assets/images/bus_icon.png', 20);
+        await _getBytesFromAsset('assets/images/bus_icon.png', 20);
     final Uint8List stopMarkerIcon =
-        await getBytesFromAsset('assets/images/stop_icon.png', 20);
+        await _getBytesFromAsset('assets/images/stop_icon.png', 20);
     setState(() {
       _busIcon = BitmapDescriptor.bytes(busMarkerIcon);
       _stopIcon = BitmapDescriptor.bytes(stopMarkerIcon);
-    });
-    await _loadBusPositions();
-    await _loadBusStops();
-    setState(() {
-      _isLoading = false;
     });
   }
 
   Future<void> _loadBusPositions() async {
     List<BusPosition> busPositions = await api.obterPosicoesVeiculos();
-    Set<Marker> markers = _markers;
 
-    for (var busPosition in busPositions) {
-      for (var bus in busPosition.listaOnibus) {
-        markers.add(Marker(
+    final List<Marker> busMarkers = busPositions.expand((busPosition) {
+      return busPosition.listaOnibus.map((bus) {
+        return Marker(
           markerId: MarkerId(bus.id.toString()),
           position: LatLng(bus.position!.latitude, bus.position!.longitude),
           icon: _busIcon ??
@@ -64,21 +62,20 @@ class _HomePageState extends State<HomePage> {
             title: "Ônibus ${bus.id.toString()}",
             snippet: "Linha: ${busPosition.linhaOnibus.letreiro.toString()}",
           ),
-        ));
-      }
-    }
+        );
+      });
+    }).toList();
 
     setState(() {
-      _markers = markers;
+      _markers.addAll(busMarkers);
     });
   }
 
   Future<void> _loadBusStops() async {
     lstParadas = await api.obterParadas('');
-    Set<Marker> markers = _markers;
 
-    for (var stop in lstParadas) {
-      markers.add(Marker(
+    final List<Marker> stopMarkers = lstParadas.map((stop) {
+      return Marker(
         markerId: MarkerId(stop.idParada.toString()),
         position: LatLng(stop.position.latitude, stop.position.longitude),
         icon: _stopIcon ??
@@ -87,11 +84,11 @@ class _HomePageState extends State<HomePage> {
           title: "PARADA ${stop.idParada}",
           snippet: stop.endereco,
         ),
-      ));
-    }
+      );
+    }).toList();
 
     setState(() {
-      _markers = markers;
+      _markers.addAll(stopMarkers);
     });
   }
 
@@ -103,11 +100,8 @@ class _HomePageState extends State<HomePage> {
         title:
             const Text("Olho Vivo Api", style: TextStyle(color: Colors.white)),
         actions: [
-          PopupMenuButton(
-            icon: const Icon(
-              Icons.help,
-              color: Colors.white,
-            ),
+          PopupMenuButton<Menu>(
+            icon: const Icon(Icons.help, color: Colors.white),
             color: Colors.white,
             onSelected: (Menu item) {},
             offset: const Offset(0, 50),
@@ -120,10 +114,9 @@ class _HomePageState extends State<HomePage> {
                       const Text('Ônibus'),
                       const Spacer(),
                       SizedBox(
-                        width: 30,
-                        height: 30,
-                        child: Image.asset('assets/images/bus_icon.png'),
-                      ),
+                          width: 30,
+                          height: 30,
+                          child: Image.asset('assets/images/bus_icon.png')),
                     ],
                   ),
                 ),
@@ -136,10 +129,9 @@ class _HomePageState extends State<HomePage> {
                       const Text('Paradas'),
                       const Spacer(),
                       SizedBox(
-                        width: 30,
-                        height: 30,
-                        child: Image.asset('assets/images/stop_icon.png'),
-                      ),
+                          width: 30,
+                          height: 30,
+                          child: Image.asset('assets/images/stop_icon.png')),
                     ],
                   ),
                 ),
@@ -148,8 +140,26 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      body: _isLoading
-          ? const Center(
+      body: Stack(
+        children: [
+          GoogleMap(
+            initialCameraPosition: initialCameraPosition,
+            markers: _markers,
+            onMapCreated: (GoogleMapController controller) {
+              _controller = controller;
+              Future.wait([
+                _loadBusStops(),
+                _loadBusPositions(),
+              ]).then((_) async {
+                await Future.delayed(const Duration(seconds: 25));
+                setState(() {
+                  _isMapLoaded = true;
+                });
+              });
+            },
+          ),
+          if (!_isMapLoaded)
+            const Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -157,33 +167,28 @@ class _HomePageState extends State<HomePage> {
                     color: Colors.black,
                   ),
                   SizedBox(
-                    height: 20,
+                    height: 10,
                   ),
                   Text(
-                    'Carregando isso pode demorar um pouco, por favor aguarde...',
-                    style: TextStyle(color: Colors.black),
+                    'Carregando, isso pode demorar um pouco. Por favor aguarde...',
                     textAlign: TextAlign.center,
-                  ),
+                    style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                  )
                 ],
               ),
-            )
-          : GoogleMap(
-              initialCameraPosition: const CameraPosition(
-                target: initialCameraPosition,
-                zoom: 13,
-              ),
-              markers: _markers,
             ),
+        ],
+      ),
     );
   }
-}
 
-Future<Uint8List> getBytesFromAsset(String path, int width) async {
-  ByteData data = await rootBundle.load(path);
-  ui.Codec codec = await ui.instantiateImageCodec(data.buffer.asUint8List(),
-      targetWidth: width);
-  ui.FrameInfo fi = await codec.getNextFrame();
-  return (await fi.image.toByteData(format: ui.ImageByteFormat.png))!
-      .buffer
-      .asUint8List();
+  Future<Uint8List> _getBytesFromAsset(String path, int width) async {
+    final ByteData data = await rootBundle.load(path);
+    final ui.Codec codec = await ui
+        .instantiateImageCodec(data.buffer.asUint8List(), targetWidth: width);
+    final ui.FrameInfo fi = await codec.getNextFrame();
+    return (await fi.image.toByteData(format: ui.ImageByteFormat.png))!
+        .buffer
+        .asUint8List();
+  }
 }

@@ -38,6 +38,7 @@ dependencies:
   http: ^1.2.2
   google_maps_flutter: ^2.5.0
   flutter_image_compress: ^1.0.0
+  logger: ^2.4.0
 
 dev_dependencies:
   flutter_test:
