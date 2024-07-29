@@ -1,0 +1,44 @@
+import 'package:dio/dio.dart';
+import 'package:sp_movement/app/core/repository/app_repository.dart';
+import 'package:sp_movement/app/modules/vehicle_position/models/vehicle_model.dart';
+import 'package:sp_movement/app/modules/vehicle_position/models/vehiclelocation_model.dart';
+
+class VehiclePositionRepository {
+  static String endpoint = "/Posicao";
+
+  static Future<List<VehicleLocationModel>> getPosition() async {
+    final cookies = await AppRepository.cookieJar.loadForRequest(Uri.parse(AppRepository.baseUrl));
+    print('Cookies após autenticação: $cookies');
+    dynamic response = await AppRepository.getDio()!.get('${AppRepository.baseUrl}$endpoint');
+    print(response.data);
+    List<VehicleLocationModel> list = [];
+    if (response != null) {
+      dynamic responseJson = AppRepository.returnResponse(response);
+      responseJson.data['l'].forEach((v) {
+        list.add(VehicleLocationModel.fromJson(v));
+      });
+      return list;
+    } else {
+      return [];
+    }
+  }
+
+  static  Future<List<VehicleModel>> getRoute() async {
+
+    dynamic response = AppRepository.getDio()!.get('${AppRepository.baseUrl}$endpoint/Linha?token=${AppRepository.token}');
+    print(response.data);
+    List<VehicleModel> list = [];
+    if(response != null){
+      dynamic responseJson = AppRepository.returnResponse(response);
+      responseJson.data['vs'].forEach((v){
+        list.add(VehicleModel.fromJson(v));
+      });
+      return list;
+    } else {
+      return [];
+    }
+  }
+
+  static void getGarage() {
+  }
+}
