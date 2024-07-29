@@ -52,9 +52,6 @@ class _MapScreenState extends State<MapScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Ônibus no Mapa'),
-      ),
       body: _getPage(),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
@@ -69,7 +66,7 @@ class _MapScreenState extends State<MapScreen> {
             label: 'Mapa',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.list),
+            icon: Icon(Icons.directions_bus),
             label: 'Linhas',
           ),
           BottomNavigationBarItem(

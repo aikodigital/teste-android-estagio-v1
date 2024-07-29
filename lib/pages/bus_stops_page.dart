@@ -50,7 +50,8 @@ class _BusStopsPageState extends State<BusStopsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Paradas de Ônibus'),
+        title: Center (child: const Text('Paradas de Ônibus'),
+        ),
       ),
       body: FutureBuilder<List<dynamic>>(
         future: _loadStopsData(),
