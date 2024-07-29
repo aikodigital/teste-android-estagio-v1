@@ -51,13 +51,8 @@ export type FilterState = {
 };
 
 export type RootStackParamList = {
-  Details: {
-    bus: Bus; // Se precisar passar um objeto Bus
-    lineDetails: {
-      lt0: string;
-      lt1: string;
-    };
-  };
+  Lines: undefined;
+  Details: { codigoParada?: number; lt0?: string; lt1?: string };
 };
 
 export type BusStationsMarkerProps = {
@@ -75,3 +70,32 @@ export type MapContextType = {
   setShowBusStations: (value: boolean) => void;
   setShowBuses: (value: boolean) => void;
 };
+export interface Veiculo {
+  p: string;
+  t: string;
+  a: boolean;
+  ta: string;
+  py: number;
+  px: number;
+}
+
+export interface Linha {
+  c: string;
+  cl: number;
+  sl: number;
+  lt0: string;
+  lt1: string;
+  qv: number;
+  vs: Veiculo[];
+}
+export interface Parada {
+  cp: number;
+  np: string;
+  py: number;
+  px: number;
+  l: Linha[];
+}
+export interface ArrivalPredictions {
+  hr: string;
+  p: Parada;
+}

@@ -13,6 +13,10 @@ export const BusStationsMarker: React.FC<BusStationsMarkerProps> = ({
 }) => {
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
+  const handlePress = () => {
+    navigation.navigate("Details", { codigoParada: station.cp });
+  };
+
   return (
     <Marker
       image={require("@/assets/busstation.png")}
@@ -22,6 +26,7 @@ export const BusStationsMarker: React.FC<BusStationsMarkerProps> = ({
       }}
       title={station.np || `Parada ${station.cp}`}
       description={`${station.cp}`}
+      onPress={handlePress}
     />
   );
 };

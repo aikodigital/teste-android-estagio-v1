@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { View } from "react-native";
+import { Text, View } from "react-native";
 import MapView from "react-native-maps";
 import { styles } from "./styles";
 import { useBusPositions } from "./mapComponents/useBusPositions";
@@ -8,12 +8,14 @@ import { useRegion } from "./mapComponents/useRegion";
 import { BusMarker } from "./mapComponents/BusMarker";
 import { BusStationsMarker } from "./mapComponents/BusStationsMarker";
 import { MapContext } from "../../contexts/MapContext";
+import { useUpdateHour } from "./mapComponents/lastUpdate";
 
 export function MapRender() {
   const busPositions = useBusPositions();
   const busStations = useBusStations();
   const { region, onRegionChangeComplete } = useRegion();
   const context = useContext(MapContext);
+  const lastUpdate = useUpdateHour();
 
   // Verifica se o contexto está definido
   if (!context) {
@@ -40,7 +42,8 @@ export function MapRender() {
   const getLineDetails = (busId: number) => {
     for (const line of busPositions) {
       for (const bus of line.vs) {
-        if (bus.p === busId) {
+        // Converter bus.p para number antes de comparar
+        if (Number(bus.p) === busId) {
           return {
             lt0: line.lt0,
             lt1: line.lt1,
@@ -53,20 +56,20 @@ export function MapRender() {
 
   const renderBusMarkers = () => {
     return busPositions.flatMap((line) =>
-      line.vs
-        .filter(isBusWithinRegion)
-        .map((bus, index) => (
-          <BusMarker
-            key={`${bus.p}-${index}`}
-            bus={bus}
-            lineDetails={getLineDetails(bus.p)}
-          />
-        ))
+      line.vs.filter(isBusWithinRegion).map((bus, index) => (
+        <BusMarker
+          key={`${bus.p}-${index}`}
+          bus={bus}
+          // Converter bus.p para number antes de passar para getLineDetails
+          lineDetails={getLineDetails(Number(bus.p))}
+        />
+      ))
     );
   };
 
   return (
     <View style={styles.container}>
+      <Text>{`Ultima atualizacao: ${lastUpdate}`}</Text>
       <MapView
         style={styles.map}
         initialRegion={region}

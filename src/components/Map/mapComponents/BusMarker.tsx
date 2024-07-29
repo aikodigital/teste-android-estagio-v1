@@ -1,3 +1,4 @@
+// BusMarker.tsx
 import React from "react";
 import { Marker } from "react-native-maps";
 import { useNavigation } from "@react-navigation/native";
@@ -7,6 +8,13 @@ import { BusMarkerProps, RootStackParamList } from "../../../types/types";
 export const BusMarker: React.FC<BusMarkerProps> = ({ bus, lineDetails }) => {
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
+  const handlePress = () => {
+    navigation.navigate("Details", {
+      lt0: lineDetails.lt0,
+      lt1: lineDetails.lt1,
+    });
+  };
+
   return (
     <Marker
       image={require("@/assets/bus.png")}
@@ -15,8 +23,8 @@ export const BusMarker: React.FC<BusMarkerProps> = ({ bus, lineDetails }) => {
         longitude: bus.px,
       }}
       title={`Ônibus ${bus.p}`}
-      description={`Última atualização: ${bus.ta}`}
-      onPress={() => navigation.navigate("Details", { bus, lineDetails })}
+      description={`${lineDetails.lt0} - ${lineDetails.lt1}`}
+      onPress={handlePress}
     />
   );
 };
