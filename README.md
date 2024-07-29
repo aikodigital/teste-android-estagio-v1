@@ -58,10 +58,10 @@ Aplicativo que exibe os dados sobre o transporte público da cidade de São Paul
 #### rode o servidor
 > npx expo start
 
-O Android SDK (device manager) foi utilizado para esse projeto: 
+o Android SDK (device manager) foi utilizado para esse projeto: 
 > para abrir o projeto no emulador, pressione a tecla A.
 
-#### Entry point (home screen):
+#### entry point (home screen):
 > app/index.tsx
 
 ## Extra
