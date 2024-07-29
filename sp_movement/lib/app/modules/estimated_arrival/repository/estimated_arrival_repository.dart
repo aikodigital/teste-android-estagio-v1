@@ -10,7 +10,8 @@ class EstimatedArrivalRepository {
     if (response != null) {
       dynamic responseJson = AppRepository.returnResponse(response);
 
-      return StopModel.fromJson(responseJson.data['p']);
+      if(responseJson.data['p'] != null)
+        return StopModel.fromJson(responseJson.data['p']);
     }
     return null;
   }

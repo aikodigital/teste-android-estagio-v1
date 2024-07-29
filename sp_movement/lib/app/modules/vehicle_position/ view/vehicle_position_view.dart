@@ -16,7 +16,7 @@ class VehiclePositionsView extends StatelessWidget {
       appBar: AppBar(title: const Text('Posição dos Veículos')),
       body: Observer(
         builder: (_) {
-          return FlutterMap(
+          return store.loading ? SizedBox(width: MediaQuery.of(context).size.width, height: MediaQuery.of(context).size.height, child: const Center(child: CircularProgressIndicator(color: Colors.green,))) : FlutterMap(
             options: const MapOptions(
               initialCenter: LatLng(-23.5505, -46.6333),
               initialZoom: 12,
@@ -43,13 +43,9 @@ class VehiclePositionsView extends StatelessWidget {
           );
         },
       ),
-      floatingActionButton:  Observer(
-        builder: (_) {
-          return store.loading ? const CircularProgressIndicator(color: Colors.green,) : FloatingActionButton(
-            onPressed: store.fetchVehicles,
-            child: const Icon(Icons.refresh),
-          );
-        }
+      floatingActionButton:  FloatingActionButton(
+        onPressed: store.loading ? null : store.fetchVehicles,
+        child: const Icon(Icons.refresh),
       ),
     );
   }

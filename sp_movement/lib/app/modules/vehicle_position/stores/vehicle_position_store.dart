@@ -11,6 +11,7 @@ abstract class _VehiclePositionStore with Store {
 
   @observable
   bool loading = false;
+
   @action
   void setLoading(bool value) => loading = value;
 

@@ -36,10 +36,11 @@ abstract class _EstimatedArrivalStore with Store {
   @action
   Future<void> findEstimatedArrivalByStopPoint(int stopId) async {
     stopModel = await EstimatedArrivalRepository.searchEstimatedArrival(stopId);
-    stopModel!.localizedLines.forEach((lines) {
-      lines.vehicles.forEach((vehicle) {
-        busStopPoints.add("${vehicle.vehiclePrefix} - ${vehicle.scheduledArrivalTime} - ${vehicle.accessible?"Acessivel Pcd":"Não Acessivel Pcd"}");
+    if(stopModel != null)
+      stopModel!.localizedLines.forEach((lines) {
+        lines.vehicles.forEach((vehicle) {
+          busStopPoints.add("${vehicle.vehiclePrefix} - ${vehicle.scheduledArrivalTime} - ${vehicle.accessible?"Acessivel Pcd":"Não Acessivel Pcd"}");
+        });
       });
-    });
   }
 }
