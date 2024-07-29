@@ -29,7 +29,7 @@
       "favicon": "./assets/favicon.png"
     },
     "extra": {
-      "googleMapsApiKey": "AIzaSyCXjdv9wgjTWMRojrsg57LiuG6IYm4Skxs",
+      "googleMapsApiKey": "API_MAPS_KEY",
       "eas": {
         "projectId": "300a2692-6098-4953-8323-2b165c8fa8ea"
       }
