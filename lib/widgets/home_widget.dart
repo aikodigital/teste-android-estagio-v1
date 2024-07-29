@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:olho_vivo_sp/util/environment.dart';
 import 'package:olho_vivo_sp/widgets/hall_list.dart';
 import 'package:olho_vivo_sp/widgets/map_widget.dart';
 import 'bottom_navigation_widget.dart';
@@ -15,8 +15,7 @@ class _HomeState extends State<Home> {
   final _screens = [
     const HallList(),
     const MapWidget(
-      searchLabel: 'Pesquisar(Linha, ônibus, parada, previsão de chegada)',
-      target: LatLng(-23.5489, -46.6388),
+      target: Environment.sao_paulo_downtown_coordinates,
       markers: {},
     ),
   ];
@@ -33,13 +32,13 @@ class _HomeState extends State<Home> {
       icon: Icon(
         Icons.route,
       ),
-      label: 'Corredores',
+      label: Environment.halls_label,
     ),
     const BottomNavigationBarItem(
       icon: Icon(
         Icons.map,
       ),
-      label: 'Mapa',
+      label: Environment.maps_label,
     ),
   ];
 
@@ -47,7 +46,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('OlhoVivoSP'),
+        title: const Text(Environment.app_name),
       ),
       body: _screens[_index],
       bottomNavigationBar: BottomNavigationWidget(
