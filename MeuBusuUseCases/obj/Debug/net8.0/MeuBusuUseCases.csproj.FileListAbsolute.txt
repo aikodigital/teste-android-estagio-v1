@@ -1,0 +1,17 @@
+C:\Users\franc\source\repos\MeuBusuApp\MeuBusuUseCases\obj\Debug\net8.0\MeuBusuUseCases.csproj.AssemblyReference.cache
+C:\Users\franc\source\repos\MeuBusuApp\MeuBusuUseCases\obj\Debug\net8.0\MeuBusuUseCases.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\franc\source\repos\MeuBusuApp\MeuBusuUseCases\obj\Debug\net8.0\MeuBusuUseCases.AssemblyInfoInputs.cache
+C:\Users\franc\source\repos\MeuBusuApp\MeuBusuUseCases\obj\Debug\net8.0\MeuBusuUseCases.AssemblyInfo.cs
+C:\Users\franc\source\repos\MeuBusuApp\MeuBusuUseCases\obj\Debug\net8.0\MeuBusuUseCases.csproj.CoreCompileInputs.cache
+C:\Users\franc\source\repos\MeuBusuApp\MeuBusuUseCases\bin\Debug\net8.0\MeuBusuUseCases.deps.json
+C:\Users\franc\source\repos\MeuBusuApp\MeuBusuUseCases\bin\Debug\net8.0\MeuBusuUseCases.dll
+C:\Users\franc\source\repos\MeuBusuApp\MeuBusuUseCases\bin\Debug\net8.0\MeuBusuUseCases.pdb
+C:\Users\franc\source\repos\MeuBusuApp\MeuBusuUseCases\bin\Debug\net8.0\Bus.Plugins.DataStore.InMemory.dll
+C:\Users\franc\source\repos\MeuBusuApp\MeuBusuUseCases\bin\Debug\net8.0\MeuBus.CoreBusiness.dll
+C:\Users\franc\source\repos\MeuBusuApp\MeuBusuUseCases\bin\Debug\net8.0\Bus.Plugins.DataStore.InMemory.pdb
+C:\Users\franc\source\repos\MeuBusuApp\MeuBusuUseCases\bin\Debug\net8.0\MeuBus.CoreBusiness.pdb
+C:\Users\franc\source\repos\MeuBusuApp\MeuBusuUseCases\obj\Debug\net8.0\MeuBusuU.73EE6C64.Up2Date
+C:\Users\franc\source\repos\MeuBusuApp\MeuBusuUseCases\obj\Debug\net8.0\MeuBusuUseCases.dll
+C:\Users\franc\source\repos\MeuBusuApp\MeuBusuUseCases\obj\Debug\net8.0\refint\MeuBusuUseCases.dll
+C:\Users\franc\source\repos\MeuBusuApp\MeuBusuUseCases\obj\Debug\net8.0\MeuBusuUseCases.pdb
+C:\Users\franc\source\repos\MeuBusuApp\MeuBusuUseCases\obj\Debug\net8.0\ref\MeuBusuUseCases.dll

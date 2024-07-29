@@ -1,0 +1,11 @@
+C:\Users\franc\source\repos\MeuBusuApp\Bus.Plugins.DataStore.InMemory\obj\Debug\net8.0\Bus.Plugins.DataStore.InMemory.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\franc\source\repos\MeuBusuApp\Bus.Plugins.DataStore.InMemory\obj\Debug\net8.0\Bus.Plugins.DataStore.InMemory.AssemblyInfoInputs.cache
+C:\Users\franc\source\repos\MeuBusuApp\Bus.Plugins.DataStore.InMemory\obj\Debug\net8.0\Bus.Plugins.DataStore.InMemory.AssemblyInfo.cs
+C:\Users\franc\source\repos\MeuBusuApp\Bus.Plugins.DataStore.InMemory\obj\Debug\net8.0\Bus.Plugins.DataStore.InMemory.csproj.CoreCompileInputs.cache
+C:\Users\franc\source\repos\MeuBusuApp\Bus.Plugins.DataStore.InMemory\bin\Debug\net8.0\Bus.Plugins.DataStore.InMemory.deps.json
+C:\Users\franc\source\repos\MeuBusuApp\Bus.Plugins.DataStore.InMemory\bin\Debug\net8.0\Bus.Plugins.DataStore.InMemory.dll
+C:\Users\franc\source\repos\MeuBusuApp\Bus.Plugins.DataStore.InMemory\bin\Debug\net8.0\Bus.Plugins.DataStore.InMemory.pdb
+C:\Users\franc\source\repos\MeuBusuApp\Bus.Plugins.DataStore.InMemory\obj\Debug\net8.0\Bus.Plugins.DataStore.InMemory.dll
+C:\Users\franc\source\repos\MeuBusuApp\Bus.Plugins.DataStore.InMemory\obj\Debug\net8.0\refint\Bus.Plugins.DataStore.InMemory.dll
+C:\Users\franc\source\repos\MeuBusuApp\Bus.Plugins.DataStore.InMemory\obj\Debug\net8.0\Bus.Plugins.DataStore.InMemory.pdb
+C:\Users\franc\source\repos\MeuBusuApp\Bus.Plugins.DataStore.InMemory\obj\Debug\net8.0\ref\Bus.Plugins.DataStore.InMemory.dll

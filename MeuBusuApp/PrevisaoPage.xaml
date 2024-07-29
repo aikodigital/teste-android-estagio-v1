@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MeuBusuApp.PrevisaoPage"
+             xmlns:vm="clr-namespace:MeuBusuApp.ViewModel"
+             xmlns:m="clr-namespace:MeuBus.CoreBusiness.Entities;assembly=MeuBus.CoreBusiness"
+             x:DataType="vm:PrevisaoViewModel"
+             Title="PrevisaoPage">
+    <Grid 
+        Padding="5"
+        RowDefinitions="50, *, 50"
+        ColumnDefinitions="*, 50"
+        RowSpacing="5">
+
+        <Button Grid.Row="0"
+            Grid.Column="0"
+            Text="Ir Para Mapa"
+            Command="{Binding GoToPrevisaoMapCommand}"></Button>
+
+
+        <CollectionView 
+             ItemsSource="{Binding Previsoes}"
+             Grid.Row="1"
+             Grid.Column="0">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="m:Previsao">
+                    <StackLayout>
+                        <SwipeView>
+                            <StackLayout>
+                                <Frame Margin="0,5,0,5" BackgroundColor="LightGray">
+                                    <StackLayout Orientation="Vertical" Spacing="5">
+                                        <Label Text="{Binding np}" TextColor="Black" HorizontalOptions="Start" ></Label>
+                                        <Label Text="{Binding t}" TextColor="Black" HorizontalOptions="End"></Label>
+                                    </StackLayout>
+                                </Frame>
+                            </StackLayout>
+                        </SwipeView>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+
+    </Grid>
+
+</ContentPage>
