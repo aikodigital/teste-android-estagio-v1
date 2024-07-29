@@ -26,7 +26,7 @@ npx expo install
 npx expo start
 ~~~~
 
-- Remember, your device needs to have "Expo Go" installed.
+- Remember, your device needs to have "Expo Go" installed and configurate ambient variables.
 
 ## Tools Used
 
