@@ -2,7 +2,10 @@
     <application
         android:label="teste_app_aiko"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/ic_launcher"
+        >
+        <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyCm0-QmXBcujnx7pTgEPTHjrCjkvFg_2kY"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"
