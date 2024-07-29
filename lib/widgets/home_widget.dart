@@ -12,35 +12,44 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final _screens = [
-    const HallList(),
-    const MapWidget(
-      target: Environment.sao_paulo_downtown_coordinates,
-      markers: {},
-    ),
-  ];
+  late List<Widget> _screens;
+  late List<BottomNavigationBarItem> _items;
+
   int _index = 0;
 
-  void changeScreen(int value) {
+  void _changeScreen(int value) {
     setState(() {
       _index = value;
     });
   }
 
-  final _items = [
-    const BottomNavigationBarItem(
-      icon: Icon(
-        Icons.route,
+  @override
+  void initState() {
+    _screens = [
+      const HallList(),
+      const MapWidget(
+        target: Environment.sao_paulo_downtown_coordinates,
+        markers: {},
       ),
-      label: Environment.halls_label,
-    ),
-    const BottomNavigationBarItem(
-      icon: Icon(
-        Icons.map,
+    ];
+
+    _items = [
+      const BottomNavigationBarItem(
+        icon: Icon(
+          Icons.route,
+        ),
+        label: Environment.halls_label,
       ),
-      label: Environment.maps_label,
-    ),
-  ];
+      const BottomNavigationBarItem(
+        icon: Icon(
+          Icons.map,
+        ),
+        label: Environment.maps_label,
+      ),
+    ];
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +60,7 @@ class _HomeState extends State<Home> {
       body: _screens[_index],
       bottomNavigationBar: BottomNavigationWidget(
         items: _items,
-        onChangeScreen: changeScreen,
+        onChangeScreen: _changeScreen,
       ),
     );
   }
