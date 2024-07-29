@@ -25,13 +25,11 @@ O aplicativo foi construído utilizando uma arquitetura componentizada conforme 
   - _Package.json_ (biblioteas e dependências)
 
 ## 📋 RECURSOS  
-- **Splash**
-  - Tela inicial com introdução do aplicativo
-- **Onboarding**
-  - Telas com informações gerais do aplicativo
 - **Navegação**
-  - Menu no rodapé para acesso as páginas principais (Tempo real, Linhas, Paradas, Previsões)
-  - Menu drawer na lateral para acesso a páginas secundárias (Velocidade)
+  - Menu no rodapé para acesso as páginas principais (Tempo real, Linhas, Paradas, Previsões), implementado com Bottom Tab Navigator.
+  - Menu lateral para acesso a páginas secundárias (Velocidade), implementado com Drawer Navigator.
+  - Tela de carregamento de aplicativo, implementado com a criação de tela de splash.
+  - Configurações de API pública em arquivo ConfigAPI.js, separando a implementação da tela com recuros de autenticação e definições das chamadas.
 
 ## 🖼️ TELAS  
 - **Splash + Onboarding:** Telas de carregamento inicial do aplicativo e carregamento da tela de onboarding.
