@@ -37,7 +37,7 @@ O aplicativo foi construído utilizando uma arquitetura componentizada conforme 
 ## 🖼️ TELAS  
 - **Splash + Onboarding:** Telas de carregamento inicial do aplicativo e carregamento da tela de onboarding.
 
-  <img src="https://github.com/fsaantiago/teste-fernando-santiago/blob/teste/fernando-santiago/src/assets/images/splash_onboarding.gif" width="200" height="400">
+<img src="https://github.com/fsaantiago/teste-fernando-santiago/blob/teste/fernando-santiago/src/assets/images/splash_onboarding.gif" width="200" height="400">
 
 - **Tempo Real:** Tela inicial do aplicativo que renderiza um mapa mostra a posição em tempo real dos veículos conforme pesquisa pela linha de ônibus. O mapa é atualizado a cada 5 segundos.
 
@@ -76,8 +76,62 @@ Para executar o aplicativo localmente é necessário seguir os passos abaixo:
     Parada: 2506
     Previsão: 1273
     
-## ✅ TESTES  
+## ✅ TESTES 
 
+**OnboardingCarousel.test.js**
+```bash
+import React from 'react';
+import { render, fireEvent } from '@testing-library/react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import OnboardingCarousel from '../src/layouts/Onboarding';
+
+test('deve navegar para a tela RealTime ao finalizar o onboarding', () => {
+  const { getByText } = render(
+    <NavigationContainer>
+      <OnboardingCarousel />
+    </NavigationContainer>
+  );
+
+  fireEvent.press(getByText('Seguinte')); // Pressiona o botão "Seguinte" na primeira página
+  fireEvent.press(getByText('Prosseguir para o app')); // Pressiona o botão "Prosseguir" na última página
+  
+  // Verifica se a navegação ocorreu corretamente
+  expect(mockNavigate).toHaveBeenCalledWith('RealTime');
+});
+```
+
+**RealTime.test.js**
+
+```bash
+import React from 'react';
+import { render, fireEvent } from '@testing-library/react-native';
+import RealTime from '../src/layouts/RealTime';
+
+test('deve exibir mensagem de erro se o campo estiver vazio ao buscar', () => {
+  const { getByPlaceholderText, getByText } = render(<RealTime />);
+  const button = getByText('Buscar');
+
+  fireEvent.press(button);
+  
+  expect(getByText('Digite uma linha de ônibus:')).toBeTruthy();
+});
+
+```
+
+**SplashScreen.test.js**
+```bash
+import React from 'react';
+import { render } from '@testing-library/react-native';
+import SplashScreen from '../src/screens/SplashScreen';
+
+test('deve renderizar a tela de splash corretamente', () => {
+  const { getByText, getByAltText } = render(<SplashScreen />);
+  
+  expect(getByText('SPTrans - Olho Vivo')).toBeTruthy();
+  expect(getByText('por Fernando Santiago')).toBeTruthy();
+  expect(getByAltText('Aiko logo')).toBeTruthy();
+});
+```
 
 ## 🧑‍💻 DESENVOLVEDOR  
 Fenando Santiago ([Linkedin](https://www.linkedin.com/in/fernando-santiago/)) / Contato: fernando.santiago770@gmail.com / (31) 98741-3780
