@@ -30,8 +30,40 @@ Alem do flutter as seguintes bibliotecas foram utilizadas no desenvolvimento do 
 
 ## Fotos do Aplicativo
 
-<img src="/images/img1.png" width="33.33%"> <img src="/images/img2.png" width="33.33%"> <img src="/images/img3.png" width="33.33%">
+## Fotos do Aplicativo
 
-<img src="/images/img4.png" width="33.33%"> <img src="/images/img5.png" width="33.33%"> <img src="/images/img6.png" width="33.33%">
+<div class="row">
+<div class="col" style="width: 33.33%">
+<img src="/images/img1.png" width="100%">
+</div>
+<div class="col" style="width: 33.33%">
+<img src="/images/img2.png" width="100%">
+</div>
+<div class="col" style="width: 33.33%">
+<img src="/images/img3.png" width="100%">
+</div>
+</div>
 
-<img src="/images/img7.png" width="33.33%"> <img src="/images/img8.png" width="33.33%"> <img src="/images/img9.png" width="33.33%">
+<div class="row">
+<div class="col" style="width: 33.33%">
+<img src="/images/img4.png" width="100%">
+</div>
+<div class="col" style="width: 33.33%">
+<img src="/images/img5.png" width="100%">
+</div>
+<div class="col" style="width: 33.33%">
+<img src="/images/img6.png" width="100%">
+</div>
+</div>
+
+<div class="row">
+<div class="col" style="width: 33.33%">
+<img src="/images/img7.png" width="100%">
+</div>
+<div class="col" style="width: 33.33%">
+<img src="/images/img8.png" width="100%">
+</div>
+<div class="col" style="width: 33.33%">
+<img src="/images/img9.png" width="100%">
+</div>
+</div>
