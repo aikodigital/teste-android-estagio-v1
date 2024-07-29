@@ -1,6 +1,9 @@
-# Nome do Projeto
+# Rota Mobile - Teste para Estágio
 
-Uma breve descrição do projeto.
+## Descrição
+
+Este é um aplicativo de teste para a vaga de estágio em desenvolvimento mobile na Aiko. O aplicativo exibe uma lista de veiculos e detalhes de linhas e paradas de onibus em São Paulo. Os dados são obtidos de uma API REST.
+
 
 ## Tecnologias Utilizadas
 
