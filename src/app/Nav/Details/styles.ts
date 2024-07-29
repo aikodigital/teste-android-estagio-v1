@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
   },
   textContainer: {
     backgroundColor: "#BDBDBD",
-    padding: 10,
+    padding: 15,
     borderRadius: 5,
   },
   header: {
@@ -19,12 +19,15 @@ export const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   title: {
-    color: "#FFFFFF",
     fontSize: 22,
+    backgroundColor: "#BDBDBD",
+    padding: 12,
+    borderRadius: 10,
   },
   text: {
     padding: 15,
     fontSize: 22,
+    gap: 10,
   },
   number: {},
   lineTitle: {},

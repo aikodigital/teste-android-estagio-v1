@@ -48,12 +48,6 @@ export function Filter() {
             <CheckBox checked={stationsChecked} onPress={handleStationsCheck} />
             <Text>Visualizar Paradas de Ônibus</Text>
           </View>
-
-          <View style={styles.filterOption}>
-            <TouchableOpacity style={styles.button}>
-              <Text>PESQUISAR LINHA</Text>
-            </TouchableOpacity>
-          </View>
         </View>
       )}
       <TouchableOpacity style={styles.button} onPress={toggleFilters}>

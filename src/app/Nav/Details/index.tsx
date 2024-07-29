@@ -34,23 +34,23 @@ export function Details() {
 
     return (
       <ScrollView>
-        <View>
-          <Text style={styles.textContainer}>
-            Previsão de Chegada dos Ônibus:
-          </Text>
-          {arrivalPredictions.p.l.map((linha) => (
-            <View style={styles.text} key={linha.cl}>
-              <Text style={styles.header}>
-                {linha.lt0} - {linha.lt1}
-              </Text>
-              {linha.vs.map((veiculo) => (
-                <View key={veiculo.p}>
-                  <Text>Código do Ônibus: {veiculo.p}</Text>
-                  <Text>Horário: {veiculo.t}</Text>
-                </View>
-              ))}
-            </View>
-          ))}
+        <View style={styles.container}>
+          <Text style={styles.title}>Previsão de Chegada dos Ônibus:</Text>
+          <View style={styles.text}>
+            {arrivalPredictions.p.l.map((linha) => (
+              <View style={styles.textContainer} key={linha.cl}>
+                <Text style={styles.header}>
+                  {linha.lt0} - {linha.lt1}
+                </Text>
+                {linha.vs.map((veiculo) => (
+                  <View style={styles.text} key={veiculo.p}>
+                    <Text>Código do Ônibus: {veiculo.p}</Text>
+                    <Text>Horário: {veiculo.t}</Text>
+                  </View>
+                ))}
+              </View>
+            ))}
+          </View>
         </View>
       </ScrollView>
     );
@@ -59,10 +59,12 @@ export function Details() {
   if (lt0 !== undefined && lt1 !== undefined) {
     return (
       <ScrollView>
-        <View>
-          <Text style={styles.textContainer}>Detalhes do Ônibus</Text>
-          <Text style={styles.text}>Origem: {lt1}</Text>
-          <Text style={styles.text}>Destino: {lt0}</Text>
+        <View style={styles.container}>
+          <Text style={styles.title}>Detalhes do Ônibus</Text>
+          <View>
+            <Text style={styles.text}>Origem: {lt1}</Text>
+            <Text style={styles.text}>Destino: {lt0}</Text>
+          </View>
         </View>
       </ScrollView>
     );
