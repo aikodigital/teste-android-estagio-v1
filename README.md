@@ -29,3 +29,13 @@ Alem do flutter as seguintes bibliotecas foram utilizadas no desenvolvimento do 
 * **MVC**: Tentei utilizar as boas práticas de arquitetura de projeto utilizando o MVC, os componentes foram separados em Model( que cuidavam da estrutura e atributos dos dados), Views( Que cuidavam da parte visual do aplicativo) e Controllers/Store( Que controlovam a regra de negócio dos dados dentro da aplicação).
 
 ## Fotos do Aplicativo
+
+<img src="../teste-android-estagio-v1/images/img1.png">
+<img src="../teste-android-estagio-v1/images/img2.png">
+<img src="../teste-android-estagio-v1/images/img3.png">
+<img src="../teste-android-estagio-v1/images/img4.png">
+<img src="../teste-android-estagio-v1/images/img5.png">
+<img src="../teste-android-estagio-v1/images/img6.png">
+<img src="../teste-android-estagio-v1/images/img7.png">
+<img src="../teste-android-estagio-v1/images/img8.png">
+<img src="../teste-android-estagio-v1/images/img9.png">
