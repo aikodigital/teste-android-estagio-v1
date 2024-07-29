@@ -19,7 +19,6 @@ import me.patrick.aikodigital.pontocerto.util.DialogUtil;
 import me.patrick.aikodigital.pontocerto.view.GMapView;
 
 
-//TODO: Loading page for maps
 
 public class MainActivity extends AppCompatActivity{
 
