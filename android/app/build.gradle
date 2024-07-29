@@ -60,10 +60,10 @@ def enableProguardInReleaseBuilds = false
  * The preferred build flavor of JavaScriptCore (JSC)
  *
  * For example, to use the international variant, you can use:
- * `def jscFlavor = 'org.webkit:android-jsc-intl:+'`
+ * def jscFlavor = 'org.webkit:android-jsc-intl:+'
  *
  * The international variant includes ICU i18n library and necessary data
- * allowing to use e.g. `Date.toLocaleString` and `String.localeCompare` that
+ * allowing to use e.g. Date.toLocaleString and String.localeCompare that
  * give correct results when using with locales other than en-US. Note that
  * this variant is about 6MiB larger per architecture than default.
  */
@@ -75,6 +75,26 @@ android {
     compileSdk rootProject.ext.compileSdkVersion
 
     namespace "com.rotamobile"
+
+    project.ext.vectoricons = [
+        iconFontNames: [ 
+            'MaterialIcons.ttf',
+            'MaterialCommunityIcons.ttf',
+            'Ionicons.ttf',
+            'FontAwesome.ttf',
+            'FontAwesome5_Brands.ttf',
+            'FontAwesome5_Solid.ttf',
+            'FontAwesome5_Regular.ttf',
+            'AntDesign.ttf',
+            'EvilIcons.ttf',
+            'Feather.ttf',
+            'Octicons.ttf',
+            'Zocial.ttf',
+            'SimpleLineIcons.ttf',
+            'Entypo.ttf'
+        ] 
+    ]
+
     defaultConfig {
         applicationId "com.rotamobile"
         minSdkVersion rootProject.ext.minSdkVersion
@@ -113,6 +133,9 @@ dependencies {
     } else {
         implementation jscFlavor
     }
+
 }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
+
+apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
