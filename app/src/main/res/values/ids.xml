@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="tvCodigoLinha" type="id" />
+    <item name="tvNomeLinha" type="id" />
+    <item name="tvNomeParada" type="id" />
+    <item name="tvCodigoParada" type="id" />
+    <item name="map" type="id" />
+    <item name="recycler_view_pontos_de_parada" type="id" />
+</resources>
