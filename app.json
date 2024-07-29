@@ -1,0 +1,47 @@
+{
+  "expo": {
+    "name": "SP_TRANS",
+    "slug": "SP_TRANS",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "permissions": [
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION"
+      ],
+      "package": "com.asmodeuz_999.SP_TRANS"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "googleMapsApiKey": "AIzaSyCXjdv9wgjTWMRojrsg57LiuG6IYm4Skxs",
+      "eas": {
+        "projectId": "300a2692-6098-4953-8323-2b165c8fa8ea"
+      }
+    },
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow SP_TRANS to use your location."
+        }
+      ]
+    ],
+    "owner": "asmodeuz_999"
+  }
+}
