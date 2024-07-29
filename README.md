@@ -30,12 +30,7 @@ Alem do flutter as seguintes bibliotecas foram utilizadas no desenvolvimento do 
 
 ## Fotos do Aplicativo
 
-<img src="https://drive.google.com/file/d/1aWO-V5Cphg7fOA3J84t7sMQnftXa3Qgf">
-<img src="https://drive.google.com/file/d/1GKWCJMTB5urLlftWeCSubicCIJdnaoip">
-<img src="https://drive.google.com/file/d/1nAoiVvp1Z6wibRwSX_l-1ooj0FMSBDax">
-<img src="https://drive.google.com/file/d/19s32crelGz9B4PHnjyQMB_cM58xSMVlz">
-<img src="https://drive.google.com/file/d/1rA-3PiXF62EyTk5HOku54PjcvSQC2Qvh">
-<img src="https://drive.google.com/file/d/15oYtIVaih-u9oniUfzduuiFUinJOPr1H">
+
 <img src="https://drive.google.com/file/d/1d_dJHU5EMzXqgjq1hHTrULpiqNVKvQsD">
 <img src="https://drive.google.com/file/d/1uVgVLSmRfI0UDV6eLYKH4yn-zWaoz-Iu">
 <img src="https://drive.google.com/file/d/1ToOJ2NhuAVRmkDvF7FYC4c_Hw_U0FjW0">
