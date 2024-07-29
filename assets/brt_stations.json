@@ -1,0 +1,1242 @@
+[
+    {
+        "coordenada": [
+            -43.38428400019971,
+            -22.853685999842572
+        ],
+        "nome": "Terminal Deodoro",
+        "tipo": "Terminal"
+    },
+    {
+        "coordenada": [
+            -43.377174000317105,
+            -22.845053000313154
+        ],
+        "nome": "Guadalupe",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.36867900023668,
+            -22.83978000023163
+        ],
+        "nome": "Jardim Guadalupe",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.35084799980364,
+            -22.831041000114865
+        ],
+        "nome": "Fazenda Botafogo",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.33261875232035,
+            -22.824359766622102
+        ],
+        "nome": "Ceasa-Irajá",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.30840600004613,
+            -22.818187999594834
+        ],
+        "nome": "Vigário Geral",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.29237999976206,
+            -22.81492599963735
+        ],
+        "nome": "Cidade Alta",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.284012999710576,
+            -22.819560000008266
+        ],
+        "nome": "Mercado São Sebastião",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.27179199987363,
+            -22.82912299978482
+        ],
+        "nome": "Lobo Junior",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.25809699953282,
+            -22.836947999781188
+        ],
+        "nome": "Marinha Mercante",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.25102199973607,
+            -22.842961999847855
+        ],
+        "nome": "Piscinão de Ramos",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.24763500008174,
+            -22.853100999840887
+        ],
+        "nome": "Rubens Vaz",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.24781499961245,
+            -22.86098300028362
+        ],
+        "nome": "Baixa do Sapateiro",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.24762699950946,
+            -22.866630000348476
+        ],
+        "nome": "Hospital de Bonsucesso - CPOR",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.24302200048369,
+            -22.87533499985
+        ],
+        "nome": "Fiocruz",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.236251000477104,
+            -22.884183999789805
+        ],
+        "nome": "Benfica",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.224533000464085,
+            -22.886861999993666
+        ],
+        "nome": "Vasco da Gama",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.215398000261104,
+            -22.893877000435648
+        ],
+        "nome": "INTO",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.2108709996595,
+            -22.89874799986999
+        ],
+        "nome": "Terminal Gentileza",
+        "tipo": "Terminal"
+    },
+    {
+        "coordenada": [
+            -43.25327279282137,
+            -22.854851103986746
+        ],
+        "nome": "Santa Luzia",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.24388512309369,
+            -22.847063011770064
+        ],
+        "nome": "Maré",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.2582923131246,
+            -22.85740333761513
+        ],
+        "nome": "Cardoso de Moraes - Viúva Garcia",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.27710877355814,
+            -22.841558649984158
+        ],
+        "nome": "Penha I",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.276713652783926,
+            -22.842031087882166
+        ],
+        "nome": "Penha II",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.28340461169656,
+            -22.839082608753827
+        ],
+        "nome": "Pastor José Santos",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.289838543797025,
+            -22.837702344156142
+        ],
+        "nome": "Guaporé",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.29512219194678,
+            -22.83880656871781
+        ],
+        "nome": "Praça do Carmo",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.29875817052168,
+            -22.84147098411112
+        ],
+        "nome": "Pedro Taques",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.3079867785454,
+            -22.84972897224737
+        ],
+        "nome": "Vila Kosmos",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.312868977440004,
+            -22.852711459292163
+        ],
+        "nome": "Vicente de Carvalho",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.32047016052693,
+            -22.8530102242582
+        ],
+        "nome": "Marambaia",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.32841875402854,
+            -22.856598430664157
+        ],
+        "nome": "Vaz Lobo",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.33042650007867,
+            -22.8614820179752
+        ],
+        "nome": "Vila Queiroz",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.334431497629886,
+            -22.865840577104663
+        ],
+        "nome": "Otaviano",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.37176533036937,
+            -22.93659225243642
+        ],
+        "nome": "Santa Efigênia",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.372657879446265,
+            -22.940665246370504
+        ],
+        "nome": "Divina Providência",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.37179071661946,
+            -22.93549013123543
+        ],
+        "nome": "Merck",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.36133337082981,
+            -22.91564809278174
+        ],
+        "nome": "Tanque",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.33614921899348,
+            -22.87740144433923
+        ],
+        "nome": "Madureira-Manaceia",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.38426113646411,
+            -22.973202310007977
+        ],
+        "nome": "Rio II",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.39061925615704,
+            -22.967703812383228
+        ],
+        "nome": "Pedro Correia",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.3766487003279,
+            -22.973369173981563
+        ],
+        "nome": "Rede Sarah",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.36565435253352,
+            -22.973434902822504
+        ],
+        "nome": "Centro Metropolitano",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.38873279213711,
+            -22.959890915914094
+        ],
+        "nome": "Curicica",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.38336536165213,
+            -22.958575213789576
+        ],
+        "nome": "Praça do Bandolim",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.37733926730524,
+            -22.955256867028073
+        ],
+        "nome": "Arroio Pavuna",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.374625566931556,
+            -22.95230383314673
+        ],
+        "nome": "Vila Sapê - IV Centenário",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.3723977187001,
+            -22.94817782543204
+        ],
+        "nome": "Recanto das Palmeiras - Jardim São Luiz",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.37338792857556,
+            -22.929368690614314
+        ],
+        "nome": "Andre Rocha",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.373852839037646,
+            -22.92411191530716
+        ],
+        "nome": "Taquara",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.368271802396926,
+            -22.920099585618352
+        ],
+        "nome": "Aracy Cabral",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.35705707977155,
+            -22.90469153888584
+        ],
+        "nome": "Ipase",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.35225225125756,
+            -22.897682509147366
+        ],
+        "nome": "Praça Seca",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.3486397957268,
+            -22.892766136074552
+        ],
+        "nome": "Capitão Menezes",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.34585104727432,
+            -22.888348267611686
+        ],
+        "nome": "Pinto Teles",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.341934091371265,
+            -22.882228431885636
+        ],
+        "nome": "Campinho",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.33622252873449,
+            -22.877521094344246
+        ],
+        "nome": "Terminal Paulo da Portela",
+        "tipo": "Terminal"
+    },
+    {
+        "coordenada": [
+            -43.33562374259858,
+            -22.87025090602264
+        ],
+        "nome": "Mercadão",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.27247241887404,
+            -22.842339376325555
+        ],
+        "nome": "Ibiapina",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.265348246097844,
+            -22.848549064400064
+        ],
+        "nome": "Olaria - Cacique de Ramos",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.23989331402509,
+            -22.839333698192913
+        ],
+        "nome": "Terminal Fundão - Aroldo Melodia",
+        "tipo": "Terminal"
+    },
+    {
+        "coordenada": [
+            -43.365660975011174,
+            -22.983938837113588
+        ],
+        "nome": "Via Parque",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.36579347328011,
+            -22.988983260451686
+        ],
+        "nome": "Aeroporto de Jacarepaguá",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.365859513245596,
+            -22.9955733789073
+        ],
+        "nome": "Lourenço Jorge",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.25149090337037,
+            -22.81122051266073
+        ],
+        "nome": "Galeão Tom Jobim 1",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.24641908420666,
+            -22.8144156144029
+        ],
+        "nome": "Galeão Tom Jobim 2",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.366118172644896,
+            -23.000384877635735
+        ],
+        "nome": "Terminal Alvorada",
+        "tipo": "Terminal"
+    },
+    {
+        "coordenada": [
+            -43.393593835839994,
+            -22.973026239848323
+        ],
+        "nome": "Parque Olímpico",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.401037608689705,
+            -22.972050312267562
+        ],
+        "nome": "Terminal Centro Olímpico",
+        "tipo": "Terminal"
+    },
+    {
+        "coordenada": [
+            -43.66195485546634,
+            -22.933403452173692
+        ],
+        "nome": "Cesarão II",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.657288239576566,
+            -22.931696702181704
+        ],
+        "nome": "Cesarão III",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.65380881014219,
+            -22.928349505305967
+        ],
+        "nome": "Vila Paciência",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.64997334917246,
+            -22.92540109280437
+        ],
+        "nome": "Três Pontes",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.643537748696836,
+            -22.920416310620354
+        ],
+        "nome": "Cesarinho",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.639049513776804,
+            -22.918193093757356
+        ],
+        "nome": "31 de Outubro",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.63279302394042,
+            -22.916764978425434
+        ],
+        "nome": "Santa Eugênia",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.62797372980089,
+            -22.915591334286056
+        ],
+        "nome": "Júlia Miguel",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.622381275408046,
+            -22.91623422858983
+        ],
+        "nome": "Parque São Paulo",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.60584660276021,
+            -22.915092002777207
+        ],
+        "nome": "Icurana",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.601299239634926,
+            -22.91416571624848
+        ],
+        "nome": "Vilar Carioca",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.595625656621635,
+            -22.913283555609585
+        ],
+        "nome": "Inhoaíba",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.41221389925852,
+            -23.000009322096822
+        ],
+        "nome": "Golfe Olímpico",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.58975656917666,
+            -22.911301931416247
+        ],
+        "nome": "Ana Gonzaga",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.584188657254174,
+            -22.910819857250647
+        ],
+        "nome": "São Jorge",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.575781180188564,
+            -22.90747327762912
+        ],
+        "nome": "Pina Rangel",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.571653321111974,
+            -22.906871245693704
+        ],
+        "nome": "Parque Esperança",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.56403408187509,
+            -22.907679350356563
+        ],
+        "nome": "Cândido Magalhães",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.56628607815859,
+            -22.90358800203959
+        ],
+        "nome": "Prefeito Alim Pedro",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.6652038124593,
+            -22.94046106022215
+        ],
+        "nome": "Santa Verediana",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.677576497799215,
+            -22.927532582180074
+        ],
+        "nome": "Gastão Rangel",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.6836851413111,
+            -22.916860430867732
+        ],
+        "nome": "Terminal Santa Cruz",
+        "tipo": "Terminal"
+    },
+    {
+        "coordenada": [
+            -43.35248590663176,
+            -23.000109406312983
+        ],
+        "nome": "Parque das Rosas",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.66534767163652,
+            -22.934551124011698
+        ],
+        "nome": "Cesarão I",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.61607984138587,
+            -22.915637839437444
+        ],
+        "nome": "Cosmos",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.496679758101465,
+            -23.02099196512381
+        ],
+        "nome": "Recanto das Garças",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.50900394400472,
+            -23.018210230769903
+        ],
+        "nome": "Dom Bosco",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.55846650293895,
+            -23.00521029939945
+        ],
+        "nome": "CTEx",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.58247767707971,
+            -22.999519100034444
+        ],
+        "nome": "Embrapa",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.55497248735014,
+            -22.901747838347898
+        ],
+        "nome": "Terminal Campo Grande",
+        "tipo": "Terminal"
+    },
+    {
+        "coordenada": [
+            -43.471469018559894,
+            -23.01557341717312
+        ],
+        "nome": "Nova Barra",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.65083042544893,
+            -22.950845135149507
+        ],
+        "nome": "Vendas de Varanda",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.66696173845217,
+            -22.93651627132869
+        ],
+        "nome": "Curral Falso",
+        "tipo": "Terminal"
+    },
+    {
+        "coordenada": [
+            -43.67350986198912,
+            -22.930824331378766
+        ],
+        "nome": "Cajueiros",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.311627228730714,
+            -23.006691165871263
+        ],
+        "nome": "Terminal Jd. Oceânico",
+        "tipo": "Terminal"
+    },
+    {
+        "coordenada": [
+            -43.3230714598145,
+            -23.00373135809343
+        ],
+        "nome": "Bosque Marapendi",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.32916729062884,
+            -23.001280071796216
+        ],
+        "nome": "Paulo Malta Rezende",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.335125689543865,
+            -23.000599153850494
+        ],
+        "nome": "Afrânio Costa",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.34205807693304,
+            -23.000286818676607
+        ],
+        "nome": "Riviera",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.3465739389924,
+            -23.00021328568844
+        ],
+        "nome": "Ricardo Marinho",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.35987053686847,
+            -23.000003287587028
+        ],
+        "nome": "Barra Shopping",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.37745470785705,
+            -23.000285480015418
+        ],
+        "nome": "Bosque da Barra",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.383203903566475,
+            -23.000383491363632
+        ],
+        "nome": "Novo Leblon",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.389797065321446,
+            -23.000392780196975
+        ],
+        "nome": "Américas Park",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.39849784603829,
+            -23.000188827659525
+        ],
+        "nome": "Santa Mônica Jardins",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.40690845420563,
+            -22.99991401296921
+        ],
+        "nome": "Rio Mar",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.41747628581276,
+            -23.00084719908608
+        ],
+        "nome": "Interlagos",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.424047485975926,
+            -23.002884633989428
+        ],
+        "nome": "Pedra de Itaúna",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.43195499107358,
+            -23.00546327917986
+        ],
+        "nome": "Pontões/Barrasul",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.44270426687898,
+            -23.008251629803752
+        ],
+        "nome": "Salvador Allende",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.44865984694778,
+            -23.00974741740796
+        ],
+        "nome": "Gelson Fonseca",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.45267062826401,
+            -23.010747288111986
+        ],
+        "nome": "Guignard",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.45897039386568,
+            -23.012397083394752
+        ],
+        "nome": "Gláucio Gil",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.46669275417545,
+            -23.014344268388196
+        ],
+        "nome": "Benvindo de Novaes",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.47707950733435,
+            -23.017022578583408
+        ],
+        "nome": "Gilka Machado",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.48261577222211,
+            -23.018404042171912
+        ],
+        "nome": "Guiomar Novais",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.487293332365326,
+            -23.01960925468344
+        ],
+        "nome": "Recreio Shopping",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.50028464021638,
+            -23.020578761886256
+        ],
+        "nome": "Notre Dame",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.51603583120526,
+            -23.016253018553815
+        ],
+        "nome": "Pontal",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.539892372929295,
+            -23.00939966509615
+        ],
+        "nome": "Ilha de Guaratiba",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.59676516481243,
+            -22.993811146366127
+        ],
+        "nome": "Mato Alto",
+        "tipo": "Terminal"
+    },
+    {
+        "coordenada": [
+            -43.62205511800054,
+            -22.968614854550474
+        ],
+        "nome": "Magarça",
+        "tipo": "Terminal"
+    },
+    {
+        "coordenada": [
+            -43.64732274238947,
+            -22.964827355329906
+        ],
+        "nome": "Pingo DÁgua",
+        "tipo": "Terminal"
+    },
+    {
+        "coordenada": [
+            -43.6796656341709,
+            -22.92220940596967
+        ],
+        "nome": "General Olímpo",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.43958683176035,
+            -23.008064502255348
+        ],
+        "nome": "Terminal Recreio",
+        "tipo": "Terminal"
+    },
+    {
+        "coordenada": [
+            -43.43407888372304,
+            -23.003841163632586
+        ],
+        "nome": "Catedral do Recreio",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.42990603633488,
+            -23.00030956492124
+        ],
+        "nome": "Tapebuias",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.4176336799898,
+            -22.989555376135602
+        ],
+        "nome": "Ilha Pura",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.41012577779085,
+            -22.981834987167804
+        ],
+        "nome": "Olof Palme",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.40635005484219,
+            -22.97708123678689
+        ],
+        "nome": "Riocentro",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.402075674674094,
+            -22.9721312913094
+        ],
+        "nome": "Morro do Outeiro",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.39691522081285,
+            -22.966658099313836
+        ],
+        "nome": "Minha Praia",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.393934680729146,
+            -22.96337483326764
+        ],
+        "nome": "Asa Branca",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.39178589094434,
+            -22.954694836823812
+        ],
+        "nome": "Leila Diniz",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.39178942031709,
+            -22.947778894753167
+        ],
+        "nome": "Ventura",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.39455440447664,
+            -22.941075798752056
+        ],
+        "nome": "Colônia",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.39590367799594,
+            -22.927924778287917
+        ],
+        "nome": "Outeiro Santo",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.39804696486629,
+            -22.915590270563097
+        ],
+        "nome": "Boiúna",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.40076509962485,
+            -22.886544642678846
+        ],
+        "nome": "Marechal Fontenelle",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.405358329521256,
+            -22.87595374595846
+        ],
+        "nome": "Padre João Cribbin",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.41388156958705,
+            -22.868749066225956
+        ],
+        "nome": "Magalhães Bastos",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.40108947384567,
+            -22.86236367677241
+        ],
+        "nome": "Vila Militar",
+        "tipo": "Estação"
+    },
+    {
+        "coordenada": [
+            -43.39951051742915,
+            -22.884271031689014
+        ],
+        "nome": "Terminal Sulacap",
+        "tipo": "Terminal"
+    },
+    {
+        "coordenada": [
+            -43.32277391308181,
+            -22.819692320660646
+        ],
+        "nome": "Terminal Margaridas",
+        "tipo": "Terminal"
+    },
+    {
+        "coordenada": [
+            -43.289862749076555,
+            -22.813400824745884
+        ],
+        "nome": "Terminal Missões",
+        "tipo": "Terminal"
+    },
+    {
+        "coordenada": [
+            -43.686002410829545,
+            -22.91759866619797
+        ],
+        "nome": "FUTURO Terminal Santa Cruz",
+        "tipo": "Terminal"
+    }
+]
