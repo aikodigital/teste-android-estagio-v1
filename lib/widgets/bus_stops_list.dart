@@ -8,18 +8,21 @@ class BusStopsList extends StatelessWidget {
   const BusStopsList({super.key, required this.busStops});
 
   @override
-  Widget build(BuildContext context) {
-    var busStopData = [...busStops];
-    return ListView.builder(
-      padding: const EdgeInsets.only(
-        left: 20,
-        right: 20,
-        top: 8,
-      ),
-      itemBuilder: (ctx, i) {
-        return BusStopListItem(busStop: busStopData[i]);
-      },
-      itemCount: busStopData.length,
-    );
-  }
+  Widget build(BuildContext context) => busStops.isEmpty
+      ? const Center(
+          child: CircularProgressIndicator(),
+        )
+      : ListView.builder(
+          padding: const EdgeInsets.only(
+            left: 20,
+            right: 20,
+            top: 8,
+          ),
+          itemBuilder: (ctx, i) {
+            return BusStopListItem(
+              busStop: busStops[i],
+            );
+          },
+          itemCount: busStops.length,
+        );
 }
