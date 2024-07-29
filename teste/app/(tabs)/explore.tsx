@@ -49,14 +49,13 @@ export default function TabTwoScreen() {
         },
       });
       const data = await response.json();
-      console.log('Resposta da API para parada:', data); // Adicionado para depuração
+      console.log('Resposta da API para parada:', data); 
 
       if (data.length > 0) {
         const parada = data[0];
-        console.log('Parada:', parada); // Adicionado para depuração
 
-        const latitude = parseFloat(parada.py); // Atualizado para 'py'
-        const longitude = parseFloat(parada.px); // Atualizado para 'px'
+        const latitude = parseFloat(parada.py); 
+        const longitude = parseFloat(parada.px); 
 
         if (!isNaN(latitude) && !isNaN(longitude)) {
           setRegion({
@@ -73,7 +72,7 @@ export default function TabTwoScreen() {
         Alert.alert('Nenhuma parada encontrada');
       }
     } catch (error) {
-      console.error('Erro na busca da parada:', error); // Adicionado para depuração
+      console.error('Erro na busca da parada:', error); 
       Alert.alert('Erro', 'Falha na busca da parada');
     }
   };
@@ -99,7 +98,7 @@ export default function TabTwoScreen() {
       }));
       setMarkers(newMarkers);
     } catch (error) {
-      console.error('Erro na busca das posições dos veículos:', error); // Adicionado para depuração
+      console.error('Erro na busca das posições dos veículos:', error);
       Alert.alert('Erro', 'Falha na busca das posições dos veículos');
     }
   };
