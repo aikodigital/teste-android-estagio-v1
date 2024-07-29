@@ -59,10 +59,9 @@ export function BuscarLinha() {
                 data={lines}
                 keyExtractor={(item) => item.cl.toString()}
                 renderItem={renderItem}
-                ListEmptyComponent={<Text className='ml-32 text-gray-600'>Nada na listagem</Text>}
-                className='mt-4'
+                ListEmptyComponent={<Text className='ml-32 mt-3 text-gray-600'>Nada na listagem</Text>}
+                className='h-60 mt-4 border border-black rounded-xl'
             />
-        
         </View> 
   );
 }
