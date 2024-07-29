@@ -1,77 +1,42 @@
-# Teste Android
+# Info Bus
 
-![Aiko](imagens/aiko.png)
+O Info Bus é um Aplicativo Android que possibilita a vizualização de dados sobre os sitema de ônibus da cidade de São Paulo através da API [API **Olho Vivo**](api.md)
+aqui vão algumas soluções implementadas pelo App:
 
-Neste teste serão avaliados seus conhecimentos e a metodologia aplicada no desenvolvimento de aplicações mobile Android.
+* Vizualizar a listagem de todos os Veículos(Ônibus) Ativos em São Paulo.
+* Pesquisar veículos por determinada Linha.
+* Encontar previsões de chegada para determinada Parada.
+* Vizualizar endereço da parada no Mapa.
+* Vizualizar no Mapa onde Os veículos de determinada linha estão.
 
-## O Desafio
+Este projeto foi desenvolvido com o objetivo de proporcionar uma solução flexível e de fácil utilização para vizualização mais fácil sobre horários e posição dos ônibus na cidade.
 
-Seu objetivo é criar um aplicativo que exiba dados sobre o transporte público da cidade de São Paulo, consultando a [API **Olho Vivo**](api.md) que provê informações em tempo real do monitoramento da frota de ônibus da cidade de São Paulo.
+## instruções:
 
-## Requisitos
+* Efetue um cadastro de Usuário com Login e Senha
+* Ao logar, uma tela com um TabLayout estará visível com duas opcões para você arrastar e se encaminhar na tela.
+* Na primeira tela é possível buscar(Botão) para vizualizar a listagem de ônibus ativos no determinado momento e seu prefixo. 
+* Na primeira tela no botão para abrir o mapa, você terá como digitar uma determinada linha e ele irá plotar no Mapa quais véiculos e onde eles estão no momento.
+* Na Segunda tela você poderá pesquisar pelo número da sua parada, a previsão de chegada dos ônibus na sua parada digitada.
+* Na Segunda tela para ver no mapa, você poderá encontrar a localização da sua parada.
+* Caso esqueça a senha do cadastro, va para recuperar conta -> digite seu e-mail -> espere uma mensagem para recuperação de conta chegar ao seu email.
 
-Esses requisitos são obrigatórios e devem ser desenvolvidos para a entrega do teste
+## 🚀 Tecnologias e Arquitetura Utilizadas
 
-* **Posições dos veículos**: Exibir no mapa onde os veículos estavam na sua última atualização.
+### 🏛️ Arquitetura
+- **MVVM (Model-View-ViewModel)**: A aplicação adota a arquitetura MVVM para manter uma separação limpa entre a View(UI), ViewModel e Model.
+- **Clean Code**: Nosso código segue os princípios de Clean Code, tornando-o fácil de ler e manter.
 
-* **Linhas**: Exibir informações sobre as linhas de ônibus.
+### 📚 Bibliotecas e Frameworks
+- **Retrofit**: Utilizei Retrofit para realizar chamadas de API de maneira eficiente e segura.
+- **Google Maps API**: Utilizei o Google Maps API para ter acesso ao mapa da google, para facilitar a demonstração das informações obtidas.
+- **API OlhoVivo SPTrans**: Utilizei da API da SPTrans para acessar informações em tempo real do sistema de integração de ônibus da cidade de São Paulo
+- **Firebase**: Utilizei o firebase para implementação do real Time Database e do Authentication, para autenticação e manuseamento da conta do usuário 
+- **LiveData**: LiveData é empregado para notificar mudanças de dados na ViewModel, garantindo uma UI suave e reativa.
+- **Navigation**: O Navigation Component facilita a navegação entre telas, tornando o fluxo de navegação mais gerenciável, incluindo a navegação entre Fragments.
+- **Lifecycle**: O Android Lifecycle é integrado para gerenciar ciclos de vida de componentes, garantindo um comportamento correto em relação às atividades e fragmentos.
 
-* **Paradas**: Exibir os pontos de parada da cidade no mapa.
+🤝 Contribuindo
+## Sinta-se à vontade para contribuir com o meu projeto!
 
-* **Previsão de chegada**: Dado uma parada informar a previsão de chegada de cada veículo que passe pela parada selecionada.
-
-* **Pesquisa e Filtros**: Permitir que o usuário pesquise e filtre esses dados, interagindo com a interface.
-
-## O que é permitido
-
-* Android Nativo (Java/Kotlin)
-
-* React Native
-
-* Native Script (Vue, Angular, etc)
-
-* Flutter
-
-* Xamarin
-
-* Kivy
-
-* Qualquer tecnologia complementar as citadas anteriormente são permitidas desde que seu uso seja justificável
-
-## O que não é permitido
-
-* Utilizar bibliotecas ou códigos de terceiros que implementem algum dos requisitos.
-
-## Recomendações
-
-* **Linter**: Desenvolva o projeto utilizando algum padrão de formatação de código.
-
-## Extras
-
-Aqui são listados algumas sugestões para você que quer ir além do desafio inicial. Lembrando que você não precisa se limitar a essas sugestões, se tiver pensado em outra funcionalidade que considera relevante ao escopo da aplicação fique à vontade para implementá-la.
-
-* **Refresh automático**: Que as informações exibidas no aplicativo sejam atualizadas de tempo em tempo de forma transparente ao usuário
-
-* **Cálculo de rotas**: Exibir a possível rota de um ou mais ônibus em relação a uma parada, ou do usuário em relação a uma parada (Utilizando API do Google Maps ou equivalentes)
-
-* **Corredores**: Mostrar informações sobre os corredores de ônibus de SP.
-
-* **Velocidade das vias**: Mostrar informações sobre as velocidades das vias.
-
-* **Testes**: Desenvolva testes que achar necessário para a aplicação.
-
-* **Documentação**: Gerar uma documentação da aplicação. A documentação pode incluir detalhes sobre as decisões tomadas, especificação das funcionalidades desenvolvidas, instruções de uso dentre outras informações que achar relevantes.
-
-## Entrega
-
-Para realizar a entrega do teste você deve:
-
-* Relizar o fork e clonar esse repositório para sua máquina.
-  
-* Criar uma branch com o nome de `teste/[NOME]`.
-  * `[NOME]`: Seu nome.
-  * Exemplos: `teste/fulano-da-silva`; `teste/beltrano-primeiro-gomes`.
-  
-* Faça um commit da sua branch com a implementação do teste.
-  
-* Realize o pull request da sua branch nesse repositório.
+## para mais informações mande um Email para jpedro.rpessoa@gmail.com 

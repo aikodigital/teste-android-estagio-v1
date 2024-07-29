@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Info Bus</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="lines">Lines\n</string>
+    <string name="vehicles">Vehicles</string>
+    <string name="click">Click</string>
+    <string name="go_to_map">Go to map</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="ve_culos_ativos">Veículos Ativos Em São Paulo</string>
+    <string name="clique_para_ver_no_mapa">Clique para ver no mapa</string>
+    <string name="total_de_ve_culos">Total de Veículos:</string>
+    <string name="pesquise_ve_culos_por_linha">Pesquise veículos por linha</string>
+    <string name="ex_1">Ex: 1</string>
+    <string name="buscar">Buscar</string>
+    <string name="veja_lista_de_nibus_agora_em_s_o_paulo">Veja lista de ônibus agora em São Paulo</string>
+    <string name="digite_o_n_mero_de_uma_parada_e_veja_as_previs_es_de_chegada">Digite o número de uma parada e veja as previsões de chegada:</string>
+    <string name="limpar">Limpar</string>
+    <string name="veja_no_mapa">Veja No Mapa</string>
+    <string name="nome_da_parada">Nome Da Parada:</string>
+    <string name="endere_o">Endereço</string>
+    <string name="ex_afonso">Ex: Afonso</string>
+    <string name="e_mail">E-mail</string>
+    <string name="senha">Senha</string>
+    <string name="criar_conta">Criar Conta</string>
+    <string name="recuperar_conta">Recuperar Conta</string>
+    <string name="login">Login</string>
+    <string name="informe_seu_email_para_enviarmos_os_dados_de_recupera_o_da_conta">Informe seu email para enviarmos os dados de recuperação da conta</string>
+    <string name="enviar">Enviar</string>
+</resources>
