@@ -2,9 +2,9 @@ import React from 'react';
 import { Container, ContentIcon, Icon, Input } from "./styles";
 
 type SearchProps = {
-  textInput: string;
-  onSearch: () => void;
-  onChangeText: (text: string) => void;
+  textInput?: string;
+  onSearch?: () => void;
+  onChangeText?: (text: string) => void;
 }
 
 export function Search({ onSearch, textInput, onChangeText }: SearchProps) {
