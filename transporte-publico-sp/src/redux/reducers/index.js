@@ -1,12 +1,15 @@
+// src/redux/reducers/index.js
 import { combineReducers } from 'redux';
-import positionsReducer from './positionsReducer';
-import linesReducer from './linesReducer';
+import vehiclePositionsReducer from './vehiclePositionsReducer';
+import busLinesReducer from './busLinesReducer';
 import stopsReducer from './stopsReducer';
+import arrivalPredictionsReducer from './arrivalPredictionsReducer';
 
 const rootReducer = combineReducers({
-  positions: positionsReducer,
-  lines: linesReducer,
+  vehiclePositions: vehiclePositionsReducer,
+  busLines: busLinesReducer,
   stops: stopsReducer,
+  arrivalPredictions: arrivalPredictionsReducer,
 });
 
 export default rootReducer;

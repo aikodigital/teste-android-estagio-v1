@@ -8,9 +8,6 @@ const VehiclePositionsMap = () => {
   const dispatch = useDispatch();
   const { data: vehiclePositions, loading, error } = useSelector((state) => state.vehiclePositions);
 
-  const initialLat = -23.55052; // Latitude de São Paulo
-  const initialLng = -46.633308; // Longitude de São Paulo
-
   useEffect(() => {
     dispatch(fetchVehiclePositions());
   }, [dispatch]);
@@ -19,13 +16,14 @@ const VehiclePositionsMap = () => {
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <MapContainer center={[initialLat, initialLng]} zoom={13} style={{ height: "100vh", width: "100%" }}>
-      <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-      {vehiclePositions.map(vehicle => (
-        <Marker key={vehicle.id} position={[vehicle.latitude, vehicle.longitude]}>
-          <Popup>
-            {vehicle.line} - {vehicle.vehicleId}
-          </Popup>
+    <MapContainer center={[51.505, -0.09]} zoom={13} style={{ height: '100vh', width: '100%' }}>
+      <TileLayer
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        attribution="&copy; OpenStreetMap contributors"
+      />
+      {vehiclePositions.map((vehicle, index) => (
+        <Marker key={index} position={[vehicle.latitude, vehicle.longitude]}>
+          <Popup>{vehicle.name}</Popup>
         </Marker>
       ))}
     </MapContainer>

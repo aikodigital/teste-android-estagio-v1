@@ -1,5 +1,6 @@
+// src/redux/reducers/stopsReducer.js
 const initialState = {
-  data: [], // Certifique-se de que este é um array
+  data: [],
   loading: false,
   error: null,
 };
@@ -7,23 +8,11 @@ const initialState = {
 const stopsReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'FETCH_STOPS_REQUEST':
-      return {
-        ...state,
-        loading: true,
-        error: null,
-      };
+      return { ...state, loading: true };
     case 'FETCH_STOPS_SUCCESS':
-      return {
-        ...state,
-        loading: false,
-        data: action.payload,
-      };
+      return { ...state, loading: false, data: action.payload };
     case 'FETCH_STOPS_FAILURE':
-      return {
-        ...state,
-        loading: false,
-        error: action.payload,
-      };
+      return { ...state, loading: false, error: action.payload };
     default:
       return state;
   }

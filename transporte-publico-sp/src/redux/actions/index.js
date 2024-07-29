@@ -1,54 +1,61 @@
 // src/redux/actions/index.js
-import api from '../../services/api';
+import axios from 'axios';
 
-export const fetchPositionsRequest = () => ({
-  type: 'FETCH_POSITIONS_REQUEST',
+// Actions for fetching vehicle positions
+export const fetchVehiclePositionsRequest = () => ({
+  type: 'FETCH_VEHICLE_POSITIONS_REQUEST',
 });
 
-export const fetchPositionsSuccess = (positions) => ({
-  type: 'FETCH_POSITIONS_SUCCESS',
+export const fetchVehiclePositionsSuccess = (positions) => ({
+  type: 'FETCH_VEHICLE_POSITIONS_SUCCESS',
   payload: positions,
 });
 
-export const fetchPositionsFailure = (error) => ({
-  type: 'FETCH_POSITIONS_FAILURE',
+export const fetchVehiclePositionsFailure = (error) => ({
+  type: 'FETCH_VEHICLE_POSITIONS_FAILURE',
   payload: error,
 });
 
-export const fetchVehiclePositions = () => async (dispatch) => {
-  dispatch(fetchPositionsRequest());
-  try {
-    const response = await api.getVehiclePositions();
-    dispatch(fetchPositionsSuccess(response.data));
-  } catch (error) {
-    dispatch(fetchPositionsFailure(error));
-  }
+export const fetchVehiclePositions = () => {
+  return async (dispatch) => {
+    dispatch(fetchVehiclePositionsRequest());
+    try {
+      const response = await axios.get('YOUR_API_ENDPOINT/vehicle_positions');
+      dispatch(fetchVehiclePositionsSuccess(response.data));
+    } catch (error) {
+      dispatch(fetchVehiclePositionsFailure(error.message));
+    }
+  };
 };
 
-export const searchLinesRequest = () => ({
-  type: 'SEARCH_LINES_REQUEST',
+// Actions for fetching bus lines
+export const fetchBusLinesRequest = () => ({
+  type: 'FETCH_BUS_LINES_REQUEST',
 });
 
-export const searchLinesSuccess = (lines) => ({
-  type: 'SEARCH_LINES_SUCCESS',
+export const fetchBusLinesSuccess = (lines) => ({
+  type: 'FETCH_BUS_LINES_SUCCESS',
   payload: lines,
 });
 
-export const searchLinesFailure = (error) => ({
-  type: 'SEARCH_LINES_FAILURE',
+export const fetchBusLinesFailure = (error) => ({
+  type: 'FETCH_BUS_LINES_FAILURE',
   payload: error,
 });
 
-export const searchLines = (query) => async (dispatch) => {
-  dispatch(searchLinesRequest());
-  try {
-    const response = await api.searchLines(query);
-    dispatch(searchLinesSuccess(response.data));
-  } catch (error) {
-    dispatch(searchLinesFailure(error));
-  }
+export const fetchBusLines = () => {
+  return async (dispatch) => {
+    dispatch(fetchBusLinesRequest());
+    try {
+      const response = await axios.get('YOUR_API_ENDPOINT/bus_lines');
+      dispatch(fetchBusLinesSuccess(response.data));
+    } catch (error) {
+      dispatch(fetchBusLinesFailure(error.message));
+    }
+  };
 };
 
+// Actions for fetching stops
 export const fetchStopsRequest = () => ({
   type: 'FETCH_STOPS_REQUEST',
 });
@@ -63,12 +70,53 @@ export const fetchStopsFailure = (error) => ({
   payload: error,
 });
 
-export const fetchStops = () => async (dispatch) => {
-  dispatch(fetchStopsRequest());
-  try {
-    const response = await api.getStops();
-    dispatch(fetchStopsSuccess(response.data));
-  } catch (error) {
-    dispatch(fetchStopsFailure(error));
-  }
+export const fetchStops = () => {
+  return async (dispatch) => {
+    dispatch(fetchStopsRequest());
+    try {
+      const response = await axios.get('YOUR_API_ENDPOINT/stops');
+      dispatch(fetchStopsSuccess(response.data));
+    } catch (error) {
+      dispatch(fetchStopsFailure(error.message));
+    }
+  };
+};
+
+// Actions for fetching arrival predictions
+export const fetchArrivalPredictionsRequest = () => ({
+  type: 'FETCH_ARRIVAL_PREDICTIONS_REQUEST',
+});
+
+export const fetchArrivalPredictionsSuccess = (predictions) => ({
+  type: 'FETCH_ARRIVAL_PREDICTIONS_SUCCESS',
+  payload: predictions,
+});
+
+export const fetchArrivalPredictionsFailure = (error) => ({
+  type: 'FETCH_ARRIVAL_PREDICTIONS_FAILURE',
+  payload: error,
+});
+
+export const fetchArrivalPredictions = (stopId) => {
+  return async (dispatch) => {
+    dispatch(fetchArrivalPredictionsRequest());
+    try {
+      const response = await axios.get(`YOUR_API_ENDPOINT/arrival_predictions/${stopId}`);
+      dispatch(fetchArrivalPredictionsSuccess(response.data));
+    } catch (error) {
+      dispatch(fetchArrivalPredictionsFailure(error.message));
+    }
+  };
+};
+
+// Action for searching bus lines
+export const searchLines = (query) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(`YOUR_API_ENDPOINT/bus_lines?query=${query}`);
+      dispatch(fetchBusLinesSuccess(response.data));
+    } catch (error) {
+      dispatch(fetchBusLinesFailure(error.message));
+    }
+  };
 };

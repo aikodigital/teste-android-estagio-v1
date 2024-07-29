@@ -1,6 +1,7 @@
+// src/components/SearchFilter.js
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux'; // Corrigido: importação do react-redux
-import { searchLines } from '../redux/actions'; // Corrigido: caminho relativo para actions
+import { useDispatch } from 'react-redux';
+import { searchLines } from '../redux/actions';
 
 const SearchFilter = () => {
   const [query, setQuery] = useState('');
@@ -16,9 +17,9 @@ const SearchFilter = () => {
         type="text"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        placeholder="Pesquisar linhas..."
+        placeholder="Search for bus lines..."
       />
-      <button onClick={handleSearch}>Buscar</button>
+      <button onClick={handleSearch}>Search</button>
     </div>
   );
 };
