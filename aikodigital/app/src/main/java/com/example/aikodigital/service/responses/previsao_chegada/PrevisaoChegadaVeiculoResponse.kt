@@ -1,4 +1,4 @@
-package com.example.aikodigital.service.Response.previsao_chegada
+package com.example.aikodigital.service.responses.previsao_chegada
 
 data class PrevisaoChegadaVeiculoResponse(
     val p: Int,

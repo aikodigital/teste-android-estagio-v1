@@ -1,6 +1,6 @@
-package com.example.aikodigital.service.Response.previsao_chegada.parada
+package com.example.aikodigital.service.responses.previsao_chegada.parada
 
-import com.example.aikodigital.service.Response.previsao_chegada.PrevisaoChegadaVeiculoResponse
+import com.example.aikodigital.service.responses.previsao_chegada.PrevisaoChegadaVeiculoResponse
 
 data class PrevisaoChegadaParadaLinhaResponse(
     val c: String,

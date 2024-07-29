@@ -1,4 +1,4 @@
-package com.example.aikodigital.service.Response.corredores
+package com.example.aikodigital.service.responses.corredores
 
 data class CorredoresResponse(
     val cc: Int,

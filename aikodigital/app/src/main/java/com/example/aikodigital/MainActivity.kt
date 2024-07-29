@@ -7,7 +7,6 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -45,7 +44,6 @@ import com.example.aikodigital.model.LocationState
 import com.example.aikodigital.model.LocationViewModel
 import com.example.aikodigital.model.MyViewModel
 import com.example.aikodigital.ui.theme.AikodigitalTheme
-import com.google.maps.android.ktx.BuildConfig
 
 class MainActivity : ComponentActivity() {
     private val locationViewModel: LocationViewModel by viewModels()
@@ -103,7 +101,6 @@ class MainActivity : ComponentActivity() {
                                 location.latitude, location.longitude)
                         }
                         is LocationState.Error -> {
-                            val error = locationState as LocationState.Error
                             Column(
                                 modifier = Modifier
                                     .fillMaxSize()
@@ -127,7 +124,6 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun Greeting(modifier: Modifier, latitude: Double, longitude: Double) {
     val navController = rememberNavController()
@@ -153,7 +149,7 @@ fun Greeting(modifier: Modifier, latitude: Double, longitude: Double) {
             modifier = Modifier.padding(innerPadding)
         ) {
             composable("home") { HomeScreen(navController) }
-            composable("menu"){ MenuScreen(navController = navController, viewModel) }
+            composable("menu"){ MenuScreen(navController = navController) }
             composable("lines"){ LinesScreen(navController = navController, viewModel) }
             composable("corredors"){ CorredorsScreen(navController = navController, viewModel) }
             composable("busStop"){ BusStopScreen(navController = navController, viewModel,latitude, longitude) }

@@ -47,7 +47,7 @@ fun CorredorsScreen(navController: NavController, viewModel: MyViewModel){
         verticalArrangement = Arrangement.Center
     ) {
         LazyColumn{
-            items(corredores){ it ->
+            items(corredores){
                 Card(
                     modifier = Modifier
                         .fillMaxWidth()

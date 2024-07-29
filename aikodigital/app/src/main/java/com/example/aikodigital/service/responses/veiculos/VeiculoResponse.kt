@@ -1,4 +1,4 @@
-package com.example.aikodigital.service.Response.veiculos
+package com.example.aikodigital.service.responses.veiculos
 
 data class VeiculoResponse(
     val p: String,

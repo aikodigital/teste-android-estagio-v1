@@ -16,7 +16,53 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5ee5a99f-3e87-4e32-9864-02fddaae878d" name="Changes" comment="" />
+    <list default="true" id="5ee5a99f-3e87-4e32-9864-02fddaae878d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/calls/Call.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/calls/Call.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/components/Navigation.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/components/Navigation.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/gui/BusStopDetailsScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/gui/BusStopDetailsScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/gui/BusStopScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/gui/BusStopScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/gui/CorredorStopScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/gui/CorredorStopScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/gui/CorredorsScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/gui/CorredorsScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/gui/HomeScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/gui/HomeScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/gui/LinesScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/gui/LinesScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/gui/MenuScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/gui/MenuScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/model/LocationViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/model/LocationViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/model/MyViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/model/MyViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/service/CorredoresService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/service/CorredoresService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/service/LinhasService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/service/LinhasService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/service/MapsApiService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/service/MapsApiService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/service/ParadasService.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/service/PosicaoService.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/service/PrevisaoChegadaService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/service/PrevisaoChegadaService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/service/Response/corredores/CorredoresParadasResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/service/responses/corredores/CorredoresParadasResponse.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/service/Response/corredores/CorredoresResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/service/responses/corredores/CorredoresResponse.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/service/Response/linhas/LinhasResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/service/responses/linhas/LinhasResponse.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/service/Response/maps/api_directions/MapsApiResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/service/responses/maps/api_directions/MapsApiResponse.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/service/Response/maps/api_directions/MapsApiResponseList.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/service/responses/maps/api_directions/MapsApiResponseList.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/service/Response/maps/api_directions/MapsDistanceDurationResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/service/responses/maps/api_directions/MapsDistanceDurationResponse.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/service/Response/maps/api_directions/MapsLegsResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/service/responses/maps/api_directions/MapsLegsResponse.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/service/Response/maps/api_directions/MapsRoutesResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/service/responses/maps/api_directions/MapsRoutesResponse.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/service/Response/maps/api_directions/MapsStartEndLocationResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/service/responses/maps/api_directions/MapsStartEndLocationResponse.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/service/Response/maps/api_directions/MapsStepsResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/service/responses/maps/api_directions/MapsStepsResponse.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/service/Response/paradas/ParadasResponse.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/service/Response/posicao/PosicaoResponse.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/service/Response/posicao/PosicaoResponseList.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/service/Response/posicao/VeiculosResponse.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/service/Response/previsao_chegada/PrevisaoChegadaResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/service/responses/previsao_chegada/PrevisaoChegadaResponse.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/service/Response/previsao_chegada/PrevisaoChegadaResponseList.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/service/responses/previsao_chegada/PrevisaoChegadaResponseList.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/service/Response/previsao_chegada/PrevisaoChegadaVeiculoResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/service/responses/previsao_chegada/PrevisaoChegadaVeiculoResponse.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/service/Response/previsao_chegada/parada/PrevisaoChegadaParadaLinhaResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/service/responses/previsao_chegada/parada/PrevisaoChegadaParadaLinhaResponse.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/service/Response/previsao_chegada/parada/PrevisaoChegadaParadaResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/service/responses/previsao_chegada/parada/PrevisaoChegadaParadaResponse.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/service/Response/previsao_chegada/parada/PrevisaoChegadaParadaResponseList.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/service/responses/previsao_chegada/parada/PrevisaoChegadaParadaResponseList.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/service/Response/veiculos/VeiculoResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/service/responses/veiculos/VeiculoResponse.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/service/Response/veiculos/VeiculosResponseList.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/service/responses/veiculos/VeiculosResponseList.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/service/RetrofitFactory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/service/RetrofitFactory.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/service/VeiculosService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aikodigital/service/VeiculosService.kt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,11 +71,49 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\Eu\.android\avd\Pixel_8_Pro_API_35.avd)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=PhysicalDevice, isTemplate=false, identifier=serial=dc854698)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$/app">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="aikodigital" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="aikodigital" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="aikodigital" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="aikodigital" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="other" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -42,6 +126,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -53,34 +140,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Android App.app.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Download Sources.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Eu/AndroidStudioProjects/aikodigital/app/src/main/java/com/example/aikodigital/service/Response/previsao_chegada/parada&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Build Variants&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Android App.app.executor": "Run",
+    "Gradle.Download Sources.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "com.google.services.firebase.aqiPopupShown": "true",
+    "git-widget-placeholder": "teste/Cleiton",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Eu/Documents/GitHub/teste-android-estagio-v1/aikodigital",
+    "project.structure.last.edited": "Build Variants",
+    "project.structure.proportion": "0.17",
+    "project.structure.side.proportion": "0.2",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "Errors"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
-      &quot;Properties&quot;
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "Properties"
     ],
-    &quot;kotlin-gradle-user-dirs&quot;: [
-      &quot;C:\\Users\\Eu\\.gradle&quot;
+    "kotlin-gradle-user-dirs": [
+      "C:\\Users\\Eu\\.gradle"
     ]
   }
-}</component>
+}]]></component>
   <component name="PsdUISettings">
     <option name="MODULE_TAB" value="Properties" />
     <option name="BUILD_VARIANTS_TAB" value="Build Types" />

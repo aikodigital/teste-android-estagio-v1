@@ -6,19 +6,17 @@ import com.example.aikodigital.calls.getCorredores
 import com.example.aikodigital.calls.getCorredoresParadas
 import com.example.aikodigital.calls.getLinhas
 import com.example.aikodigital.calls.getMapsApiRoute
-import com.example.aikodigital.calls.getParadasPorLinhas
 import com.example.aikodigital.calls.getPrevisaoChegada
 import com.example.aikodigital.calls.getPrevisaoChegadaParada
 import com.example.aikodigital.calls.getVeiculosPorLinhas
-import com.example.aikodigital.service.Response.corredores.CorredoresParadasResponse
-import com.example.aikodigital.service.Response.corredores.CorredoresResponse
-import com.example.aikodigital.service.Response.linhas.LinhasResponse
-import com.example.aikodigital.service.Response.maps.api_directions.MapsApiResponseList
-import com.example.aikodigital.service.Response.paradas.ParadasResponse
-import com.example.aikodigital.service.Response.previsao_chegada.PrevisaoChegadaResponseList
-import com.example.aikodigital.service.Response.previsao_chegada.parada.PrevisaoChegadaParadaResponse
-import com.example.aikodigital.service.Response.previsao_chegada.parada.PrevisaoChegadaParadaResponseList
-import com.example.aikodigital.service.Response.veiculos.VeiculosResponseList
+import com.example.aikodigital.service.responses.corredores.CorredoresParadasResponse
+import com.example.aikodigital.service.responses.corredores.CorredoresResponse
+import com.example.aikodigital.service.responses.linhas.LinhasResponse
+import com.example.aikodigital.service.responses.maps.api_directions.MapsApiResponseList
+import com.example.aikodigital.service.responses.previsao_chegada.PrevisaoChegadaResponseList
+import com.example.aikodigital.service.responses.previsao_chegada.parada.PrevisaoChegadaParadaResponse
+import com.example.aikodigital.service.responses.previsao_chegada.parada.PrevisaoChegadaParadaResponseList
+import com.example.aikodigital.service.responses.veiculos.VeiculosResponseList
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -26,9 +24,6 @@ import kotlinx.coroutines.launch
 class MyViewModel : ViewModel() {
     private val _linhas = MutableStateFlow<List<LinhasResponse>>(emptyList())
     val linhas: StateFlow<List<LinhasResponse>> get() = _linhas
-
-    private val _paradas = MutableStateFlow<List<ParadasResponse>>(emptyList())
-    val paradas: StateFlow<List<ParadasResponse>> get() = _paradas
 
     private val _veiculos = MutableStateFlow(VeiculosResponseList("", emptyList()))
     val veiculos: MutableStateFlow<VeiculosResponseList> get() = _veiculos
@@ -48,6 +43,8 @@ class MyViewModel : ViewModel() {
     private val _mapsRoute = MutableStateFlow(MapsApiResponseList(emptyList(), emptyList(),""))
     val mapsRoute: StateFlow<MapsApiResponseList> get() = _mapsRoute
 
+    var codigoLinha = 0
+
     fun fetchLinhas(termoBusca: String) {
         viewModelScope.launch {
             try {
@@ -55,17 +52,6 @@ class MyViewModel : ViewModel() {
                 _linhas.value = result
             } catch (e: Exception) {
                 _linhas.value = emptyList()
-            }
-        }
-    }
-
-    fun fetchParadas(codigoLinha: Int) {
-        viewModelScope.launch {
-            try {
-                val result = getParadasPorLinhas(codigoLinha)
-                _paradas.value = result
-            } catch (e: Exception) {
-                _paradas.value = emptyList()
             }
         }
     }

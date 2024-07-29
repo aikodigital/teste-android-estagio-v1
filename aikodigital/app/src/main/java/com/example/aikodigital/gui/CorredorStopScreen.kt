@@ -1,15 +1,16 @@
 package com.example.aikodigital.gui
 
-import android.util.Log
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -33,13 +34,12 @@ import com.example.aikodigital.model.MyViewModel
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.PolylineOptions
-import com.google.android.gms.maps.model.StyleSpan
 import com.google.maps.android.compose.GoogleMap
 import com.google.maps.android.compose.MarkerInfoWindow
 import com.google.maps.android.compose.MarkerState
 import com.google.maps.android.compose.Polyline
 import com.google.maps.android.compose.rememberCameraPositionState
+import kotlinx.coroutines.delay
 
 @Composable
 fun CorredorStopScreen(navController: NavController, viewModel: MyViewModel, latitude: Double, longitude: Double){
@@ -54,25 +54,37 @@ fun CorredorStopScreen(navController: NavController, viewModel: MyViewModel, lat
             routePoly = decodePoly(route.routes[0].overview_polyline.points)
         }
     }
+    var isLoading by remember { mutableStateOf(true) }
+
+    LaunchedEffect(Unit) {
+        delay(5000)
+        isLoading = false
+    }
     val cameraPositionState = rememberCameraPositionState {
         position = CameraPosition.fromLatLngZoom(location, 13f)
     }
 
     if (paradas.isEmpty()){
-        Column(
+        Box(
             modifier = Modifier
                 .fillMaxSize()
-                .background(colorResource(id = R.color.background))
-                .padding(horizontal = 20.dp),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
-        )    {
-            Text(
-                text = stringResource(id = R.string.busStop),
-                fontWeight = FontWeight.Bold,
-                fontSize = 20.sp,
-                color = colorResource(id = R.color.fonts)
-            )
+                .padding(16.dp),
+            contentAlignment = Alignment.Center
+        ) {
+            if (isLoading) {
+                CircularProgressIndicator(
+                    modifier = Modifier.size(48.dp),
+                    color = colorResource(id = R.color.fonts)
+                )
+            } else {
+                Text(
+                    text = stringResource(id = R.string.busStop),
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 20.sp,
+                    color = colorResource(id = R.color.fonts)
+                )
+            }
+
         }
     }else{
         GoogleMap(
@@ -135,7 +147,11 @@ fun CorredorStopScreen(navController: NavController, viewModel: MyViewModel, lat
                             .background(Color.White)
                             .padding(20.dp)
                     ) {
-                        Text(text = stringResource(id = R.string.name) + ": " + parada.np)
+                        Text(
+                            text = stringResource(id = R.string.name) + ": " + parada.np,
+                            fontWeight = FontWeight.Bold,
+                            color = colorResource(id = R.color.fonts)
+                        )
                     }
                 }
             }

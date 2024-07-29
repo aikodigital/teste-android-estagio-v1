@@ -1,6 +1,6 @@
 package com.example.aikodigital.service
 
-import com.example.aikodigital.service.Response.maps.api_directions.MapsApiResponseList
+import com.example.aikodigital.service.responses.maps.api_directions.MapsApiResponseList
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

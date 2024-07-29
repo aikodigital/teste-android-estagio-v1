@@ -1,4 +1,4 @@
-package com.example.aikodigital.service.Response.maps.api_directions
+package com.example.aikodigital.service.responses.maps.api_directions
 
 data class MapsStepsResponse(
     val distance: MapsDistanceDurationResponse,

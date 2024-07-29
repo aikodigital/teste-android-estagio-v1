@@ -1,4 +1,4 @@
-package com.example.aikodigital.service.Response.linhas
+package com.example.aikodigital.service.responses.linhas
 
 data class LinhasResponse(
     val cl: Int,

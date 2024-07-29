@@ -1,6 +1,6 @@
 package com.example.aikodigital.service
 
-import com.example.aikodigital.service.Response.linhas.LinhasResponse
+import com.example.aikodigital.service.responses.linhas.LinhasResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

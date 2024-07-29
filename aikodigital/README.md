@@ -28,11 +28,7 @@ Este projeto é um app de mobilidade desenvolvido utilizando a API do Olho Vivo 
     - Navegue até o diretório onde você clonou o repositório e selecione-o.
 
 3. **Configure a API Key do Google Maps**:
-    - Obtenha uma API Key do Google Maps na [Google Cloud Console](https://console.cloud.google.com/).
-    - Adicione a API Key no arquivo `local.properties`:
-      ```
-      MAPS_API_KEY=YOUR_API_KEY_HERE
-      ```
+    - Vá até a aba Build, selecione Clean Project e após isso Rebuild Project
 
 4. **Instale as dependências**:
     - No Android Studio, sincronize o projeto com o Gradle.

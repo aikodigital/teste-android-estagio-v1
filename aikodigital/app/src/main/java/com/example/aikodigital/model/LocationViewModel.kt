@@ -4,13 +4,10 @@ import android.app.Application
 import android.Manifest
 import android.content.pm.PackageManager
 import androidx.core.app.ActivityCompat
-import androidx.core.content.PermissionChecker
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.viewModelScope
 import com.google.android.gms.location.*
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.launch
 
 class LocationViewModel(application: Application) : AndroidViewModel(application) {
     private val fusedLocationClient: FusedLocationProviderClient =
@@ -27,7 +24,7 @@ class LocationViewModel(application: Application) : AndroidViewModel(application
         }
     }
 
-    fun getLastLocation() {
+    private fun getLastLocation() {
         if (ActivityCompat.checkSelfPermission(
                 getApplication(),
                 Manifest.permission.ACCESS_FINE_LOCATION
@@ -49,7 +46,7 @@ class LocationViewModel(application: Application) : AndroidViewModel(application
 }
 
 sealed class LocationState {
-    object Loading : LocationState()
+    data object Loading : LocationState()
     data class Success(val latitude: Double, val longitude: Double) : LocationState()
     data class Error(val message: String) : LocationState()
 }
