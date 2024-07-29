@@ -1,0 +1,29 @@
+<!-- res/layout/filter_menu.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@android:color/white"
+    android:padding="16dp"
+    android:layout_marginTop="8dp">
+
+    <RadioGroup
+        android:id="@+id/filterGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/filterVehicles"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/busca_veiculos"
+            android:checked="true" />
+
+        <RadioButton
+            android:id="@+id/filterStops"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/busca_paradas" />
+    </RadioGroup>
+</LinearLayout>
