@@ -28,7 +28,7 @@ class ApiOlhoVivo {
     await autenticar();
 
     final http.Response response =
-        await http.get(Uri.parse("$requestLinhas + $termosBusca"));
+        await http.get(Uri.parse("$requestLinhas$termosBusca"));
     final data = json.decode(response.body);
 
     List<Linha> linhas =

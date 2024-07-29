@@ -65,6 +65,7 @@ class _InfoParadasPageState extends State<InfoParadasPage> {
                           searchText = value;
                         });
                       },
+                      keyboardType: TextInputType.number,
                       style: const TextStyle(
                         fontFamily: 'Instagram',
                         color: Color(0xFFA8A8A8),
