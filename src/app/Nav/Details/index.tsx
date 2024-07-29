@@ -27,12 +27,11 @@ export function Details({ route }: DetailsProps) {
 
   return (
     <View style={styles.container}>
-      <Text>Letreiro de destino: {lineDetails.lt0}</Text>
-      <Text>Letreiro de origem: {lineDetails.lt1}</Text>
-      <Text>Prefixo do ônibus: {bus.p}</Text>
-      <Text>Última atualização: {bus.ta}</Text>
-      <Text>Latitude: {bus.py}</Text>
-      <Text>Longitude: {bus.px}</Text>
+      <View style={styles.textContainer}>
+        <Text style={styles.number}>Número do ônibus: {bus.p}</Text>
+        <Text style={styles.text}>Origem: {lineDetails.lt1}</Text>
+        <Text style={styles.text}>Destino: {lineDetails.lt0}</Text>
+      </View>
     </View>
   );
 }

@@ -1,12 +1,23 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { View, Image, TouchableOpacity, Text, TextInput } from "react-native";
 import { CheckBox } from "react-native-elements";
 import { styles } from "@/components/Filter/styles";
+import { MapContext } from "../../contexts/MapContext";
 
 export function Filter() {
+  const context = useContext(MapContext);
+
+  // Verifica se o contexto está definido
+  if (!context) {
+    throw new Error("Filter must be used within a MapProvider");
+  }
+
+  const { showBuses, setShowBuses, showBusStations, setShowBusStations } =
+    context;
+
   const [showFilters, setShowFilters] = useState(false);
-  const [busesChecked, setBusesChecked] = useState(false);
-  const [stationsChecked, setStationsChecked] = useState(false);
+  const [busesChecked, setBusesChecked] = useState(showBuses);
+  const [stationsChecked, setStationsChecked] = useState(showBusStations);
   const [linesChecked, setLinesChecked] = useState(false);
   const [filterText, setFilterText] = useState("");
 
@@ -14,56 +25,34 @@ export function Filter() {
     setShowFilters(!showFilters);
   };
 
+  const handleBusesCheck = () => {
+    setBusesChecked(!busesChecked);
+    setShowBuses(!busesChecked);
+  };
+
+  const handleStationsCheck = () => {
+    setStationsChecked(!stationsChecked);
+    setShowBusStations(!stationsChecked);
+  };
+
   return (
     <View>
       {showFilters && (
         <View style={styles.filterOptions}>
           <View style={styles.filterOption}>
-            <CheckBox
-              checked={busesChecked}
-              onPress={() => setBusesChecked(!busesChecked)}
-            />
-            <Text>Buses</Text>
-            {busesChecked && (
-              <TextInput
-                style={styles.textInput}
-                placeholder="Digite o nome/localização"
-                value={filterText}
-                onChangeText={setFilterText}
-              />
-            )}
+            <CheckBox checked={busesChecked} onPress={handleBusesCheck} />
+            <Text>Visualizar Ônibus</Text>
           </View>
 
           <View style={styles.filterOption}>
-            <CheckBox
-              checked={stationsChecked}
-              onPress={() => setStationsChecked(!stationsChecked)}
-            />
-            <Text>Bus Stations</Text>
-            {stationsChecked && (
-              <TextInput
-                style={styles.textInput}
-                placeholder="Digite o nome/localização"
-                value={filterText}
-                onChangeText={setFilterText}
-              />
-            )}
+            <CheckBox checked={stationsChecked} onPress={handleStationsCheck} />
+            <Text>Visualizar Paradas de Ônibus</Text>
           </View>
 
           <View style={styles.filterOption}>
-            <CheckBox
-              checked={linesChecked}
-              onPress={() => setLinesChecked(!linesChecked)}
-            />
-            <Text>Lines</Text>
-            {linesChecked && (
-              <TextInput
-                style={styles.textInput}
-                placeholder="Digite a localização"
-                value={filterText}
-                onChangeText={setFilterText}
-              />
-            )}
+            <TouchableOpacity style={styles.button}>
+              <Text>PESQUISAR LINHA</Text>
+            </TouchableOpacity>
           </View>
         </View>
       )}

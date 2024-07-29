@@ -1,15 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
 import { View } from "react-native";
 import MapView from "react-native-maps";
 import { styles } from "./styles";
 import { useBusPositions } from "./mapComponents/useBusPositions";
+import { useBusStations } from "./mapComponents/useBusStations";
 import { useRegion } from "./mapComponents/useRegion";
 import { BusMarker } from "./mapComponents/BusMarker";
-import { Line, Bus } from "../../types/types";
+import { BusStationsMarker } from "./mapComponents/BusStationsMarker";
+import { MapContext } from "../../contexts/MapContext";
 
 export function MapRender() {
   const busPositions = useBusPositions();
+  const busStations = useBusStations();
   const { region, onRegionChangeComplete } = useRegion();
+  const context = useContext(MapContext);
+
+  // Verifica se o contexto está definido
+  if (!context) {
+    throw new Error("MapRender must be used within a MapProvider");
+  }
+
+  const { showBusStations, showBuses } = context;
 
   const isBusWithinRegion = (bus: { py: number; px: number }) => {
     const { latitude, longitude, latitudeDelta, longitudeDelta } = region;
@@ -40,6 +51,20 @@ export function MapRender() {
     return { lt0: "", lt1: "" };
   };
 
+  const renderBusMarkers = () => {
+    return busPositions.flatMap((line) =>
+      line.vs
+        .filter(isBusWithinRegion)
+        .map((bus, index) => (
+          <BusMarker
+            key={`${bus.p}-${index}`}
+            bus={bus}
+            lineDetails={getLineDetails(bus.p)}
+          />
+        ))
+    );
+  };
+
   return (
     <View style={styles.container}>
       <MapView
@@ -47,17 +72,19 @@ export function MapRender() {
         initialRegion={region}
         onRegionChangeComplete={onRegionChangeComplete}
       >
-        {busPositions.flatMap((line: Line) =>
-          line.vs
-            .filter(isBusWithinRegion)
-            .map((bus: Bus, index) => (
-              <BusMarker
-                key={`${bus.p}-${index}`}
-                bus={bus}
-                lineDetails={getLineDetails(bus.p)}
+        {showBuses && renderBusMarkers()}
+
+        {showBusStations &&
+          busStations
+            .filter((station) =>
+              isBusWithinRegion({ py: station.py, px: station.px })
+            ) // Apenas as paradas dentro da região
+            .map((station, index) => (
+              <BusStationsMarker
+                key={`${station.cp}-${index}`}
+                station={station}
               />
-            ))
-        )}
+            ))}
       </MapView>
     </View>
   );

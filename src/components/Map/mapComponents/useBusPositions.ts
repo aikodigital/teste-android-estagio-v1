@@ -18,7 +18,7 @@ export const useBusPositions = () => {
 
   useEffect(() => {
     fetchBusPositions();
-    const intervalId = setInterval(fetchBusPositions, 5000);
+    const intervalId = setInterval(fetchBusPositions, 10000);
 
     return () => clearInterval(intervalId);
   }, [fetchBusPositions]);
