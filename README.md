@@ -1,77 +1,71 @@
 # Teste Android
 
-![Aiko](imagens/aiko.png)
-
-Neste teste serão avaliados seus conhecimentos e a metodologia aplicada no desenvolvimento de aplicações mobile Android.
-
 ## O Desafio
 
-Seu objetivo é criar um aplicativo que exiba dados sobre o transporte público da cidade de São Paulo, consultando a [API **Olho Vivo**](api.md) que provê informações em tempo real do monitoramento da frota de ônibus da cidade de São Paulo.
+Aplicativo que exibe os dados sobre o transporte público da cidade de São Paulo, consultando a [API **Olho Vivo**](api.md) que provê informações em tempo real do monitoramento da frota de ônibus da cidade de São Paulo.
 
 ## Requisitos
 
-Esses requisitos são obrigatórios e devem ser desenvolvidos para a entrega do teste
+### Aba Home:
 
-* **Posições dos veículos**: Exibir no mapa onde os veículos estavam na sua última atualização.
+![Captura de tela 2024-07-29 160925](https://github.com/user-attachments/assets/8b24b41c-0e14-490c-8122-3b8baa37da30)
 
-* **Linhas**: Exibir informações sobre as linhas de ônibus.
 
-* **Paradas**: Exibir os pontos de parada da cidade no mapa.
+* **Linhas**: Exibe informações sobre as linhas informadas pelo usuário.
 
-* **Previsão de chegada**: Dado uma parada informar a previsão de chegada de cada veículo que passe pela parada selecionada.
+![Captura de tela 2024-07-29 161011](https://github.com/user-attachments/assets/66285788-3db0-433c-ac4b-3abc5ff41c18)
 
-* **Pesquisa e Filtros**: Permitir que o usuário pesquise e filtre esses dados, interagindo com a interface.
+![Captura de tela 2024-07-29 161034](https://github.com/user-attachments/assets/f0ae66a9-d99d-42d3-a5ac-b92190c27a93)
 
-## O que é permitido
 
-* Android Nativo (Java/Kotlin)
+* **Previsão de chegada**: Exibe a previsão de chegada de todos os veículos que passarão pela parada informada.
 
-* React Native
+![Captura de tela 2024-07-29 161141](https://github.com/user-attachments/assets/a00ce822-4d67-40f5-93a6-10f502ed822a)
 
-* Native Script (Vue, Angular, etc)
+![Captura de tela 2024-07-29 161121](https://github.com/user-attachments/assets/3b3b0118-89cd-4bdc-80d0-fa9eed3a888e)
 
-* Flutter
+* **Busca por Linha**: Informa todos os pontos de parada atendidos pela linha selecionada pelo usuário.
 
-* Xamarin
+![Captura de tela 2024-07-29 161229](https://github.com/user-attachments/assets/5bd4ee10-f7a0-4e9d-b872-62e12bcfd1ec)
 
-* Kivy
 
-* Qualquer tecnologia complementar as citadas anteriormente são permitidas desde que seu uso seja justificável
+![Captura de tela 2024-07-29 161249](https://github.com/user-attachments/assets/0a626584-b122-4ff0-95c9-43950d2e7adb)
 
-## O que não é permitido
 
-* Utilizar bibliotecas ou códigos de terceiros que implementem algum dos requisitos.
 
-## Recomendações
+### Aba Explore:
 
-* **Linter**: Desenvolva o projeto utilizando algum padrão de formatação de código.
+* **Paradas**: Exibe no mapa o ponto da parada informada pelo usuário.
 
-## Extras
+![Captura de tela 2024-07-29 141737](https://github.com/user-attachments/assets/20d8e973-fd51-4f6e-adff-56fa8b204572)
 
-Aqui são listados algumas sugestões para você que quer ir além do desafio inicial. Lembrando que você não precisa se limitar a essas sugestões, se tiver pensado em outra funcionalidade que considera relevante ao escopo da aplicação fique à vontade para implementá-la.
+* **Posições dos veículos**: Exibe no mapa onde os veículos estavam na sua última atualização.
 
-* **Refresh automático**: Que as informações exibidas no aplicativo sejam atualizadas de tempo em tempo de forma transparente ao usuário
+![Captura de tela 2024-07-29 141521](https://github.com/user-attachments/assets/24966a7a-76aa-4fd5-a111-9d40ac8693d5)
 
-* **Cálculo de rotas**: Exibir a possível rota de um ou mais ônibus em relação a uma parada, ou do usuário em relação a uma parada (Utilizando API do Google Maps ou equivalentes)
 
-* **Corredores**: Mostrar informações sobre os corredores de ônibus de SP.
+**As duas abas contam com o recurso de pesquisa.**
 
-* **Velocidade das vias**: Mostrar informações sobre as velocidades das vias.
 
-* **Testes**: Desenvolva testes que achar necessário para a aplicação.
+## Tecnologias utilizadas
 
-* **Documentação**: Gerar uma documentação da aplicação. A documentação pode incluir detalhes sobre as decisões tomadas, especificação das funcionalidades desenvolvidas, instruções de uso dentre outras informações que achar relevantes.
+* React Native e react-native-maps
+* Expo
+* Typescript/Javascript
+* Android Emulator
 
-## Entrega
+## Como rodar esse projeto
 
-Para realizar a entrega do teste você deve:
+> cd teste
+> npm install
+> npx expo start
 
-* Relizar o fork e clonar esse repositório para sua máquina.
-  
-* Criar uma branch com o nome de `teste/[NOME]`.
-  * `[NOME]`: Seu nome.
-  * Exemplos: `teste/fulano-da-silva`; `teste/beltrano-primeiro-gomes`.
-  
-* Faça um commit da sua branch com a implementação do teste.
-  
-* Realize o pull request da sua branch nesse repositório.
+O SDK Android foi utilizado para esse projeto: 
+> para abrir o projeto no emulador, pressione a tecla A.
+
+### Entry point (home screen):
+app/index.tsx
+
+## Extra
+
+* **Documentação**
