@@ -58,6 +58,7 @@ export function Home() {
                   time: vehicle.ta 
                 }))
               ).filter(forecast => forecast.cl === nearestBus.linha);
+              console.log(forecasts)
 
               const arrivalMessages = forecasts.map(forecast => {
                 const minutes = parseInt(forecast.time, 10); 
@@ -93,7 +94,7 @@ export function Home() {
   if (errorMsg) {
     text = errorMsg;
   } else if (address) {
-    text = `${address.street}, ${address.city}`;
+    text = `${address.city} - ${address.region}`;
   }
 
   return (
@@ -104,7 +105,7 @@ export function Home() {
       <Search />
       {location && (
         <Card
-          latitude={location.coords.latitude}
+          latitude={location.coords.latitude} 
           longitude={location.coords.longitude}
           station={`${nearestBus?.number} - ${nearestBus?.destination}`}
           title={address?.city || ''}
