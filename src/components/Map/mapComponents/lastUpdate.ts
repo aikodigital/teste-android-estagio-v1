@@ -14,14 +14,14 @@ export const useUpdateHour = () => {
       try {
         await postAuth();
         const response: BusPositionsResponse = await getBusPositions();
-        setLastUpdate(response.hr); // Define lastUpdate com a propriedade hr
+        setLastUpdate(response.hr);
       } catch (error) {
         console.log(error);
       }
     };
 
     fetchData();
-  }, []); // Array de dependências vazio para executar uma vez ao montar
+  }, []);
 
   return lastUpdate;
 };

@@ -20,7 +20,7 @@ export function Timer() {
     const intervalId = setInterval(() => {
       setCurrentTime(getCurrentTime());
     }, 1000);
-    return () => clearInterval(intervalId); // Limpa o intervalo quando o componente é desmontado
+    return () => clearInterval(intervalId);
   }, []);
 
   return currentTime;

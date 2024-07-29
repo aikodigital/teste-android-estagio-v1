@@ -1,5 +1,3 @@
-// types.ts
-
 export type Bus = {
   p: string;
   t: string;

@@ -1,4 +1,3 @@
-// getBusArrivalPredictions.ts
 import axios from "axios";
 
 export async function getBusArrivalPredictions(codigoParada: number) {

@@ -1,4 +1,3 @@
-// useBusArrivalPredictions.ts
 import { useState, useEffect } from "react";
 import { getBusArrivalPredictions } from "../../../../api/getBusArrivalPrediction";
 import { ArrivalPredictions } from "../../../types/types";

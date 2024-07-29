@@ -1,4 +1,3 @@
-// Details.tsx
 import React from "react";
 import { View, Text, ActivityIndicator, ScrollView } from "react-native";
 import { useRoute, RouteProp } from "@react-navigation/native";

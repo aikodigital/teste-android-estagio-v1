@@ -1,7 +1,6 @@
-// useBusStations.ts
 import { useState, useEffect, useCallback } from "react";
 import { postAuth } from "../../../../api/postAuth";
-import { getBusStations } from "../../../../api/getBusStations"; // Certifique-se de que você tem esta função
+import { getBusStations } from "../../../../api/getBusStations";
 import { BusStation } from "../../../types/types";
 
 export const useBusStations = () => {
@@ -11,7 +10,7 @@ export const useBusStations = () => {
     try {
       await postAuth();
       const stationsData = await getBusStations();
-      setBusStations(stationsData); // Ajuste conforme a estrutura da resposta
+      setBusStations(stationsData);
     } catch (error) {
       console.log(error);
     }

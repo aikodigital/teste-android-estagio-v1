@@ -17,7 +17,6 @@ export function MapRender() {
   const context = useContext(MapContext);
   const lastUpdate = useUpdateHour();
 
-  // Verifica se o contexto está definido
   if (!context) {
     throw new Error("MapRender must be used within a MapProvider");
   }
@@ -42,7 +41,6 @@ export function MapRender() {
   const getLineDetails = (busId: number) => {
     for (const line of busPositions) {
       for (const bus of line.vs) {
-        // Converter bus.p para number antes de comparar
         if (Number(bus.p) === busId) {
           return {
             lt0: line.lt0,
@@ -56,14 +54,15 @@ export function MapRender() {
 
   const renderBusMarkers = () => {
     return busPositions.flatMap((line) =>
-      line.vs.filter(isBusWithinRegion).map((bus, index) => (
-        <BusMarker
-          key={`${bus.p}-${index}`}
-          bus={bus}
-          // Converter bus.p para number antes de passar para getLineDetails
-          lineDetails={getLineDetails(Number(bus.p))}
-        />
-      ))
+      line.vs
+        .filter(isBusWithinRegion)
+        .map((bus, index) => (
+          <BusMarker
+            key={`${bus.p}-${index}`}
+            bus={bus}
+            lineDetails={getLineDetails(Number(bus.p))}
+          />
+        ))
     );
   };
 
@@ -81,7 +80,7 @@ export function MapRender() {
           busStations
             .filter((station) =>
               isBusWithinRegion({ py: station.py, px: station.px })
-            ) // Apenas as paradas dentro da região
+            )
             .map((station, index) => (
               <BusStationsMarker
                 key={`${station.cp}-${index}`}

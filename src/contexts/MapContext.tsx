@@ -1,4 +1,3 @@
-// contexts/MapContext.tsx
 import React, { createContext, useState, ReactNode } from "react";
 
 interface MapContextType {

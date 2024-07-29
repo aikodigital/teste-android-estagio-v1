@@ -7,7 +7,6 @@ import { MapContext } from "../../contexts/MapContext";
 export function Filter() {
   const context = useContext(MapContext);
 
-  // Verifica se o contexto está definido
   if (!context) {
     throw new Error("Filter must be used within a MapProvider");
   }
