@@ -5,6 +5,7 @@ import MainScreen from '../screens/MainScreen';
 import SearchLineScreen from '../screens/SearchLineScreen';
 import LineDetailsScreen from '../screens/LineDetailsScreen';
 import LineMapScreen from '../screens/LineMapScreen';
+import theme from '../global/theme';
 
 export type RootStackParamList = {
   AuthenticationScreen: undefined;
@@ -19,7 +20,20 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 const Navigation: React.FC = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="MainScreen">
+      <Stack.Navigator
+        initialRouteName="MainScreen"
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: theme.colors.primary,
+          },
+          headerTintColor: theme.colors.backgroundColor,
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+          headerShadowVisible: false,
+          headerTitleAlign: 'center',
+          statusBarColor: theme.colors.primary,
+        }}>
         <Stack.Screen
           name="MainScreen"
           component={MainScreen}
@@ -28,17 +42,27 @@ const Navigation: React.FC = () => {
         <Stack.Screen
           name="SearchLineScreen"
           component={SearchLineScreen}
-          options={{title: 'Buscar por Linha'}}
+          options={{
+            headerTitle: 'Buscar Linhas',
+          }}
         />
         <Stack.Screen
           name="LineDetailsScreen"
           component={LineDetailsScreen}
-          options={{title: 'Detalhes da Linha'}}
+          options={{
+            headerTitle: 'Paradas da Linha',
+          }}
         />
         <Stack.Screen
           name="LineMapScreen"
           component={LineMapScreen}
-          options={{title: 'Mapa da Linha'}}
+          options={{
+            headerTitle: 'Mapa da Linha',
+            headerStyle: {
+              backgroundColor: theme.colors.secondary,
+            },
+            statusBarColor: theme.colors.secondary,
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>
