@@ -82,7 +82,7 @@ Usando npm:
 
 - `./components/` - Contém componentes reutilizáveis.
 - `./screens/` - Contém as telas do aplicativo.
-- `./services/` - Contém a lógica de comunicação com a API.
+- `./api/` - Contém a lógica de comunicação com a API.
 - `App.js` - Ponto de entrada do aplicativo.
 - `package.json` - Arquivo de manifesto do projeto.
 
