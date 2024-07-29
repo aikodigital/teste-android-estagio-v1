@@ -1,0 +1,32 @@
+[versions]
+agp = "8.5.1"
+converterGson = "2.3.0"
+junit = "4.13.2"
+junitVersion = "1.1.5"
+espressoCore = "3.5.1"
+appcompat = "1.7.0"
+lombok = "1.18.34"
+material = "1.12.0"
+activity = "1.8.0"
+constraintlayout = "2.1.4"
+retrofit = "2.11.0"
+
+[libraries]
+converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGson" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
+constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+googleMaps = { group = "com.google.android.gms", name = "play-services-maps", version = "19.0.0" }
+lombok = { group = "org.projectlombok", name = "lombok", version = "1.18.32" }
+gson = { group="com.google.code.gson", name="gson" , version="2.11.0"}
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+lombok = { id = "io.freefair.lombok", version = "6.3.0" }
+

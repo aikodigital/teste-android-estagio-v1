@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="8sp"
+
+
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/busIcon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:contentDescription="BusStop Icon"
+            android:src="@drawable/bus_stop_ride_transit_transport_svgrepo_com"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/stopTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:lines="1"
+            android:maxLines="1"
+            android:text="920015220 - ASCENDINO REIS C/B"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toRightOf="@id/busIcon"
+            app:layout_constraintTop_toTopOf="@id/busIcon"
+
+            />
+
+        <TextView
+            android:id="@+id/busPrefix"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:lines="2"
+            android:text="6338-10 JD. MIRIAM - PQ. IBIRAPUERA"
+            android:textSize="12sp"
+            app:layout_constraintLeft_toRightOf="@id/busIcon"
+            app:layout_constraintTop_toBottomOf="@id/stopTitle" />
+
+
+        <TextView
+            android:id="@+id/busEstimatedTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:background="@color/cardview_dark_background"
+            android:lines="1"
+            android:padding="4sp"
+            android:text="21:00"
+            android:textColor="@color/cardview_light_background"
+            android:textFontWeight="400"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/busAccordion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="9dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+        <TextView
+            android:id="@+id/busNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Número do veículo:"
+            app:layout_constraintTop_toTopOf="@id/busAccordion"
+
+
+            />
+
+        <TextView
+            android:id="@+id/busAccessible"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Veículo acessivel:"
+            app:layout_constraintTop_toBottomOf="@id/busNumber" />
+
+        <TextView
+            android:id="@+id/busDestination"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Destino final:"
+            app:layout_constraintTop_toBottomOf="@id/busAccessible" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

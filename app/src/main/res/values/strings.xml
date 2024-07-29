@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">PontoCerto</string>
+    <string name="show_lines">Mostrar Linhas e Destinos</string>
+    <string name="hide_lines">Esconder Linhas e Destinos</string>
+    <string name="bus_prefix_format">%1$s %2$s %3$s</string>
+    <string name="bus_number">Número do ônibus: %1$d</string>
+    <string name="bus_accessible">Veículo acessivel: %1$s</string>
+    <string name="bus_destination">Destino final: %1$s</string>
+</resources>
