@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:olho_vivo_sp/models/bus_stop_model.dart';
 import 'package:olho_vivo_sp/models/hall_model.dart';
 import 'package:olho_vivo_sp/services/api_service.dart';
 import 'package:olho_vivo_sp/widgets/bus_stops_list.dart';
@@ -19,8 +18,14 @@ class _BusStopsScreenState extends State<BusStopsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final apiService = Provider.of<ApiService>(context);
     final hall = ModalRoute.of(context)?.settings.arguments as HallModel;
+
+    Provider.of<ApiService>(
+      context,
+      listen: false,
+    ).getBusStopsByHall(
+      hall.code.toString(),
+    );
 
     return Scaffold(
       appBar: AppBar(
@@ -28,53 +33,38 @@ class _BusStopsScreenState extends State<BusStopsScreen> {
         actions: [
           IconButton(
             onPressed: () {
-              setState(() {
-                _isShowingMap = !_isShowingMap;
-              });
+              setState(
+                () {
+                  _isShowingMap = !_isShowingMap;
+                },
+              );
             },
             icon: Icon(!_isShowingMap ? Icons.map : Icons.list),
           ),
         ],
       ),
-      body: FutureBuilder(
-        future: apiService.getBusStopsByHall(
-          hall.code.toString(),
-        ),
-        builder: (ctx, snp) {
-          if (snp.hasData && snp.connectionState == ConnectionState.done) {
-            final busStops = snp.data as List<BusStopModel>;
-
-            return !_isShowingMap
-                ? BusStopsList(busStops: busStops)
-                : MapWidget(
-                    markers: busStops
-                        .map(
-                          (busStop) => Marker(
-                            markerId: MarkerId(
-                              busStop.code.toString(),
-                            ),
-                            position: LatLng(
-                              busStop.yPos,
-                              busStop.xPos,
-                            ),
-                            infoWindow: InfoWindow(
-                              title: busStop.name,
-                              snippet: busStop.address,
-                            ),
-                          ),
-                        )
-                        .toSet(),
-                  );
-          }
-
-          if (snp.hasError && snp.connectionState == ConnectionState.done) {
-            return Center(child: Text(snp.error.toString()));
-          }
-
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        },
+      body: Consumer<ApiService>(
+        builder: (context, apiService, child) => !_isShowingMap
+            ? BusStopsList(busStops: apiService.busStops)
+            : MapWidget(
+                markers: apiService.busStops
+                    .map(
+                      (busStop) => Marker(
+                        markerId: MarkerId(
+                          busStop.code.toString(),
+                        ),
+                        position: LatLng(
+                          busStop.yPos,
+                          busStop.xPos,
+                        ),
+                        infoWindow: InfoWindow(
+                          title: '${busStop.code} ${busStop.name}',
+                          snippet: busStop.address,
+                        ),
+                      ),
+                    )
+                    .toSet(),
+              ),
       ),
     );
   }
