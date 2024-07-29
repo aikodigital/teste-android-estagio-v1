@@ -53,10 +53,11 @@ export function Home() {
             if (vehiclePositions) {
               const forecasts = vehiclePositions.l.flatMap(line => 
                 line.vs.map(vehicle => ({
+                  cl: line.cl,
                   number: line.c,
                   time: vehicle.ta 
                 }))
-              ).filter(forecast => forecast.number === nearestBus.number);
+              ).filter(forecast => forecast.cl === nearestBus.linha);
 
               const arrivalMessages = forecasts.map(forecast => {
                 const minutes = parseInt(forecast.time, 10); 

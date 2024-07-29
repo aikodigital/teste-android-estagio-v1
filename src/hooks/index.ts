@@ -20,6 +20,16 @@ interface VehiclePosition {
   }>;
 }
 
+interface Line {
+  cl: number;
+  lc: boolean;
+  lt: string;
+  sl: number;
+  tl: number;
+  tp: string;
+  ts: string;
+}
+
 interface ArrivalForecast {
   hr: string;
   p: {
@@ -43,16 +53,16 @@ interface ArrivalForecast {
         px: number;
       }>;
     }>;
-  };
+  } | null;
 }
 
+
 interface BusStop {
-  id: number;
-  name: string;
-  location: {
-    latitude: number;
-    longitude: number;
-  };
+  cp: number;
+  np: string;
+  ed: string;
+  py: number;
+  px: number;
 }
 
 export interface NearestBusProps {
@@ -68,6 +78,7 @@ const useOlhoVivoAPI = () => {
   const [vehiclePositions, setVehiclePositions] = useState<VehiclePosition | null>(null);
   const [busStops, setBusStops] = useState<BusStop[]>([]);
   const [arrivalForecast, setArrivalForecast] = useState<ArrivalForecast | null>(null);
+  const [lines, setLines] = useState<Line[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<Error | null>(null);
   const [allBuses, setAllBuses] = useState<{ number: string; linha: number; destination: string }[]>([]);
@@ -104,6 +115,24 @@ const useOlhoVivoAPI = () => {
       updateAllBuses(response.data);
     } catch (error) {
       console.error('Erro ao buscar posições dos veículos:', error);
+      setError(error as Error);
+    } finally {
+      setLoading(false);
+    }
+  }, [authenticated]);
+
+  const fetchVehicleLinha = useCallback(async (searchTerm: string) => {
+    if (!authenticated) return;
+
+    setLoading(true);
+    try {
+      const response = await axios.get<Line[]>('https://aiko-olhovivo-proxy.aikodigital.io/Linha/Buscar', {
+        params: { termosBusca: searchTerm },
+        headers: { 'Content-Type': 'application/json' },
+      });
+      setLines(response.data);
+    } catch (error) {
+      console.error('Erro ao buscar linhas:', error);
       setError(error as Error);
     } finally {
       setLoading(false);
@@ -207,7 +236,6 @@ const useOlhoVivoAPI = () => {
 
   const fetchAllBuses = useCallback(async () => {
     await fetchVehiclePositions();
-    // Call other API functions if needed
   }, [fetchVehiclePositions]);
 
   useEffect(() => {
@@ -221,10 +249,12 @@ const useOlhoVivoAPI = () => {
     vehiclePositions,
     busStops,
     arrivalForecast,
+    lines,
     loading,
     error,
     allBuses,
     fetchVehiclePositions,
+    fetchVehicleLinha,
     fetchBusStops,
     fetchArrivalForecast,
     findNearestBus,

@@ -1,4 +1,4 @@
-import { TextInput, TouchableHighlight } from "react-native";
+import { TextInput, TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
 import { FontAwesome5 } from '@expo/vector-icons';
 
@@ -22,7 +22,7 @@ export const Input = styled(TextInput).attrs(({theme}) => ({
 `;
 
 
-export const ContentIcon = styled(TouchableHighlight)`
+export const ContentIcon = styled(TouchableOpacity)`
     max-height: 40px;
     min-height: 40px;
     background-color: ${({theme}) => theme.COLORS.PURPLE_600};
