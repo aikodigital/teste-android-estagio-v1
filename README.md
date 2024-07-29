@@ -61,8 +61,6 @@ Para executar o aplicativo localmente é necessário seguir os passos abaixo:
 
 `1. Realize um clone desse repositório na sua máquina local, garantindo que ele seja movido para um diretório próprio.`
 
-    git clone https://github.com/FeedUp-Hub/FeedUp-Mobile.git
-
 `2. Abrir snack.expo.dev e importar os arquivos de código`
 
 `3. Instalar as dependências conforme bibliotecas descritas em package.json.`
