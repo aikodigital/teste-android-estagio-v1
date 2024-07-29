@@ -1,5 +1,5 @@
 ## 🦾 DESAFIO 
-**Proposta para a fase técnica do processo seletivo para Estágio na Aiko Digital** Construir uma aplicação mobile que integre a API da SPTrans e implemente recursos úteis para os usuários, conforme direcionamentos repassados pela empresa.
+**Proposta para a fase técnica do processo seletivo para Estágio na Aiko Digital:** Construir uma aplicação mobile que integre a API da SPTrans e implemente recursos úteis para os usuários, conforme direcionamentos repassados pela empresa.
 
 ## 🛠️ TECNOLOGIAS 
 - **Expo (v51.0.0):** IDE para desenvolvimento de aplicativos mobile em Android, iOS, entre outros.
