@@ -68,13 +68,13 @@ parada atende e os horários de ônibus previstos.
 
 #### Exemplo 1: Verificar Horários de Ônibus
 
-1. Na tela principal, busque pela linha "123".
+1. Na tela principal, busque pela linha "701a".
 2. Selecione uma parada da lista de resultados.
 3. Verifique a previsão de chegada dos próximos ônibus na parada selecionada.
 
 #### Exemplo 2: Roteiro de Viagem
 
-1. Busque pela linha "456" e visualize as paradas no mapa.
+1. Busque pela linha "Lapa" e visualize as paradas no mapa.
 2. Toque em diferentes paradas para ver a localização atual dos ônibus e planeje seu trajeto.
 
 ---
