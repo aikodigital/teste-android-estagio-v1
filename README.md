@@ -11,25 +11,28 @@
   - [Axios](https://www.npmjs.com/package/react-native-axios)
   - Demais bibliotecas detalhadas no [`package.json`](https://github.com/FeedUp-Hub/FeedUp-Mobile/blob/main/package.json)
 
-## 📐 ARQUITETURA  
+## 📐 ARQUITETURA 
 O aplicativo foi construído utilizando uma arquitetura componentizada conforme estrutura abaixo:
-  - _assets_
+  - _assets_ (imagens, logos e ícones utilizados no aplicativo)
     - _images_
     - _logos_
   - _config_ (serviços para integração com API)
+    - _services_
   - _layouts_ (implementações das telas do aplicativo).
   - _routes_ (implementações as rotas de navegação do menu fixo no rodapé (bottom menu) do projeto e o menu lateral (drawer menu)).
-  - _Styles_
-    - _fonts_
+  - _styles_ (implementações dos estilos utilizados pelo aplicativo).
   - _App.jsx_ (implementação do estado inicial do aplicativo, direcionando as rotas de navegações (routes)).
   - _Package.json_ (biblioteas e dependências)
 
 ## 📋 RECURSOS  
+- **Loading**
+  - Tela de carregamento de aplicativo, implementado com a criação de tela de splash.
 - **Navegação**
   - Menu no rodapé para acesso as páginas principais (Tempo real, Linhas, Paradas, Previsões), implementado com Bottom Tab Navigator.
   - Menu lateral para acesso a páginas secundárias (Velocidade), implementado com Drawer Navigator.
-  - Tela de carregamento de aplicativo, implementado com a criação de tela de splash.
   - Configurações de API pública em arquivo ConfigAPI.js, separando a implementação da tela com recuros de autenticação e definições das chamadas.
+- **Refresh Automático**
+  - O recurso de chamada da API a cada 5 segundos foi adicionado na 1ª página do aplicativo, assim o usuário conseguirá acompanhar o movimento da linha de ônibus buscada em near real-time.
 
 ## 🖼️ TELAS  
 - **Splash + Onboarding:** Telas de carregamento inicial do aplicativo e carregamento da tela de onboarding.
@@ -50,7 +53,7 @@ O aplicativo foi construído utilizando uma arquitetura componentizada conforme 
 
 - **Previsões:** Tela que permite ao usuário descobrir quais os próximos horários disponíveis para a linha de ônibus pesquisada.
 
-<img src="..."  width="200" height="400">
+<img src="https://github.com/fsaantiago/teste-fernando-santiago/blob/teste/fernando-santiago/assets/images/previsoes"  width="200" height="400">
 
 - **Corredores:** Opção disponível via menu lateral, onde usuário pode ter acesso aos corredores da cidade.
 
@@ -76,4 +79,4 @@ Para executar o aplicativo localmente é necessário seguir os passos abaixo:
 
 
 ## 🧑‍💻 DESENVOLVEDOR  
-Fenando Santiago ([Linkedin](https://www.linkedin.com/in/fernando-santiago/)) / Contato: fernando.santiago770@gmail.com
+Fenando Santiago ([Linkedin](https://www.linkedin.com/in/fernando-santiago/)) / Contato: fernando.santiago770@gmail.com / (31) 98741-3780
