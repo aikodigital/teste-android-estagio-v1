@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Teste</string>
+    <string name="abrir_mapa">Abrir Mapa</string>
+    <string name="busca">Buscar Linha</string>
+    <string name="busca_veiculos">Pesquisar localização de veículos por Linha</string>
+    <string name="busca_paradas">Pesquisar todas as paradas por Linha</string>
+</resources>
