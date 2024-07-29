@@ -26,7 +26,7 @@ class SearchTextFieldWidget extends StatelessWidget {
             horizontal: 20,
           ),
           child: TextField(
-            onSubmitted: onChange,
+            onChanged: onChange,
             decoration: InputDecoration(
               icon: const Icon(Icons.search),
               label: Text(
