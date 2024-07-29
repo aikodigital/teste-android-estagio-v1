@@ -1,21 +1,8 @@
 ## 🦾 DESAFIO 
 **Proposta para a fase técnica do processo seletivo para Estágio na Aiko Digital** Construir uma aplicação mobile que integre a API da SPTrans e implemente recursos úteis para os usuários, conforme direcionamentos repassados pela empresa.
 
-## ⚛️ PROJETO  
-
-O **FeedUp** é uma **comunidade para trocas de feedbacks** entre colaboradores de uma empresa, com objetivos de:
-- Aumentar do engajamento dos funcionários;
-- Aumentar a produtividade;
-- Melhorar taxas de retenção da empresa.
-
-O FeedUp revela percepções no trabalho que não poderiam ser encontradas em nenhum outro lugar de forma rápida.
-
-**Este projeto implementa um aplicativo mobile para o FeedUp**. 
-
 ## 🛠️ TECNOLOGIAS 
-- **React Native (v51.0.0):** Framework para desenvolvimento de aplicativos mobile em Android, iOS, entre outros.
-- **IDE:** Código implementado com Snack Expo DEV.
-- **Imagem de dispositivo Android emulado** - Android Pixel 4 5.7 1080x2280 / Android Vanilla Icecream API arm64-v8a
+- **Expo (v51.0.0):** IDE para desenvolvimento de aplicativos mobile em Android, iOS, entre outros.
 - **Bibliotecas principais:**
   - [React Native](https://www.npmjs.com/package/react-native)
   - React Navigation ([native](https://www.npmjs.com/package/@react-navigation/native), [native-stack](https://www.npmjs.com/package/@react-navigation/native-stack), [drawer](https://www.npmjs.com/package/react-native-drawer), [bottom-tabs](https://www.npmjs.com/package/@react-navigation/bottom-tabs))
