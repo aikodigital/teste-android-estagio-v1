@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart'; // Import necessário para rootBundle
+import 'package:flutter/services.dart'; 
 import 'dart:convert';
 
 class BusStopsPage extends StatefulWidget {
@@ -30,7 +30,6 @@ class _BusStopsPageState extends State<BusStopsPage> {
         actions: [
           TextButton(
             onPressed: () {
-              // Aqui você pode implementar a lógica para abrir o mapa
               Navigator.of(context).pop();
             },
             child: const Text('Ver no Mapa'),
@@ -67,8 +66,8 @@ class _BusStopsPageState extends State<BusStopsPage> {
               itemBuilder: (context, index) {
                 final stop = stopsData[index];
                 final stopName = stop['nome'] ?? 'Nome não disponível';
-                final latitude = stop['coordenada']?[1] ?? 0.0; // Corrigido para acessar a coordenada correta
-                final longitude = stop['coordenada']?[0] ?? 0.0; // Corrigido para acessar a coordenada correta
+                final latitude = stop['coordenada']?[1] ?? 0.0; 
+                final longitude = stop['coordenada']?[0] ?? 0.0; 
 
                 return ListTile(
                   title: Text(stopName),

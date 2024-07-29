@@ -39,7 +39,6 @@ class _BusLinesPageState extends State<BusLinesPage> {
     '67': 'Terminal Campo Grande ↔ Terminal Deodoro Parador',
     '80': 'Penha ↔ Terminal Gentileza Parador',
     '90': 'Terminal Aroldo Melodia (Fundão) ↔ Terminal Gentileza',
-    // Adicione outras linhas conforme necessário
   };
 
   Future<List<dynamic>> _fetchBusLines() async {
@@ -47,9 +46,8 @@ class _BusLinesPageState extends State<BusLinesPage> {
       final response = await http.get(Uri.parse('https://dados.mobilidade.rio/gps/brt'));
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
-        // Verifique a estrutura correta do JSON retornado
         if (data is Map<String, dynamic> && data.containsKey('veiculos')) {
-          return data['veiculos']; // A chave pode ser diferente, ajuste conforme o JSON real
+          return data['veiculos']; 
         } else {
           throw Exception('Estrutura de dados inesperada');
         }
@@ -76,7 +74,7 @@ class _BusLinesPageState extends State<BusLinesPage> {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
-            return const Center(child: Text('Erro ao carregar linhas'));
+            return const Center(child: Text('Erro ao carregar as linhas'));
           } else {
             final busLines = snapshot.data ?? [];
             return ListView.builder(

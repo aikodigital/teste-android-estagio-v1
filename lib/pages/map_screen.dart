@@ -16,7 +16,6 @@ class MapScreen extends StatefulWidget {
 
 class _MapScreenState extends State<MapScreen> {
   final Map<String, String> _lineNames = {
-    // ... (todos os nomes das linhas aqui)
   };
 
   bool _showBuses = true;
@@ -217,7 +216,7 @@ class _MapScreenState extends State<MapScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const MapScreen(), // Voltar para o mapa
+                        builder: (context) => const MapScreen(), 
                       ),
                     );
                   },

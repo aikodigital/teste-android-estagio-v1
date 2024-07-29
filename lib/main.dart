@@ -17,10 +17,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MapScreen(), // Define a tela inicial
+      home: const MapScreen(), 
       routes: {
-        '/bus-stops': (context) => const BusStopsPage(), // Rota para a página de paradas
-        '/bus-lines': (context) => const BusLinesPage(), // Rota para a página de linhas
+        '/bus-stops': (context) => const BusStopsPage(), 
+        '/bus-lines': (context) => const BusLinesPage(), 
       },
     );
   }
