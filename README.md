@@ -1,77 +1,143 @@
-# Teste Android
+## 🦾 DESAFIO 
+**Proposta para a fase técnica do processo seletivo para Estágio na Aiko Digital:** Construir uma aplicação mobile que integre a API da SPTrans e implemente recursos úteis para os usuários, conforme direcionamentos repassados pela empresa.
 
-![Aiko](imagens/aiko.png)
 
-Neste teste serão avaliados seus conhecimentos e a metodologia aplicada no desenvolvimento de aplicações mobile Android.
 
-## O Desafio
+## 🛠️ TECNOLOGIAS 
+- **Expo (v51.0.0):** IDE para desenvolvimento de aplicativos mobile em Android, iOS, entre outros.
+- **Bibliotecas principais:**
+  - [React Native](https://www.npmjs.com/package/react-native)
+  - React Navigation ([native](https://www.npmjs.com/package/@react-navigation/native), [native-stack](https://www.npmjs.com/package/@react-navigation/native-stack), [drawer](https://www.npmjs.com/package/react-native-drawer), [bottom-tabs](https://www.npmjs.com/package/@react-navigation/bottom-tabs))
+  - [React Native Swipe Gestures](https://www.npmjs.com/package/react-native-swipe-gestures)
+  - [React Native Gesture Handler](https://www.npmjs.com/package/react-native-gesture-handler)
+  - [Axios](https://www.npmjs.com/package/react-native-axios)
+  - Demais bibliotecas detalhadas no [`package.json`](https://github.com/fsaantiago/teste-fernando-santiago/blob/teste/fernando-santiago/package.json)
+ 
+## 📱 O APLICATIVO
 
-Seu objetivo é criar um aplicativo que exiba dados sobre o transporte público da cidade de São Paulo, consultando a [API **Olho Vivo**](api.md) que provê informações em tempo real do monitoramento da frota de ônibus da cidade de São Paulo.
+Este aplicativo foi desenvolvido em React Native, uma tecnologia de desenvolvimento híbrido, permitindo que ele funcione corretamente tanto em dispositivos `Android` quanto `iOS`.
 
-## Requisitos
+## 📐 ARQUITETURA 
+O aplicativo foi construído utilizando uma arquitetura componentizada conforme estrutura abaixo:
+  - _assets_ (imagens, logos e ícones utilizados no aplicativo)
+    - _images_
+    - _logos_
+  - _config_ (serviços para integração com API)
+    - _services_
+  - _layouts_ (implementações das telas do aplicativo).
+  - _routes_ (implementações as rotas de navegação do menu fixo no rodapé (bottom menu) do projeto e o menu lateral (drawer menu)).
+  - _styles_ (implementações dos estilos utilizados pelo aplicativo).
+  - _App.jsx_ (implementação do estado inicial do aplicativo, direcionando as rotas de navegações (routes)).
+  - _Package.json_ (biblioteas e dependências)
 
-Esses requisitos são obrigatórios e devem ser desenvolvidos para a entrega do teste
+## 📋 RECURSOS  
+- **Loading**
+  - Tela de carregamento de aplicativo, implementado com a criação de tela de splash.
+- **Navegação**
+  - Menu no rodapé para acesso as páginas principais (Tempo real, Linhas, Paradas, Previsões), implementado com Bottom Tab Navigator.
+  - Menu lateral para acesso a páginas secundárias (Velocidade), implementado com Drawer Navigator.
+  - Configurações de API pública em arquivo ConfigAPI.js, separando a implementação da tela com recuros de autenticação e definições das chamadas.
+- **Refresh Automático**
+  - O recurso de chamada da API a cada 5 segundos foi adicionado na 1ª página do aplicativo, assim o usuário conseguirá acompanhar o movimento da linha de ônibus buscada em near real-time.
 
-* **Posições dos veículos**: Exibir no mapa onde os veículos estavam na sua última atualização.
+## 🖼️ TELAS  
+- **Splash + Onboarding:** Telas de carregamento inicial do aplicativo e carregamento da tela de onboarding.
 
-* **Linhas**: Exibir informações sobre as linhas de ônibus.
+<img src="https://github.com/fsaantiago/teste-fernando-santiago/blob/teste/fernando-santiago/src/assets/images/splash_onboarding.gif" width="200" height="400">
 
-* **Paradas**: Exibir os pontos de parada da cidade no mapa.
+- **Tempo Real:** Tela inicial do aplicativo que renderiza um mapa mostra a posição em tempo real dos veículos conforme pesquisa pela linha de ônibus. O mapa é atualizado a cada 5 segundos.
 
-* **Previsão de chegada**: Dado uma parada informar a previsão de chegada de cada veículo que passe pela parada selecionada.
+<img src="https://github.com/fsaantiago/teste-fernando-santiago/blob/teste/fernando-santiago/src/assets/images/posicoes_veiculos_realtime.gif"  width="200" height="400">
 
-* **Pesquisa e Filtros**: Permitir que o usuário pesquise e filtre esses dados, interagindo com a interface.
-
-## O que é permitido
-
-* Android Nativo (Java/Kotlin)
-
-* React Native
-
-* Native Script (Vue, Angular, etc)
-
-* Flutter
-
-* Xamarin
-
-* Kivy
-
-* Qualquer tecnologia complementar as citadas anteriormente são permitidas desde que seu uso seja justificável
-
-## O que não é permitido
-
-* Utilizar bibliotecas ou códigos de terceiros que implementem algum dos requisitos.
-
-## Recomendações
-
-* **Linter**: Desenvolva o projeto utilizando algum padrão de formatação de código.
-
-## Extras
-
-Aqui são listados algumas sugestões para você que quer ir além do desafio inicial. Lembrando que você não precisa se limitar a essas sugestões, se tiver pensado em outra funcionalidade que considera relevante ao escopo da aplicação fique à vontade para implementá-la.
-
-* **Refresh automático**: Que as informações exibidas no aplicativo sejam atualizadas de tempo em tempo de forma transparente ao usuário
-
-* **Cálculo de rotas**: Exibir a possível rota de um ou mais ônibus em relação a uma parada, ou do usuário em relação a uma parada (Utilizando API do Google Maps ou equivalentes)
-
-* **Corredores**: Mostrar informações sobre os corredores de ônibus de SP.
-
-* **Velocidade das vias**: Mostrar informações sobre as velocidades das vias.
-
-* **Testes**: Desenvolva testes que achar necessário para a aplicação.
-
-* **Documentação**: Gerar uma documentação da aplicação. A documentação pode incluir detalhes sobre as decisões tomadas, especificação das funcionalidades desenvolvidas, instruções de uso dentre outras informações que achar relevantes.
-
-## Entrega
-
-Para realizar a entrega do teste você deve:
-
-* Relizar o fork e clonar esse repositório para sua máquina.
+- **Linhas:** Tela que permite ao usuário pesquisar pela linha de ônibus e receber as informações detalhadas da linha, incluindo um botão para acessar as paradas possíveis de cada linha.
   
-* Criar uma branch com o nome de `teste/[NOME]`.
-  * `[NOME]`: Seu nome.
-  * Exemplos: `teste/fulano-da-silva`; `teste/beltrano-primeiro-gomes`.
+<img src="https://github.com/fsaantiago/teste-fernando-santiago/blob/teste/fernando-santiago/src/assets/images/linhas.gif"  width="200" height="400">
+
+- **Paradas:** Tela que renderiza um mapa e mostra as paradas disponíveis para a linha pesquisada.
+
+<img src="https://github.com/fsaantiago/teste-fernando-santiago/blob/teste/fernando-santiago/src/assets/images/paradas.gif"  width="200" height="400">
+
+- **Previsões:** Tela que permite ao usuário descobrir quais os próximos horários disponíveis para a linha de ônibus pesquisada.
+
+<img src="https://github.com/fsaantiago/teste-fernando-santiago/blob/teste/fernando-santiago/src/assets/images/previsao.gif"  width="200" height="400">
+
+- **Corredores:** Opção disponível via menu lateral, onde usuário pode ter acesso aos corredores da cidade.
+
+<img src="https://github.com/fsaantiago/teste-fernando-santiago/blob/teste/fernando-santiago/src/assets/images/corredores.gif"  width="200" height="400">
+
+## 🚀 EXECUTANDO O PROJETO  
+Para executar o aplicativo localmente é necessário seguir os passos abaixo:
+
+`1. Realize um clone desse repositório na sua máquina local, garantindo que ele seja movido para um diretório próprio.`
+
+`2. Abrir snack.expo.dev e importar os arquivos de código`
+
+`3. Instalar as dependências conforme bibliotecas descritas em package.json.`
+    
+`4. O aplicativo será exibido na tela do emulador`
+    
+`7. Parâmetros utilizados nas pesquisas:`
+
+    Linha: 8000
+    Parada: 2506
+    Previsão: 1273
+    
+## ✅ TESTES 
+
+**OnboardingCarousel.test.js**
+```bash
+import React from 'react';
+import { render, fireEvent } from '@testing-library/react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import OnboardingCarousel from '../src/layouts/Onboarding';
+
+test('deve navegar para a tela RealTime ao finalizar o onboarding', () => {
+  const { getByText } = render(
+    <NavigationContainer>
+      <OnboardingCarousel />
+    </NavigationContainer>
+  );
+
+  fireEvent.press(getByText('Seguinte')); // Pressiona o botão "Seguinte" na primeira página
+  fireEvent.press(getByText('Prosseguir para o app')); // Pressiona o botão "Prosseguir" na última página
   
-* Faça um commit da sua branch com a implementação do teste.
+  // Verifica se a navegação ocorreu corretamente
+  expect(mockNavigate).toHaveBeenCalledWith('RealTime');
+});
+```
+
+**RealTime.test.js**
+
+```bash
+import React from 'react';
+import { render, fireEvent } from '@testing-library/react-native';
+import RealTime from '../src/layouts/RealTime';
+
+test('deve exibir mensagem de erro se o campo estiver vazio ao buscar', () => {
+  const { getByPlaceholderText, getByText } = render(<RealTime />);
+  const button = getByText('Buscar');
+
+  fireEvent.press(button);
   
-* Realize o pull request da sua branch nesse repositório.
+  expect(getByText('Digite uma linha de ônibus:')).toBeTruthy();
+});
+
+```
+
+**SplashScreen.test.js**
+```bash
+import React from 'react';
+import { render } from '@testing-library/react-native';
+import SplashScreen from '../src/screens/SplashScreen';
+
+test('deve renderizar a tela de splash corretamente', () => {
+  const { getByText, getByAltText } = render(<SplashScreen />);
+  
+  expect(getByText('SPTrans - Olho Vivo')).toBeTruthy();
+  expect(getByText('por Fernando Santiago')).toBeTruthy();
+  expect(getByAltText('Aiko logo')).toBeTruthy();
+});
+```
+
+## 🧑‍💻 DESENVOLVEDOR  
+Fenando Santiago ([Linkedin](https://www.linkedin.com/in/fernando-santiago/)) / Contato: fernando.santiago770@gmail.com / (31) 98741-3780
