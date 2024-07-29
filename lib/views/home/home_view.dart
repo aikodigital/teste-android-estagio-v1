@@ -82,8 +82,7 @@ class _HomeViewState extends State<HomeView> {
 
   void detalhesParada(Marker? marker) {
     if (marker != null) {
-      final id =
-          int.parse(marker.key.toString().replaceAll(RegExp(r'[^0-9.]'), ""));
+      final id = int.parse(marker.key.toString().replaceAll(RegExp(r"\D"), ""));
       showDialog(
         context: context,
         builder: (context) => DetalhesPontoDialog(idParada: id),
