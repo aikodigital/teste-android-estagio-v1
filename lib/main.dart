@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:olho_vivo_sp/screens/bus_stops_screen.dart';
 import 'package:olho_vivo_sp/screens/map_detail_screen.dart';
 import 'package:olho_vivo_sp/services/api_service.dart';
+import 'package:olho_vivo_sp/util/environment.dart';
 import 'package:provider/provider.dart';
 
 import 'util/routes.dart';
@@ -24,7 +25,7 @@ class OlhoVivoSp extends StatelessWidget {
         return dataProvider;
       },
       child: MaterialApp(
-        title: 'OlhoVivoSP',
+        title: Environment.app_name,
         theme: ThemeData.from(
           colorScheme: ColorScheme.fromSeed(
             seedColor: Colors.amber,
