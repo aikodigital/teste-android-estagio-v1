@@ -1,6 +1,6 @@
 # Teste Android Aiko Digital
 
-Este projeto é um app de mobilidade desenvolvido utilizando a API do Olho Vivo do estado de São Paulo e a API do Google Maps. Ele visa proporcionar informações em tempo real sobre o transporte público da cidade de São Paulo, integrando dados de localização e mapas para uma melhor experiência do usuário.
+Este projeto é um app de mobilidade desenvolvido utilizando a API do Olho Vivo da cidade de São Paulo e a API do Google Maps. Ele visa proporcionar informações em tempo real sobre o transporte público da cidade de São Paulo, integrando dados de localização e mapas para uma melhor experiência do usuário.
 
 ## Funcionalidades
 
@@ -38,14 +38,47 @@ Este projeto é um app de mobilidade desenvolvido utilizando a API do Olho Vivo 
     - No Android Studio, sincronize o projeto com o Gradle.
     - Certifique-se de que todas as dependências sejam baixadas corretamente.
 
-## Uso
+## Guia de Uso da Aplicação
 
-1. **Execute o aplicativo**:
-    - Conecte um dispositivo Android ou inicie um emulador.
-    - Clique no ícone "Run" no Android Studio para compilar e instalar o aplicativo no dispositivo/emulador.
+Depois de configurar o ambiente e executar o projeto, você pode começar a usar o aplicativo. Aqui está um guia passo-a-passo para ajudar você a entender como utilizar as funcionalidades principais:
 
-2. **Navegação no aplicativo**:
-    - Use a barra de pesquisa para encontrar linhas de ônibus.
-    - Visualize as paradas e a localização dos ônibus no mapa.
+### Navegação Inicial
+
+#### Tela Principal
+
+- Ao abrir o aplicativo, você será direcionado para a tela principal que exibe uma tela de boas vindas.
+
+#### Menu
+
+- Você pode escolher entre ver informações sobres os corredores de São Paulo ou sobre as linhas.
+
+#### Corredor
+
+- Você pode escolher entre todos os corredores de São Paulo
+- Após pressionar o corredor, as paradas relacionadas serão exibidas no mapa.
+
+#### Buscar Linhas de Ônibus
+
+- Utilize a barra de pesquisa no topo da tela para buscar por linhas de ônibus específicas.
+- Digite o número da linha ou o nome da parada e pressione a lupa.
+
+#### Visualizar Paradas
+
+- Após pressionar a linha escolhida, as paradas relacionadas serão exibidas no mapa.
+- Toque uma vez em uma parada para criar uma rota entre a parada e sua localização, e toque uma segunda vez para ver informações detalhadas, todas as linhas que a 
+parada atende e os horários de ônibus previstos.
+
+### Exemplos de Uso
+
+#### Exemplo 1: Verificar Horários de Ônibus
+
+1. Na tela principal, busque pela linha "123".
+2. Selecione uma parada da lista de resultados.
+3. Verifique a previsão de chegada dos próximos ônibus na parada selecionada.
+
+#### Exemplo 2: Roteiro de Viagem
+
+1. Busque pela linha "456" e visualize as paradas no mapa.
+2. Toque em diferentes paradas para ver a localização atual dos ônibus e planeje seu trajeto.
 
 ---
