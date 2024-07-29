@@ -9,7 +9,7 @@
   - [React Native Swipe Gestures](https://www.npmjs.com/package/react-native-swipe-gestures)
   - [React Native Gesture Handler](https://www.npmjs.com/package/react-native-gesture-handler)
   - [Axios](https://www.npmjs.com/package/react-native-axios)
-  - Demais bibliotecas detalhadas no [`package.json`](https://github.com/FeedUp-Hub/FeedUp-Mobile/blob/main/package.json)
+  - Demais bibliotecas detalhadas no [`package.json`](https://github.com/fsaantiago/teste-fernando-santiago/blob/teste/fernando-santiago/package.json)
 
 ## 📐 ARQUITETURA 
 O aplicativo foi construído utilizando uma arquitetura componentizada conforme estrutura abaixo:
