@@ -53,7 +53,7 @@ O aplicativo foi construído utilizando uma arquitetura componentizada conforme 
 
 - **Previsões:** Tela que permite ao usuário descobrir quais os próximos horários disponíveis para a linha de ônibus pesquisada.
 
-<img src="https://github.com/fsaantiago/teste-fernando-santiago/blob/teste/fernando-santiago/assets/images/previsoes"  width="200" height="400">
+<img src="https://github.com/fsaantiago/teste-fernando-santiago/blob/teste/fernando-santiago/assets/images/previsao.gif"  width="200" height="400">
 
 - **Corredores:** Opção disponível via menu lateral, onde usuário pode ter acesso aos corredores da cidade.
 
