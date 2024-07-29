@@ -1,4 +1,4 @@
-import 'package:sp_movement/app/modules/bus_stops/models/domain/bus_stops.dart';
+import 'package:sp_movement/app/modules/estimated_arrival/models/domain/bus_stops.dart';
 
 class BusStopsModel extends BusStops{
   BusStopsModel({

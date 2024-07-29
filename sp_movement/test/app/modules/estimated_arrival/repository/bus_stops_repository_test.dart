@@ -6,7 +6,7 @@
 // tree, read text, and verify that the values of widget properties are correct.
 import 'package:flutter_test/flutter_test.dart';
 import 'package:sp_movement/app/modules/auth/auth_repository.dart';
-import 'package:sp_movement/app/modules/bus_stops/repository/bus_stops_repository.dart';
+import 'package:sp_movement/app/modules/estimated_arrival/repository/bus_stops_repository.dart';
 
 void main() {
   test('deve retornar verdadeiro para autenticacao', () async {

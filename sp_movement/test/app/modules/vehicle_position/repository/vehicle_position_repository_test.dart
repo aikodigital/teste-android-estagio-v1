@@ -12,4 +12,6 @@ void main() {
     dynamic retorno = await VehiclePositionRepository.getPosition();
     expect(true, retorno.isNotEmpty);
   });
+
+
 }
