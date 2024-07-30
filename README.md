@@ -4,74 +4,97 @@
 
 Neste teste serão avaliados seus conhecimentos e a metodologia aplicada no desenvolvimento de aplicações mobile Android.
 
-## O Desafio
+# Teste Android
 
-Seu objetivo é criar um aplicativo que exiba dados sobre o transporte público da cidade de São Paulo, consultando a [API **Olho Vivo**](api.md) que provê informações em tempo real do monitoramento da frota de ônibus da cidade de São Paulo.
+Esse projeto foi desenvolvido em React Native
 
-## Requisitos
+## Funcionalidades
 
-Esses requisitos são obrigatórios e devem ser desenvolvidos para a entrega do teste
+* **Paradas** O aplicativo mostra as paradas com o ícone verde. Cada ícone pode ser clicado para abrir as previsões de chegada dos ônibus selecionados.
 
-* **Posições dos veículos**: Exibir no mapa onde os veículos estavam na sua última atualização.
+* **Previsão de Chegada:** Através do clique no ícone de parada é possível ver a previsão de chegada dos ônibus na parada selecionada.
 
-* **Linhas**: Exibir informações sobre as linhas de ônibus.
+<br>
+<br>
+<img src="../teste-android-estagio-v1/imagens/Screenshot_1722300677.png" alt="Descrição da Imagem" width="220" height="500">
 
-* **Paradas**: Exibir os pontos de parada da cidade no mapa.
+<img src="../teste-android-estagio-v1/imagens/Screenshot_1722300632.png" alt="Descrição da Imagem" width="220" height="500">
+<br>
+<br>
 
-* **Previsão de chegada**: Dado uma parada informar a previsão de chegada de cada veículo que passe pela parada selecionada.
+* **Pesquisa de Linha:** A pesquisa de Linha filtra as linhas com base no input do usuário, fazendo uma pesquisa a cada mudança no texto. Os resultados da pesquisa são clicáveis levando, onde ao clicar os ônibus podemos ver a posição dos veículos.
 
-* **Pesquisa e Filtros**: Permitir que o usuário pesquise e filtre esses dados, interagindo com a interface.
+<br>
 
-## O que é permitido
 
-* Android Nativo (Java/Kotlin)
+<img src="../teste-android-estagio-v1/imagens/Screenshot_1722300673.png" alt="Descrição da Imagem" width="220" height="500">
 
-* React Native
+<img src="../teste-android-estagio-v1/imagens/Screenshot_1722300641.png" alt="Descrição da Imagem" width="220" height="500">
 
-* Native Script (Vue, Angular, etc)
+<br>
+<br>
 
-* Flutter
+* **Posições dos Veículos:** A localização dos veículos podem ser vistos através da pesquisa de linha. 
+> Optei por colocar dessa forma, pois o Android Studio estava tendo dificuldades para renderizar tantos veículos na tela.
 
-* Xamarin
+<br>
+<br>
 
-* Kivy
+<img src="../teste-android-estagio-v1/imagens/Screenshot_1722300658.png" alt="Descrição da Imagem" width="220" height="500">
 
-* Qualquer tecnologia complementar as citadas anteriormente são permitidas desde que seu uso seja justificável
+<br>
+<br>
 
-## O que não é permitido
+## Decisões:
 
-* Utilizar bibliotecas ou códigos de terceiros que implementem algum dos requisitos.
+Por morar em Manaus, tive que colocar a localização inicial fixada no estádio do Morumbi, para conseguir desenvolver as funcionalidades do app.
 
-## Recomendações
+A barra de pesquisa na tela de Home, foi necessária para manter uma interface mais limpa, assim abrindo um Modal tanto para pesquisar as linhas, quanto para as previsões de chegada.
 
-* **Linter**: Desenvolva o projeto utilizando algum padrão de formatação de código.
+### Configurar o Ambiente
 
-## Extras
+Certifique-se de que a outra pessoa tenha o Node.js e npm (ou yarn) instalados em sua máquina. Eles podem instalar o Node.js, que inclui o npm, [aqui](https://nodejs.org/). O yarn pode ser instalado globalmente com:
 
-Aqui são listados algumas sugestões para você que quer ir além do desafio inicial. Lembrando que você não precisa se limitar a essas sugestões, se tiver pensado em outra funcionalidade que considera relevante ao escopo da aplicação fique à vontade para implementá-la.
+```sh
+npm install -g yarn
+```
 
-* **Refresh automático**: Que as informações exibidas no aplicativo sejam atualizadas de tempo em tempo de forma transparente ao usuário
+### Clonar o Repositório
 
-* **Cálculo de rotas**: Exibir a possível rota de um ou mais ônibus em relação a uma parada, ou do usuário em relação a uma parada (Utilizando API do Google Maps ou equivalentes)
+A outra pessoa deve clonar o repositório do projeto para sua máquina local. Se o projeto estiver hospedado em um serviço como GitHub, eles podem usar o seguinte comando:
 
-* **Corredores**: Mostrar informações sobre os corredores de ônibus de SP.
+```sh
+git clone <URL-do-repositório>
+```
 
-* **Velocidade das vias**: Mostrar informações sobre as velocidades das vias.
+### Instalar Dependências
 
-* **Testes**: Desenvolva testes que achar necessário para a aplicação.
+Instale as bibliotecas necessárias usando npm ou yarn. Abra o terminal no diretório do projeto e execute:
 
-* **Documentação**: Gerar uma documentação da aplicação. A documentação pode incluir detalhes sobre as decisões tomadas, especificação das funcionalidades desenvolvidas, instruções de uso dentre outras informações que achar relevantes.
+```sh
+npm install axios expo-location expo-localization react-native-maps react-native-vector-icons
+```
 
-## Entrega
+### Configurar o Projeto
 
-Para realizar a entrega do teste você deve:
+### Para Expo:
 
-* Relizar o fork e clonar esse repositório para sua máquina.
-  
-* Criar uma branch com o nome de `teste/[NOME]`.
-  * `[NOME]`: Seu nome.
-  * Exemplos: `teste/fulano-da-silva`; `teste/beltrano-primeiro-gomes`.
-  
-* Faça um commit da sua branch com a implementação do teste.
-  
-* Realize o pull request da sua branch nesse repositório.
+Certifique-se de que o Expo CLI está instalado globalmente:
+
+```sh
+npm install -g expo-cli
+```
+
+Inicie o projeto com Expo:
+
+```sh
+expo start
+```
+
+Isso abrirá o Expo Developer Tools no navegador e permitirá que eles executem o aplicativo no simulador ou em um dispositivo físico usando o QR code gerado.
+`
+
+## Sobre mim:
+
+email: davipdocarmo@gmail.com
+linkedin: https://www.linkedin.com/in/araujo-davi/
