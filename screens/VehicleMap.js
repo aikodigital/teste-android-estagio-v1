@@ -1,15 +1,14 @@
 import React, { useState, useEffect, useCallback, useMemo, useRef } from 'react';
-import { ActivityIndicator, Alert, Text, View } from 'react-native';
+import { ActivityIndicator, Alert, View, TouchableOpacity, StyleSheet } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
+import Supercluster from 'supercluster'; // Biblioteca de clustering
 import axios from 'axios';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import styled from 'styled-components/native';
 
-
 const OLHO_VIVO_API_URL = 'https://api.olhovivo.sptrans.com.br/v2.1';
-const API_KEY = 'b7c59cb9ae96c66937e6c61c274206493316c5c21105db7b64cbcbd0672cdbc4'; 
-
+const API_KEY = 'b7c59cb9ae96c66937e6c61c274206493316c5c21105db7b64cbcbd0672cdbc4';
 
 const VehicleMap = () => {
   const [vehicles, setVehicles] = useState([]);
@@ -17,8 +16,15 @@ const VehicleMap = () => {
   const [lastUpdated, setLastUpdated] = useState(null);
   const [refreshing, setRefreshing] = useState(false);
   const [refreshStatus, setRefreshStatus] = useState('');
+  const [region, setRegion] = useState({
+    latitude: -23.55052,
+    longitude: -46.633308,
+    latitudeDelta: 0.0922,
+    longitudeDelta: 0.0421,
+  });
 
   const abortControllerRef = useRef(null);
+  const clusterRef = useRef(null);
 
   const formatDateTime = useCallback((date) => {
     const day = String(date.getDate()).padStart(2, '0');
@@ -46,7 +52,7 @@ const VehicleMap = () => {
       setRefreshStatus('Atualizando...');
 
       const authResponse = await axios.post(`${OLHO_VIVO_API_URL}/Login/Autenticar?token=${API_KEY}`, {
-        signal: abortController.signal
+        signal: abortController.signal,
       });
 
       if (authResponse.status !== 200) {
@@ -77,14 +83,14 @@ const VehicleMap = () => {
     } finally {
       setLoading(false);
       setRefreshing(false);
-      setTimeout(() => setRefreshStatus(''), 3000); 
+      setTimeout(() => setRefreshStatus(''), 3000);
     }
   }, [formatDateTime]);
 
   useEffect(() => {
     const abortController = new AbortController();
     abortControllerRef.current = abortController;
-    
+
     fetchVehiclePositions(abortController.signal);
 
     return () => {
@@ -92,7 +98,7 @@ const VehicleMap = () => {
     };
   }, [fetchVehiclePositions]);
 
-  const handleRefresh = () => {
+  const handleRefresh = useCallback(() => {
     if (!refreshing && !loading) {
       setRefreshing(true);
       console.log('Iniciando atualização...');
@@ -100,25 +106,99 @@ const VehicleMap = () => {
     } else {
       console.log('Atualização já em andamento ou carregamento em curso');
     }
+  }, [refreshing, loading, fetchVehiclePositions]);
+
+  const handleZoomIn = () => {
+    setRegion((prevRegion) => ({
+      ...prevRegion,
+      latitudeDelta: prevRegion.latitudeDelta / 2,
+      longitudeDelta: prevRegion.longitudeDelta / 2,
+    }));
   };
 
-  const renderMarkers = useMemo(() => {
-    return vehicles.flatMap((line, lineIndex) =>
-      line.vs.map((vehicle, vehicleIndex) => (
+  const handleZoomOut = () => {
+    setRegion((prevRegion) => ({
+      ...prevRegion,
+      latitudeDelta: prevRegion.latitudeDelta * 2,
+      longitudeDelta: prevRegion.longitudeDelta * 2,
+    }));
+  };
+
+  const createClusters = useMemo(() => {
+    if (!vehicles.length) return [];
+
+    const points = vehicles.flatMap((line) =>
+      line.vs.map((vehicle, index) => ({
+        type: 'Feature',
+        properties: {
+          cluster: false,
+          id: `${line.c}-${vehicle.p}-${index}`, // Garantir chave única
+          line: line.c,
+          vehicle: vehicle.p,
+        },
+        geometry: {
+          type: 'Point',
+          coordinates: [vehicle.px, vehicle.py],
+        },
+      }))
+    );
+
+    const cluster = new Supercluster({
+      radius: 40,
+      maxZoom: 16,
+    });
+
+    cluster.load(points);
+
+    const bounds = [
+      region.longitude - region.longitudeDelta,
+      region.latitude - region.latitudeDelta,
+      region.longitude + region.longitudeDelta,
+      region.latitude + region.latitudeDelta,
+    ];
+
+    return cluster.getClusters(bounds, Math.round(Math.log2(360 / region.longitudeDelta)));
+  }, [vehicles, region]);
+
+  const filteredMarkers = useMemo(() => {
+    return createClusters.map((cluster) => {
+      if (cluster.properties.cluster) {
+        const [longitude, latitude] = cluster.geometry.coordinates;
+        const pointCount = cluster.properties.point_count;
+
+        return (
+          <Marker
+            key={`cluster-${cluster.properties.cluster_id}`}
+            coordinate={{ latitude, longitude }}
+            title={`Veículos: ${pointCount}`}
+            onPress={() => {
+              if (cluster.properties.point_count > 10) {
+                setRegion((prevRegion) => ({
+                  ...prevRegion,
+                  latitudeDelta: prevRegion.latitudeDelta / 2,
+                  longitudeDelta: prevRegion.longitudeDelta / 2,
+                }));
+              }
+            }}
+          >
+            <Icon name="bus" size={24} color="#007bff" />
+          </Marker>
+        );
+      }
+
+      const [longitude, latitude] = cluster.geometry.coordinates;
+      return (
         <Marker
-          key={`${vehicle.p}-${vehicleIndex}`}
-          coordinate={{
-            latitude: vehicle.py,
-            longitude: vehicle.px,
-          }}
-          title={`Linha: ${line.c}`}
-          description={`Veículo: ${vehicle.p} • Sentido: ${vehicle.a ? line.lt0 : line.lt1}`}
+          key={`vehicle-${cluster.properties.id}`} // Use uma chave única aqui
+          coordinate={{ latitude, longitude }}
+          title={`Linha: ${cluster.properties.line}`}
+          description={`Veículo: ${cluster.properties.vehicle}`}
         >
           <Icon name="bus" size={24} color="#007bff" />
         </Marker>
-      ))
-    );
-  }, [vehicles]);
+      );
+    });
+  }, [createClusters, region]);
 
   return (
     <Container>
@@ -128,28 +208,30 @@ const VehicleMap = () => {
         <>
           <MapView
             style={styles.map}
-            initialRegion={{
-              latitude: -23.55052,
-              longitude: -46.633308,
-              latitudeDelta: 0.0922,
-              longitudeDelta: 0.0421,
-            }}
+            region={region}
             showsUserLocation={true}
             showsMyLocationButton={true}
+            onRegionChangeComplete={(newRegion) => setRegion(newRegion)}
           >
-            {renderMarkers}
+            {filteredMarkers}
           </MapView>
           <Footer>
-            <LastUpdatedText>
+            <MemoizedLastUpdatedText>
               Última atualização: {lastUpdated ? lastUpdated : 'Nunca'}
-            </LastUpdatedText>
+            </MemoizedLastUpdatedText>
             <RefreshButton onPress={handleRefresh}>
               <MaterialCommunityIcons name="refresh" size={24} color="#003366" />
             </RefreshButton>
-            {refreshStatus ? (
-              <StatusText>{refreshStatus}</StatusText>
-            ) : null}
+            {refreshStatus ? <StatusText>{refreshStatus}</StatusText> : null}
           </Footer>
+          <ZoomControls>
+            <ZoomButton onPress={handleZoomIn}>
+              <Icon name="plus" size={20} color="#003366" />
+            </ZoomButton>
+            <ZoomButton onPress={handleZoomOut}>
+              <Icon name="minus" size={20} color="#003366" />
+            </ZoomButton>
+          </ZoomControls>
         </>
       )}
     </Container>
@@ -173,6 +255,8 @@ const LastUpdatedText = styled.Text`
   color: #007bff;
 `;
 
+const MemoizedLastUpdatedText = React.memo(LastUpdatedText);
+
 const RefreshButton = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
@@ -186,10 +270,24 @@ const StatusText = styled.Text`
   margin-left: 10px;
 `;
 
-const styles = {
+const ZoomControls = styled.View`
+  position: absolute;
+  bottom: 100px;
+  right: 20px;
+  flex-direction: column;
+`;
+
+const ZoomButton = styled.TouchableOpacity`
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 5px;
+  margin-bottom: 5px;
+`;
+
+const styles = StyleSheet.create({
   map: {
     flex: 1,
   },
-};
+});
 
 export default VehicleMap;

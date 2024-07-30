@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
 
 
@@ -8,7 +8,7 @@ const HomeScreen = () => {
   return (
     <Container>
       <IconContainer>
-        <Icon name="bus" size={80} color={colors.secondary} />
+        <Icon name="bus-alt" size={80} color={colors.secondary} />
       </IconContainer>
       <Title>RotaMobile</Title>
       <Description>
