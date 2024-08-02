@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_map_marker_cluster/flutter_map_marker_cluster.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_map/flutter_map.dart';
@@ -88,35 +89,12 @@ class _HomeState extends State<Home> {
                       ),
                       markers: markersVeiculos,
                       builder: (context, markers) {
-                        // return FloatingActionButton(
-                        //   onPressed: () {},
-                        //   backgroundColor: Colors.blueGrey[800],
-                        //   foregroundColor: Colors.white,
-                        //   child: Text('${markers.length}'),
-                        //   );
                         return Icon(Icons.directions_car,
                             color: Colors.blueGrey[800], size: 30.0);
-                      },
-                    )),
-                  ],
-                ),
-                Container(
-                  margin: EdgeInsets.all(20.0),
-                  child: TextField(
-                    controller: _controller,
-                    decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Color(0xFFF2F2F2),
-                      labelText: 'Pesquisa',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12.0),
-                        borderSide: BorderSide.none,
-                      ),
-                      prefixIcon: Icon(Icons.search),
-                      contentPadding: EdgeInsets.symmetric(
-                          vertical: 16.0, horizontal: 20.0),
+                        },
+                      )
                     ),
-                  ),
+                  ],
                 ),
                 Align(
                   alignment: Alignment.centerRight,
@@ -135,11 +113,7 @@ class _HomeState extends State<Home> {
                                 padding: EdgeInsets.all(16), // Espaçamento interno
                               ),
                               onPressed: (){
-                                if(_controller.text.isNotEmpty){
-                                  pesquisarParadas();
-                                }else{
-                                  displayErro(context, "Insira algo na barra de pesquisa para filtrar");
-                                }
+                                alertFiltro(context, 1);
                               },
                               child: Icon(Icons.location_on,
                                   color: Colors.red[900], size: 40), // Cor do ícone
@@ -153,21 +127,27 @@ class _HomeState extends State<Home> {
                                 shape: CircleBorder(), // Forma circular
                                 padding: EdgeInsets.all(16), // Espaçamento interno
                               ),
-                              onPressed: () async {
-                                if(_controller.text.isNotEmpty){
-                                  await getInfoLinhas(_controller.text);
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(builder: (context) {
-                                      return InfoLinhasPage(linhas: linhas);
-                                    }),
-                                  );
-                                }else{
-                                  displayErro(context, "Insira algo na barra de pesquisa para filtrar");
-                                }
+                              onPressed: () {
+                                alertFiltro(context, 2);
                               },
                               child: Icon(Icons.stacked_line_chart,
                                   color: Colors.blueAccent,
+                                  size: 40), // Cor do ícone
+                            ),
+                          ),
+                          Tooltip(
+                            message: "Pesquisar Sentido Linhas",
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.white, // Cor de fundo
+                                shape: CircleBorder(), // Forma circular
+                                padding: EdgeInsets.all(16), // Espaçamento interno
+                              ),
+                              onPressed: () {
+                                alertGetInfoSentidoLinhas(context);
+                              },
+                              child: Icon(Icons.compare_arrows,
+                                  color: Colors.blue[900],
                                   size: 40), // Cor do ícone
                             ),
                           ),
@@ -178,8 +158,6 @@ class _HomeState extends State<Home> {
             ),
     );
   }
-
-  final TextEditingController _controller = TextEditingController();
 
   List<Parada> paradas = [];
   List<Linha> linhas = [];
@@ -206,8 +184,96 @@ class _HomeState extends State<Home> {
     );
   }
 
-  void pesquisarParadas() {
-    getParadas(_controller.text);
+  void pushInfoLinhas(){
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) {
+        return InfoLinhasPage(linhas: linhas);
+      }),
+    );
+  }
+
+  void alertFiltro(BuildContext context, int codigo){
+    final TextEditingController controllerFiltro = TextEditingController();
+    showDialog(
+        context: context,
+        builder: (BuildContext context){
+          return AlertDialog(
+            title: Text("Filtro"),
+            content: Container(
+              child: TextField(
+                controller: controllerFiltro,
+                decoration: InputDecoration(
+                    label: Text('Filtro')
+                ),
+              ),
+            ),
+            actions: <Widget>[
+              TextButton(child: Text('Cancelar'), onPressed: () => Navigator.of(context).pop()),
+              TextButton(
+                  child: Text('Buscar'),
+                  onPressed: () {
+                    if(controllerFiltro.text.isNotEmpty){
+                      if(codigo == 1){
+                        getParadas(controllerFiltro.text);
+                        Navigator.of(context).pop();
+                      }else if(codigo == 2){
+                        getInfoLinhas(controllerFiltro.text);
+                      }else{
+                        print('Erro');
+                      }
+                    }else{
+                      displayErro(context, "Insira algo na barra de pesquisa para filtrar");
+                    }
+                  }
+              )
+            ],
+          );
+        }
+    );
+  }
+
+  void alertGetInfoSentidoLinhas(BuildContext context) {
+    final TextEditingController codigoController = TextEditingController();
+    final TextEditingController sentidoController = TextEditingController();
+    showDialog(
+        context: context,
+        builder: (BuildContext context){
+          return AlertDialog(
+            title: Text("Buscar Linha pelo Sentido"),
+            content: Column(
+              children: [
+                TextField(
+                  controller: codigoController,
+                  decoration: InputDecoration(
+                      label: Text('Codigo da Linha')
+                  ),
+                ),
+                Text("1: Terminal Principal para Terminal Secundário \n 2: Terminal Secundário para Terminal Principal"),
+                TextField(
+                  controller: sentidoController,
+                  decoration: InputDecoration(
+                      label: Text('Sentido da Linha (1 - 2)')
+                  ),
+                  keyboardType: TextInputType.number,
+                  inputFormatters: <TextInputFormatter>[
+                    FilteringTextInputFormatter.allow(RegExp(r'[12]')),
+                  ],
+                ),
+              ],
+            ),
+            actions: <Widget>[
+              TextButton(child: Text('Cancelar'), onPressed: () => Navigator.of(context).pop()),
+              TextButton(
+                  child: Text('Buscar'),
+                  onPressed: () {
+                    getInfoSentidoLinhas(codigoController.text, sentidoController.text);
+                  }
+              )
+            ],
+          );
+        }
+    );
   }
 
   Future<void> getInfoLinhas(String filtro) async {
@@ -221,6 +287,30 @@ class _HomeState extends State<Home> {
         setState(() {
           isLoading = false;
         });
+        pushInfoLinhas();
+      } else {
+        throw Exception('Falha ao carregar dados: ${resposta.statusCode}');
+      }
+    } catch (e) {
+      print('Error: $e');
+      setState(() {
+        isLoading = false;
+      });
+    }
+  }
+
+  Future<void> getInfoSentidoLinhas(String codigoLinha, String sentido) async {
+    try {
+      isLoading = true;
+      final resposta = await http.get(Uri.parse(
+          'https://aiko-olhovivo-proxy.aikodigital.io/Linha/BuscarLinhaSentido?termosBusca=${codigoLinha}&sentido=${sentido}'));
+      if (resposta.statusCode == 200) {
+        final jsonList = json.decode(resposta.body);
+        linhas = Linha.listaDeLinhasFromJson(jsonList);
+        setState(() {
+          isLoading = false;
+        });
+        pushInfoLinhas();
       } else {
         throw Exception('Falha ao carregar dados: ${resposta.statusCode}');
       }
