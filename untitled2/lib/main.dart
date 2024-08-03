@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -41,14 +42,42 @@ class _HomeState extends State<Home> {
             point: LatLng(vs.py, vs.px),
             builder: (ctx) => Container(
                 child: Tooltip(
-              message: lExpand.lt0,
-              child: Icon(Icons.directions_car,
+              message: lExpand.c,
+              child: Icon(Icons.bus_alert,
                   color: Colors.blueGrey[800], size: 30.0),
             )),
           );
         }).toList();
       }).toList();
     }).toList();
+
+    final markersPrevisoes = (previsao?.p ?? []).expand((previsoesExpand) {
+      return (previsoesExpand.l ?? []).expand((lExpand) {
+        return (lExpand.vs ?? []).map((vsExpand) {
+          return Marker(
+            width: 80.0,
+            height: 80.0,
+            point: LatLng(previsoesExpand.py, previsoesExpand.px),
+            builder: (ctx) => IconButton(
+              icon: Icon(Icons.location_on, color: Colors.black),
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      icon: Icon(Icons.access_time, color: Colors.black45),
+                      title: Text(previsoesExpand.np),
+                      content: Text('Horario da previsão da chegada: ${vsExpand.t}'),
+                    );
+                  },
+                );
+              },
+            ),
+          );
+        });
+      });
+    }).toList();
+
 
     return Scaffold(
       body: isLoading
@@ -79,6 +108,9 @@ class _HomeState extends State<Home> {
                                     color: Colors.red[900], size: 40.0)));
                       }).toList(),
                     ),
+                    MarkerLayer(
+                      markers: markersPrevisoes
+                    ),
                     MarkerClusterLayerWidget(
                         options: MarkerClusterLayerOptions(
                       disableClusteringAtZoom: 17,
@@ -89,7 +121,7 @@ class _HomeState extends State<Home> {
                       ),
                       markers: markersVeiculos,
                       builder: (context, markers) {
-                        return Icon(Icons.directions_car,
+                        return Icon(Icons.bus_alert,
                             color: Colors.blueGrey[800], size: 30.0);
                         },
                       )
@@ -144,10 +176,26 @@ class _HomeState extends State<Home> {
                                 padding: EdgeInsets.all(16), // Espaçamento interno
                               ),
                               onPressed: () {
-                                alertGetInfoSentidoLinhas(context);
+                                alertSentidoLinhas(context);
                               },
                               child: Icon(Icons.compare_arrows,
                                   color: Colors.blue[900],
+                                  size: 40), // Cor do ícone
+                            ),
+                          ),
+                          Tooltip(
+                            message: "Pesquisar Previsao Chegada",
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.white, // Cor de fundo
+                                shape: CircleBorder(), // Forma circular
+                                padding: EdgeInsets.all(16), // Espaçamento interno
+                              ),
+                              onPressed: () {
+                                alertPrevisaoChegada(context);
+                              },
+                              child: Icon(Icons.access_time,
+                                  color: Colors.amber[500],
                                   size: 40), // Cor do ícone
                             ),
                           ),
@@ -162,6 +210,7 @@ class _HomeState extends State<Home> {
   List<Parada> paradas = [];
   List<Linha> linhas = [];
   List<Veiculos> veiculos = [];
+  PrevisaoChegada? previsao;
   bool isLoading = true;
 
   void displayErro(BuildContext context, String message){
@@ -233,7 +282,7 @@ class _HomeState extends State<Home> {
     );
   }
 
-  void alertGetInfoSentidoLinhas(BuildContext context) {
+  void alertSentidoLinhas(BuildContext context) {
     final TextEditingController codigoController = TextEditingController();
     final TextEditingController sentidoController = TextEditingController();
     showDialog(
@@ -268,6 +317,45 @@ class _HomeState extends State<Home> {
                   child: Text('Buscar'),
                   onPressed: () {
                     getInfoSentidoLinhas(codigoController.text, sentidoController.text);
+                  }
+              )
+            ],
+          );
+        }
+    );
+  }
+
+  void alertPrevisaoChegada(BuildContext context) {
+    final TextEditingController controllerCodigoParada = TextEditingController();
+    final TextEditingController controllerCodigoLinha = TextEditingController();
+    showDialog(
+        context: context,
+        builder: (BuildContext context){
+          return AlertDialog(
+            title: Text("Previsao Chegada"),
+            content: Column(
+              children: [
+                TextField(
+                  controller: controllerCodigoParada,
+                  decoration: InputDecoration(
+                      label: Text('Codigo da Parada')
+                  ),
+                ),
+                TextField(
+                  controller: controllerCodigoLinha,
+                  decoration: InputDecoration(
+                      label: Text('Codigo da Linha')
+                  ),
+                ),
+              ],
+            ),
+            actions: <Widget>[
+              TextButton(child: Text('Cancelar'), onPressed: () => Navigator.of(context).pop()),
+              TextButton(
+                  child: Text('Buscar'),
+                  onPressed: () {
+                    getPrevisaoChegada(controllerCodigoParada.text, controllerCodigoLinha.text);
+                    Navigator.of(context).pop();
                   }
               )
             ],
@@ -311,6 +399,39 @@ class _HomeState extends State<Home> {
           isLoading = false;
         });
         pushInfoLinhas();
+      } else {
+        throw Exception('Falha ao carregar dados: ${resposta.statusCode}');
+      }
+    } catch (e) {
+      print('Error: $e');
+      setState(() {
+        isLoading = false;
+      });
+    }
+  }
+
+  Future<void> getPrevisaoChegada(String codigoParada, String codigoLinha) async{
+    try {
+      isLoading = true;
+      http.Response resposta;
+      if(codigoParada.isEmpty){
+        resposta = await http.get(Uri.parse(
+            'https://aiko-olhovivo-proxy.aikodigital.io/Previsao/Linha?codigoLinha=${codigoLinha}'));
+      }else if(codigoLinha.isEmpty){
+        resposta = await http.get(Uri.parse(
+        'https://aiko-olhovivo-proxy.aikodigital.io/Previsao/Parada?codigoParada=${codigoParada}'));
+      }
+      else {
+        resposta = await http.get(Uri.parse(
+            'https://aiko-olhovivo-proxy.aikodigital.io/Previsao?codigoParada=${codigoParada}&codigoLinha=${codigoLinha}'));
+      }
+      if (resposta.statusCode == 200) {
+        final jsonMap = json.decode(resposta.body);
+        print(resposta.body);
+        setState(() {
+          previsao = PrevisaoChegada.previsaoChegadaFromJson(jsonMap);
+          isLoading = false;
+        });
       } else {
         throw Exception('Falha ao carregar dados: ${resposta.statusCode}');
       }
@@ -366,8 +487,7 @@ class _HomeState extends State<Home> {
         isLoading = false;
       });
     }
-  }
-}
+  }}
 
 Future<void> autorizar(String url) async {
   try {
