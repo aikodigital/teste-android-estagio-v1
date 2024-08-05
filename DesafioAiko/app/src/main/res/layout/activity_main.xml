@@ -50,7 +50,7 @@
         android:id="@+id/textView"
         android:layout_width="332dp"
         android:layout_height="42dp"
-        android:text="Seja bem-vindo. Consulte sobre linhas, ònibus, pontos e previsão de chegada"
+        android:text="Seja bem-vindo. Consulte sobre linhas, ônibus, pontos e previsão de chegada"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
