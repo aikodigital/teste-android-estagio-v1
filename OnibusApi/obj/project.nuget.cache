@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "1OlBf6wjec1GmRadLglLF/M0TsM7hez1URKYEjN757JJpY/VChx1gRpsfRPrk/t/dryeuqd7nhRxVYkVJDCW0A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\franc\\source\\repos\\MeuBusuApp\\OnibusApi\\OnibusApi.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\franc\\.nuget\\packages\\microsoft.dotnet.ilcompiler\\8.0.4\\microsoft.dotnet.ilcompiler.8.0.4.nupkg.sha512",
+    "C:\\Users\\franc\\.nuget\\packages\\microsoft.net.illink.tasks\\8.0.4\\microsoft.net.illink.tasks.8.0.4.nupkg.sha512",
+    "C:\\Users\\franc\\.nuget\\packages\\runtime.win-x64.microsoft.dotnet.ilcompiler\\8.0.4\\runtime.win-x64.microsoft.dotnet.ilcompiler.8.0.4.nupkg.sha512"
+  ],
+  "logs": []
+}

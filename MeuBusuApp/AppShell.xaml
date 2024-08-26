@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="MeuBusuApp.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:MeuBusuApp"
+    Shell.FlyoutBehavior="Disabled"
+    Title="MeuBusuApp">
+
+    <FlyoutItem FlyoutDisplayOptions="AsSingleItem">
+        <Tab>
+            <ShellContent
+                Title="Home"
+                ContentTemplate="{DataTemplate local:MainPage}"
+                Route="MainPage" />
+            
+            <ShellContent
+                Title="MapView"
+                ContentTemplate="{DataTemplate local:MapView}"
+                Route="MapView" />
+        </Tab>
+    </FlyoutItem>
+
+
+</Shell>

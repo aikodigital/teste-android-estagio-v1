@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MeuBusuApp.ViewModel"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:m="clr-namespace:MeuBus.CoreBusiness.Entities;assembly=MeuBus.CoreBusiness"
+             x:DataType="vm:MainPageViewModel"
+             x:Class="MeuBusuApp.MainPage">
+
+    <Grid 
+        Padding="5"
+        RowDefinitions="50, *, 50"
+        ColumnDefinitions="*, 50"
+        RowSpacing="5">
+
+        <SearchBar 
+            x:Name="SearchBar"
+            Grid.Row="0" 
+            Grid.Column="0"
+            Placeholder="Search Contact"
+            SearchCommand="{Binding ClickedCommand}"
+            Text="{Binding FilterText}"></SearchBar>
+
+        <CollectionView 
+             x:Name="OnibusCollection"
+             ItemsSource="{Binding Onibus}"
+             Grid.Row="1"
+             Grid.Column="0"
+             RemainingItemsThreshold="0"
+             RemainingItemsThresholdReachedCommand="{Binding LoadMoreCommand}">
+               
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="m:Onibus">
+                    <StackLayout>
+                        <SwipeView>
+                            <SwipeView.RightItems>
+                                <SwipeItems>
+                                    <SwipeItem Text="Previsao"
+                                               BackgroundColor="Black"
+                                               Command="{Binding Source={x:Reference OnibusCollection}, Path=BindingContext.GoToParadasCommand}"
+                                               CommandParameter="{Binding CodigoLinha}">
+                                    </SwipeItem>
+                                </SwipeItems>
+                            </SwipeView.RightItems>
+                            <StackLayout>
+                                <Frame Margin="0,5,0,5">
+                                    <StackLayout Orientation="Vertical" Spacing="5">
+                                        <Label Text="{Binding LetreiroDestino}"></Label>
+                                        <Label Text="{Binding CodigoLinha}"></Label>
+                                    </StackLayout>
+                                </Frame>
+                            </StackLayout>
+                        </SwipeView>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+
+    </Grid>
+
+
+</ContentPage>
