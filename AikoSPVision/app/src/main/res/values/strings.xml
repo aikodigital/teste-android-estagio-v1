@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">AikoSPVision</string>
+    <string name="texto_hint">Texto hint</string>
+    <string name="close_search_description">Fechar pesquisa</string>
+    <string name="open_search_description">Abrir pesquisa</string>
+    <string name="return_description">Voltar</string>
+    <string name="search_text">Pesquisa…</string>
+    <string name="direccione">Direcciones</string>
+    <string name="sttopeds">Paradas</string>
+    <string name="line">Linhas</string>
+
+    <!-- Title - MANAGER -->
+    <string name="navigation_title_home">Home</string>
+    <string name="navigation_title_stops">Stops</string>
+    <string name="navigation_title_lines">Lines</string>
+
+    <!-- Groups -->
+    <string name="navigation_group_home">home/</string>
+    <string name="navigation_group_stops">stops/</string>
+    <string name="navigation_group_lines">lines/</string>
+
+    <!-- Routes -->
+    <string name="navigation_route_home">home_screen</string>
+    <string name="navigation_route_stops">stops_screen</string>
+    <string name="navigation_route_lines">lines_screen</string>
+
+</resources>
